@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>img/AS.png</file>
+        <file>img/ROS_INDUSTRIAL.jpg</file>
+        <file>img/ROS_INDUSTRIAL.png</file>
+        <file>img/ros.jpg</file>
+        <file>img/ros.png</file>
+        <file>img/Uni.jpg</file>
+        <file>img/CD.png</file>
+        <file>img/dhparameter.png</file>
+        <file>img/CI.png</file>
+    </qresource>
+</RCC>
