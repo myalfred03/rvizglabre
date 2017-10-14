@@ -247,7 +247,7 @@ void ROSGUI::on_actionExit_triggered()
 void ROSGUI::on6DOFI_URDF()
 {
 
-  file_name_ = "/home/yesser/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
+  file_name_ = "/home/udp/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
 //  std::string file_contents =
   std::ifstream selected_file(file_name_.toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
