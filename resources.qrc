@@ -10,10 +10,14 @@
         <file>img/dhparameter.png</file>
         <file>img/CI.png</file>
     </qresource>
-    <qresource prefix="/robots/irb120">
+    <qresource prefix="/robots/URDF">
         <file>modelos/irb120_3_58.urdf</file>
-    </qresource>
-    <qresource prefix="/robots/irb5400">
         <file>modelos/irb5400.urdf</file>
+        <file>modelos/bmda3.urdf</file>
+        <file>modelos/kr16_2.urdf</file>
+        <file>modelos/mh5.urdf</file>
+        <file>modelos/kr210l150.urdf</file>
+        <file>modelos/sia10f.urdf</file>
+        <file>modelos/sia20d.urdf</file>
     </qresource>
 </RCC>

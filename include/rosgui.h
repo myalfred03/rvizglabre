@@ -97,7 +97,10 @@ public Q_SLOTS:
 
 
       // Cargando Robots
-
+      void on2DOFI_URDF();
+      void on3DOFI_URDF();
+      void on4DOFI_URDF();
+      void on5DOFI_URDF();
       void on6DOFI_URDF();
       void on4DOFs_URDF();
 

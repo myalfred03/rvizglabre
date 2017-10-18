@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1400</width>
-    <height>900</height>
+    <width>1468</width>
+    <height>888</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -23,7 +23,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../rvizglab/resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -35,7 +35,7 @@
      <rect>
       <x>20</x>
       <y>62</y>
-      <width>561</width>
+      <width>631</width>
       <height>861</height>
      </rect>
     </property>
@@ -162,7 +162,7 @@
        <rect>
         <x>40</x>
         <y>340</y>
-        <width>351</width>
+        <width>421</width>
         <height>411</height>
        </rect>
       </property>
@@ -476,10 +476,10 @@
      <widget class="QToolBox" name="toolBox">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>200</y>
-        <width>541</width>
-        <height>131</height>
+        <x>40</x>
+        <y>210</y>
+        <width>561</width>
+        <height>124</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -490,8 +490,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>541</width>
-         <height>75</height>
+         <width>561</width>
+         <height>68</height>
         </rect>
        </property>
        <attribute name="label">
@@ -500,9 +500,9 @@
        <widget class="QGroupBox" name="gridGroupBox_3">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>0</x>
           <y>0</y>
-          <width>501</width>
+          <width>561</width>
           <height>61</height>
          </rect>
         </property>
@@ -513,28 +513,28 @@
          <item row="0" column="0">
           <widget class="QCheckBox" name="checkBox2DOFI">
            <property name="text">
-            <string>2DOF</string>
+            <string>ABB IRB5400</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QCheckBox" name="checkBox3DOFI">
            <property name="text">
-            <string>3DOF</string>
+            <string>MM BMDA3</string>
            </property>
           </widget>
          </item>
          <item row="0" column="2">
           <widget class="QCheckBox" name="checkBox4DOFI">
            <property name="text">
-            <string>4DOF</string>
+            <string>KK KR210</string>
            </property>
           </widget>
          </item>
          <item row="0" column="3">
           <widget class="QCheckBox" name="checkBox5DOFI">
            <property name="text">
-            <string>5DOF</string>
+            <string>MM MH5</string>
            </property>
           </widget>
          </item>
@@ -553,8 +553,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>561</width>
+         <height>68</height>
         </rect>
        </property>
        <attribute name="label">
@@ -563,10 +563,10 @@
        <widget class="QGroupBox" name="gridGroupBox_2">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>0</x>
           <y>0</y>
-          <width>511</width>
-          <height>71</height>
+          <width>551</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="title">
@@ -615,7 +615,7 @@
      <widget class="QGroupBox" name="gridGroupBox2">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>460</x>
         <y>440</y>
         <width>160</width>
         <height>161</height>
@@ -1202,7 +1202,7 @@
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>650</x>
       <y>60</y>
       <width>16</width>
       <height>881</height>
@@ -1215,7 +1215,7 @@
    <widget class="Line" name="line_3">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>660</x>
       <y>85</y>
       <width>801</width>
       <height>21</height>
@@ -1261,7 +1261,7 @@
    <widget class="QMdiArea" name="mdiArea">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>660</x>
       <y>100</y>
       <width>781</width>
       <height>731</height>
@@ -1281,7 +1281,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1400</width>
+     <width>1468</width>
      <height>19</height>
     </rect>
    </property>
@@ -1337,7 +1337,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../rvizglab/resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

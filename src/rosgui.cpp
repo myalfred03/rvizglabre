@@ -121,13 +121,13 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.yawBox,       SIGNAL(valueChanged(double)), SLOT(updateSlider()));
 
     QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
-    QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
+    QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
-    QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
+    QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
-    QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
+    QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox5DOFs, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
-    QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
+    QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
 
@@ -147,6 +147,11 @@ ROSGUI::ROSGUI()
 
 
     QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on6DOFI_URDF()));
+    QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on5DOFI_URDF()));
+    QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on4DOFI_URDF()));
+    QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
+    QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
+
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
@@ -248,6 +253,47 @@ void ROSGUI::on_actionExit_triggered()
  main_window_.close();
 }
 
+
+void ROSGUI::on2DOFI_URDF()
+{
+  QTemporaryDir temporaryDir;
+  QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir.path() + "/irb5400.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/irb5400.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+
+
+}
+
+void ROSGUI::on3DOFI_URDF()
+{
+  QTemporaryDir temporaryDir;
+  QFile::copy(":/robots/URDF/modelos/bmda3.urdf", temporaryDir.path() + "/bmda3.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/bmda3.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+
+}
+
+void ROSGUI::on4DOFI_URDF()
+{
+  QTemporaryDir temporaryDir;
+  QFile::copy(":/robots/URDF/modelos/kr210l150.urdf", temporaryDir.path() + "/kr210l150.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/kr210l150.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+
+}
+
+void ROSGUI::on5DOFI_URDF()
+{
+  QTemporaryDir temporaryDir;
+  QFile::copy(":/robots/URDF/modelos/mh5.urdf", temporaryDir.path() + "/mh5.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/mh5.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+
+}
 void ROSGUI::on6DOFI_URDF()
 {
 
@@ -262,7 +308,7 @@ void ROSGUI::on6DOFI_URDF()
 // CON COPIA DE ARCHIVO
 
    QTemporaryDir temporaryDir;
-   QFile::copy(":/robots/irb120/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
+   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
    std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
 
 // CON COPIA DE ARCHIVO
@@ -286,7 +332,7 @@ void ROSGUI::on4DOFs_URDF()
 //  this->updateURDF(file_contents);
 
   QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/irb5400/modelos/irb5400.urdf", temporaryDir2.path() + "/irb5400.urdf");
+  QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir2.path() + "/irb5400.urdf");
   std::ifstream selected_file(QString(temporaryDir2.path() + "/irb5400.urdf").toStdString().c_str());
 
 // CON COPIA DE ARCHIVO
