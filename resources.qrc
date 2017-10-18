@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/images">
         <file>img/AS.png</file>
         <file>img/ROS_INDUSTRIAL.jpg</file>
@@ -9,5 +9,11 @@
         <file>img/CD.png</file>
         <file>img/dhparameter.png</file>
         <file>img/CI.png</file>
+    </qresource>
+    <qresource prefix="/robots/irb120">
+        <file>modelos/irb120_3_58.urdf</file>
+    </qresource>
+    <qresource prefix="/robots/irb5400">
+        <file>modelos/irb5400.urdf</file>
     </qresource>
 </RCC>

@@ -8,6 +8,10 @@
 #include <QList>
 #include <QProcess>
 #include <QVector>
+#include <QString>
+#include <QTemporaryDir>
+
+
 
 
 #include "include/rosgui.h"
@@ -247,10 +251,25 @@ void ROSGUI::on_actionExit_triggered()
 void ROSGUI::on6DOFI_URDF()
 {
 
-  file_name_ = "/home/udp/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
-//  std::string file_contents =
-  std::ifstream selected_file(file_name_.toStdString().c_str());
+//  // SIN COPIA DE ARCHIVO
+
+//    file_name_ = "/home/udp/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
+//  //  std::string file_contents =
+//    std::ifstream selected_file(file_name_.toStdString().c_str());
+
+//  // SIN COPIA DE ARCHIVO
+
+// CON COPIA DE ARCHIVO
+
+   QTemporaryDir temporaryDir;
+   QFile::copy(":/robots/irb120/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
+   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
+
+// CON COPIA DE ARCHIVO
+
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+
+
   this->updateURDF(file_contents);
 
 
@@ -260,11 +279,26 @@ void ROSGUI::on6DOFI_URDF()
 void ROSGUI::on4DOFs_URDF()
 {
 
-  file_name_ = "/home/yesser/ros_qtc_plugin/src/urdf/urdf/robot1.urdf";
-//  std::string file_contents =
-  std::ifstream selected_file(file_name_.toStdString().c_str());
-  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-  this->updateURDF(file_contents);
+//  file_name_ = "/home/udp/ros_qtc_plugin/src/urdf/urdf/robot1.urdf";
+////  std::string file_contents =
+//  std::ifstream selected_file(file_name_.toStdString().c_str());
+//  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+//  this->updateURDF(file_contents);
+
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/irb5400/modelos/irb5400.urdf", temporaryDir2.path() + "/irb5400.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/irb5400.urdf").toStdString().c_str());
+
+// CON COPIA DE ARCHIVO
+
+ std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+
+
+ this->updateURDF(file_contents);
+
+
+
+
 
 
 }
