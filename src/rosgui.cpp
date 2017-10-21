@@ -56,7 +56,6 @@ ROSGUI::ROSGUI()
  : QMainWindow()
 {
 // proc = new QProcess();     //   <QtGui>
-
 //  proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
 
 
@@ -105,6 +104,8 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.pushButton_4, SIGNAL(clicked()),   this, SLOT(on_pushButton_4_clicked()));
     QObject::connect(SecondWindowUI.pushButton,    SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
     QObject::connect(thWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
+    QObject::connect(frWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
+
 
     QObject::connect(main_window_ui_.xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     QObject::connect(main_window_ui_.ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
@@ -174,6 +175,7 @@ ROSGUI::~ROSGUI()
     delete robot_tree_;
   if(robot_state_pub_ != NULL)
     delete robot_state_pub_;
+
 }
 
 void ROSGUI::show()

@@ -3,18 +3,20 @@
 #include "include/secondwindow.h"
 #include "include/thirdwindow.h"
 #include "include/rvizg.h"
+#include <QProcess>
 //#include "include/rvizg_node.h"
 #include <QApplication>
 #include <ros/ros.h>
 
 int main(int argc, char **argv)
 {
-
+ QProcess proc;     //   <QtGui>
+ proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
   if(!ros::isInitialized())
   {
     ros::init(argc, argv, "robot_editor", ros::init_options::AnonymousName);
   }
-  QApplication a(argc, argv);
+   QApplication a(argc, argv);
    ROSGUI z;
 
 
