@@ -51,6 +51,7 @@ private:
   rviz::RenderPanel* render_panel_;
   rviz::Display* grid_;
   rviz::Display* robot_model_ = NULL;
+  rviz::Display* tF_;
 };
 
 #endif // RVIZG_H

@@ -5,6 +5,8 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include <QVariant>
+#include <QPushButton>
+
 
 #include "rviz/visualization_manager.h"
 #include "rviz/render_panel.h"
@@ -23,10 +25,13 @@ MyViz::MyViz( QWidget* parent )
   render_panel_->setMinimumHeight(1000);
   render_panel_->setMinimumWidth(1000);
   // Layout
+  //QPushButton* interact = new QPushButton( "Interact" );
   QVBoxLayout* main_layout = new QVBoxLayout;
 
 
   main_layout->addWidget( render_panel_ );
+//  main_layout->addLayout( controls_layout );
+  //main_layout->addWidget(interact);
 
   // Set the top-level layout for this MyViz widget.
   setLayout( main_layout );
@@ -87,7 +92,7 @@ MyViz::MyViz( QWidget* parent )
 //  // Create a Grid display.
   //rviz::Display* grid_;
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
-
+  tF_         = manager_->createDisplay( "rviz/TF","TF", true );
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
 
