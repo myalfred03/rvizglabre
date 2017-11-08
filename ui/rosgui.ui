@@ -23,7 +23,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../../rvizglabno/resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -491,7 +491,7 @@
          <x>0</x>
          <y>0</y>
          <width>561</width>
-         <height>68</height>
+         <height>72</height>
         </rect>
        </property>
        <attribute name="label">
@@ -553,8 +553,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>561</width>
-         <height>68</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1282,7 +1282,7 @@
      <x>0</x>
      <y>0</y>
      <width>1468</width>
-     <height>19</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFILE">
@@ -1337,7 +1337,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../../rvizglabno/resources.qrc"/>
  </resources>
  <connections>
   <connection>

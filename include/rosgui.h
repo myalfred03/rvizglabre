@@ -27,6 +27,8 @@
 #include <QString>
 #include <kdl_parser/kdl_parser.hpp>
 #include <robot_state_publisher/robot_state_publisher.h>
+#include <sensor_msgs/JointState.h>
+
 ////robot editor
 
 ////robot editor
@@ -123,6 +125,7 @@ private:
    boost::mutex state_pub_mutex_;
    KDL::Tree* robot_tree_ = NULL;
    robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
+   sensor_msgs::JointState* msg;
    boost::thread* publisher_thread_;
    std::map<std::string, double> joint_positions_;
    ros::NodeHandle nh_;

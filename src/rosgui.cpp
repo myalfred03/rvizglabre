@@ -48,7 +48,7 @@
 
 
 ////robot editor
-const double FACTOR = 1;
+const double FACTOR = 2;
 
 
 
@@ -176,7 +176,16 @@ ROSGUI::~ROSGUI()
   if(robot_state_pub_ != NULL)
     delete robot_state_pub_;
 
+
+
 }
+
+//void print_states(const sensor_msgs::JointState::ConstPtr& msg)
+//{
+
+//float position[2] = msg->position;
+//ROS_INFO("Joint1=%f Joint2=%f", msg->position[1], msg->position[2]);
+//}
 
 void ROSGUI::show()
 {
@@ -317,7 +326,8 @@ void ROSGUI::on6DOFI_URDF()
 
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 
-
+//  msg->name = {"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
+//  msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
   this->updateURDF(file_contents);
 
 
@@ -401,6 +411,13 @@ void ROSGUI::publishJointStates()
          robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "robot_editor");
          robot_state_pub_->publishFixedTransforms("robot_editor");
          ROS_INFO_STREAM(joint_positions_.size());
+        //  ROS_INFO(joint_positions_);
+        // sensor_msgs::JointState::ConstPtr& msg;
+        // msg->fl;
+         //msg->name = {"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
+
+         //msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
+       //  ROS_INFO("Joint1=%f Joint2=%f", msg, msg);
          ROS_INFO("Published joint state info");
       }
     }
@@ -457,6 +474,7 @@ void ROSGUI::updateSlider()
         main_window_ui_.yawSlider->  setValue((main_window_ui_.yawBox->value() / FACTOR));
 
 
+
         main_window_ui_.xSlider->    blockSignals(false);
         main_window_ui_.ySlider->    blockSignals(false);
         main_window_ui_.zSlider->    blockSignals(false);
@@ -468,7 +486,8 @@ void ROSGUI::updateSlider()
 
 void ROSGUI::updateDialer()
 {
-
+//  std::map<std::string,int> my_map;
+//     my_map["joint_1"] =  11;
 
   main_window_ui_.dial1DOF->    blockSignals(true);
   main_window_ui_.dial2DOF->    blockSignals(true);
@@ -483,6 +502,13 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial4DOF->    setValue((main_window_ui_.spinBox4DOF->value() / FACTOR));
   main_window_ui_.dial5DOF->    setValue((main_window_ui_.spinBox5DOF->value() / FACTOR));
   main_window_ui_.dial6DOF->    setValue((main_window_ui_.spinBox6DOF->value() / FACTOR));
+
+  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/FACTOR;
+  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/FACTOR;
+  joint_positions_["joint_3"]= main_window_ui_.spinBox3DOF->value()/FACTOR;
+  joint_positions_["joint_4"]= main_window_ui_.spinBox4DOF->value()/FACTOR;
+  joint_positions_["joint_5"]= main_window_ui_.spinBox5DOF->value()/FACTOR;
+  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/FACTOR;
 
 
   main_window_ui_.dial1DOF->    blockSignals(false);
