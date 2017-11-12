@@ -15,6 +15,10 @@ int main(int argc, char **argv)
   if(!ros::isInitialized())
   {
     ros::init(argc, argv, "robot_editor", ros::init_options::AnonymousName);
+//    ros::NodeHandle n;
+//    ros::Publisher joint_pub = n.advertise<sensor_msgs::JointState>("joint_states", 1);
+//    tf::TransformBroadcaster broadcaster;
+//    ros::Rate loop_rate(30);
   }
    QApplication a(argc, argv);
    ROSGUI z;

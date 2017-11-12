@@ -156,6 +156,14 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
+    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+
+
+    std::ifstream selected_file(file_name_.toStdString().c_str());
+    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+    this->updateURDF(file_contents);
+
+
 
 
 }
@@ -310,17 +318,19 @@ void ROSGUI::on6DOFI_URDF()
 
 //  // SIN COPIA DE ARCHIVO
 
-//    file_name_ = "/home/udp/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
-//  //  std::string file_contents =
-//    std::ifstream selected_file(file_name_.toStdString().c_str());
+    file_name_ = "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+
+
+    std::ifstream selected_file(file_name_.toStdString().c_str());
+
 
 //  // SIN COPIA DE ARCHIVO
 
 // CON COPIA DE ARCHIVO
 
-   QTemporaryDir temporaryDir;
-   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
-   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
+//   QTemporaryDir temporaryDir;
+//   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
+//   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
 
 // CON COPIA DE ARCHIVO
 

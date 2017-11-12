@@ -53,6 +53,9 @@
     <build_depend>tf</build_depend>
     <build_depend>kdl_parser</build_depend>
     <build_depend>robot_state_publisher</build_depend>
+    <build_depend>fake_localization</build_depend>
+    <build_depend>laser_filters</build_depend>
+    <build_depend>map_server</build_depend>
 
   <run_depend>gazebo_plugins</run_depend>
   <run_depend>gazebo_ros</run_depend>
@@ -66,6 +69,10 @@
   <run_depend>tf</run_depend>
   <run_depend>kdl_parser</run_depend>
   <run_depend>robot_state_publisher</run_depend>
+
+    <run_depend>fake_localization</run_depend>
+    <run_depend>laser_filters</run_depend>
+    <run_depend>map_server</run_depend>
 
 
 

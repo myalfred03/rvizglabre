@@ -25,6 +25,11 @@ find_package(catkin REQUIRED COMPONENTS
   kdl_parser
   robot_state_publisher
   #roboteditor
+  #Book
+  fake_localization
+  laser_filters
+  map_server
+  #book
 )
 #roboteditor
 find_package(Boost REQUIRED COMPONENTS thread)
@@ -78,7 +83,7 @@ include_directories (${PROJECT_BINARY_DIR})
 # accediendo al RVIZ con QT VERSION
 
 
- set(QT_LIBRARIES Qt5::Widgets)
+set(QT_LIBRARIES Qt5::Widgets)
 
 
 ## Declare a C++ library
@@ -95,6 +100,7 @@ set (MyProject_src
 	  src/secondwindow.cpp
 	  src/thirdwindow.cpp
 	  src/fourth.cpp
+
 	 # ${MOC_FILES}
     )
 
@@ -135,6 +141,10 @@ set (MyProjectLib_qrc
 #endif()
 add_executable(${PROJECT_NAME} ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
 #add_library(${PROJECT_NAME} ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC})
+
+add_executable(talker  src/robot_state.cpp)
+  target_link_libraries(talker ${catkin_LIBRARIES})
+#  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(${PROJECT_NAME}
