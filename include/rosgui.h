@@ -82,6 +82,8 @@ public Q_SLOTS:
 
       void on_actionExit_triggered();
 
+     // void on_actionTF_RVIZ_triggered(bool checked);
+
       void updateSlider();
 
       void updateSpinboxes();
@@ -106,9 +108,16 @@ public Q_SLOTS:
       void on6DOFI_URDF();
       void on4DOFs_URDF();
 
+      //Herramientas de RVIZ
+     // void toggleTFRVIZ(bool tfrv);
+      void on_checkBox_2_toggled(bool checked);
+
 
 //private slots:
 //      void on_checkBox6DOFI_toggled(bool checked);
+
+
+
 
 private:
 
