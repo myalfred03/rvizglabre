@@ -40,7 +40,7 @@ public:
 //  rviz::VisualizationManager* manager_;
 
   void subscribeTopics(const QString qnode_name);
-  void refresh(const std::string& fixed_frame = "/map",bool tfrv=true);  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
+  void refresh(const std::string& fixed_frame = "/map",bool tfrv=false);  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
 
 
 

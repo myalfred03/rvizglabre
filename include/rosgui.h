@@ -109,15 +109,8 @@ public Q_SLOTS:
       void on4DOFs_URDF();
 
       //Herramientas de RVIZ
-     // void toggleTFRVIZ(bool tfrv);
+     // void toggleTFRVIZ(int checked);
       void on_checkBox_2_toggled(bool checked);
-
-
-//private slots:
-//      void on_checkBox6DOFI_toggled(bool checked);
-
-
-
 
 private:
 

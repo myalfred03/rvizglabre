@@ -155,7 +155,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
-   // QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(toggled(bool)), SLOT(on_checkBox_2_toggled(bool checked)));
+    QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(toggled(bool)), this, SLOT(on_checkBox_2_toggled(bool)));
 
     file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
@@ -657,18 +657,35 @@ void ROSGUI::on_6DOF()
 //}
 
 
-//void ROSGUI::toggleTFRVIZ(bool tfrvz)
+//void ROSGUI::toggleTFRVIZ(int checked)
 //{
-//  bool tfrv;
-////  if (tfrv==false);
-////  tfrv=true;
-////  else
+
+////bool tfrv;
+// if (checked)
+// {
+//   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
 ////  tfrv=false;
+// }
+//  else
+// {
+////tfrv=true;
+//mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+// }
 
 //}
 
+
+
 void ROSGUI::on_checkBox_2_toggled(bool checked)
-{    /*bool tfrv;
-     tfrv=checked;*/
-     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,checked);
+{
+  if (checked)
+  {
+    mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+ //  tfrv=false;
+  }
+   else
+  {
+ //tfrv=true;
+ mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
+}
 }

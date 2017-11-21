@@ -92,7 +92,7 @@ MyViz::MyViz( QWidget* parent )
 //  // Create a Grid display.
   //rviz::Display* grid_;
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
-
+  tF_          = manager_->createDisplay( "rviz/TF","TF", false );
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
 
@@ -129,13 +129,14 @@ MyViz::~MyViz()
 
 void MyViz::refresh(const std::string& fixed_frame,bool tfrv)
 {
-	manager_->setFixedFrame(QString::fromStdString(fixed_frame));
+  tF_          = manager_->createDisplay( "rviz/TF","TF", tfrv );
+  manager_->setFixedFrame(QString::fromStdString(fixed_frame));
 
 	if(robot_model_ != NULL)
 		delete robot_model_;
 
 	robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
-  tF_          = manager_->createDisplay( "rviz/TF","TF", tfrv );
+
 	ROS_ASSERT(robot_model_ != NULL);
 
 	robot_model_->subProp("TF Prefix")->setValue("robot_editor");
