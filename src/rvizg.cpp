@@ -92,6 +92,7 @@ MyViz::MyViz( QWidget* parent )
 
 //  // Create a Grid display.
   //rviz::Display* grid_;
+  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
   tF_   = manager_->createDisplay( "rviz/TF","TF", true );
   ROS_ASSERT( grid_ != NULL );
@@ -128,7 +129,7 @@ MyViz::~MyViz()
 //    ROS_ASSERT( marker != NULL );*/
 //}
 
-void MyViz::refresh(const std::string& fixed_frame,bool tfrv)
+void MyViz::refresh(const std::string& fixed_frame)
 {
 //  manager_->createDisplay( "rviz/TF","TF", tfrv );
 //    tF_->reset();//->setValue(tfrv);
@@ -136,18 +137,27 @@ void MyViz::refresh(const std::string& fixed_frame,bool tfrv)
 //    tF_->subProp("Show Axes")->setValue(true);
 //    tF_->subProp( "Show Arrows" )->setValue(true);
    // tF_->onDisable();
-    tF_->setEnabled(tfrv);
+
+
     manager_->setFixedFrame(QString::fromStdString(fixed_frame));
 
 	if(robot_model_ != NULL)
 		delete robot_model_;
 
-	robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
+  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
 
 	ROS_ASSERT(robot_model_ != NULL);
 
   robot_model_->subProp("TF Prefix")->setValue("robot_editor");
   robot_model_->subProp("Robot Description")->setValue("robot_editor/robot_description");
-}
 
+}
+void MyViz::refreshTF(bool tfrv)
+{
+  tF_->setEnabled(tfrv);
+}
+void MyViz::refreshRM(bool rbrv)
+{
+  robot_model_->setEnabled(rbrv);
+}
 

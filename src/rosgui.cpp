@@ -156,7 +156,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
-   //QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(pressed()), this, SLOT(on_checkBox_2_pressed()));
+   QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
    QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
 
 
@@ -322,19 +322,19 @@ void ROSGUI::on6DOFI_URDF()
 
 //  // SIN COPIA DE ARCHIVO
 
-    file_name_ = "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+//    file_name_ = "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
 
-    std::ifstream selected_file(file_name_.toStdString().c_str());
+//    std::ifstream selected_file(file_name_.toStdString().c_str());
 
 
 //  // SIN COPIA DE ARCHIVO
 
 // CON COPIA DE ARCHIVO
 
-//   QTemporaryDir temporaryDir;
-//   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
-//   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
+   QTemporaryDir temporaryDir;
+   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
+   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
 
 // CON COPIA DE ARCHIVO
 
@@ -408,7 +408,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
   }
 
   // refresh the preview
-  mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+  mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
 // // // //
 }
 
@@ -638,12 +638,12 @@ void ROSGUI::on_checkBox_2_toggled(int checked)
 {
   if (checked==Qt::Checked)
   {
-   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
+   mRviz->refreshTF(true);
   }
    else
   {
  //tfrv=true;
-    mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+   mRviz->refreshTF(false);
   }
 }
 
@@ -656,3 +656,15 @@ void ROSGUI::on_checkBox_2_toggled(int checked)
 //{
 //     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
 //}
+
+void ROSGUI::on_checkBox_3_toggled(int checked=1)
+{
+  if (checked==Qt::Checked)
+  {
+   mRviz->refreshRM(true);
+  }
+   else
+  {
+    mRviz->refreshRM(false);
+  }
+}

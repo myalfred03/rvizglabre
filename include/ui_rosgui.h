@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'rosgui.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -29,6 +29,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
@@ -128,12 +129,14 @@ public:
     QLineEdit *lineEdit;
     QLabel *label_5;
     QLabel *label_10;
+    QSpacerItem *horizontalSpacer;
     QWidget *tab_3;
     QGridLayout *gridLayout_16;
     QGridLayout *gridLayout;
     QLabel *label_8;
     QLabel *label_9;
     QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_3;
     QGridLayout *gridLayout_15;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_14;
@@ -156,6 +159,7 @@ public:
     QLabel *label_18;
     QSlider *rollSlider;
     QDoubleSpinBox *rollBox;
+    QSpacerItem *horizontalSpacer_4;
     QWidget *tab_4;
     QGridLayout *gridLayout_7;
     QPushButton *pushButton_4;
@@ -272,9 +276,9 @@ public:
         label_6 = new QLabel(tab_2);
         label_6->setObjectName(QStringLiteral("label_6"));
         QFont font1;
-        font1.setPointSize(11);
-        font1.setBold(true);
-        font1.setWeight(75);
+        font1.setPointSize(10);
+        font1.setBold(false);
+        font1.setWeight(50);
         label_6->setFont(font1);
         label_6->setTextFormat(Qt::RichText);
         label_6->setWordWrap(true);
@@ -284,9 +288,9 @@ public:
         label_7 = new QLabel(tab_2);
         label_7->setObjectName(QStringLiteral("label_7"));
         QFont font2;
-        font2.setPointSize(16);
-        font2.setBold(true);
-        font2.setWeight(75);
+        font2.setPointSize(14);
+        font2.setBold(false);
+        font2.setWeight(50);
         label_7->setFont(font2);
 
         gridLayout_11->addWidget(label_7, 0, 0, 1, 1);
@@ -295,7 +299,7 @@ public:
         toolBox->setObjectName(QStringLiteral("toolBox"));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
-        page->setGeometry(QRect(0, 0, 523, 79));
+        page->setGeometry(QRect(0, 0, 468, 69));
         gridLayout_17 = new QGridLayout(page);
         gridLayout_17->setSpacing(6);
         gridLayout_17->setContentsMargins(11, 11, 11, 11);
@@ -337,7 +341,7 @@ public:
         toolBox->addItem(page, QStringLiteral("Page 1"));
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        page_2->setGeometry(QRect(-66, 0, 361, 79));
+        page_2->setGeometry(QRect(0, 0, 456, 69));
         gridLayout_8 = new QGridLayout(page_2);
         gridLayout_8->setSpacing(6);
         gridLayout_8->setContentsMargins(11, 11, 11, 11);
@@ -694,6 +698,10 @@ public:
 
         gridLayout_13->addLayout(gridLayout_12, 1, 0, 1, 1);
 
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_13->addItem(horizontalSpacer, 2, 0, 1, 1);
+
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
@@ -712,11 +720,7 @@ public:
 
         label_9 = new QLabel(tab_3);
         label_9->setObjectName(QStringLiteral("label_9"));
-        QFont font5;
-        font5.setPointSize(12);
-        font5.setBold(true);
-        font5.setWeight(75);
-        label_9->setFont(font5);
+        label_9->setFont(font1);
         label_9->setWordWrap(true);
 
         gridLayout->addWidget(label_9, 1, 0, 1, 1);
@@ -724,7 +728,11 @@ public:
         pushButton_2 = new QPushButton(tab_3);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        gridLayout->addWidget(pushButton_2, 2, 0, 1, 1);
+        gridLayout->addWidget(pushButton_2, 3, 0, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 2, 0, 1, 1);
 
 
         gridLayout_16->addLayout(gridLayout, 0, 0, 1, 1);
@@ -843,7 +851,7 @@ public:
         yawBox->setObjectName(QStringLiteral("yawBox"));
         yawBox->setMinimumSize(QSize(80, 0));
         yawBox->setDecimals(2);
-        yawBox->setMinimum(-1.8e+08);
+        yawBox->setMinimum(-1.8e+8);
         yawBox->setMaximum(180);
         yawBox->setSingleStep(1);
 
@@ -909,6 +917,10 @@ public:
 
         gridLayout_16->addLayout(gridLayout_15, 1, 0, 1, 1);
 
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_16->addItem(horizontalSpacer_4, 2, 0, 1, 1);
+
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
@@ -973,12 +985,12 @@ public:
 
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Arial Black"));
-        font6.setPointSize(14);
-        font6.setBold(true);
-        font6.setWeight(75);
-        label->setFont(font6);
+        QFont font5;
+        font5.setFamily(QStringLiteral("Arial Black"));
+        font5.setPointSize(14);
+        font5.setBold(true);
+        font5.setWeight(75);
+        label->setFont(font5);
         label->setLayoutDirection(Qt::LeftToRight);
         label->setTextFormat(Qt::RichText);
         label->setAlignment(Qt::AlignCenter);
@@ -998,10 +1010,10 @@ public:
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         label_23 = new QLabel(centralWidget);
         label_23->setObjectName(QStringLiteral("label_23"));
-        QFont font7;
-        font7.setFamily(QStringLiteral("Abyssinica SIL"));
-        font7.setPointSize(15);
-        label_23->setFont(font7);
+        QFont font6;
+        font6.setFamily(QStringLiteral("Abyssinica SIL"));
+        font6.setPointSize(15);
+        label_23->setFont(font6);
 
         horizontalLayout_3->addWidget(label_23);
 
@@ -1012,6 +1024,7 @@ public:
 
         checkBox_3 = new QCheckBox(centralWidget);
         checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
+        checkBox_3->setChecked(true);
 
         horizontalLayout_3->addWidget(checkBox_3);
 
@@ -1034,7 +1047,7 @@ public:
         ROSGUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ROSGUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1267, 19));
+        menuBar->setGeometry(QRect(0, 0, 1267, 18));
         menuFILE = new QMenu(menuBar);
         menuFILE->setObjectName(QStringLiteral("menuFILE"));
         ROSGUI->setMenuBar(menuBar);
@@ -1104,7 +1117,7 @@ public:
         QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
 
         tabWidget->setCurrentIndex(1);
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ROSGUI);
@@ -1112,86 +1125,86 @@ public:
 
     void retranslateUi(QMainWindow *ROSGUI)
     {
-        ROSGUI->setWindowTitle(QApplication::translate("ROSGUI", "ROSGUI", 0));
-        actionOpen->setText(QApplication::translate("ROSGUI", "Open", 0));
-        actionOpen->setShortcut(QApplication::translate("ROSGUI", "Ctrl+O", 0));
-        actionSave->setText(QApplication::translate("ROSGUI", "Save", 0));
-        actionSave->setShortcut(QApplication::translate("ROSGUI", "Ctrl+S", 0));
-        actionSave_as->setText(QApplication::translate("ROSGUI", "Save as", 0));
-        actionExit->setText(QApplication::translate("ROSGUI", "Exit", 0));
-        actionExit->setShortcut(QApplication::translate("ROSGUI", "Ctrl+E", 0));
-        actionTF_RVIZ->setText(QApplication::translate("ROSGUI", "TF RVIZ", 0));
-        pushButton->setText(QApplication::translate("ROSGUI", "PushButton", 0));
+        ROSGUI->setWindowTitle(QApplication::translate("ROSGUI", "ROSGUI", Q_NULLPTR));
+        actionOpen->setText(QApplication::translate("ROSGUI", "Open", Q_NULLPTR));
+        actionOpen->setShortcut(QApplication::translate("ROSGUI", "Ctrl+O", Q_NULLPTR));
+        actionSave->setText(QApplication::translate("ROSGUI", "Save", Q_NULLPTR));
+        actionSave->setShortcut(QApplication::translate("ROSGUI", "Ctrl+S", Q_NULLPTR));
+        actionSave_as->setText(QApplication::translate("ROSGUI", "Save as", Q_NULLPTR));
+        actionExit->setText(QApplication::translate("ROSGUI", "Exit", Q_NULLPTR));
+        actionExit->setShortcut(QApplication::translate("ROSGUI", "Ctrl+E", Q_NULLPTR));
+        actionTF_RVIZ->setText(QApplication::translate("ROSGUI", "TF RVIZ", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("ROSGUI", "PushButton", Q_NULLPTR));
         label_3->setText(QString());
-        pushButton_3->setText(QApplication::translate("ROSGUI", "+TEORIA", 0));
-        label_6->setText(QApplication::translate("ROSGUI", "La cinem\303\241tica es la ciencia que trata el movimiento sin considerar las fuerzas que lo ocasionan. Dentro de la cinem\303\241tica se estudian la posici\303\263n, velocidad, aceleraci\303\263n y todas las derivadas de mayor orden de las variables de posici\303\263n. ", 0));
-        label_7->setText(QApplication::translate("ROSGUI", "Cinematica Directa", 0));
-        gridGroupBox_3->setTitle(QApplication::translate("ROSGUI", "ROBOTS INDUSTRIALES", 0));
-        checkBox2DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB5400", 0));
-        checkBox3DOFI->setText(QApplication::translate("ROSGUI", "MM BMDA3", 0));
-        checkBox4DOFI->setText(QApplication::translate("ROSGUI", "KK KR210", 0));
-        checkBox5DOFI->setText(QApplication::translate("ROSGUI", "MM MH5", 0));
-        checkBox6DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB120", 0));
-        toolBox->setItemText(toolBox->indexOf(page), QApplication::translate("ROSGUI", "Page 1", 0));
-        gridGroupBox_2->setTitle(QApplication::translate("ROSGUI", "SIMPLE ROBOT", 0));
-        checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", 0));
-        checkBox4DOFs->setText(QApplication::translate("ROSGUI", "4DOF", 0));
-        checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", 0));
-        checkBox6DOFs->setText(QApplication::translate("ROSGUI", "6DOF", 0));
-        checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", 0));
-        toolBox->setItemText(toolBox->indexOf(page_2), QApplication::translate("ROSGUI", "Page 2", 0));
-        gridGroupBox->setTitle(QApplication::translate("ROSGUI", "DOF", 0));
-        label_21->setText(QApplication::translate("ROSGUI", "5", 0));
-        label_13->setText(QApplication::translate("ROSGUI", "2", 0));
-        label_22->setText(QApplication::translate("ROSGUI", "6", 0));
-        label_20->setText(QApplication::translate("ROSGUI", "4", 0));
-        label_14->setText(QApplication::translate("ROSGUI", "3", 0));
-        label_12->setText(QApplication::translate("ROSGUI", "1", 0));
-        label_11->setText(QApplication::translate("ROSGUI", "Z", 0));
-        label_5->setText(QApplication::translate("ROSGUI", "X", 0));
-        label_10->setText(QApplication::translate("ROSGUI", "Y", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ROSGUI", "CINEMATICA DIRECTA", 0));
-        label_8->setText(QApplication::translate("ROSGUI", "Cinematica Inversa", 0));
-        label_9->setText(QApplication::translate("ROSGUI", "El problema se plantea de la siguiente manera: dada la posici\303\263n y orientaci\303\263n del efector final del manipulador, se calcula todos los conjuntos posibles de \303\241ngulos articulares que podr\303\255an utilizarse para obtener esta posici\303\263n y orientaci\303\263n dadas. Este es un problema fundamental en el uso pr\303\241ctico de los manipuladores. ", 0));
-        pushButton_2->setText(QApplication::translate("ROSGUI", "+TEORIA CI", 0));
-        groupBox->setTitle(QApplication::translate("ROSGUI", "TCP", 0));
-        checkBox->setText(QApplication::translate("ROSGUI", "EJECUTAR", 0));
-        label_2->setText(QApplication::translate("ROSGUI", "X", 0));
-        label_4->setText(QApplication::translate("ROSGUI", "Y", 0));
-        label_19->setText(QApplication::translate("ROSGUI", "Z", 0));
-        label_16->setText(QApplication::translate("ROSGUI", "Yaw", 0));
-        label_17->setText(QApplication::translate("ROSGUI", "Pitch", 0));
-        label_18->setText(QApplication::translate("ROSGUI", "Roll", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ROSGUI", "CINEMATICA INVERSA", 0));
-        pushButton_4->setText(QApplication::translate("ROSGUI", "+TEORIA", 0));
+        pushButton_3->setText(QApplication::translate("ROSGUI", "+TEORIA", Q_NULLPTR));
+        label_6->setText(QApplication::translate("ROSGUI", "La cinem\303\241tica es la ciencia que trata el movimiento sin considerar las fuerzas que lo ocasionan. Dentro de la cinem\303\241tica se estudian la posici\303\263n, velocidad, aceleraci\303\263n y todas las derivadas de mayor orden de las variables de posici\303\263n. ", Q_NULLPTR));
+        label_7->setText(QApplication::translate("ROSGUI", "Cinematica Directa", Q_NULLPTR));
+        gridGroupBox_3->setTitle(QApplication::translate("ROSGUI", "ROBOTS INDUSTRIALES", Q_NULLPTR));
+        checkBox2DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB5400", Q_NULLPTR));
+        checkBox3DOFI->setText(QApplication::translate("ROSGUI", "MM BMDA3", Q_NULLPTR));
+        checkBox4DOFI->setText(QApplication::translate("ROSGUI", "KK KR210", Q_NULLPTR));
+        checkBox5DOFI->setText(QApplication::translate("ROSGUI", "MM MH5", Q_NULLPTR));
+        checkBox6DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB120", Q_NULLPTR));
+        toolBox->setItemText(toolBox->indexOf(page), QApplication::translate("ROSGUI", "Page 1", Q_NULLPTR));
+        gridGroupBox_2->setTitle(QApplication::translate("ROSGUI", "SIMPLE ROBOT", Q_NULLPTR));
+        checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
+        checkBox4DOFs->setText(QApplication::translate("ROSGUI", "4DOF", Q_NULLPTR));
+        checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
+        checkBox6DOFs->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
+        checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
+        toolBox->setItemText(toolBox->indexOf(page_2), QApplication::translate("ROSGUI", "Page 2", Q_NULLPTR));
+        gridGroupBox->setTitle(QApplication::translate("ROSGUI", "DOF", Q_NULLPTR));
+        label_21->setText(QApplication::translate("ROSGUI", "5", Q_NULLPTR));
+        label_13->setText(QApplication::translate("ROSGUI", "2", Q_NULLPTR));
+        label_22->setText(QApplication::translate("ROSGUI", "6", Q_NULLPTR));
+        label_20->setText(QApplication::translate("ROSGUI", "4", Q_NULLPTR));
+        label_14->setText(QApplication::translate("ROSGUI", "3", Q_NULLPTR));
+        label_12->setText(QApplication::translate("ROSGUI", "1", Q_NULLPTR));
+        label_11->setText(QApplication::translate("ROSGUI", "Z", Q_NULLPTR));
+        label_5->setText(QApplication::translate("ROSGUI", "X", Q_NULLPTR));
+        label_10->setText(QApplication::translate("ROSGUI", "Y", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ROSGUI", "CINEMATICA DIRECTA", Q_NULLPTR));
+        label_8->setText(QApplication::translate("ROSGUI", "Cinematica Inversa", Q_NULLPTR));
+        label_9->setText(QApplication::translate("ROSGUI", "El problema se plantea de la siguiente manera: dada la posici\303\263n y orientaci\303\263n del efector final del manipulador, se calcula todos los conjuntos posibles de \303\241ngulos articulares que podr\303\255an utilizarse para obtener esta posici\303\263n y orientaci\303\263n dadas. Este es un problema fundamental en el uso pr\303\241ctico de los manipuladores. ", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("ROSGUI", "+TEORIA CI", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("ROSGUI", "TCP", Q_NULLPTR));
+        checkBox->setText(QApplication::translate("ROSGUI", "EJECUTAR", Q_NULLPTR));
+        label_2->setText(QApplication::translate("ROSGUI", "X", Q_NULLPTR));
+        label_4->setText(QApplication::translate("ROSGUI", "Y", Q_NULLPTR));
+        label_19->setText(QApplication::translate("ROSGUI", "Z", Q_NULLPTR));
+        label_16->setText(QApplication::translate("ROSGUI", "Yaw", Q_NULLPTR));
+        label_17->setText(QApplication::translate("ROSGUI", "Pitch", Q_NULLPTR));
+        label_18->setText(QApplication::translate("ROSGUI", "Roll", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ROSGUI", "CINEMATICA INVERSA", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("ROSGUI", "+TEORIA", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("ROSGUI", "LINK", 0));
+        ___qtablewidgetitem->setText(QApplication::translate("ROSGUI", "LINK", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("ROSGUI", "ai", 0));
+        ___qtablewidgetitem1->setText(QApplication::translate("ROSGUI", "ai", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("ROSGUI", "a1", 0));
+        ___qtablewidgetitem2->setText(QApplication::translate("ROSGUI", "a1", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("ROSGUI", "alpha i", 0));
+        ___qtablewidgetitem3->setText(QApplication::translate("ROSGUI", "alpha i", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("ROSGUI", "theta i", 0));
+        ___qtablewidgetitem4->setText(QApplication::translate("ROSGUI", "theta i", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem5 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem5->setText(QApplication::translate("ROSGUI", "New Row", 0));
+        ___qtablewidgetitem5->setText(QApplication::translate("ROSGUI", "New Row", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem6->setText(QApplication::translate("ROSGUI", "joint1", 0));
+        ___qtablewidgetitem6->setText(QApplication::translate("ROSGUI", "joint1", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem7->setText(QApplication::translate("ROSGUI", "joint2", 0));
+        ___qtablewidgetitem7->setText(QApplication::translate("ROSGUI", "joint2", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem8->setText(QApplication::translate("ROSGUI", "joint3", 0));
+        ___qtablewidgetitem8->setText(QApplication::translate("ROSGUI", "joint3", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->verticalHeaderItem(4);
-        ___qtablewidgetitem9->setText(QApplication::translate("ROSGUI", "joint4", 0));
+        ___qtablewidgetitem9->setText(QApplication::translate("ROSGUI", "joint4", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem10 = tableWidget->verticalHeaderItem(5);
-        ___qtablewidgetitem10->setText(QApplication::translate("ROSGUI", "joint6", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVITH HATEMEBERG", 0));
-        label->setText(QApplication::translate("ROSGUI", "LABORATORIO VIRTUAL ROB\303\223TICA B\303\201SICA", 0));
-        label_23->setText(QApplication::translate("ROSGUI", "RVIZ  TOOLS", 0));
-        checkBox_2->setText(QApplication::translate("ROSGUI", "TF ", 0));
-        checkBox_3->setText(QApplication::translate("ROSGUI", "RM", 0));
-        menuFILE->setTitle(QApplication::translate("ROSGUI", "FILE", 0));
+        ___qtablewidgetitem10->setText(QApplication::translate("ROSGUI", "joint6", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVITH HATEMEBERG", Q_NULLPTR));
+        label->setText(QApplication::translate("ROSGUI", "LABORATORIO VIRTUAL ROB\303\223TICA B\303\201SICA", Q_NULLPTR));
+        label_23->setText(QApplication::translate("ROSGUI", "RVIZ  TOOLS", Q_NULLPTR));
+        checkBox_2->setText(QApplication::translate("ROSGUI", "TF ", Q_NULLPTR));
+        checkBox_3->setText(QApplication::translate("ROSGUI", "RM", Q_NULLPTR));
+        menuFILE->setTitle(QApplication::translate("ROSGUI", "FILE", Q_NULLPTR));
     } // retranslateUi
 
 };

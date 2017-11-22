@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1312</width>
-    <height>837</height>
+    <width>1267</width>
+    <height>841</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -23,7 +23,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -126,19 +126,6 @@
               <string>CINEMATICA DIRECTA</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_13">
-              <item row="4" column="0">
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
               <item row="0" column="0">
                <layout class="QGridLayout" name="gridLayout_11">
                 <item row="2" column="0">
@@ -192,8 +179,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>523</width>
-                     <height>79</height>
+                     <width>468</width>
+                     <height>69</height>
                     </rect>
                    </property>
                    <attribute name="label">
@@ -251,8 +238,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>361</width>
-                     <height>79</height>
+                     <width>456</width>
+                     <height>69</height>
                     </rect>
                    </property>
                    <attribute name="label">
@@ -309,7 +296,7 @@
                 </item>
                </layout>
               </item>
-              <item row="2" column="0">
+              <item row="1" column="0">
                <layout class="QGridLayout" name="gridLayout_12">
                 <item row="1" column="0">
                  <widget class="QGroupBox" name="gridGroupBox">
@@ -755,8 +742,8 @@
                 </item>
                </layout>
               </item>
-              <item row="3" column="0">
-               <spacer name="horizontalSpacer_3">
+              <item row="2" column="0">
+               <spacer name="horizontalSpacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -775,20 +762,62 @@
               <string>CINEMATICA INVERSA</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_16">
-              <item row="3" column="0">
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Cinematica Inversa</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_9">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>El problema se plantea de la siguiente manera: dada la posición y orientación del efector final del manipulador, se calcula todos los conjuntos posibles de ángulos articulares que podrían utilizarse para obtener esta posición y orientación dadas. Este es un problema fundamental en el uso práctico de los manipuladores. </string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="text">
+                   <string>+TEORIA CI</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </item>
-              <item row="2" column="0">
+              <item row="1" column="0">
                <layout class="QGridLayout" name="gridLayout_15">
                 <item row="0" column="0">
                  <widget class="QGroupBox" name="groupBox">
@@ -1126,57 +1155,15 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="0">
-               <layout class="QGridLayout" name="gridLayout">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="font">
-                   <font>
-                    <pointsize>16</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Cinematica Inversa</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_9">
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>El problema se plantea de la siguiente manera: dada la posición y orientación del efector final del manipulador, se calcula todos los conjuntos posibles de ángulos articulares que podrían utilizarse para obtener esta posición y orientación dadas. Este es un problema fundamental en el uso práctico de los manipuladores. </string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="pushButton_2">
-                  <property name="text">
-                   <string>+TEORIA CI</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="1" column="0">
-               <spacer name="verticalSpacer">
+              <item row="2" column="0">
+               <spacer name="horizontalSpacer_4">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>40</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
                </spacer>
@@ -1331,6 +1318,9 @@
             <property name="text">
              <string>RM</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -1339,6 +1329,13 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="1">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -1346,8 +1343,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1312</width>
-     <height>19</height>
+     <width>1267</width>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFILE">
@@ -1407,7 +1404,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

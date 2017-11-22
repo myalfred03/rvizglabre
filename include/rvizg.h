@@ -40,8 +40,9 @@ public:
 //  rviz::VisualizationManager* manager_;
 
   void subscribeTopics(const QString qnode_name);
-  void refresh(const std::string& fixed_frame = "/map",bool tfrv=false);  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
-
+  void refresh(const std::string& fixed_frame = "/map");  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
+  void refreshTF(bool tfrv = false);
+  void refreshRM(bool rbrv = true);
 
 
 
@@ -52,7 +53,7 @@ private:
   rviz::VisualizationManager* manager_;
   rviz::RenderPanel* render_panel_;
   rviz::Display* grid_;
-  rviz::Display* robot_model_ = NULL;
+  rviz::Display* robot_model_;
   rviz::Display* tF_;
 };
 

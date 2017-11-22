@@ -120,6 +120,7 @@ public Q_SLOTS:
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);
       void on_checkBox_2_toggled(int checked);
+      void on_checkBox_3_toggled(int checked);
 //      void on_checkBox_2_pressed();
 
 //      void on_checkBox_2_released();
