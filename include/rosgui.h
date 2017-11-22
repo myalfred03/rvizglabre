@@ -29,6 +29,15 @@
 #include <robot_state_publisher/robot_state_publisher.h>
 #include <sensor_msgs/JointState.h>
 
+//RVIZ
+#include "rviz/visualization_manager.h"
+#include "rviz/render_panel.h"
+#include "rviz/display.h"
+
+#include "rviz/default_plugin/grid_display.h"
+#include <rviz/default_plugin/robot_model_display.h>
+#include <rviz/frame_manager.h>
+
 ////robot editor
 
 ////robot editor
@@ -110,7 +119,12 @@ public Q_SLOTS:
 
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);
-      void on_checkBox_2_toggled(bool checked);
+      void on_checkBox_2_toggled(int checked);
+//      void on_checkBox_2_pressed();
+
+//      void on_checkBox_2_released();
+
+
 
 private:
 

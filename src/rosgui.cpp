@@ -10,6 +10,7 @@
 #include <QVector>
 #include <QString>
 #include <QTemporaryDir>
+#include <QCheckBox>
 
 
 
@@ -155,14 +156,16 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
-    QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(toggled(bool)), this, SLOT(on_checkBox_2_toggled(bool)));
+   //QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(pressed()), this, SLOT(on_checkBox_2_pressed()));
+   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
 
-    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+
+//    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
 
-    std::ifstream selected_file(file_name_.toStdString().c_str());
-    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-    this->updateURDF(file_contents);
+//    std::ifstream selected_file(file_name_.toStdString().c_str());
+//    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+//    this->updateURDF(file_contents);
 
 
 
@@ -405,7 +408,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
   }
 
   // refresh the preview
-  mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
+  mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
 // // // //
 }
 
@@ -631,61 +634,25 @@ void ROSGUI::on_6DOF()
 
 
 
-
-
-
-
-
-
-
-//void ROSGUI::on_checkBox6DOFI_toggled(bool checked)
-//{
-//  if (checked == true){
-
-//    file_name_ = "/home/yesser/ros_qtc_plugin/src/abb_experimental/abb_irb120_support/urdf/irb120_3_58.urdf";
-//                    //  std::string file_contents =
-//    std::ifstream selected_file(file_name_.toStdString().c_str());
-//    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-//    this->updateURDF(file_contents);
-
-//  }
-//  else{
-//  delete robot_tree_;
-//  delete robot_state_pub_;
-//  }
-
-//}
-
-
-//void ROSGUI::toggleTFRVIZ(int checked)
-//{
-
-////bool tfrv;
-// if (checked)
-// {
-//   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
-////  tfrv=false;
-// }
-//  else
-// {
-////tfrv=true;
-//mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
-// }
-
-//}
-
-
-
-void ROSGUI::on_checkBox_2_toggled(bool checked)
+void ROSGUI::on_checkBox_2_toggled(int checked)
 {
-  if (checked)
+  if (checked==Qt::Checked)
   {
-    mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
- //  tfrv=false;
+   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
   }
    else
   {
  //tfrv=true;
- mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
+    mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+  }
 }
-}
+
+//void ROSGUI::on_checkBox_2_pressed()
+//{
+//     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
+//}
+
+//void ROSGUI::on_checkBox_2_released()
+//{
+//     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
+//}

@@ -46,6 +46,7 @@ MyViz::MyViz( QWidget* parent )
   render_panel_->initialize( manager_->getSceneManager(), manager_ );
   manager_->initialize();
   manager_->startUpdate();
+
  // manager_->setFixedFrame( "/my_frame3" );
 
 
@@ -92,7 +93,7 @@ MyViz::MyViz( QWidget* parent )
 //  // Create a Grid display.
   //rviz::Display* grid_;
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
-  tF_          = manager_->createDisplay( "rviz/TF","TF", false );
+  tF_   = manager_->createDisplay( "rviz/TF","TF", true );
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
 
@@ -129,8 +130,14 @@ MyViz::~MyViz()
 
 void MyViz::refresh(const std::string& fixed_frame,bool tfrv)
 {
-  tF_          = manager_->createDisplay( "rviz/TF","TF", tfrv );
-  manager_->setFixedFrame(QString::fromStdString(fixed_frame));
+//  manager_->createDisplay( "rviz/TF","TF", tfrv );
+//    tF_->reset();//->setValue(tfrv);
+
+//    tF_->subProp("Show Axes")->setValue(true);
+//    tF_->subProp( "Show Arrows" )->setValue(true);
+   // tF_->onDisable();
+    tF_->setEnabled(tfrv);
+    manager_->setFixedFrame(QString::fromStdString(fixed_frame));
 
 	if(robot_model_ != NULL)
 		delete robot_model_;
@@ -139,8 +146,8 @@ void MyViz::refresh(const std::string& fixed_frame,bool tfrv)
 
 	ROS_ASSERT(robot_model_ != NULL);
 
-	robot_model_->subProp("TF Prefix")->setValue("robot_editor");
-	robot_model_->subProp("Robot Description")->setValue("robot_editor/robot_description");
+  robot_model_->subProp("TF Prefix")->setValue("robot_editor");
+  robot_model_->subProp("Robot Description")->setValue("robot_editor/robot_description");
 }
 
 
