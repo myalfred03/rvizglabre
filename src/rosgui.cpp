@@ -96,8 +96,8 @@ ROSGUI::ROSGUI()
     QPixmap pix4(":/images/img/dhparameter.png");
     frWindowUI.label_2->setPixmap(pix4);
 
-
-    //QObject::connect(ui->)
+    //SIGNAL and SLOTS
+    //Acciones de la GUI
 
     QObject::connect(main_window_ui_.actionOpen,   SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered()));
     QObject::connect(main_window_ui_.pushButton_3, SIGNAL(clicked()),   this, SLOT(on_pushButton_3_clicked()));
@@ -192,12 +192,8 @@ ROSGUI::~ROSGUI()
 
 }
 
-//void print_states(const sensor_msgs::JointState::ConstPtr& msg)
-//{
-
-//float position[2] = msg->position;
-//ROS_INFO("Joint1=%f Joint2=%f", msg->position[1], msg->position[2]);
-//}
+//Funcionalidades Ventana principal
+//Ventanas EMERGENTES TUTORIALES
 
 void ROSGUI::show()
 {
@@ -409,6 +405,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
 
   // refresh the preview
   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
+  mRviz->subscribeTopics("joint_states");
 // // // //
 }
 
@@ -646,16 +643,6 @@ void ROSGUI::on_checkBox_2_toggled(int checked)
    mRviz->refreshTF(false);
   }
 }
-
-//void ROSGUI::on_checkBox_2_pressed()
-//{
-//     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,true);
-//}
-
-//void ROSGUI::on_checkBox_2_released()
-//{
-//     mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first,false);
-//}
 
 void ROSGUI::on_checkBox_3_toggled(int checked=1)
 {

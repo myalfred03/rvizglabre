@@ -94,7 +94,7 @@ MyViz::MyViz( QWidget* parent )
   //rviz::Display* grid_;
   robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
-  tF_   = manager_->createDisplay( "rviz/TF","TF", true );
+  tF_   = manager_->createDisplay( "rviz/TF","TF", false );
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
 
@@ -154,6 +154,12 @@ void MyViz::refresh(const std::string& fixed_frame)
 }
 void MyViz::refreshTF(bool tfrv)
 {
+    tF_->subProp( "Show Names" )->setValue(true);
+    tF_->subProp( "Show Axes" )->setValue(true);
+    tF_->subProp( "Show Arrows" )->setValue(true);
+    tF_->subProp( "Marker Scale" )->setValue(1);
+    tF_->subProp( "Frame Timeout" )->setValue(15);
+
   tF_->setEnabled(tfrv);
 }
 void MyViz::refreshRM(bool rbrv)
