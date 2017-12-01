@@ -22,8 +22,8 @@ MyViz::MyViz( QWidget* parent )
 {
   // Construct render panel.
   render_panel_ = new rviz::RenderPanel();
-  render_panel_->setMinimumHeight(1000);
-  render_panel_->setMinimumWidth(1000);
+  render_panel_->setMinimumHeight(500);
+  render_panel_->setMinimumWidth(800);
   // Layout
   //QPushButton* interact = new QPushButton( "Interact" );
   QVBoxLayout* main_layout = new QVBoxLayout;
