@@ -376,7 +376,7 @@ void ROSGUI::on4DOFs_URDF()
 void ROSGUI::updateURDF(const std::string& urdf)
 {
   XmlRpc::XmlRpcValue robot_description(urdf);
-  nh_.setParam("robot_editor/robot_description", robot_description);
+  nh_.setParam("robot_editor/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
   boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
   if(robot_tree_ != NULL)
@@ -405,7 +405,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
 
   // refresh the preview
   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
-  mRviz->subscribeTopics("joint_states");
+//  mRviz->subscribeTopics("joint_states");
 // // // //
 }
 
