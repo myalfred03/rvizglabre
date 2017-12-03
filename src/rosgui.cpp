@@ -405,8 +405,10 @@ void ROSGUI::updateURDF(const std::string& urdf)
 
   // refresh the preview
   mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
-//  mRviz->subscribeTopics("joint_states");
-// // // //
+
+ // mRviz->subscribeTopics("joint_states");
+
+
 }
 
 void ROSGUI::publishJointStates()

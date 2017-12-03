@@ -6,7 +6,7 @@
 <node name="rvizglabre" pkg="rvizglabre" type="rvizglabre" args="-d $(find rvizglabre)/modelos/urdf.rviz" />
 
 
-<!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rvizglabre)/modelos/urdf.rviz" />-->
+<!--node name="state_publisher" pkg="rvizglabre" type="rvizglabre" args="-d $(find rvizglabre)/modelos/urdf.rviz" /-->
 
 
 </launch>

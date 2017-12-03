@@ -20,16 +20,21 @@
 MyViz::MyViz( QWidget* parent )
   : QWidget( parent )
 {
+  QVBoxLayout* main_layout = new QVBoxLayout;
   // Construct render panel.
   render_panel_ = new rviz::RenderPanel();
+//  main_layout->setMargin(0);
   render_panel_->setMinimumHeight(1000);
-  render_panel_->setMinimumWidth(1000);
+  render_panel_->setMinimumWidth(1400);
+  main_layout->addWidget( render_panel_ );
+
+  //render_panel_->showMaximized();
   // Layout
   //QPushButton* interact = new QPushButton( "Interact" );
-  QVBoxLayout* main_layout = new QVBoxLayout;
 
 
-  main_layout->addWidget( render_panel_ );
+
+
 //  main_layout->addLayout( controls_layout );
   //main_layout->addWidget(interact);
 
