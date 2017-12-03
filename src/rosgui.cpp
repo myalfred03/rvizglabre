@@ -64,7 +64,7 @@ ROSGUI::ROSGUI()
 
    // qnode->on_init();
 
-    mRviz = new MyViz(main_window_ui_.mdiArea);
+    mRviz = new MyViz(main_window_ui_.frame);
 
 
     // Add rviz to mdiArea as a subwindow and maximize it
