@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
         //update joint_state
         joint_state.header.stamp = ros::Time::now();
         joint_state.name.resize(6);
-        joint_state.position.resize(11);
+        joint_state.position.resize(6);
         joint_state.name[0] ="joint_1";
         joint_state.position[0] = base_arm;
         joint_state.name[1] ="joint_2";

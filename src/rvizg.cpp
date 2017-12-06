@@ -163,15 +163,16 @@ void MyViz::refresh(const std::string& fixed_frame)
   robot_model_->subProp("Robot Description")->setValue("robot_editor/robot_description");
 
 }
+
+// control de muestra de TF
 void MyViz::refreshTF(bool tfrv)
 {
-    tF_->subProp( "Show Names" )->setValue(true);
+    tF_->subProp( "Show Names" )->setValue(false);
     tF_->subProp( "Show Axes" )->setValue(true);
     tF_->subProp( "Show Arrows" )->setValue(true);
     tF_->subProp( "Marker Scale" )->setValue(1);
     tF_->subProp( "Frame Timeout" )->setValue(15);
-
-  tF_->setEnabled(tfrv);
+    tF_->setEnabled(tfrv);
 }
 void MyViz::refreshRM(bool rbrv)
 {
