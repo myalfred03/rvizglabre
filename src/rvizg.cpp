@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QDebug>
 #include <QVariant>
 #include <QPushButton>
@@ -20,15 +21,17 @@
 MyViz::MyViz( QWidget* parent )
   : QWidget( parent )
 {
-  QVBoxLayout* main_layout = new QVBoxLayout;
+  QHBoxLayout* main_layout = new QHBoxLayout;
   // Construct render panel.
   render_panel_ = new rviz::RenderPanel();
-//  main_layout->setMargin(0);
-  render_panel_->setMinimumHeight(1000);
-  render_panel_->setMinimumWidth(1400);
+
+//  render_panel_->setMaximumHeight(parent->isFullScreen());
+//  render_panel_->setMaximumWidth(parent->isFullScreen());
+//  render_panel_->setMinimumHeight(parent->height());
+//  render_panel_->setMinimumWidth(parent->width());
+
   main_layout->addWidget( render_panel_ );
 
-  //render_panel_->showMaximized();
   // Layout
   //QPushButton* interact = new QPushButton( "Interact" );
 
@@ -52,7 +55,7 @@ MyViz::MyViz( QWidget* parent )
   manager_->initialize();
   manager_->startUpdate();
 
- // manager_->setFixedFrame( "/my_frame3" );
+  manager_->setFixedFrame( "/my_frame3" );
 
 
 
@@ -96,9 +99,11 @@ MyViz::MyViz( QWidget* parent )
 
 
 //  // Create a Grid display.
-  //rviz::Display* grid_;
+
+
   robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
+  grid_ = manager_->createDisplay( "rviz/Grid", "adjustable grid", true );
   tF_   = manager_->createDisplay( "rviz/TF","TF", false );
   ROS_ASSERT( grid_ != NULL );
   this->refresh();

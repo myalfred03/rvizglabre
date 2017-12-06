@@ -64,12 +64,16 @@ ROSGUI::ROSGUI()
 
    // qnode->on_init();
 
-    mRviz = new MyViz(main_window_ui_.frame);
+    mRviz = new MyViz();
+    main_window_ui_.mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint);
+
+   // mRviz->adjustSize();
+  //  mRviz->setMaximumHeight();
 
 
     // Add rviz to mdiArea as a subwindow and maximize it
 //    ui->mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint); // FramelessWindowHint removes close, minimize and maximize title bar
-//    mRviz->showMaximized();
+    mRviz->showMaximized();
 
     QPixmap pix(":/images/img/ROS_INDUSTRIAL.png");
     main_window_ui_.label_3->setPixmap(pix);

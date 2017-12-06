@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -1319,7 +1319,7 @@
              <item row="0" column="0">
               <widget class="QMdiArea" name="mdiArea">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1437,7 +1437,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections>
   <connection>

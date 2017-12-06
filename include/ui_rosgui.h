@@ -50,6 +50,7 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout_9;
     QGridLayout *gridLayout_18;
+    QFrame *line_22;
     QHBoxLayout *horizontalLayout_5;
     QGridLayout *gridLayout_6;
     QTabWidget *tabWidget;
@@ -170,11 +171,9 @@ public:
     QCheckBox *checkBox_2;
     QCheckBox *checkBox_3;
     QFrame *line_3;
-    QFrame *frame;
     QGridLayout *gridLayout_10;
     QMdiArea *mdiArea;
     QLabel *label;
-    QFrame *line_22;
     QMenuBar *menuBar;
     QMenu *menuFILE;
     QToolBar *mainToolBar;
@@ -215,6 +214,13 @@ public:
         gridLayout_18 = new QGridLayout();
         gridLayout_18->setSpacing(6);
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
+        line_22 = new QFrame(centralWidget);
+        line_22->setObjectName(QStringLiteral("line_22"));
+        line_22->setFrameShape(QFrame::HLine);
+        line_22->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_18->addWidget(line_22, 1, 0, 1, 1);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
@@ -1024,13 +1030,10 @@ public:
 
         verticalLayout_7->addWidget(line_3);
 
-        frame = new QFrame(centralWidget);
-        frame->setObjectName(QStringLiteral("frame"));
-        gridLayout_10 = new QGridLayout(frame);
+        gridLayout_10 = new QGridLayout();
         gridLayout_10->setSpacing(6);
-        gridLayout_10->setContentsMargins(11, 11, 11, 11);
         gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        mdiArea = new QMdiArea(frame);
+        mdiArea = new QMdiArea(centralWidget);
         mdiArea->setObjectName(QStringLiteral("mdiArea"));
         sizePolicy2.setHeightForWidth(mdiArea->sizePolicy().hasHeightForWidth());
         mdiArea->setSizePolicy(sizePolicy2);
@@ -1038,7 +1041,7 @@ public:
         gridLayout_10->addWidget(mdiArea, 0, 0, 1, 1);
 
 
-        verticalLayout_7->addWidget(frame);
+        verticalLayout_7->addLayout(gridLayout_10);
 
 
         horizontalLayout_5->addLayout(verticalLayout_7);
@@ -1060,13 +1063,6 @@ public:
         label->setWordWrap(true);
 
         gridLayout_18->addWidget(label, 0, 0, 1, 1);
-
-        line_22 = new QFrame(centralWidget);
-        line_22->setObjectName(QStringLiteral("line_22"));
-        line_22->setFrameShape(QFrame::HLine);
-        line_22->setFrameShadow(QFrame::Sunken);
-
-        gridLayout_18->addWidget(line_22, 1, 0, 1, 1);
 
 
         gridLayout_9->addLayout(gridLayout_18, 0, 0, 1, 1);
@@ -1143,7 +1139,7 @@ public:
         QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
         QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
         tabWidget1->setCurrentIndex(1);
 
 
