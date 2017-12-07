@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDial>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
@@ -148,12 +149,12 @@ public:
     QWidget *tabWidgetPage1;
     QGridLayout *gridLayout_3;
     QGroupBox *gridGroupBox_3;
-    QHBoxLayout *horizontalLayout;
+    QGridLayout *gridLayout_17;
     QCheckBox *checkBox4DOFI;
-    QCheckBox *checkBox2DOFI;
     QCheckBox *checkBox6DOFI;
-    QCheckBox *checkBox5DOFI;
     QCheckBox *checkBox3DOFI;
+    QCheckBox *checkBox5DOFI;
+    QCheckBox *checkBox2DOFI;
     QWidget *tabWidgetPage2;
     QGridLayout *gridLayout_8;
     QGroupBox *gridGroupBox_2;
@@ -167,6 +168,7 @@ public:
     QVBoxLayout *verticalLayout_7;
     QFrame *line;
     QHBoxLayout *horizontalLayout_3;
+    QComboBox *comboBox;
     QLabel *label_23;
     QCheckBox *checkBox_2;
     QCheckBox *checkBox_3;
@@ -183,7 +185,7 @@ public:
     {
         if (ROSGUI->objectName().isEmpty())
             ROSGUI->setObjectName(QStringLiteral("ROSGUI"));
-        ROSGUI->resize(1000, 807);
+        ROSGUI->resize(1000, 844);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -891,34 +893,58 @@ public:
         sizePolicy2.setHeightForWidth(gridGroupBox_3->sizePolicy().hasHeightForWidth());
         gridGroupBox_3->setSizePolicy(sizePolicy2);
         gridGroupBox_3->setMaximumSize(QSize(550, 100));
-        horizontalLayout = new QHBoxLayout(gridGroupBox_3);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        gridGroupBox_3->setAutoFillBackground(true);
+        gridLayout_17 = new QGridLayout(gridGroupBox_3);
+        gridLayout_17->setSpacing(6);
+        gridLayout_17->setContentsMargins(11, 11, 11, 11);
+        gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
         checkBox4DOFI = new QCheckBox(gridGroupBox_3);
         checkBox4DOFI->setObjectName(QStringLiteral("checkBox4DOFI"));
+        checkBox4DOFI->setAutoFillBackground(true);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/images/img/1448635827949.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox4DOFI->setIcon(icon1);
+        checkBox4DOFI->setIconSize(QSize(37, 23));
 
-        horizontalLayout->addWidget(checkBox4DOFI);
-
-        checkBox2DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox2DOFI->setObjectName(QStringLiteral("checkBox2DOFI"));
-
-        horizontalLayout->addWidget(checkBox2DOFI);
+        gridLayout_17->addWidget(checkBox4DOFI, 0, 0, 1, 1);
 
         checkBox6DOFI = new QCheckBox(gridGroupBox_3);
         checkBox6DOFI->setObjectName(QStringLiteral("checkBox6DOFI"));
+        checkBox6DOFI->setAutoFillBackground(true);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/images/img/ABB.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox6DOFI->setIcon(icon2);
+        checkBox6DOFI->setIconSize(QSize(27, 24));
 
-        horizontalLayout->addWidget(checkBox6DOFI);
-
-        checkBox5DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox5DOFI->setObjectName(QStringLiteral("checkBox5DOFI"));
-
-        horizontalLayout->addWidget(checkBox5DOFI);
+        gridLayout_17->addWidget(checkBox6DOFI, 0, 2, 1, 1);
 
         checkBox3DOFI = new QCheckBox(gridGroupBox_3);
         checkBox3DOFI->setObjectName(QStringLiteral("checkBox3DOFI"));
+        checkBox3DOFI->setAutoFillBackground(true);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/images/img/Yaskawa_Motoman_Logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox3DOFI->setIcon(icon3);
+        checkBox3DOFI->setIconSize(QSize(28, 23));
 
-        horizontalLayout->addWidget(checkBox3DOFI);
+        gridLayout_17->addWidget(checkBox3DOFI, 0, 4, 1, 1);
+
+        checkBox5DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox5DOFI->setObjectName(QStringLiteral("checkBox5DOFI"));
+        checkBox5DOFI->setLayoutDirection(Qt::LeftToRight);
+        checkBox5DOFI->setAutoFillBackground(true);
+        checkBox5DOFI->setIcon(icon3);
+        checkBox5DOFI->setIconSize(QSize(28, 23));
+        checkBox5DOFI->setTristate(false);
+
+        gridLayout_17->addWidget(checkBox5DOFI, 0, 3, 1, 1);
+
+        checkBox2DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox2DOFI->setObjectName(QStringLiteral("checkBox2DOFI"));
+        checkBox2DOFI->setAutoFillBackground(true);
+        checkBox2DOFI->setIcon(icon2);
+        checkBox2DOFI->setIconSize(QSize(27, 24));
+
+        gridLayout_17->addWidget(checkBox2DOFI, 0, 1, 1, 1);
 
 
         gridLayout_3->addWidget(gridGroupBox_3, 0, 0, 1, 1);
@@ -1000,6 +1026,17 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        comboBox = new QComboBox(centralWidget);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/images/img/noun_1450480_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon4, QString());
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/images/img/noun_1036042_cc.png"), QSize(), QIcon::Active, QIcon::Off);
+        comboBox->addItem(icon5, QString());
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        horizontalLayout_3->addWidget(comboBox);
+
         label_23 = new QLabel(centralWidget);
         label_23->setObjectName(QStringLiteral("label_23"));
         QFont font6;
@@ -1139,8 +1176,8 @@ public:
         QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
         QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
 
-        tabWidget->setCurrentIndex(2);
-        tabWidget1->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
+        tabWidget1->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ROSGUI);
@@ -1210,11 +1247,11 @@ public:
         ___qtablewidgetitem10->setText(QApplication::translate("ROSGUI", "joint6", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVITH HATEMEBERG", 0));
         gridGroupBox_3->setTitle(QString());
-        checkBox4DOFI->setText(QApplication::translate("ROSGUI", "KK KR210", 0));
-        checkBox2DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB5400", 0));
-        checkBox6DOFI->setText(QApplication::translate("ROSGUI", "ABB IRB120", 0));
-        checkBox5DOFI->setText(QApplication::translate("ROSGUI", "MM MH5", 0));
-        checkBox3DOFI->setText(QApplication::translate("ROSGUI", "MM BMDA3", 0));
+        checkBox4DOFI->setText(QApplication::translate("ROSGUI", "KR210", 0));
+        checkBox6DOFI->setText(QApplication::translate("ROSGUI", "IRB120", 0));
+        checkBox3DOFI->setText(QApplication::translate("ROSGUI", "BMDA3", 0));
+        checkBox5DOFI->setText(QApplication::translate("ROSGUI", "MH5", 0));
+        checkBox2DOFI->setText(QApplication::translate("ROSGUI", "IRB5400", 0));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage1), QApplication::translate("ROSGUI", "Robots Industriales", 0));
         gridGroupBox_2->setTitle(QString());
         checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", 0));
@@ -1223,6 +1260,9 @@ public:
         checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", 0));
         checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", 0));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("ROSGUI", "Robots Simples", 0));
+        comboBox->setItemText(0, QApplication::translate("ROSGUI", "New Item", 0));
+        comboBox->setItemText(1, QApplication::translate("ROSGUI", "New Item", 0));
+
         label_23->setText(QApplication::translate("ROSGUI", "RVIZ  TOOLS", 0));
         checkBox_2->setText(QApplication::translate("ROSGUI", "TF ", 0));
         checkBox_3->setText(QApplication::translate("ROSGUI", "RM", 0));

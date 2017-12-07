@@ -1,4 +1,4 @@
-﻿<RCC>
+<RCC>
     <qresource prefix="/images">
         <file>img/AS.png</file>
         <file>img/ROS_INDUSTRIAL.jpg</file>
@@ -9,15 +9,21 @@
         <file>img/CD.png</file>
         <file>img/dhparameter.png</file>
         <file>img/CI.png</file>
+        <file>img/noun_1036042_cc.png</file>
+        <file>img/noun_1450480_cc.png</file>
+        <file>img/1448635827949.png</file>
+        <file>img/ABB.png</file>
+        <file>img/Yaskawa_Motoman_Logo.png</file>
     </qresource>
     <qresource prefix="/robots/URDF">
+        <file>modelos/bmda3.urdf</file>
         <file>modelos/irb120_3_58.urdf</file>
         <file>modelos/irb5400.urdf</file>
-        <file>modelos/bmda3.urdf</file>
         <file>modelos/kr16_2.urdf</file>
-        <file>modelos/mh5.urdf</file>
         <file>modelos/kr210l150.urdf</file>
+        <file>modelos/mh5.urdf</file>
         <file>modelos/sia10f.urdf</file>
         <file>modelos/sia20d.urdf</file>
+        <file>modelos/urdf.rviz</file>
     </qresource>
 </RCC>
