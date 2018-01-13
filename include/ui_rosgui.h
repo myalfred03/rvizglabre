@@ -1260,8 +1260,8 @@ public:
         checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", 0));
         checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", 0));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("ROSGUI", "Robots Simples", 0));
-        comboBox->setItemText(0, QApplication::translate("ROSGUI", "New Item", 0));
-        comboBox->setItemText(1, QApplication::translate("ROSGUI", "New Item", 0));
+        comboBox->setItemText(0, QApplication::translate("ROSGUI", "Show Arrows", 0));
+        comboBox->setItemText(1, QApplication::translate("ROSGUI", "Show All", 0));
 
         label_23->setText(QApplication::translate("ROSGUI", "RVIZ  TOOLS", 0));
         checkBox_2->setText(QApplication::translate("ROSGUI", "TF ", 0));

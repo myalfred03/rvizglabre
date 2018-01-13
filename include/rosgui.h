@@ -40,11 +40,10 @@
 
 ////robot editor
 
-////robot editor
+
 class QMainWindow;
 class MyViz;
 namespace robot_state_publisher { class RobotStatePublisher; }
-namespace KDL { class Tree; }
 namespace boost { class thread; }
 ////robot editor
 
@@ -55,16 +54,20 @@ class ROSGUI : public QMainWindow
 
 public:
       ROSGUI();
-      ~ROSGUI();
+      ~ROSGUI(void);
       void show();
+
+
 //      void openCD(); //make a new function to call the window
 //      void openCI();
 //      void openDH();
+    //  ros::NodeHandle n;
 
 public slots:
       void openCD(); //make a new function to call the window
       void openCI();
       void openDH();
+
 
 //robot editor
 //public Q_SLOTS:
@@ -121,9 +124,10 @@ public Q_SLOTS:
      // void toggleTFRVIZ(int checked);
       void on_checkBox_2_toggled(int checked);
       void on_checkBox_3_toggled(int checked);
-//      void on_checkBox_2_pressed();
+      void on_comboBox_activated(int index);
 
-//      void on_checkBox_2_released();
+
+
 
 
 
@@ -132,6 +136,15 @@ private:
     //robot editor
    void updateURDF(const std::string& urdf);
    void publishJointStates();
+
+//   bool readJntLimitsFromROSParamURDF(/*std::vector<std::string>& limited_jnt_names,
+//           std::vector<double>& lower_limits,
+//           std::vector<double>& upper_limits,
+//           KDL::Tree& kdl_tree,
+//           KDL::Chain& kdl_chain*/
+
+//                                      );
+
    //QMainWindow main_window_;
 
 private:
@@ -158,6 +171,8 @@ private:
 
 
    QProcess *proc;
+
+
 
 };
 

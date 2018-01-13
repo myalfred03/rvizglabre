@@ -45,10 +45,15 @@
 #include <robot_state_publisher/robot_state_publisher.h>
 
 #include <sstream>
-
-
-
 ////robot editor
+
+
+
+
+#include "std_msgs/MultiArrayLayout.h"
+#include "std_msgs/MultiArrayDimension.h"
+
+#include "std_msgs/Int32MultiArray.h"
 const double FACTOR = 2;
 
 
@@ -77,7 +82,10 @@ ROSGUI::ROSGUI()
 
     QPixmap pix(":/images/img/ROS_INDUSTRIAL.png");
     main_window_ui_.label_3->setPixmap(pix);
+
     publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
+
+    // readJntLimitsFromROSParamURDF(&n);
 
     //Mostrando ventanas emergentes//
 
@@ -160,8 +168,12 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
+
    QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
    QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
+   QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
+
+
 
 
 //    file_name_ = "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
@@ -171,14 +183,14 @@ ROSGUI::ROSGUI()
 //    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 //    this->updateURDF(file_contents);
 
-
+on6DOFI_URDF();
 
 
 }
 
-ROSGUI::~ROSGUI()
+ROSGUI::~ROSGUI(void)
 {
-   // delete ui;
+    //delete ui;
   if(publisher_thread_ != NULL)
     {
       publisher_thread_->interrupt();
@@ -381,7 +393,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
 {
   XmlRpc::XmlRpcValue robot_description(urdf);
   nh_.setParam("robot_editor/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
-  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
+//  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
   if(robot_tree_ != NULL)
     delete robot_tree_;
@@ -436,6 +448,8 @@ void ROSGUI::publishJointStates()
          //msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
        //  ROS_INFO("Joint1=%f Joint2=%f", msg, msg);
          ROS_INFO("Published joint state info");
+
+        // ROS_INFO(" Lower %f \n Upper %f",ROSGUI::lower_limits[1], ROSGUI::upper_limits[1]);
       }
     }
     try {
@@ -661,3 +675,16 @@ void ROSGUI::on_checkBox_3_toggled(int checked=1)
     mRviz->refreshRM(false);
   }
 }
+
+void ROSGUI::on_comboBox_activated(int index=0)
+{
+  if (index==0)
+  {
+   mRviz->refreshTF(true, true, false);
+  }
+  if(index==1)
+ {
+  mRviz->refreshTF(true, true, true);
+ }
+}
+
