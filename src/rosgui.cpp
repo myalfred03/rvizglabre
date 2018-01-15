@@ -169,21 +169,22 @@ ROSGUI::ROSGUI()
 
 
 
+
    QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
    QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
    QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
 
 
+    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
 
-//    file_name_ = "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+    std::ifstream selected_file(file_name_.toStdString().c_str());
+    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+    this->updateURDF(file_contents);
 
+QProcess *proc = new QProcess();
+proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
 
-//    std::ifstream selected_file(file_name_.toStdString().c_str());
-//    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-//    this->updateURDF(file_contents);
-
-on6DOFI_URDF();
 
 
 }
@@ -291,6 +292,11 @@ void ROSGUI::on_actionExit_triggered()
 
 void ROSGUI::on2DOFI_URDF()
 {
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+
   QTemporaryDir temporaryDir;
   QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir.path() + "/irb5400.urdf");
   std::ifstream selected_file(QString(temporaryDir.path() + "/irb5400.urdf").toStdString().c_str());
@@ -298,10 +304,15 @@ void ROSGUI::on2DOFI_URDF()
   this->updateURDF(file_contents);
 
 
+
 }
 
 void ROSGUI::on3DOFI_URDF()
 {
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","left_tool0");
   QTemporaryDir temporaryDir;
   QFile::copy(":/robots/URDF/modelos/bmda3.urdf", temporaryDir.path() + "/bmda3.urdf");
   std::ifstream selected_file(QString(temporaryDir.path() + "/bmda3.urdf").toStdString().c_str());
@@ -312,6 +323,10 @@ void ROSGUI::on3DOFI_URDF()
 
 void ROSGUI::on4DOFI_URDF()
 {
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
   QTemporaryDir temporaryDir;
   QFile::copy(":/robots/URDF/modelos/kr210l150.urdf", temporaryDir.path() + "/kr210l150.urdf");
   std::ifstream selected_file(QString(temporaryDir.path() + "/kr210l150.urdf").toStdString().c_str());
@@ -322,6 +337,10 @@ void ROSGUI::on4DOFI_URDF()
 
 void ROSGUI::on5DOFI_URDF()
 {
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","link_6");
   QTemporaryDir temporaryDir;
   QFile::copy(":/robots/URDF/modelos/mh5.urdf", temporaryDir.path() + "/mh5.urdf");
   std::ifstream selected_file(QString(temporaryDir.path() + "/mh5.urdf").toStdString().c_str());
@@ -344,6 +363,10 @@ void ROSGUI::on6DOFI_URDF()
 
 // CON COPIA DE ARCHIVO
 
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
    QTemporaryDir temporaryDir;
    QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
    std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
@@ -687,4 +710,5 @@ void ROSGUI::on_comboBox_activated(int index=0)
   mRviz->refreshTF(true, true, true);
  }
 }
+
 

@@ -13,7 +13,7 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
   lower_limits.clear();
   //KDL WRAPPER
-  std::string param_nameR = "robot_description";
+  std::string param_nameR = "robot_editor/robot_description";
   std::string full_param_name;
   std::string xml_string;
   std::string param_nameCr = "root_link";

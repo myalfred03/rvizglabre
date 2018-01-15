@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
 //    tf::TransformBroadcaster broadcaster;
     //double	read;
 
-    ros::Rate loop_rate(30);
+    ros::Rate loop_rate(10);
 robotstate pub;
 while (ros::ok()) {
 

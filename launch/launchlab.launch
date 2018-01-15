@@ -1,13 +1,13 @@
 <launch>
 <!--<arg name="model" />
 <arg name="gui" default="True" />-->
-<param name="robot_description" command="cat $(find rvizglabre)/modelos/irb120_3_58.urdf"/>
+<!--<param name="robot_description" command="cat $(find rvizglabre)/modelos/irb120_3_58.urdf"/>-->
 <param name="root_link" type="str"  value="base_link"/>
 <param name="tip_link"  type="str"  value="tool0"/>
 <!--<param name="use_gui" value="$(arg gui)"/>-->
-<node name="talker" pkg="rvizglabre" type="talker"  />
-<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
-<node name="labros" pkg="rvizglabre" type="rvizglabre"/>
+<!--<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />-->
+<node name="rvizglabre" pkg="rvizglabre" type="rvizglabre"/>
+<!--<node name="talker" pkg="rvizglabre" type="talker"  />-->
 
 
 </launch>

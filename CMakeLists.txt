@@ -154,19 +154,19 @@ set (MyProjectLib_qrc
   QT5_ADD_RESOURCES(MyProjectLib_qrc_MOC ${MyProjectLib_qrc})
 
 #endif()
-add_library(${PROJECT_NAME} ${MyProject_Lib})
+add_library(lib ${MyProject_Lib})
 
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 
-add_executable(labros ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
+add_executable(rvizglabre  ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC} ${MyProject_Lib})
 
 add_executable(talker  src/robot_state.cpp)
 
-target_link_libraries(talker ${PROJECT_NAME} ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(talker lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 #  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(labros
+target_link_libraries(rvizglabre
                          ${QT_LIBRARIES}   #Llamado QT Libraries
                          ${catkin_LIBRARIES}
                          ${Boost_LIBRARIES}
@@ -174,7 +174,7 @@ target_link_libraries(labros
  )
 
 add_definitions(-std=c++11
-                -D__cplusplus=201103L)
+                )
 
 
 

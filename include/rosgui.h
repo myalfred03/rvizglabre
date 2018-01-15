@@ -127,10 +127,6 @@ public Q_SLOTS:
       void on_comboBox_activated(int index);
 
 
-
-
-
-
 private:
 
     //robot editor
