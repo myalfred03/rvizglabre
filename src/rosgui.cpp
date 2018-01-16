@@ -54,7 +54,7 @@
 #include "std_msgs/MultiArrayDimension.h"
 
 #include "std_msgs/Int32MultiArray.h"
-const double FACTOR = 2;
+const double FACTOR = 1;
 
 
 
@@ -184,6 +184,12 @@ ROSGUI::ROSGUI()
 
 QProcess *proc = new QProcess();
 proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
+
+
+//main_window_ui_.dial1DOF->setMinimum(0);
+//main_window_ui_.dial1DOF->setMaximum(10);
+
+
 
 
 
@@ -332,6 +338,19 @@ void ROSGUI::on4DOFI_URDF()
   std::ifstream selected_file(QString(temporaryDir.path() + "/kr210l150.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
+  if(init()){
+     ROS_ERROR("Error publisher");
+  }
+  //radians for revolute, meters for prismatic
+  test2 = getJointLowerLimits();
+  test1 = getJointUpperLimits();
+  int testint = int(test1[1]);
+  int testint2 = int(test2[1]);
+
+  //main_window_ui_.dial1DOF->setRange(test1[0],test2[0]);
+  main_window_ui_.dial1DOF->setMinimum(test2[3]*57.295779513);
+  main_window_ui_.dial1DOF->setMaximum(test1[3]*57.295779513);
+  main_window_ui_.dial1DOF->setSingleStep(1);
 
 }
 
@@ -608,6 +627,7 @@ void ROSGUI::updateSpinboxesD()
 
 void ROSGUI::on_2DOF()
 {
+
         main_window_ui_.dial3DOF->   setEnabled(false);
         main_window_ui_.dial4DOF->   setEnabled(false);
         main_window_ui_.dial5DOF->   setEnabled(false);
@@ -709,6 +729,34 @@ void ROSGUI::on_comboBox_activated(int index=0)
  {
   mRviz->refreshTF(true, true, true);
  }
+}
+
+
+bool ROSGUI::init()
+{
+
+ // joints = new modelparam;
+ if(!jointsv.readJntLimitsFromROSParamURDF(
+                                      joints_lower_limit_
+                                      , joints_upper_limit_))
+ {
+          std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
+         return false;
+      }
+
+  return true;
+}
+
+std::vector<double> ROSGUI::getJointLowerLimits()
+{   //joints= new modelparam;
+      std::vector< double > readL = joints_lower_limit_;
+    return readL;
+}
+
+std::vector< double > ROSGUI::getJointUpperLimits()
+{
+    std::vector< double > readU = joints_upper_limit_;
+    return readU;
 }
 
 

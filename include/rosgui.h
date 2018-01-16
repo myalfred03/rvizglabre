@@ -38,6 +38,10 @@
 #include <rviz/default_plugin/robot_model_display.h>
 #include <rviz/frame_manager.h>
 
+//Show value of urdf
+#include "modelparam.h"
+
+
 ////robot editor
 
 
@@ -56,6 +60,16 @@ public:
       ROSGUI();
       ~ROSGUI(void);
       void show();
+      //Show value of urdf
+      bool init();
+      std::vector<double> getJointLowerLimits();
+      std::vector<double> getJointUpperLimits();
+      std::vector<double> joints_lower_limit_;
+      std::vector<double> joints_upper_limit_;
+      std::vector< double > test1;
+      std::vector< double > test2;
+
+
 
 
 //      void openCD(); //make a new function to call the window
@@ -167,6 +181,7 @@ private:
 
 
    QProcess *proc;
+   modelparam jointsv;
 
 
 
