@@ -55,6 +55,8 @@
 
 #include "std_msgs/Int32MultiArray.h"
 const double FACTOR = 1;
+const double ToG    = 57.295779513;
+const double resetv  = 0;
 
 
 
@@ -134,6 +136,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.pitchBox,     SIGNAL(valueChanged(double)), SLOT(updateSlider()));
     QObject::connect(main_window_ui_.yawBox,       SIGNAL(valueChanged(double)), SLOT(updateSlider()));
 
+    //Control de dialer y spinbox activos
     QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
     QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
@@ -298,6 +301,7 @@ void ROSGUI::on_actionExit_triggered()
 
 void ROSGUI::on2DOFI_URDF()
 {
+  resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
@@ -308,27 +312,30 @@ void ROSGUI::on2DOFI_URDF()
   std::ifstream selected_file(QString(temporaryDir.path() + "/irb5400.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
-
+  updatetoURDF();
 
 
 }
 
 void ROSGUI::on3DOFI_URDF()
 {
+  resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","left_tool0");
+  nh_.setParam("tip_link","link_7");
   QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/bmda3.urdf", temporaryDir.path() + "/bmda3.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/bmda3.urdf").toStdString().c_str());
+  QFile::copy(":/robots/URDF/modelos/sia10f.urdf", temporaryDir.path() + "/sia10f.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/sia10f.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
+  updatetoURDF();
 
 }
 
 void ROSGUI::on4DOFI_URDF()
 {
+  resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
@@ -338,24 +345,13 @@ void ROSGUI::on4DOFI_URDF()
   std::ifstream selected_file(QString(temporaryDir.path() + "/kr210l150.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
-  if(init()){
-     ROS_ERROR("Error publisher");
-  }
-  //radians for revolute, meters for prismatic
-  test2 = getJointLowerLimits();
-  test1 = getJointUpperLimits();
-  int testint = int(test1[1]);
-  int testint2 = int(test2[1]);
-
-  //main_window_ui_.dial1DOF->setRange(test1[0],test2[0]);
-  main_window_ui_.dial1DOF->setMinimum(test2[3]*57.295779513);
-  main_window_ui_.dial1DOF->setMaximum(test1[3]*57.295779513);
-  main_window_ui_.dial1DOF->setSingleStep(1);
+  updatetoURDF();
 
 }
 
 void ROSGUI::on5DOFI_URDF()
 {
+  resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
@@ -365,6 +361,7 @@ void ROSGUI::on5DOFI_URDF()
   std::ifstream selected_file(QString(temporaryDir.path() + "/mh5.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
+  updatetoURDF();
 
 }
 void ROSGUI::on6DOFI_URDF()
@@ -381,7 +378,7 @@ void ROSGUI::on6DOFI_URDF()
 //  // SIN COPIA DE ARCHIVO
 
 // CON COPIA DE ARCHIVO
-
+  resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
@@ -397,6 +394,7 @@ void ROSGUI::on6DOFI_URDF()
 //  msg->name = {"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
 //  msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
   this->updateURDF(file_contents);
+  updatetoURDF();
 
 
 }
@@ -421,6 +419,7 @@ void ROSGUI::on4DOFs_URDF()
 
 
  this->updateURDF(file_contents);
+ updatetoURDF();
 
 
 
@@ -576,12 +575,12 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial5DOF->    setValue((main_window_ui_.spinBox5DOF->value() / FACTOR));
   main_window_ui_.dial6DOF->    setValue((main_window_ui_.spinBox6DOF->value() / FACTOR));
 
-  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/FACTOR;
-  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/FACTOR;
-  joint_positions_["joint_3"]= main_window_ui_.spinBox3DOF->value()/FACTOR;
-  joint_positions_["joint_4"]= main_window_ui_.spinBox4DOF->value()/FACTOR;
-  joint_positions_["joint_5"]= main_window_ui_.spinBox5DOF->value()/FACTOR;
-  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/FACTOR;
+  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/ToG;
+  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/ToG;
+  joint_positions_["joint_3"]= main_window_ui_.spinBox3DOF->value()/ToG;
+  joint_positions_["joint_4"]= main_window_ui_.spinBox4DOF->value()/ToG;
+  joint_positions_["joint_5"]= main_window_ui_.spinBox5DOF->value()/ToG;
+  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/ToG;
 
 
   main_window_ui_.dial1DOF->    blockSignals(false);
@@ -609,6 +608,13 @@ void ROSGUI::updateSpinboxesD()
     main_window_ui_.spinBox4DOF->    setValue((main_window_ui_.dial4DOF->value() * FACTOR));
     main_window_ui_.spinBox5DOF->    setValue((main_window_ui_.dial5DOF->value() * FACTOR));
     main_window_ui_.spinBox6DOF->    setValue((main_window_ui_.dial6DOF->value() * FACTOR));
+
+    joint_positions_["joint_1"]= main_window_ui_.dial1DOF->value()/ToG;
+    joint_positions_["joint_2"]= main_window_ui_.dial2DOF->value()/ToG;
+    joint_positions_["joint_3"]= main_window_ui_.dial3DOF->value()/ToG;
+    joint_positions_["joint_4"]= main_window_ui_.dial4DOF->value()/ToG;
+    joint_positions_["joint_5"]= main_window_ui_.dial5DOF->value()/ToG;
+    joint_positions_["joint_6"]= main_window_ui_.dial6DOF->value()/ToG;
 
 
     main_window_ui_.spinBox1DOF->    blockSignals(false);
@@ -758,5 +764,72 @@ std::vector< double > ROSGUI::getJointUpperLimits()
     std::vector< double > readU = joints_upper_limit_;
     return readU;
 }
+void ROSGUI::updatetoURDF()
+{
+  if(init()){
+     ROS_ERROR("Error publisher");
+  }
+  //radians for revolute, meters for prismatic
+  joint_lower = getJointLowerLimits();
+  joint_upper = getJointUpperLimits();
 
+  main_window_ui_.dial1DOF->setMinimum(joint_lower[0]*ToG);
+  main_window_ui_.dial1DOF->setMaximum(joint_upper[0]*ToG);
+  main_window_ui_.dial1DOF->setSingleStep(1);
+  main_window_ui_.spinBox1DOF->setMinimum(joint_lower[0]*ToG);
+  main_window_ui_.spinBox1DOF->setMaximum(joint_upper[0]*ToG);
+  main_window_ui_.spinBox1DOF->setSingleStep(1);
+
+  main_window_ui_.dial2DOF->setMinimum(joint_lower[1]*ToG);
+  main_window_ui_.dial2DOF->setMaximum(joint_upper[1]*ToG);
+  main_window_ui_.dial2DOF->setSingleStep(1);
+  main_window_ui_.spinBox2DOF->setMinimum(joint_lower[1]*ToG);
+  main_window_ui_.spinBox2DOF->setMaximum(joint_upper[1]*ToG);
+  main_window_ui_.spinBox2DOF->setSingleStep(1);
+
+  main_window_ui_.dial3DOF->setMinimum(joint_lower[2]*ToG);
+  main_window_ui_.dial3DOF->setMaximum(joint_upper[2]*ToG);
+  main_window_ui_.dial3DOF->setSingleStep(1);
+  main_window_ui_.spinBox3DOF->setMinimum(joint_lower[2]*ToG);
+  main_window_ui_.spinBox3DOF->setMaximum(joint_upper[2]*ToG);
+  main_window_ui_.spinBox3DOF->setSingleStep(1);
+
+  main_window_ui_.dial4DOF->setMinimum(joint_lower[3]*ToG);
+  main_window_ui_.dial4DOF->setMaximum(joint_upper[3]*ToG);
+  main_window_ui_.dial4DOF->setSingleStep(1);
+  main_window_ui_.spinBox4DOF->setMinimum(joint_lower[3]*ToG);
+  main_window_ui_.spinBox4DOF->setMaximum(joint_upper[3]*ToG);
+  main_window_ui_.spinBox4DOF->setSingleStep(1);
+
+  main_window_ui_.dial5DOF->setMinimum(joint_lower[4]*ToG);
+  main_window_ui_.dial5DOF->setMaximum(joint_upper[4]*ToG);
+  main_window_ui_.dial5DOF->setSingleStep(1);
+  main_window_ui_.spinBox5DOF->setMinimum(joint_lower[4]*ToG);
+  main_window_ui_.spinBox5DOF->setMaximum(joint_upper[4]*ToG);
+  main_window_ui_.spinBox5DOF->setSingleStep(1);
+
+  main_window_ui_.dial6DOF->setMinimum(joint_lower[5]*ToG);
+  main_window_ui_.dial6DOF->setMaximum(joint_upper[5]*ToG);
+  main_window_ui_.dial6DOF->setSingleStep(1);
+  main_window_ui_.spinBox6DOF->setMinimum(joint_lower[5]*ToG);
+  main_window_ui_.spinBox6DOF->setMaximum(joint_upper[5]*ToG);
+  main_window_ui_.spinBox6DOF->setSingleStep(1);
+}
+
+void ROSGUI::resetvalue(){
+  main_window_ui_.dial1DOF->    setValue(resetv);
+  main_window_ui_.dial2DOF->    setValue(resetv);
+  main_window_ui_.dial3DOF->    setValue(resetv);
+  main_window_ui_.dial4DOF->    setValue(resetv);
+  main_window_ui_.dial5DOF->    setValue(resetv);
+  main_window_ui_.dial6DOF->    setValue(resetv);
+
+
+  main_window_ui_.spinBox1DOF->    setValue(resetv);
+  main_window_ui_.spinBox2DOF->    setValue(resetv);
+  main_window_ui_.spinBox3DOF->    setValue(resetv);
+  main_window_ui_.spinBox4DOF->    setValue(resetv);
+  main_window_ui_.spinBox5DOF->    setValue(resetv);
+  main_window_ui_.spinBox6DOF->    setValue(resetv);
+}
 

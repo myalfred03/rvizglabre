@@ -66,8 +66,10 @@ public:
       std::vector<double> getJointUpperLimits();
       std::vector<double> joints_lower_limit_;
       std::vector<double> joints_upper_limit_;
-      std::vector< double > test1;
-      std::vector< double > test2;
+      std::vector< double > joint_upper;
+      std::vector< double > joint_lower;
+      void updatetoURDF();
+      void resetvalue();
 
 
 
@@ -123,6 +125,7 @@ public Q_SLOTS:
       void on_4DOF();
       void on_5DOF();
       void on_6DOF();
+
      // void on_checkBox6DOFI_toggled(bool checked);
 
 

@@ -75,16 +75,17 @@ while (ros::ok()) {
   if(!pub.init()){
      ROS_ERROR("Error publisher");
   }
-  test2 = pub.getJointLowerLimits();
   test1 = pub.getJointUpperLimits();
+  test2 = pub.getJointLowerLimits();
+
 
 
 
       //sr_core Joint_spline_trajectory_action_controller
       for (int i = 0; i < 7; ++i)
       {
-        desired_joint_state_msg.position.push_back(test2[i]);
-        desired_joint_state_msg.velocity.push_back(test1[i]);
+        desired_joint_state_msg.velocity.push_back(test2[i]);
+        desired_joint_state_msg.position.push_back(test1[i]);
 
       }
           joint_pub.publish(desired_joint_state_msg);

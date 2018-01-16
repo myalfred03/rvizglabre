@@ -22,7 +22,7 @@
       </material>
     </collision>
   </link>
-  <link name="link_s">
+  <link name="link_1">
     <visual>
       <geometry>
         <mesh filename="package://rvizglabre/modelos/sia10f/visual/motoman_axis_s.stl"/>
@@ -38,7 +38,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_l">
+  <link name="link_2">
     <visual>
       <origin rpy="1.57 3.1416 0" xyz="0 0 0"/>
       <geometry>
@@ -54,7 +54,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_e">
+  <link name="link_3">
     <visual>
       <origin rpy="0 0 3.1415" xyz="0 0 0"/>
       <geometry>
@@ -70,7 +70,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_u">
+  <link name="link_4">
     <visual>
       <origin rpy="1.57 -3.1415 0" xyz="0 0 0"/>
       <geometry>
@@ -86,7 +86,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_r">
+  <link name="link_5">
     <visual>
       <origin rpy="0 0 3.1416" xyz="0 0 0"/>
       <geometry>
@@ -102,7 +102,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_b">
+  <link name="link_6">
     <visual>
       <origin rpy="-1.57 0 3.1416" xyz="0 0 0"/>
       <geometry>
@@ -118,7 +118,7 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <link name="link_t">
+  <link name="link_7">
     <visual>
       <geometry>
         <mesh filename="package://rvizglabre/modelos/sia10f/visual/motoman_axis_t.stl"/>
@@ -132,59 +132,59 @@
       <material name="yellow"/>
     </collision>
   </link>
-  <joint name="joint_s" type="revolute">
+  <joint name="joint_1" type="revolute">
     <parent link="base_link"/>
-    <child link="link_s"/>
+    <child link="link_1"/>
     <origin rpy="0 0 0" xyz="0 0 0.36"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-3.1415" upper="3.1415" velocity="2.9670" />
   </joint>
-  <joint name="joint_l" type="revolute">
-    <parent link="link_s"/>
-    <child link="link_l"/>
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit effort="100" lower="-1.9198" upper="1.9198" velocity="2.9670" />
   </joint>
-  <joint name="joint_e" type="revolute">
-    <parent link="link_l"/>
-    <child link="link_e"/>
+  <joint name="joint_3" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
     <origin rpy="0 0 0" xyz="0 0 0.36"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="-2.9670" upper="2.9670" velocity="2.9670" />
   </joint>
-  <joint name="joint_u" type="revolute">
-    <parent link="link_e"/>
-    <child link="link_u"/>
+  <joint name="joint_4" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_4"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 -1 0"/>
     <limit effort="100" lower="-2.3561" upper="2.3561" velocity="2.9670" />
   </joint>
-  <joint name="joint_r" type="revolute">
-    <parent link="link_u"/>
-    <child link="link_r"/>
+  <joint name="joint_5" type="revolute">
+    <parent link="link_4"/>
+    <child link="link_5"/>
     <origin rpy="0 0 0" xyz="0 0 0.360"/>
     <axis xyz="0 0 -1"/>
     <limit effort="100" lower="-3.1415" upper="3.1415" velocity="3.4906" />
   </joint>
-  <joint name="joint_b" type="revolute">
-    <parent link="link_r"/>
-    <child link="link_b"/>
+  <joint name="joint_6" type="revolute">
+    <parent link="link_5"/>
+    <child link="link_6"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 -1 0"/>
     <limit effort="100" lower="-1.9198" upper="1.9198" velocity="3.4906" />
   </joint>
-  <joint name="joint_t" type="revolute">
-    <parent link="link_b"/>
-    <child link="link_t"/>
+  <joint name="joint_7" type="revolute">
+    <parent link="link_6"/>
+    <child link="link_7"/>
     <origin rpy="0 0 0" xyz="0 0 0.155"/>
     <axis xyz="0 0 -1"/>
     <limit effort="100" lower="-3.1415" upper="3.1415" velocity="6.9813" />
   </joint>
   <link name="base"/>
-  <joint name="link_l-base" type="fixed">
+  <joint name="link_2-base" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="link_l"/>
+    <parent link="link_2"/>
     <child link="base"/>
   </joint>
 </robot>

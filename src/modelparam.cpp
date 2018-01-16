@@ -12,6 +12,8 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 {
 
   lower_limits.clear();
+  upper_limits.clear();
+
   //KDL WRAPPER
   std::string param_nameR = "robot_editor/robot_description";
   std::string full_param_name;
@@ -95,7 +97,7 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
               }
 
           int nbr_segs = kdl_chain.getNrOfSegments();
-          lower_limits.resize(kdl_chain.getNrOfJoints());
+         // lower_limits.resize(kdl_chain.getNrOfJoints());
               std::vector<std::string> seg_names;
 
               for(int i=0; i<nbr_segs; i++)
@@ -107,17 +109,9 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
                          // limited_jnt_names.push_back(joint->second->name);
                           lower_limits.push_back(joint->second->limits->lower);
                           upper_limits.push_back(joint->second->limits->upper);
-
-
-                      }
-
-                  }
+                }
+               }
               }
-//              lower_limits = {2.3, 3.2, 23.2, 43.1};
-////              for (int i=0; i<4; i++){
-//              lower_limits.data();
-//               // }
-          //   return lower_limits;
 
            return true;
 }
