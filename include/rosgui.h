@@ -71,6 +71,12 @@ public:
       void updatetoURDF();
       void resetvalue();
 
+      KDL::Vector pos_mat;
+
+
+
+
+
 
 
 
@@ -181,10 +187,11 @@ private:
    QMainWindow *thwindow;
    QMainWindow *fourwindow;
   // QNode *qnode;
+   modelparam* jointsv;
 
 
    QProcess *proc;
-   modelparam jointsv;
+
 
 
 

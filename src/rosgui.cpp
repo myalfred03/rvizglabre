@@ -11,6 +11,13 @@
 #include <QString>
 #include <QTemporaryDir>
 #include <QCheckBox>
+#include <QTextEdit>
+#include <QTextStream>
+#include <QTextCursor>
+#include <QFileDialog>
+#include <QFile>
+
+
 
 
 
@@ -57,7 +64,6 @@
 const double FACTOR = 1;
 const double ToG    = 57.295779513;
 const double resetv  = 0;
-
 
 
 ROSGUI::ROSGUI()
@@ -741,10 +747,11 @@ void ROSGUI::on_comboBox_activated(int index=0)
 bool ROSGUI::init()
 {
 
- // joints = new modelparam;
- if(!jointsv.readJntLimitsFromROSParamURDF(
+  jointsv = new modelparam;
+ if(!jointsv->readJntLimitsFromROSParamURDF(
                                       joints_lower_limit_
-                                      , joints_upper_limit_))
+                                      , joints_upper_limit_
+                                      ,pos_mat))
  {
           std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
          return false;
@@ -764,14 +771,27 @@ std::vector< double > ROSGUI::getJointUpperLimits()
     std::vector< double > readU = joints_upper_limit_;
     return readU;
 }
+
+
 void ROSGUI::updatetoURDF()
 {
-  if(init()){
+  if(!init()){
      ROS_ERROR("Error publisher");
   }
   //radians for revolute, meters for prismatic
   joint_lower = getJointLowerLimits();
   joint_upper = getJointUpperLimits();
+ // chainFK     = chain();
+
+
+//  std::cout << " px "<< pos_mat.x() <<	" py "<< pos_mat.y() <<	" pz "<< pos_mat.z() <<std::endl;
+
+  std::cout << std::setprecision(3) << pos_mat << "\t\t";
+
+  main_window_ui_.lineEdit->setText("HI");
+
+
+
 
   main_window_ui_.dial1DOF->setMinimum(joint_lower[0]*ToG);
   main_window_ui_.dial1DOF->setMaximum(joint_upper[0]*ToG);

@@ -5,9 +5,10 @@
 modelparam::modelparam()
 {
 //double readJntLimitsFromROSParamURDF();
+
 }
 
-bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits, std::vector<double> &upper_limits)
+bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits, std::vector<double> &upper_limits, KDL::Vector pos_mat)
 
 {
 
@@ -95,6 +96,30 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
+
+        //  Obtaining FK
+
+          // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
+          fksolver.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
+
+        //  j(0) = main_window_ui_.dial1DOF->value();
+        //  j(1) = main_window_ui_.dial2DOF->value();
+        //  j(2) = main_window_ui_.dial3DOF->value();
+        //  j(3) = main_window_ui_.dial4DOF->value();
+        //  j(4) = main_window_ui_.dial5DOF->value();
+        //  j(5) = main_window_ui_.dial6DOF->value();
+
+          j(0) = -M_PI / 4;
+          j(1) =  M_PI / 4;
+          j(2) =  M_PI / 4;
+          j(3) =  M_PI / 4;
+          j(4) = -M_PI / 4;
+          j(5) =  M_PI / 4;
+       //   j(6) =  M_PI / 4;
+
+          fksolver->JntToCart(j, result);
+          pos_mat = result.p;
+
 
           int nbr_segs = kdl_chain.getNrOfSegments();
          // lower_limits.resize(kdl_chain.getNrOfJoints());

@@ -18,7 +18,7 @@ public:
  std::vector<double> getJointUpperLimits();
  std::vector<double> joints_lower_limit_;
  std::vector<double> joints_upper_limit_;
-
+ KDL::Vector pos_mat;
 
 private:
  modelparam joints;
@@ -37,7 +37,8 @@ bool robotstate::init()
  // joints = new modelparam;
  if(!joints.readJntLimitsFromROSParamURDF(
                                       joints_lower_limit_
-                                      , joints_upper_limit_))
+                                      , joints_upper_limit_
+                                      ,pos_mat))
  {
           std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
          return false;

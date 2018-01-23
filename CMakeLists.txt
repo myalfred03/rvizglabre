@@ -30,6 +30,9 @@ find_package(catkin REQUIRED COMPONENTS
   laser_filters
   map_server
   #book
+  # FK KDL::ChainFkSolverPos_recursive
+  kdl_conversions
+  # FK
 )
 
 #KDL WRAPPER
@@ -55,7 +58,7 @@ find_library(KDL_LIBRARY REQUIRED NAMES orocos-kdl HINTS ${orocos_kdl_LIBRARY_DI
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES MyProject_Lib
-  CATKIN_DEPENDS roscpp roslib std_msgs rqt_gui rqt_gui_cpp
+  CATKIN_DEPENDS roscpp roslib std_msgs rqt_gui rqt_gui_cpp kdl_parser kdl_conversions
   DEPENDS
   orocos_kdl
 #roscpp
@@ -118,7 +121,7 @@ set (MyProject_Lib
           ##CPP
           src/modelparam.cpp
           ##Headers
-        #  include/modelparam.h
+          include/modelparam.h
     )
 
 set (MyProjectLib_ui
@@ -158,7 +161,7 @@ add_library(lib ${MyProject_Lib})
 
 target_link_libraries(lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 
-add_executable(rvizglabre  ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC} ${MyProject_Lib})
+add_executable(rvizglabre  ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
 
 add_executable(talker  src/robot_state.cpp)
 
@@ -166,10 +169,11 @@ target_link_libraries(talker lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 #  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(rvizglabre
+target_link_libraries(rvizglabre lib 
                          ${QT_LIBRARIES}   #Llamado QT Libraries
                          ${catkin_LIBRARIES}
                          ${Boost_LIBRARIES}
+                         ${orocos_kdl_LIBRARIES}
                          Qt5::Widgets
  )
 
