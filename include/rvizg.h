@@ -41,7 +41,7 @@ public:
 
   void subscribeTopics(const QString qnode_name);
   void refresh(const std::string& fixed_frame = "/map");  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
-  void refreshTF(bool tfrv = true, bool tfa = true, bool tfnm=false);
+  void refreshTF(bool tfrv = true, bool tfa = true, bool tfnm=true);
   void refreshRM(bool rbrv = true);
 
 

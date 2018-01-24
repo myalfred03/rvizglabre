@@ -179,9 +179,10 @@ ROSGUI::ROSGUI()
 
 
 
-   QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
-   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
-   QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
+//   QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
+//   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
+ //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
+   QObject::connect(main_window_ui_.comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
 
 
     file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
@@ -307,12 +308,12 @@ void ROSGUI::on_actionExit_triggered()
 
 void ROSGUI::on2DOFI_URDF()
 {
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-
   QTemporaryDir temporaryDir;
   QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir.path() + "/irb5400.urdf");
   std::ifstream selected_file(QString(temporaryDir.path() + "/irb5400.urdf").toStdString().c_str());
@@ -325,6 +326,7 @@ void ROSGUI::on2DOFI_URDF()
 
 void ROSGUI::on3DOFI_URDF()
 {
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -341,6 +343,7 @@ void ROSGUI::on3DOFI_URDF()
 
 void ROSGUI::on4DOFI_URDF()
 {
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -357,6 +360,7 @@ void ROSGUI::on4DOFI_URDF()
 
 void ROSGUI::on5DOFI_URDF()
 {
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -384,6 +388,7 @@ void ROSGUI::on6DOFI_URDF()
 //  // SIN COPIA DE ARCHIVO
 
 // CON COPIA DE ARCHIVO
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -706,41 +711,65 @@ void ROSGUI::on_6DOF()
 
 
 
-void ROSGUI::on_checkBox_2_toggled(int checked)
-{
-  if (checked==Qt::Checked)
-  {
-   mRviz->refreshTF(true);
-  }
-   else
-  {
- //tfrv=true;
-   mRviz->refreshTF(false);
-  }
-}
+//void ROSGUI::on_checkBox_2_toggled(int checked)
+//{
+//  if (checked==Qt::Checked)
+//  {
+//   mRviz->refreshTF(true);
+//  }
+//   else
+//  {
+// //tfrv=true;
+//   mRviz->refreshTF(false);
+//  }
+//}
 
-void ROSGUI::on_checkBox_3_toggled(int checked=1)
+//void ROSGUI::on_checkBox_3_toggled(int checked=1)
+//{
+//  if (checked==Qt::Checked)
+//  {
+//   mRviz->refreshRM(true);
+//  }
+//   else
+//  {
+//    mRviz->refreshRM(false);
+//  }
+//}
+
+void ROSGUI::on_comboBox_currentIndexChanged(int index=0)
 {
-  if (checked==Qt::Checked)
+  switch (index){
+   case 0:
   {
+   mRviz->refreshTF(true, true, true);
    mRviz->refreshRM(true);
+   break;
   }
-   else
-  {
-    mRviz->refreshRM(false);
-  }
-}
-
-void ROSGUI::on_comboBox_activated(int index=0)
-{
-  if (index==0)
+   case 1:
+ {
+  mRviz->refreshTF(false, false, false);
+  mRviz->refreshRM(true);
+  break;
+ }
+   case 2:
   {
    mRviz->refreshTF(true, true, false);
+   mRviz->refreshRM(true);
+   break;
   }
-  if(index==1)
+   case 3:
  {
   mRviz->refreshTF(true, true, true);
+  mRviz->refreshRM(false);
+  break;
  }
+   case 4:
+ {
+  mRviz->refreshTF(true, true, false);
+  mRviz->refreshRM(false);
+  break;
+ }
+}
 }
 
 
@@ -755,7 +784,7 @@ bool ROSGUI::init()
  {
           std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
          return false;
-      }
+ }
 
   return true;
 }
@@ -775,7 +804,8 @@ std::vector< double > ROSGUI::getJointUpperLimits()
 
 void ROSGUI::updatetoURDF()
 {
-  if(!init()){
+  if(!init())
+  {
      ROS_ERROR("Error publisher");
   }
   //radians for revolute, meters for prismatic
@@ -853,3 +883,8 @@ void ROSGUI::resetvalue(){
   main_window_ui_.spinBox6DOF->    setValue(resetv);
 }
 
+
+//void ROSGUI::on_comboBox_currentIndexChanged(int index)
+//{
+
+//}

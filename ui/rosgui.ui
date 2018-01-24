@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1050</width>
     <height>844</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -1160,13 +1160,33 @@
                       <string>KR210</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
                        <width>37</width>
                        <height>23</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QCheckBox" name="checkBox6DOFI">
+                     <property name="autoFillBackground">
+                      <bool>true</bool>
+                     </property>
+                     <property name="text">
+                      <string>IRB120</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resources.qrc">
+                       <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>27</width>
+                       <height>24</height>
                       </size>
                      </property>
                     </widget>
@@ -1180,7 +1200,7 @@
                       <string>BMDA3</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1203,7 +1223,7 @@
                       <string>MH5</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1226,7 +1246,7 @@
                       <string>IRB5400</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1234,29 +1254,6 @@
                        <width>27</width>
                        <height>24</height>
                       </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QCheckBox" name="checkBox6DOFI">
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>IRB120</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>27</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="checked">
-                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1362,21 +1359,47 @@
              <widget class="QComboBox" name="comboBox">
               <item>
                <property name="text">
-                <string>Show Arrows</string>
+                <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
-                 <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Show All</string>
+                <string>Show Robot</string>
                </property>
                <property name="icon">
-                <iconset>
-                 <activeoff>:/images/img/noun_1036042_cc.png</activeoff>
-                </iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Show Robot with Arrows</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Show Arrows with Names</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Show Arrows</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
              </widget>
@@ -1474,8 +1497,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>18</height>
+     <width>1050</width>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFILE">
@@ -1535,7 +1558,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -145,10 +145,13 @@ public Q_SLOTS:
 
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);
-      void on_checkBox_2_toggled(int checked);
-      void on_checkBox_3_toggled(int checked);
-      void on_comboBox_activated(int index);
+//      void on_checkBox_2_toggled(int checked);
+//      void on_checkBox_3_toggled(int checked);
+    //  void on_comboBox_activated(int index);
+      void on_comboBox_currentIndexChanged(int index);
 
+
+private slots:
 
 private:
 
