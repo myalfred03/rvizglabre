@@ -20,6 +20,8 @@
 #include <kdl/chainfksolverpos_recursive.hpp>
 #include <kdl/frames_io.hpp>
 
+#include <kdl/tree.hpp>
+#include <kdl_parser/kdl_parser.hpp>
 //ANRO URDF_ROBOT
 
 namespace KDL { class Tree; class Chain; }
@@ -52,11 +54,11 @@ private:
 //   std::vector<double> upper_limits;
   KDL::Tree  kdl_tree;
   KDL::Chain kdl_chain;
-  boost::shared_ptr<KDL::ChainFkSolverPos_recursive> fksolver;
+ // KDL::ChainFkSolverPos_recursive fksolver;
 //  KDL::ChainFkSolverPos_recursive* fksolver;
   KDL::Chain kdl_chain2;
   KDL::Frame result = KDL::Frame::Identity();
-  KDL::JntArray j =KDL::JntArray(6);
+  //KDL::JntArray j =KDL::JntArray(6);
   KDL::Rotation rot_mat ;
 
 

@@ -7,7 +7,7 @@
 <!--<param name="use_gui" value="$(arg gui)"/>-->
 <!--<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />-->
 <node name="rvizglabre" pkg="rvizglabre" type="rvizglabre"/>
-<node name="talker" pkg="rvizglabre" type="talker"  />
+<!--<node name="talker" pkg="rvizglabre" type="talker"  />-->
 
 
 </launch>
