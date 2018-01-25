@@ -159,7 +159,7 @@ set (MyProjectLib_qrc
 #endif()
 add_library(lib ${MyProject_Lib})
 
-target_link_libraries(lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(lib /opt/ros/kinetic/lib/liborocos-kdl.so.1.3 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
 
 add_executable(rvizglabre  ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
 

@@ -56,7 +56,7 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
       }
 
       ROS_DEBUG("%s content\n%s", full_param_name.c_str(), xml_string.c_str());
-      xml_string2 =  "/home/udp/ros_qtc_plugin/src/rvizglabre/modelos/sia10f.urdf";
+      xml_string2 =  "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/sia10f.urdf";
                                //Parametro Root Link KDL CHAIN
 
       nh.searchParam(param_nameCr, full_param_nameCr);
