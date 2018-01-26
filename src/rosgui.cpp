@@ -814,11 +814,17 @@ void ROSGUI::updatetoURDF()
  // chainFK     = chain();
 
 
-//  std::cout << " px "<< pos_mat.x() <<	" py "<< pos_mat.y() <<	" pz "<< pos_mat.z() <<std::endl;
+ std::cout << " px "<< pos_mat.x() <<	" py "<< pos_mat.y() <<	" pz "<< pos_mat.z() <<std::endl;
 
-  std::cout << std::setprecision(3) << pos_mat << "\t\t";
+ // std::cout << std::setprecision(3) << pos_mat << "\t\t";
+ QString stringX = QString::number(pos_mat.x()); //Convert Double to String
+ QString stringY = QString::number(pos_mat.y());
+ QString stringZ = QString::number(pos_mat.z());
 
-  main_window_ui_.lineEdit->setText("HI");
+  main_window_ui_.lineEdit->setText(stringX);
+  main_window_ui_.lineEdit_2->setText(stringY);
+  main_window_ui_.lineEdit_3->setText(stringZ);
+
 
 
 

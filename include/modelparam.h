@@ -36,7 +36,7 @@ public:
           bool readJntLimitsFromROSParamURDF(
           std::vector<double>& lower_limits,
           std::vector<double>& upper_limits,
-           KDL::Vector pos_mat
+          KDL::Vector& pos_mat
           /*std::vector<std::string>& limited_jnt_names,
           KDL::Tree& kdl_tree,*/
                                      /*  const std::string& robot_description_ros_name = "robot_description",
