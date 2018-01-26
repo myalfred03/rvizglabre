@@ -585,12 +585,12 @@ void ROSGUI::updateDialer()
   //          j(4) = -M_PI ;
   //          j(5) =  M_PI / 4;
          //   j(6) =  M_PI / 4;
-  j(0) = main_window_ui_.spinBox1DOF->value();
-  j(1) = main_window_ui_.spinBox2DOF->value();
-  j(2) = main_window_ui_.spinBox3DOF->value();
-  j(3) = main_window_ui_.spinBox4DOF->value();
-  j(4) = main_window_ui_.spinBox5DOF->value();
-  j(5) = main_window_ui_.spinBox6DOF->value();
+  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
+  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
+  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
+  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
+  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
+  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
 
 
 
