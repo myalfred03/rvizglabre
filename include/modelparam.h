@@ -32,17 +32,11 @@ class modelparam
 {
 public:
   modelparam();
+          bool initmodel();
+          bool ForwardK(KDL::Vector &pos_mat, KDL::JntArray j);
 
-          bool readJntLimitsFromROSParamURDF(
-          std::vector<double>& lower_limits,
-          std::vector<double>& upper_limits,
-          KDL::Vector& pos_mat
-          /*std::vector<std::string>& limited_jnt_names,
-          KDL::Tree& kdl_tree,*/
-                                     /*  const std::string& robot_description_ros_name = "robot_description",
-          const std::string& root_link_ros_name = "root_link",
-          const std::string& tip_link_ros_name = "tip_link"*/
-                                     );
+          bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
+          std::vector<double>& upper_limits);
 //  std::vector<double> lower_limits;
 //    std::vector<double> upper_limits;
 
@@ -60,6 +54,8 @@ private:
   KDL::Frame result = KDL::Frame::Identity();
   //KDL::JntArray j =KDL::JntArray(6);
   KDL::Rotation rot_mat ;
+  urdf::Model urdf_model;
+  KDL::JntArray j1 =KDL::JntArray(6);
 
 
 };

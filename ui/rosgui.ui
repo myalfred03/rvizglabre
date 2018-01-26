@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1050</width>
+    <width>1051</width>
     <height>844</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -74,7 +74,7 @@
              <bool>true</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -1160,7 +1160,7 @@
                       <string>KR210</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="resources.qrc">
+                      <iconset resource="../resources.qrc">
                        <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1180,7 +1180,7 @@
                       <string>IRB120</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="resources.qrc">
+                      <iconset resource="../resources.qrc">
                        <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1200,7 +1200,7 @@
                       <string>BMDA3</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="resources.qrc">
+                      <iconset resource="../resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1223,7 +1223,7 @@
                       <string>MH5</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="resources.qrc">
+                      <iconset resource="../resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1246,7 +1246,7 @@
                       <string>IRB5400</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="resources.qrc">
+                      <iconset resource="../resources.qrc">
                        <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1362,7 +1362,7 @@
                 <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
@@ -1371,7 +1371,7 @@
                 <string>Show Robot</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
                </property>
               </item>
@@ -1380,7 +1380,7 @@
                 <string>Show Robot with Arrows</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
                </property>
               </item>
@@ -1389,7 +1389,7 @@
                 <string>Show Arrows with Names</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
                </property>
               </item>
@@ -1398,7 +1398,7 @@
                 <string>Show Arrows</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -1497,7 +1497,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1050</width>
+     <width>1051</width>
      <height>19</height>
     </rect>
    </property>
@@ -1558,7 +1558,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections>
   <connection>

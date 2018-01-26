@@ -163,9 +163,9 @@ target_link_libraries(lib /opt/ros/kinetic/lib/liborocos-kdl.so.1.3 ${catkin_LIB
 
 add_executable(rvizglabre  ${MyProject_src} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
 
-add_executable(talker  src/robot_state.cpp)
+#add_executable(talker  src/robot_state.cpp)
 
-target_link_libraries(talker lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
+#target_link_libraries(talker lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 #  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against

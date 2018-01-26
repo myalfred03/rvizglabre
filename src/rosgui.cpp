@@ -127,7 +127,7 @@ ROSGUI::ROSGUI()
     QObject::connect(thWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
     QObject::connect(frWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
 
-
+    //Cinematica Inversa
     QObject::connect(main_window_ui_.xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     QObject::connect(main_window_ui_.ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     QObject::connect(main_window_ui_.zSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
@@ -141,6 +141,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.rollBox,      SIGNAL(valueChanged(double)), SLOT(updateSlider()));
     QObject::connect(main_window_ui_.pitchBox,     SIGNAL(valueChanged(double)), SLOT(updateSlider()));
     QObject::connect(main_window_ui_.yawBox,       SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    //Cinematica Inversa
 
     //Control de dialer y spinbox activos
     QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
@@ -153,7 +154,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-
+    //Cinematica Directa
     QObject::connect(main_window_ui_.dial1DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
     QObject::connect(main_window_ui_.dial2DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
     QObject::connect(main_window_ui_.dial3DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
@@ -167,6 +168,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.spinBox4DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     QObject::connect(main_window_ui_.spinBox5DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     QObject::connect(main_window_ui_.spinBox6DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    //Cinematica Directa
 
 
     QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on6DOFI_URDF()));
@@ -569,8 +571,28 @@ void ROSGUI::updateSlider()
 
 void ROSGUI::updateDialer()
 {
-//  std::map<std::string,int> my_map;
-//     my_map["joint_1"] =  11;
+
+
+
+
+
+  //Cinematica Directa
+
+  //          j(0) = -M_PI / 4;
+  //          j(1) =  M_PI ;
+  //          j(2) =  M_PI / 4;
+  //          j(3) =  M_PI / 8;
+  //          j(4) = -M_PI ;
+  //          j(5) =  M_PI / 4;
+         //   j(6) =  M_PI / 4;
+  j(0) = main_window_ui_.spinBox1DOF->value();
+  j(1) = main_window_ui_.spinBox2DOF->value();
+  j(2) = main_window_ui_.spinBox3DOF->value();
+  j(3) = main_window_ui_.spinBox4DOF->value();
+  j(4) = main_window_ui_.spinBox5DOF->value();
+  j(5) = main_window_ui_.spinBox6DOF->value();
+
+
 
   main_window_ui_.dial1DOF->    blockSignals(true);
   main_window_ui_.dial2DOF->    blockSignals(true);
@@ -600,6 +622,19 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial4DOF->    blockSignals(false);
   main_window_ui_.dial5DOF->    blockSignals(false);
   main_window_ui_.dial6DOF->    blockSignals(false);
+  if(!jointsv->ForwardK(pos_mat, j))
+  {
+           std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+  }
+  QString stringX = QString::number(pos_mat.x()); //Convert Double to String
+  QString stringY = QString::number(pos_mat.y());
+  QString stringZ = QString::number(pos_mat.z());
+
+   main_window_ui_.lineEdit->setText(stringX);
+   main_window_ui_.lineEdit_2->setText(stringY);
+   main_window_ui_.lineEdit_3->setText(stringZ);
+
+
 
 }
 
@@ -768,25 +803,48 @@ void ROSGUI::on_comboBox_currentIndexChanged(int index=0)
   mRviz->refreshTF(true, true, false);
   mRviz->refreshRM(false);
   break;
- }
-}
+   }
+  }
 }
 
 
 bool ROSGUI::init()
 {
 
+            j(0) =  0;
+            j(1) =  0;
+            j(2) =  0;
+            j(3) =  0;
+            j(4) =  0;
+            j(5) =  0;
   jointsv = new modelparam;
- if(!jointsv->readJntLimitsFromROSParamURDF(
-                                      joints_lower_limit_
-                                      , joints_upper_limit_
-                                      ,pos_mat))
+
+ if(!jointsv->initmodel())
  {
-          std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
+          std::cerr << "Error at init model" <<std::endl;
          return false;
  }
 
-  return true;
+
+
+ if(!jointsv->readJntLimitsFromROSParamURDF(
+                                      joints_lower_limit_
+                                      , joints_upper_limit_
+                                      ))
+ {
+          std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+         return false;
+ }
+
+
+  if(!jointsv->ForwardK(pos_mat, j))
+  {
+           std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+          return false;
+  }
+
+   return true;
+
 }
 
 std::vector<double> ROSGUI::getJointLowerLimits()

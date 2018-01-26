@@ -7,19 +7,9 @@ modelparam::modelparam()
 //double readJntLimitsFromROSParamURDF();
 
 }
-
-bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits, std::vector<double> &upper_limits, KDL::Vector &pos_mat)
-
+bool modelparam::initmodel()
 {
-  double positions[] =
 
-    {0, 0, 0, 0, 0, 0};
-
-
-  lower_limits.clear();
-  upper_limits.clear();
-
-  //KDL WRAPPER
   std::string param_nameR = "robot_editor/robot_description";
   std::string full_param_name;
   std::string xml_string;
@@ -83,7 +73,6 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
           ROS_DEBUG("%s content\n%s", full_param_nameCt.c_str(), xml_stringCt.c_str());
 
       /// Get urdf model out of robot_description
-          urdf::Model urdf_model;
           if (!urdf_model.initString(xml_string))    //Si se abre desde una direccion de ruta de archivo .initFile
           {
               ROS_ERROR("Failed to parse urdf file in model param");
@@ -104,56 +93,68 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
+          return true;
 
-        //  Obtaining FK
-          unsigned int nj = 0;
-          nj = kdl_chain.getNrOfJoints();
-          ROS_INFO("[Segments,joints]:[%d]",nj);
+}
+
+bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j)
+{
+  j1=j;
+  if (!initmodel())
+  {ROS_ERROR("Failed to parse urdf file in model param");
+   }
+
+  //  Obtaining FK
+
+//  double positions[] =
+
+//    {0, 0, 0, 0, 0, 0};
+  unsigned int nj = 0;
+  nj = kdl_chain.getNrOfJoints();
+  ROS_INFO("[Segments,joints]:[%d]",nj);
 
 
-          // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
-      KDL::ChainFkSolverPos_recursive fksolver(kdl_chain);
-      KDL::JntArray q(nj);
+  // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
+KDL::ChainFkSolverPos_recursive fksolver(kdl_chain);
+KDL::JntArray q(nj);
 
-
-        //  j(0) = main_window_ui_.dial1DOF->value();
-        //  j(1) = main_window_ui_.dial2DOF->value();
-        //  j(2) = main_window_ui_.dial3DOF->value();
-        //  j(3) = main_window_ui_.dial4DOF->value();
-        //  j(4) = main_window_ui_.dial5DOF->value();
-        //  j(5) = main_window_ui_.dial6DOF->value();
-      for(unsigned int i = 0;i < nj;i++)
-        {
-          q(i)=positions[i];
-        }
-
-//          j(0) = -M_PI / 4;
-//          j(1) =  M_PI ;
-//          j(2) =  M_PI / 4;
-//          j(3) =  M_PI / 8;
-//          j(4) = -M_PI ;
-//          j(5) =  M_PI / 4;
-       //   j(6) =  M_PI / 4;
-         double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
-
-         fksolver.JntToCart(q, result,nj);
-         KDL::Rotation R;
-           R = result.M;
-
-           R.GetRPY(roll,pitch,yaw);
-
-//           if(kinematics_status >= 0)
-//           {
-//             std::cout << result << std::endl;
-//             printf("\n[Roll,Pitch,Yaw] = [%f,%f,%f]\n",roll,pitch,yaw);
-//           }
-//           else{
-//             printf("%s \n kinematic status:,%d","Error: could not calculate forward kinematics :(" ,kinematics_status);
-//           }
+for(unsigned int i = 0;i < nj;i++)
+{
+  q(i)=j1(i);
+}
 
 
 
-          pos_mat = result.p;
+ double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
+
+ fksolver.JntToCart(q, result,nj);
+ KDL::Rotation R;
+   R = result.M;
+
+   R.GetRPY(roll,pitch,yaw);
+
+
+
+  pos_mat = result.p;
+
+  return true;
+
+}
+
+
+bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits, std::vector<double> &upper_limits)
+
+{
+
+  if (!initmodel())
+  {ROS_ERROR("Failed to parse urdf file in model param");
+   }
+
+
+  lower_limits.clear();
+  upper_limits.clear();
+
+  //KDL WRAPPER
 
 
           int nbr_segs = kdl_chain.getNrOfSegments();

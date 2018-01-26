@@ -70,8 +70,10 @@ public:
       std::vector< double > joint_lower;
       void updatetoURDF();
       void resetvalue();
+      KDL::JntArray j =KDL::JntArray(6);
 
       KDL::Vector pos_mat;
+      double positions;
 
 
 

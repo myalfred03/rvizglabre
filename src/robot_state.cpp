@@ -38,7 +38,7 @@ bool robotstate::init()
  if(!joints.readJntLimitsFromROSParamURDF(
                                       joints_lower_limit_
                                       , joints_upper_limit_
-                                      ,pos_mat))
+                                      ))
  {
           std::cerr << "Error at rtt_ros_kdl_tools::readJntLimitsFromROSParamURDF" <<std::endl;
          return false;
