@@ -74,6 +74,7 @@ public:
 
       KDL::Vector pos_mat;
       double positions;
+      unsigned int nj;
 
 
 

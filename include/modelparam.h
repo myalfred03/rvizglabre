@@ -33,7 +33,7 @@ class modelparam
 public:
   modelparam();
           bool initmodel();
-          bool ForwardK(KDL::Vector &pos_mat, KDL::JntArray j);
+          bool ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj);
 
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
           std::vector<double>& upper_limits);

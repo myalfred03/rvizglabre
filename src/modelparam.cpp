@@ -97,22 +97,22 @@ bool modelparam::initmodel()
 
 }
 
-bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j)
+bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj)
 {
-  j1=j;
-  if (!initmodel())
-  {ROS_ERROR("Failed to parse urdf file in model param");
-   }
+
+//  if (!initmodel())
+//  {ROS_ERROR("Failed to parse urdf file in model param");
+//   }
 
   //  Obtaining FK
 
 //  double positions[] =
 
 //    {0, 0, 0, 0, 0, 0};
-  unsigned int nj = 0;
+  nj = 0;
   nj = kdl_chain.getNrOfJoints();
   ROS_INFO("[Segments,joints]:[%d]",nj);
-
+   j1=j;
 
   // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
 KDL::ChainFkSolverPos_recursive fksolver(kdl_chain);
@@ -146,9 +146,9 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
 {
 
-  if (!initmodel())
-  {ROS_ERROR("Failed to parse urdf file in model param");
-   }
+//  if (!initmodel())
+//  {ROS_ERROR("Failed to parse urdf file in model param");
+//   }
 
 
   lower_limits.clear();

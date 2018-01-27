@@ -573,27 +573,6 @@ void ROSGUI::updateDialer()
 {
 
 
-
-
-
-  //Cinematica Directa
-
-  //          j(0) = -M_PI / 4;
-  //          j(1) =  M_PI ;
-  //          j(2) =  M_PI / 4;
-  //          j(3) =  M_PI / 8;
-  //          j(4) = -M_PI ;
-  //          j(5) =  M_PI / 4;
-         //   j(6) =  M_PI / 4;
-  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
-  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
-  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
-  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
-  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
-  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
-
-
-
   main_window_ui_.dial1DOF->    blockSignals(true);
   main_window_ui_.dial2DOF->    blockSignals(true);
   main_window_ui_.dial3DOF->    blockSignals(true);
@@ -622,10 +601,21 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial4DOF->    blockSignals(false);
   main_window_ui_.dial5DOF->    blockSignals(false);
   main_window_ui_.dial6DOF->    blockSignals(false);
-  if(!jointsv->ForwardK(pos_mat, j))
+  j(nj)=0;
+  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
+  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
+  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
+  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
+  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
+  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
+
+  if(!jointsv->ForwardK(pos_mat, j, nj))
   {
            std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
   }
+
+
+
   QString stringX = QString::number(pos_mat.x()); //Convert Double to String
   QString stringY = QString::number(pos_mat.y());
   QString stringZ = QString::number(pos_mat.z());
@@ -640,6 +630,7 @@ void ROSGUI::updateDialer()
 
 void ROSGUI::updateSpinboxesD()
 {
+
 
     main_window_ui_.spinBox1DOF->    blockSignals(true);
     main_window_ui_.spinBox2DOF->    blockSignals(true);
@@ -669,6 +660,27 @@ void ROSGUI::updateSpinboxesD()
     main_window_ui_.spinBox4DOF->    blockSignals(false);
     main_window_ui_.spinBox5DOF->    blockSignals(false);
     main_window_ui_.spinBox6DOF->    blockSignals(false);
+
+    j(nj)=0;
+    j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
+    j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
+    j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
+    j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
+    j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
+    j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
+
+    if(!jointsv->ForwardK(pos_mat, j, nj))
+    {
+             std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+    }
+    QString stringX = QString::number(pos_mat.x()); //Convert Double to String
+    QString stringY = QString::number(pos_mat.y());
+    QString stringZ = QString::number(pos_mat.z());
+
+     main_window_ui_.lineEdit->setText(stringX);
+     main_window_ui_.lineEdit_2->setText(stringY);
+     main_window_ui_.lineEdit_3->setText(stringZ);
+
 
 
 }
@@ -811,12 +823,7 @@ void ROSGUI::on_comboBox_currentIndexChanged(int index=0)
 bool ROSGUI::init()
 {
 
-            j(0) =  0;
-            j(1) =  0;
-            j(2) =  0;
-            j(3) =  0;
-            j(4) =  0;
-            j(5) =  0;
+
   jointsv = new modelparam;
 
  if(!jointsv->initmodel())
@@ -837,12 +844,18 @@ bool ROSGUI::init()
  }
 
 
-  if(!jointsv->ForwardK(pos_mat, j))
+  if(!jointsv->ForwardK(pos_mat, j, nj))
   {
            std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
           return false;
   }
 
+  j(nj) =  0;
+//  j(1) =  0;
+//  j(2) =  0;
+//  j(3) =  0;
+//  j(4) =  0;
+//  j(5) =  0;
    return true;
 
 }
