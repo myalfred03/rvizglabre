@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -159,14 +159,35 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="1">
+                   <item row="1" column="2">
                     <widget class="QLineEdit" name="lineEdit_2"/>
                    </item>
-                   <item row="0" column="1">
+                   <item row="0" column="2">
                     <widget class="QLineEdit" name="lineEdit"/>
                    </item>
-                   <item row="2" column="1">
+                   <item row="2" column="2">
                     <widget class="QLineEdit" name="lineEdit_3"/>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="label_29">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="label_30">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QLabel" name="label_31">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>
@@ -174,9 +195,16 @@
                 <item row="1" column="0">
                  <widget class="QGroupBox" name="gridGroupBox">
                   <property name="title">
-                   <string>DOF</string>
+                   <string>DOF  Grados</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_5">
+                   <item row="9" column="3">
+                    <widget class="Line" name="line_15">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="10" column="2" rowspan="2" colspan="2">
                     <widget class="Line" name="line_6">
                      <property name="orientation">
@@ -328,10 +356,20 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="9" column="3">
-                    <widget class="Line" name="line_15">
+                   <item row="5" column="3">
+                    <widget class="QDoubleSpinBox" name="spinBox2DOF">
+                     <property name="minimum">
+                      <double>-180.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>180.000000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2" rowspan="2" colspan="2">
+                    <widget class="Line" name="line_10">
                      <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                      <enum>Qt::Vertical</enum>
                      </property>
                     </widget>
                    </item>
@@ -351,27 +389,27 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="3">
-                    <widget class="QDoubleSpinBox" name="spinBox2DOF">
+                   <item row="3" column="3">
+                    <widget class="Line" name="line_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="16" column="3">
+                    <widget class="Line" name="line_19">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QDoubleSpinBox" name="spinBox1DOF">
                      <property name="minimum">
                       <double>-180.000000000000000</double>
                      </property>
                      <property name="maximum">
                       <double>180.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2" rowspan="2" colspan="2">
-                    <widget class="Line" name="line_10">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="3">
-                    <widget class="Line" name="line_4">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
                      </property>
                     </widget>
                    </item>
@@ -394,20 +432,10 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="16" column="3">
-                    <widget class="Line" name="line_19">
+                   <item row="16" column="1">
+                    <widget class="Line" name="line_18">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="3">
-                    <widget class="QDoubleSpinBox" name="spinBox1DOF">
-                     <property name="minimum">
-                      <double>-180.000000000000000</double>
-                     </property>
-                     <property name="maximum">
-                      <double>180.000000000000000</double>
                      </property>
                     </widget>
                    </item>
@@ -443,8 +471,15 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="16" column="1">
-                    <widget class="Line" name="line_18">
+                   <item row="12" column="3">
+                    <widget class="Line" name="line_17">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="Line" name="line_11">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
@@ -463,20 +498,6 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="12" column="3">
-                    <widget class="Line" name="line_17">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="Line" name="line_11">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="9" column="1">
                     <widget class="Line" name="line_14">
                      <property name="orientation">
@@ -486,6 +507,20 @@
                    </item>
                    <item row="6" column="1">
                     <widget class="Line" name="line_12">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="3">
+                    <widget class="Line" name="line_13">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="12" column="1">
+                    <widget class="Line" name="line_16">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
@@ -510,17 +545,13 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="12" column="1">
-                    <widget class="Line" name="line_16">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                   <item row="18" column="3">
+                    <widget class="QDoubleSpinBox" name="spinBox6DOF">
+                     <property name="minimum">
+                      <double>-180.000000000000000</double>
                      </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="3">
-                    <widget class="Line" name="line_13">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                     <property name="maximum">
+                      <double>180.000000000000000</double>
                      </property>
                     </widget>
                    </item>
@@ -543,13 +574,84 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="18" column="3">
-                    <widget class="QDoubleSpinBox" name="spinBox6DOF">
-                     <property name="minimum">
-                      <double>-180.000000000000000</double>
+                   <item row="1" column="4">
+                    <widget class="QLabel" name="label_15">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
                      </property>
-                     <property name="maximum">
-                      <double>180.000000000000000</double>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="4">
+                    <widget class="QLabel" name="label_24">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="4">
+                    <widget class="QLabel" name="label_25">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="11" column="4">
+                    <widget class="QLabel" name="label_26">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="14" column="4">
+                    <widget class="QLabel" name="label_27">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="18" column="4">
+                    <widget class="QLabel" name="label_28">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
                      </property>
                     </widget>
                    </item>
@@ -696,24 +798,48 @@
                 <item row="0" column="0">
                  <widget class="QGroupBox" name="groupBox">
                   <property name="title">
-                   <string>TCP</string>
+                   <string>Posicion deseada del TCP</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_14">
-                   <item row="0" column="2">
+                   <item row="0" column="0" colspan="3">
+                    <widget class="QLabel" name="label_38">
+                     <property name="text">
+                      <string>Introducir Valores en metros para el eje de coordenadas</string>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="6">
+                    <widget class="QLabel" name="label_41">
+                     <property name="text">
+                      <string>los joints del Robot</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="6">
                     <widget class="QCheckBox" name="checkBox">
                      <property name="text">
                       <string>EJECUTAR</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="0">
+                   <item row="3" column="2">
+                    <widget class="QLabel" name="label_32">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
                     <widget class="QLabel" name="label_2">
                      <property name="text">
                       <string>X</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="1">
+                   <item row="3" column="1">
                     <widget class="QSlider" name="xSlider">
                      <property name="minimum">
                       <number>-100</number>
@@ -735,7 +861,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="2">
+                   <item row="3" column="6">
                     <widget class="QDoubleSpinBox" name="xBox">
                      <property name="minimumSize">
                       <size>
@@ -757,14 +883,14 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="0">
+                   <item row="4" column="0">
                     <widget class="QLabel" name="label_4">
                      <property name="text">
                       <string>Y</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="1">
+                   <item row="4" column="1">
                     <widget class="QSlider" name="ySlider">
                      <property name="minimum">
                       <number>-100</number>
@@ -786,7 +912,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="2">
+                   <item row="4" column="6">
                     <widget class="QDoubleSpinBox" name="yBox">
                      <property name="minimumSize">
                       <size>
@@ -808,14 +934,14 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="0">
+                   <item row="5" column="0">
                     <widget class="QLabel" name="label_19">
                      <property name="text">
                       <string>Z</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="1">
+                   <item row="5" column="1">
                     <widget class="QSlider" name="zSlider">
                      <property name="minimum">
                       <number>-100</number>
@@ -840,7 +966,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="2">
+                   <item row="5" column="6">
                     <widget class="QDoubleSpinBox" name="zBox">
                      <property name="minimumSize">
                       <size>
@@ -862,14 +988,14 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="0">
+                   <item row="6" column="0">
                     <widget class="QLabel" name="label_16">
                      <property name="text">
                       <string>Yaw</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="1">
+                   <item row="6" column="1">
                     <widget class="QSlider" name="yawSlider">
                      <property name="minimum">
                       <number>-180</number>
@@ -894,7 +1020,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="2">
+                   <item row="6" column="6">
                     <widget class="QDoubleSpinBox" name="yawBox">
                      <property name="minimumSize">
                       <size>
@@ -916,14 +1042,14 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="0">
+                   <item row="7" column="0">
                     <widget class="QLabel" name="label_17">
                      <property name="text">
                       <string>Pitch</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="1">
+                   <item row="7" column="1">
                     <widget class="QSlider" name="pitchSlider">
                      <property name="minimum">
                       <number>-180</number>
@@ -948,7 +1074,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="2">
+                   <item row="7" column="6">
                     <widget class="QDoubleSpinBox" name="pitchBox">
                      <property name="minimumSize">
                       <size>
@@ -970,14 +1096,14 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="0">
+                   <item row="8" column="0">
                     <widget class="QLabel" name="label_18">
                      <property name="text">
                       <string>Roll</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="1">
+                   <item row="8" column="1">
                     <widget class="QSlider" name="rollSlider">
                      <property name="minimum">
                       <number>-180</number>
@@ -1002,7 +1128,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="2">
+                   <item row="8" column="6">
                     <widget class="QDoubleSpinBox" name="rollBox">
                      <property name="minimumSize">
                       <size>
@@ -1021,6 +1147,158 @@
                      </property>
                      <property name="singleStep">
                       <double>1.000000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="2">
+                    <widget class="QLabel" name="label_34">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="2">
+                    <widget class="QLabel" name="label_35">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="2">
+                    <widget class="QLabel" name="label_36">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QLabel" name="label_33">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="6">
+                    <widget class="QLabel" name="label_40">
+                     <property name="text">
+                      <string>Valores en grados de</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="2">
+                    <widget class="QLabel" name="label_37">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="7">
+                    <widget class="QLabel" name="label_42">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0" colspan="3">
+                    <widget class="QLabel" name="label_39">
+                     <property name="text">
+                      <string>Introducir Valores en grados para la orientacion del TCP</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3" rowspan="9">
+                    <widget class="Line" name="line_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="7">
+                    <widget class="QLabel" name="label_43">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="7">
+                    <widget class="QLabel" name="label_44">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="7">
+                    <widget class="QLabel" name="label_45">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="7">
+                    <widget class="QLabel" name="label_46">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="7">
+                    <widget class="QLabel" name="label_47">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
                      </property>
                     </widget>
                    </item>
@@ -1160,7 +1438,7 @@
                       <string>KR210</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1180,7 +1458,7 @@
                       <string>IRB120</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1200,7 +1478,7 @@
                       <string>BMDA3</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1223,7 +1501,7 @@
                       <string>MH5</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1246,7 +1524,7 @@
                       <string>IRB5400</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1362,7 +1640,7 @@
                 <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
@@ -1371,7 +1649,7 @@
                 <string>Show Robot</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
                </property>
               </item>
@@ -1380,7 +1658,7 @@
                 <string>Show Robot with Arrows</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
                </property>
               </item>
@@ -1389,7 +1667,7 @@
                 <string>Show Arrows with Names</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
                </property>
               </item>
@@ -1398,7 +1676,7 @@
                 <string>Show Arrows</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -1414,23 +1692,6 @@
               </property>
               <property name="text">
                <string>RVIZ  TOOLS</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox_2">
-              <property name="text">
-               <string>TF </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox_3">
-              <property name="text">
-               <string>RM</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -1558,7 +1819,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>
