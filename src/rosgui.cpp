@@ -176,6 +176,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on4DOFI_URDF()));
     QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
     QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
+    QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
@@ -186,7 +187,7 @@ ROSGUI::ROSGUI()
  //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
    QObject::connect(main_window_ui_.comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
 
-
+offWidgets();
     file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
 
@@ -430,16 +431,28 @@ void ROSGUI::on4DOFs_URDF()
 
  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 
-
  this->updateURDF(file_contents);
  updatetoURDF();
 
+}
 
-
-
-
+void ROSGUI::on2DOFs_URDF()
+{
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/URDF/modelos/robot2DOF.urdf", temporaryDir2.path() + "/robot2DOF.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/robot2DOF.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
 
 }
+
 
 
 
@@ -493,7 +506,7 @@ void ROSGUI::publishJointStates()
       {
          robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "robot_editor");
          robot_state_pub_->publishFixedTransforms("robot_editor");
-         ROS_INFO_STREAM(joint_positions_.size());
+         //ROS_INFO_STREAM(joint_positions_.size());
         //  ROS_INFO(joint_positions_);
         // sensor_msgs::JointState::ConstPtr& msg;
         // msg->fl;
@@ -501,7 +514,7 @@ void ROSGUI::publishJointStates()
 
          //msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
        //  ROS_INFO("Joint1=%f Joint2=%f", msg, msg);
-         ROS_INFO("Published joint state info");
+        // ROS_INFO("Published joint state info");
 
         // ROS_INFO(" Lower %f \n Upper %f",ROSGUI::lower_limits[1], ROSGUI::upper_limits[1]);
       }
@@ -691,11 +704,14 @@ void ROSGUI::updateSpinboxesD()
 
 void ROSGUI::on_2DOF()
 {
-
+        main_window_ui_.dial1DOF->   setEnabled(true);
+        main_window_ui_.dial2DOF->   setEnabled(true);
         main_window_ui_.dial3DOF->   setEnabled(false);
         main_window_ui_.dial4DOF->   setEnabled(false);
         main_window_ui_.dial5DOF->   setEnabled(false);
         main_window_ui_.dial6DOF->   setEnabled(false);
+        main_window_ui_.spinBox1DOF->setEnabled(true);
+        main_window_ui_.spinBox2DOF->setEnabled(true);
         main_window_ui_.spinBox3DOF->setEnabled(false);
         main_window_ui_.spinBox4DOF->setEnabled(false);
         main_window_ui_.spinBox5DOF->setEnabled(false);
@@ -704,10 +720,14 @@ void ROSGUI::on_2DOF()
 
 void ROSGUI::on_3DOF()
 {
+        main_window_ui_.dial1DOF->   setEnabled(true);
+        main_window_ui_.dial2DOF->   setEnabled(true);
         main_window_ui_.dial3DOF->   setEnabled(true);
         main_window_ui_.dial4DOF->   setEnabled(false);
         main_window_ui_.dial5DOF->   setEnabled(false);
         main_window_ui_.dial6DOF->   setEnabled(false);
+        main_window_ui_.spinBox1DOF->setEnabled(true);
+        main_window_ui_.spinBox2DOF->setEnabled(true);
         main_window_ui_.spinBox3DOF->setEnabled(true);
         main_window_ui_.spinBox4DOF->setEnabled(false);
         main_window_ui_.spinBox5DOF->setEnabled(false);
@@ -716,11 +736,14 @@ void ROSGUI::on_3DOF()
 
 void ROSGUI::on_4DOF()
 {
-
+        main_window_ui_.dial1DOF->   setEnabled(true);
+        main_window_ui_.dial2DOF->   setEnabled(true);
         main_window_ui_.dial3DOF->   setEnabled(true);
         main_window_ui_.dial4DOF->   setEnabled(true);
         main_window_ui_.dial5DOF->   setEnabled(false);
         main_window_ui_.dial6DOF->   setEnabled(false);
+        main_window_ui_.spinBox1DOF->setEnabled(true);
+        main_window_ui_.spinBox2DOF->setEnabled(true);
         main_window_ui_.spinBox3DOF->setEnabled(true);
         main_window_ui_.spinBox4DOF->setEnabled(true);
         main_window_ui_.spinBox5DOF->setEnabled(false);
@@ -731,10 +754,14 @@ void ROSGUI::on_4DOF()
 
 void ROSGUI::on_5DOF()
 {
+        main_window_ui_.dial1DOF->   setEnabled(true);
+        main_window_ui_.dial2DOF->   setEnabled(true);
         main_window_ui_.dial3DOF->   setEnabled(true);
         main_window_ui_.dial4DOF->   setEnabled(true);
         main_window_ui_.dial5DOF->   setEnabled(true);
         main_window_ui_.dial6DOF->   setEnabled(false);
+        main_window_ui_.spinBox1DOF->setEnabled(true);
+        main_window_ui_.spinBox2DOF->setEnabled(true);
         main_window_ui_.spinBox3DOF->setEnabled(true);
         main_window_ui_.spinBox4DOF->setEnabled(true);
         main_window_ui_.spinBox5DOF->setEnabled(true);
@@ -745,17 +772,34 @@ void ROSGUI::on_5DOF()
 
 void ROSGUI::on_6DOF()
 {
+       main_window_ui_.dial1DOF->   setEnabled(true);
+       main_window_ui_.dial2DOF->   setEnabled(true);
        main_window_ui_.dial3DOF->   setEnabled(true);
        main_window_ui_.dial4DOF->   setEnabled(true);
        main_window_ui_.dial5DOF->   setEnabled(true);
        main_window_ui_.dial6DOF->   setEnabled(true);
+       main_window_ui_.spinBox1DOF->setEnabled(true);
+       main_window_ui_.spinBox2DOF->setEnabled(true);
        main_window_ui_.spinBox3DOF->setEnabled(true);
        main_window_ui_.spinBox4DOF->setEnabled(true);
        main_window_ui_.spinBox5DOF->setEnabled(true);
        main_window_ui_.spinBox6DOF->setEnabled(true);
 }
 
-
+void ROSGUI::offWidgets(){
+  main_window_ui_.dial1DOF->   setEnabled(false);
+  main_window_ui_.dial2DOF->   setEnabled(false);
+  main_window_ui_.dial3DOF->   setEnabled(false);
+  main_window_ui_.dial4DOF->   setEnabled(false);
+  main_window_ui_.dial5DOF->   setEnabled(false);
+  main_window_ui_.dial6DOF->   setEnabled(false);
+  main_window_ui_.spinBox1DOF->setEnabled(false);
+  main_window_ui_.spinBox2DOF->setEnabled(false);
+  main_window_ui_.spinBox3DOF->setEnabled(false);
+  main_window_ui_.spinBox4DOF->setEnabled(false);
+  main_window_ui_.spinBox5DOF->setEnabled(false);
+  main_window_ui_.spinBox6DOF->setEnabled(false);
+}
 
 
 //void ROSGUI::on_checkBox_2_toggled(int checked)

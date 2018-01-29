@@ -29,5 +29,6 @@
         <file>modelos/sia10f.urdf</file>
         <file>modelos/sia20d.urdf</file>
         <file>modelos/urdf.rviz</file>
+        <file>modelos/robot2DOF.urdf</file>
     </qresource>
 </RCC>
