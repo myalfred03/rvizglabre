@@ -1,0 +1,28 @@
+
+<robot name="origins">
+
+  <link name="base_link">
+
+  
+    <visual>
+      <origin rpy="0.6 0 2.3" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rvizglabre/modelos/uni2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba=" 0 0 250 0.7"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rvizglabre/modelos/uni2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </collision>
+  </link>
+
+
+</robot>

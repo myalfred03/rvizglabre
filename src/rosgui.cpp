@@ -177,6 +177,7 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
     QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
     QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
+    QObject::connect(main_window_ui_.checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on3DOFs_URDF()));
     QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
 
@@ -188,15 +189,15 @@ ROSGUI::ROSGUI()
    QObject::connect(main_window_ui_.comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
 
 offWidgets();
-    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
 
+QTemporaryDir temporaryDir2;
+QFile::copy(":/robots/URDF/modelos/uni.urdf", temporaryDir2.path() + "/uni.urdf");
+std::ifstream selected_file(QString(temporaryDir2.path() + "/uni.urdf").toStdString().c_str());
+std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+this->updateURDF(file_contents);
 
-    std::ifstream selected_file(file_name_.toStdString().c_str());
-    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-    this->updateURDF(file_contents);
-
-QProcess *proc = new QProcess();
-proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
+//QProcess *proc = new QProcess();
+//proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
 
 
 //main_window_ui_.dial1DOF->setMinimum(0);
@@ -445,8 +446,24 @@ void ROSGUI::on2DOFs_URDF()
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
   QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/robot2DOF.urdf", temporaryDir2.path() + "/robot2DOF.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/robot2DOF.urdf").toStdString().c_str());
+  QFile::copy(":/robots/URDF/modelos/robot2dof.urdf", temporaryDir2.path() + "/robot2dof.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/robot2dof.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+void ROSGUI::on3DOFs_URDF()
+{
+  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/URDF/modelos/3dof.urdf", temporaryDir2.path() + "/3dof.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/3dof.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();

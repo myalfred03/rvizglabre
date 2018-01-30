@@ -147,6 +147,7 @@ public Q_SLOTS:
       void on6DOFI_URDF();
       void on4DOFs_URDF();
       void on2DOFs_URDF();
+      void on3DOFs_URDF();
 
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);

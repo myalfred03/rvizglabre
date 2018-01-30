@@ -118,7 +118,7 @@ bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &n
 KDL::ChainFkSolverPos_recursive fksolver(kdl_chain);
 KDL::JntArray q(nj);
 
-for(unsigned int i = 0;i < nj;i++)
+for(unsigned int i = 0; i< nj; i++)
 {
   q(i)=j1(i);
 }
