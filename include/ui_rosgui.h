@@ -193,7 +193,7 @@ public:
     QFrame *line_21;
     QVBoxLayout *verticalLayout_7;
     QFrame *line;
-    QHBoxLayout *horizontalLayout_3;
+    QGridLayout *gridLayout_19;
     QComboBox *comboBox;
     QLabel *label_23;
     QFrame *line_3;
@@ -1199,9 +1199,9 @@ public:
 
         verticalLayout_7->addWidget(line);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        gridLayout_19 = new QGridLayout();
+        gridLayout_19->setSpacing(6);
+        gridLayout_19->setObjectName(QStringLiteral("gridLayout_19"));
         comboBox = new QComboBox(centralWidget);
         QIcon icon4;
         icon4.addFile(QStringLiteral(":/images/img/noun_1036029_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -1220,7 +1220,7 @@ public:
         comboBox->addItem(icon8, QString());
         comboBox->setObjectName(QStringLiteral("comboBox"));
 
-        horizontalLayout_3->addWidget(comboBox);
+        gridLayout_19->addWidget(comboBox, 0, 0, 1, 1);
 
         label_23 = new QLabel(centralWidget);
         label_23->setObjectName(QStringLiteral("label_23"));
@@ -1229,10 +1229,10 @@ public:
         font7.setPointSize(15);
         label_23->setFont(font7);
 
-        horizontalLayout_3->addWidget(label_23);
+        gridLayout_19->addWidget(label_23, 0, 1, 1, 1);
 
 
-        verticalLayout_7->addLayout(horizontalLayout_3);
+        verticalLayout_7->addLayout(gridLayout_19);
 
         line_3 = new QFrame(centralWidget);
         line_3->setObjectName(QStringLiteral("line_3"));
