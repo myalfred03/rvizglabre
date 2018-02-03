@@ -93,29 +93,25 @@ bool modelparam::initmodel()
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
+          njnt = kdl_chain.getNrOfJoints();
           return true;
 
 }
 
 bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj)
 {
-
 //  if (!initmodel())
 //  {ROS_ERROR("Failed to parse urdf file in model param");
 //   }
 
   //  Obtaining FK
-
-//  double positions[] =
-
-//    {0, 0, 0, 0, 0, 0};
   nj = 0;
-  nj = kdl_chain.getNrOfJoints();
+  nj = njnt;
   ROS_INFO("[Segments,joints]:[%d]",nj);
-   j1=j;
+  j1=j;
 
   // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
-KDL::ChainFkSolverPos_recursive fksolver(kdl_chain);
+ fksolver= new KDL::ChainFkSolverPos_recursive(kdl_chain);  //please check the inner of Code DH, Newton-Euler
 KDL::JntArray q(nj);
 
 for(unsigned int i = 0; i< nj; i++)
@@ -123,21 +119,43 @@ for(unsigned int i = 0; i< nj; i++)
   q(i)=j1(i);
 }
 
-
-
  double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
-
- fksolver.JntToCart(q, result,nj);
+ fksolver->JntToCart(q, result,nj);
  KDL::Rotation R;
    R = result.M;
-
    R.GetRPY(roll,pitch,yaw);
+   pos_mat = result.p;
+   return true;
+}
+
+bool modelparam::InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY , KDL::JntArray &pos_joint)
+{
+
+KDL::ChainIkSolverVel_pinv iksolverV(kdl_chain);
+KDL::ChainIkSolverPos_NR   iksolver (kdl_chain,*fksolver,iksolverV,100,1e-3);
+KDL::Frame cartpos(tcpRPY,tcpXYZ);
+KDL::JntArray q_init(njnt);
+
+q_init(njnt) = 0;
+// q_init(1) = -0.62;
+// q_init(2) = 0.36;
+// q_init(3) = -0.12;
+// q_init(4) = 1.1;
+// q_init(5) = -0.35;
+// q_init(6) = 0.75;
+bool kinematics_status;
+kinematics_status = iksolver.CartToJnt(q_init,cartpos,pos_joint);
+if(kinematics_status>=0){
+for(int i=0;i<njnt;i++)
+      std::cout << pos_joint(i) <<std::endl;
+    printf("%s \n","Succes, thanks KDL!");
+    return true;
+}else{
+    printf("%s \n","Error: could not calculate forward kinematics :(");
+}
 
 
-
-  pos_mat = result.p;
-
-  return true;
+return true;
 
 }
 

@@ -15,6 +15,10 @@
 
 #include <vector>
 
+#include <kdl/chainiksolver.hpp>
+#include <kdl/chainiksolverpos_nr.hpp>
+#include <kdl/chainiksolvervel_pinv.hpp>
+
 //ANRO URDF_ROBOT
 #include <kdl/chainfksolver.hpp>
 #include <kdl/chainfksolverpos_recursive.hpp>
@@ -27,16 +31,18 @@
 namespace KDL { class Tree; class Chain; }
 /// RTT/ROS
 
-
 class modelparam
 {
 public:
   modelparam();
           bool initmodel();
           bool ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj);
+         // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
+          bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
           std::vector<double>& upper_limits);
+          unsigned int njnt;
 //  std::vector<double> lower_limits;
 //    std::vector<double> upper_limits;
 
@@ -49,7 +55,7 @@ private:
   KDL::Tree  kdl_tree;
   KDL::Chain kdl_chain;
  // KDL::ChainFkSolverPos_recursive fksolver;
-//  KDL::ChainFkSolverPos_recursive* fksolver;
+  KDL::ChainFkSolverPos_recursive* fksolver;
   KDL::Chain kdl_chain2;
   KDL::Frame result = KDL::Frame::Identity();
   //KDL::JntArray j =KDL::JntArray(6);

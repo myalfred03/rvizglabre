@@ -71,8 +71,12 @@ public:
       void updatetoURDF();
       void resetvalue();
       KDL::JntArray j =KDL::JntArray(6);
-
+      KDL::JntArray pos_joint;
       KDL::Vector pos_mat;
+      KDL::Vector tcpXYZ  = KDL::Vector(0.0,0.0,0.0);
+      KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+
+
       double positions;
       unsigned int nj;
 
@@ -134,7 +138,7 @@ public Q_SLOTS:
       void on_4DOF();
       void on_5DOF();
       void on_6DOF();
-
+      void executeIK();
      // void on_checkBox6DOFI_toggled(bool checked);
 
 

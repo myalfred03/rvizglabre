@@ -128,6 +128,9 @@ ROSGUI::ROSGUI()
     QObject::connect(frWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
 
     //Cinematica Inversa
+    //Execute IK
+    QObject::connect(main_window_ui_.checkBox,     SIGNAL(toggled(bool)),SLOT(executeIK()));
+    //Execute IK
     QObject::connect(main_window_ui_.xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     QObject::connect(main_window_ui_.ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     QObject::connect(main_window_ui_.zSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
@@ -641,7 +644,7 @@ void ROSGUI::updateDialer()
 
   if(!jointsv->ForwardK(pos_mat, j, nj))
   {
-           std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+    std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
   }
 
 
@@ -701,7 +704,7 @@ void ROSGUI::updateSpinboxesD()
 
     if(!jointsv->ForwardK(pos_mat, j, nj))
     {
-             std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+             std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
     }
     QString stringX = QString::number(pos_mat.x()); //Convert Double to String
     QString stringY = QString::number(pos_mat.y());
@@ -907,8 +910,17 @@ bool ROSGUI::init()
 
   if(!jointsv->ForwardK(pos_mat, j, nj))
   {
-           std::cerr << "Error at readJntLimitsFromROSParamURDF" <<std::endl;
+           std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
           return false;
+  }
+  KDL::Vector tcpXYZ  = KDL::Vector(0.0,0.0,0.0);
+  KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+
+
+  if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
+  {
+    std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
+   return false;
   }
 
   j(nj) =  0;
@@ -1019,6 +1031,19 @@ void ROSGUI::resetvalue(){
   main_window_ui_.spinBox4DOF->    setValue(resetv);
   main_window_ui_.spinBox5DOF->    setValue(resetv);
   main_window_ui_.spinBox6DOF->    setValue(resetv);
+}
+void ROSGUI::executeIK(){
+//KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_.xBox->value(),main_window_ui_.yBox->value(),main_window_ui_.zBox->value());
+//KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_.xSlider->value(),main_window_ui_.ySlider->value(),main_window_ui_.zSlider->value());
+
+  KDL::Vector tcpXYZ  = KDL::Vector(1.3,0.0,0.0);
+  KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+    if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
+    {
+      std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
+
+    }
+
 }
 
 
