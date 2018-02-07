@@ -14,7 +14,7 @@ int main(int argc, char **argv)
  proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
   if(!ros::isInitialized())
   {
-    ros::init(argc, argv, "robot_editor", ros::init_options::AnonymousName);
+    ros::init(argc, argv, "my_lab_uni", ros::init_options::AnonymousName);
 //    ros::NodeHandle n;
 //    ros::Publisher joint_pub = n.advertise<sensor_msgs::JointState>("joint_states", 1);
 //    tf::TransformBroadcaster broadcaster;

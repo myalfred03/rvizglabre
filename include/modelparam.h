@@ -36,7 +36,7 @@ class modelparam
 public:
   modelparam();
           bool initmodel();
-          bool ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj);
+          bool ForwardK(KDL::Frame &pos_mat, KDL::JntArray j, unsigned int &nj);
          // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 

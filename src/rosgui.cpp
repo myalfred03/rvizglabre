@@ -158,6 +158,9 @@ ROSGUI::ROSGUI()
     QObject::connect(main_window_ui_.checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     //Cinematica Directa
+    //Execute FK
+    QObject::connect(main_window_ui_.checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
+    //Execute FK
     QObject::connect(main_window_ui_.dial1DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
     QObject::connect(main_window_ui_.dial2DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
     QObject::connect(main_window_ui_.dial3DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
@@ -479,7 +482,7 @@ void ROSGUI::on3DOFs_URDF()
 void ROSGUI::updateURDF(const std::string& urdf)
 {
   XmlRpc::XmlRpcValue robot_description(urdf);
-  nh_.setParam("robot_editor/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
+  nh_.setParam("my_lab_uni/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
 //  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
   if(robot_tree_ != NULL)
@@ -507,7 +510,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
   }
 
   // refresh the preview
-  mRviz->refresh("robot_editor/" + robot_tree_->getRootSegment()->first);
+  mRviz->refresh("my_lab_uni/" + robot_tree_->getRootSegment()->first);
 
  // mRviz->subscribeTopics("joint_states");
 
@@ -524,8 +527,8 @@ void ROSGUI::publishJointStates()
       boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
       if(robot_state_pub_ != NULL)
       {
-         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "robot_editor");
-         robot_state_pub_->publishFixedTransforms("robot_editor");
+         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
+         robot_state_pub_->publishFixedTransforms("my_lab_uni");
          //ROS_INFO_STREAM(joint_positions_.size());
         //  ROS_INFO(joint_positions_);
         // sensor_msgs::JointState::ConstPtr& msg;
@@ -620,12 +623,12 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial5DOF->    setValue((main_window_ui_.spinBox5DOF->value() / FACTOR));
   main_window_ui_.dial6DOF->    setValue((main_window_ui_.spinBox6DOF->value() / FACTOR));
 
-  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/ToG;
-  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/ToG;
-  joint_positions_["joint_3"]= main_window_ui_.spinBox3DOF->value()/ToG;
-  joint_positions_["joint_4"]= main_window_ui_.spinBox4DOF->value()/ToG;
-  joint_positions_["joint_5"]= main_window_ui_.spinBox5DOF->value()/ToG;
-  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/ToG;
+//  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/ToG;
+//  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/ToG;
+//  joint_positions_["joint_3"]= main_window_ui_.spinBox3DOF->value()/ToG;
+//  joint_positions_["joint_4"]= main_window_ui_.spinBox4DOF->value()/ToG;
+//  joint_positions_["joint_5"]= main_window_ui_.spinBox5DOF->value()/ToG;
+//  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/ToG;
 
 
   main_window_ui_.dial1DOF->    blockSignals(false);
@@ -634,29 +637,35 @@ void ROSGUI::updateDialer()
   main_window_ui_.dial4DOF->    blockSignals(false);
   main_window_ui_.dial5DOF->    blockSignals(false);
   main_window_ui_.dial6DOF->    blockSignals(false);
-  j(nj)=0;
-  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
-  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
-  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
-  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
-  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
-  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
 
-  if(!jointsv->ForwardK(pos_mat, j, nj))
-  {
-    std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
-  }
+//  j(nj)=0;
+//  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
+//  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
+//  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
+//  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
+//  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
+//  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
 
+//  if(!jointsv->ForwardK(pos_mat, j, nj))
+//  {
+//           std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
+//  }
+//  stringX = QString::number(pos_mat.p.x()); //Convert Double to String
+//  stringY = QString::number(pos_mat.p.y());
+//  stringZ = QString::number(pos_mat.p.z());
 
+//  pos_mat.M.GetRPY(roll, pitch, yaw);
+//  stringYaw   = QString::number(yaw); //Convert Double to String
+//  stringPitch = QString::number(pitch);
+//  stringRoll  = QString::number(roll);
 
-  QString stringX = QString::number(pos_mat.x()); //Convert Double to String
-  QString stringY = QString::number(pos_mat.y());
-  QString stringZ = QString::number(pos_mat.z());
+//   main_window_ui_.fkX->setText(stringX);
+//   main_window_ui_.fkY->setText(stringY);
+//   main_window_ui_.fkZ->setText(stringZ);
 
-   main_window_ui_.lineEdit->setText(stringX);
-   main_window_ui_.lineEdit_2->setText(stringY);
-   main_window_ui_.lineEdit_3->setText(stringZ);
-
+//   main_window_ui_.fkYaw->setText(stringYaw);
+//   main_window_ui_.fkPitch->setText(stringPitch);
+//   main_window_ui_.fkRoll->setText(stringRoll);
 
 
 }
@@ -706,13 +715,22 @@ void ROSGUI::updateSpinboxesD()
     {
              std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
     }
-    QString stringX = QString::number(pos_mat.x()); //Convert Double to String
-    QString stringY = QString::number(pos_mat.y());
-    QString stringZ = QString::number(pos_mat.z());
+    stringX = QString::number(pos_mat.p.x()); //Convert Double to String
+    stringY = QString::number(pos_mat.p.y());
+    stringZ = QString::number(pos_mat.p.z());
 
-     main_window_ui_.lineEdit->setText(stringX);
-     main_window_ui_.lineEdit_2->setText(stringY);
-     main_window_ui_.lineEdit_3->setText(stringZ);
+    pos_mat.M.GetRPY(roll, pitch, yaw);
+    stringYaw   = QString::number(yaw*ToG); //Convert Double to String
+    stringPitch = QString::number(pitch*ToG);
+    stringRoll  = QString::number(roll*ToG);
+
+     main_window_ui_.fkX->setText(stringX);
+     main_window_ui_.fkY->setText(stringY);
+     main_window_ui_.fkZ->setText(stringZ);
+
+     main_window_ui_.fkYaw->setText(stringYaw);
+     main_window_ui_.fkPitch->setText(stringPitch);
+     main_window_ui_.fkRoll->setText(stringRoll);
 
 
 
@@ -958,18 +976,26 @@ void ROSGUI::updatetoURDF()
  // chainFK     = chain();
 
 
- std::cout << " px "<< pos_mat.x() <<	" py "<< pos_mat.y() <<	" pz "<< pos_mat.z() <<std::endl;
+ std::cout << " px "<< pos_mat.p.x() <<	" py "<< pos_mat.p.y() <<	" pz "<< pos_mat.p.z() <<std::endl;
 
  // std::cout << std::setprecision(3) << pos_mat << "\t\t";
- QString stringX = QString::number(pos_mat.x()); //Convert Double to String
- QString stringY = QString::number(pos_mat.y());
- QString stringZ = QString::number(pos_mat.z());
 
-  main_window_ui_.lineEdit->setText(stringX);
-  main_window_ui_.lineEdit_2->setText(stringY);
-  main_window_ui_.lineEdit_3->setText(stringZ);
+ stringX = QString::number(pos_mat.p.x()); //Convert Double to String
+ stringY = QString::number(pos_mat.p.y());
+ stringZ = QString::number(pos_mat.p.z());
 
+ pos_mat.M.GetRPY(roll, pitch, yaw);
+ stringYaw   = QString::number(yaw*ToG); //Convert Double to String
+ stringPitch = QString::number(pitch*ToG);
+ stringRoll  = QString::number(roll*ToG);
 
+  main_window_ui_.fkX->setText(stringX);
+  main_window_ui_.fkY->setText(stringY);
+  main_window_ui_.fkZ->setText(stringZ);
+
+  main_window_ui_.fkYaw->setText(stringYaw);
+  main_window_ui_.fkPitch->setText(stringPitch);
+  main_window_ui_.fkRoll->setText(stringRoll);
 
 
 
@@ -1036,13 +1062,56 @@ void ROSGUI::executeIK(){
 //KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_.xBox->value(),main_window_ui_.yBox->value(),main_window_ui_.zBox->value());
 //KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_.xSlider->value(),main_window_ui_.ySlider->value(),main_window_ui_.zSlider->value());
 
-  KDL::Vector tcpXYZ  = KDL::Vector(1.3,0.0,0.0);
-  KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+  KDL::Vector tcpXYZ  = KDL::Vector(0.3,0.0,0.0);
+  //KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.1,0.0,0.0);
+
     if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
     {
       std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
 
     }
+
+}
+
+void ROSGUI::executeFK(){
+
+  j(nj)=0;
+  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
+  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
+  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
+  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
+  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
+  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
+
+  if(!jointsv->ForwardK(pos_mat, j, nj))
+  {
+           std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
+  }
+  stringX = QString::number(pos_mat.p.x()); //Convert Double to String
+  stringY = QString::number(pos_mat.p.y());
+  stringZ = QString::number(pos_mat.p.z());
+
+  pos_mat.M.GetRPY(roll, pitch, yaw);
+  stringYaw   = QString::number(yaw*ToG); //Convert Double to String
+  stringPitch = QString::number(pitch*ToG);
+  stringRoll  = QString::number(roll*ToG);
+
+   main_window_ui_.fkX->setText(stringX);
+   main_window_ui_.fkY->setText(stringY);
+   main_window_ui_.fkZ->setText(stringZ);
+
+   main_window_ui_.fkYaw->setText(stringYaw);
+   main_window_ui_.fkPitch->setText(stringPitch);
+   main_window_ui_.fkRoll->setText(stringRoll);
+
+   joint_positions_["joint_1"]= main_window_ui_.dial1DOF->value()/ToG;
+   joint_positions_["joint_2"]= main_window_ui_.dial2DOF->value()/ToG;
+   joint_positions_["joint_3"]= main_window_ui_.dial3DOF->value()/ToG;
+   joint_positions_["joint_4"]= main_window_ui_.dial4DOF->value()/ToG;
+   joint_positions_["joint_5"]= main_window_ui_.dial5DOF->value()/ToG;
+   joint_positions_["joint_6"]= main_window_ui_.dial6DOF->value()/ToG;
+
 
 }
 

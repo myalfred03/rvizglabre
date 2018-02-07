@@ -10,7 +10,7 @@ modelparam::modelparam()
 bool modelparam::initmodel()
 {
 
-  std::string param_nameR = "robot_editor/robot_description";
+  std::string param_nameR = "my_lab_uni/robot_description";
   std::string full_param_name;
   std::string xml_string;
   //std::string xml_string2;
@@ -98,7 +98,7 @@ bool modelparam::initmodel()
 
 }
 
-bool modelparam::ForwardK(KDL::Vector &pos_mat, KDL::JntArray j, unsigned int &nj)
+bool modelparam::ForwardK(KDL::Frame &pos_mat, KDL::JntArray j, unsigned int &nj)
 {
 //  if (!initmodel())
 //  {ROS_ERROR("Failed to parse urdf file in model param");
@@ -123,8 +123,9 @@ for(unsigned int i = 0; i< nj; i++)
  fksolver->JntToCart(q, result,nj);
  KDL::Rotation R;
    R = result.M;
+   //R= result.
    R.GetRPY(roll,pitch,yaw);
-   pos_mat = result.p;
+   pos_mat = result;
    return true;
 }
 

@@ -72,10 +72,13 @@ public:
       void resetvalue();
       KDL::JntArray j =KDL::JntArray(6);
       KDL::JntArray pos_joint;
-      KDL::Vector pos_mat;
+      KDL::Frame pos_mat;
       KDL::Vector tcpXYZ  = KDL::Vector(0.0,0.0,0.0);
       KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
+      double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
 
+      QString stringX, stringY, stringZ;
+      QString stringYaw, stringPitch, stringRoll;
 
       double positions;
       unsigned int nj;
@@ -139,6 +142,7 @@ public Q_SLOTS:
       void on_5DOF();
       void on_6DOF();
       void executeIK();
+      void executeFK();
      // void on_checkBox6DOFI_toggled(bool checked);
 
 

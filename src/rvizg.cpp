@@ -158,9 +158,9 @@ void MyViz::refresh(const std::string& fixed_frame)
 
 	ROS_ASSERT(robot_model_ != NULL);
 
-  robot_model_->subProp("TF Prefix")->setValue("robot_editor");
-  robot_model_->subProp("Show Axes")->setValue("robot_editor");
-  robot_model_->subProp("Robot Description")->setValue("robot_editor/robot_description");
+  robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
+  robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
+  robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
 
 }
 
