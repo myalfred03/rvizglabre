@@ -10,9 +10,9 @@
 #include <QVector>
 
 
-#include "include/rvizg.h"
+#include "rvizg.h"
 //#include "include/rvizg_node.h"
-#include "include/ui_thirdwindow.h"
+#include <ui_thirdwindow.h>
 
 namespace Ui {
 class thirdwindow;

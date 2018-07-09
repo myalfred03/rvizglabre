@@ -1,5 +1,4 @@
 #include "fourth.h"
-#include "ui_fourth.h"
 
 fourth::fourth()
     //QMainWindow(parent),

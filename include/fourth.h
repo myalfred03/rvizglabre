@@ -2,6 +2,8 @@
 #define FOURTH_H
 
 #include <QMainWindow>
+#include <ui_fourth.h>
+
 
 namespace Ui {
 class fourth;

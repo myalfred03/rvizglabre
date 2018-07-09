@@ -2,6 +2,7 @@
 #define ROSGUI_H
 
 #include <QMainWindow>
+#include <QWidget>
 #include <QTreeWidget>
 #include <QStyledItemDelegate>
 #include <QItemDelegate>
@@ -9,15 +10,15 @@
 #include <QProcess>
 #include <QVector>
 
-#include "include/secondwindow.h"
-#include "include/thirdwindow.h"
-#include "fourth.h"
-#include "include/rvizg.h"
+//#include "include/secondwindow.h"
+//#include "include/thirdwindow.h"
+//#include "fourth.h"
+#include "rvizg.h"
 //#include "include/rvizg_node.h"
-#include "include/ui_rosgui.h"
-#include "include/ui_secondwindow.h"
-#include "include/ui_thirdwindow.h"
-#include "include/ui_fourth.h"
+#include "ui_rosgui.h"
+//#include "include/ui_secondwindow.h"
+//#include "include/ui_thirdwindow.h"
+//#include "include/ui_fourth.h"
 //robot editor
 #include <QObject>
 #include <string>
@@ -45,21 +46,19 @@
 ////robot editor
 
 
-class QMainWindow;
 class MyViz;
 namespace robot_state_publisher { class RobotStatePublisher; }
 namespace boost { class thread; }
 ////robot editor
-
 namespace Ui { class ROSGUI; }
-class ROSGUI : public QMainWindow
+class ROSGUI : public  QMainWindow
 {
     Q_OBJECT
 
 public:
-      ROSGUI();
-      ~ROSGUI(void);
-      void show();
+      ROSGUI(QWidget *parent = 0);
+      ~ROSGUI();
+//      void show();
       //Show value of urdf
       bool init();
       std::vector<double> getJointLowerLimits();
@@ -79,6 +78,7 @@ public:
 
       QString stringX, stringY, stringZ;
       QString stringYaw, stringPitch, stringRoll;
+      QString dataM;
 
       double positions;
       unsigned int nj;
@@ -90,15 +90,15 @@ public:
 
 
 
-//      void openCD(); //make a new function to call the window
-//      void openCI();
+// void openDialoginfo();
+ //      void openCI();
 //      void openDH();
     //  ros::NodeHandle n;
 
-public slots:
-      void openCD(); //make a new function to call the window
-      void openCI();
-      void openDH();
+//public slots:
+//      void openCD(); //make a new function to call the window
+//      void openCI();
+//      void openDH();
 
 
 //robot editor
@@ -110,13 +110,13 @@ public slots:
 //robot editor
 
 public Q_SLOTS:
-      void on_pushButton_SW_clicked();
+//      void on_pushButton_SW_clicked();
 
-      void on_pushButton_3_clicked();
+      void on_pushButton_clicked();
 
-      void on_pushButton_2_clicked();
+//      void on_pushButton_2_clicked();
 
-      void on_pushButton_4_clicked();
+//      void on_pushButton_4_clicked();
 
       void on_actionOpen_triggered();
 
@@ -124,7 +124,7 @@ public Q_SLOTS:
 
       void on_actionSave_as_triggered();
 
-      void on_actionExit_triggered();
+//      void on_actionExit_triggered();
 
      // void on_actionTF_RVIZ_triggered(bool checked);
 
@@ -163,6 +163,8 @@ public Q_SLOTS:
 //      void on_checkBox_3_toggled(int checked);
     //  void on_comboBox_activated(int index);
       void on_comboBox_currentIndexChanged(int index);
+      void on_comboBox_2_currentIndexChanged(int index);
+
 
 
 private slots:
@@ -198,11 +200,11 @@ private:
    MyViz *mRviz;
 
     //robot editor
-   QMainWindow main_window_;
-   Ui::ROSGUI main_window_ui_;
-   QMainWindow *secwindow;
-   QMainWindow *thwindow;
-   QMainWindow *fourwindow;
+//   QMainWindow main_window_;
+   Ui::ROSGUI *main_window_ui_;
+//   QMainWindow *secwindow;
+//   QMainWindow *thwindow;
+//   QMainWindow *fourwindow;
   // QNode *qnode;
    modelparam* jointsv;
 

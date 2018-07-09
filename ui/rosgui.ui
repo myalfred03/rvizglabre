@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1497</width>
-    <height>837</height>
+    <width>1400</width>
+    <height>813</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources.qrc">
+   <iconset resource="../../rvizglabno/resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -39,7 +39,7 @@
    <bool>false</bool>
   </property>
   <property name="tabShape">
-   <enum>QTabWidget::Triangular</enum>
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -57,48 +57,54 @@
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
-   <layout class="QGridLayout" name="gridLayout_9">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetMinimumSize</enum>
-    </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout_17">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_18">
       <property name="sizeConstraint">
        <enum>QLayout::SetMinimumSize</enum>
       </property>
-      <item row="1" column="0">
-       <widget class="Line" name="line_22">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
+      <property name="horizontalSpacing">
+       <number>0</number>
+      </property>
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
         <item>
          <layout class="QGridLayout" name="gridLayout_6">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMinimumSize</enum>
+          </property>
           <property name="leftMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
            <number>8</number>
           </property>
-          <item row="1" column="0">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item row="0" column="1" rowspan="3">
+           <widget class="Line" name="line_2">
+            <property name="maximumSize">
+             <size>
+              <width>10</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
            <widget class="QTabWidget" name="tabWidget">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -108,7 +114,7 @@
             </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
+              <width>450</width>
               <height>600</height>
              </size>
             </property>
@@ -125,41 +131,87 @@
              <number>1</number>
             </property>
             <widget class="QWidget" name="tab">
+             <property name="maximumSize">
+              <size>
+               <width>524</width>
+               <height>573</height>
+              </size>
+             </property>
              <attribute name="title">
               <string notr="true">INICIO</string>
              </attribute>
-             <widget class="QPushButton" name="pushButton">
-              <property name="geometry">
-               <rect>
-                <x>320</x>
-                <y>370</y>
-                <width>80</width>
-                <height>22</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-             <widget class="QLabel" name="label_3">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>20</y>
-                <width>521</width>
-                <height>301</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <layout class="QGridLayout" name="gridLayout_9">
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_48">
+                  <property name="text">
+                   <string>Ventana de Simulacion de Cinematica Directa e Inversa</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <item>
+                   <spacer name="horizontalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton">
+                    <property name="text">
+                     <string>Teoria de Cinematica</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_6">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="tab_2">
              <attribute name="title">
               <string>CINEMATICA DIRECTA</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_13">
+              <property name="verticalSpacing">
+               <number>5</number>
+              </property>
               <item row="1" column="0">
                <layout class="QGridLayout" name="gridLayout_12">
                 <property name="spacing">
@@ -167,8 +219,14 @@
                 </property>
                 <item row="1" column="0">
                  <widget class="QGroupBox" name="gridGroupBox">
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
                   <property name="title">
                    <string>DOF  Grados</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_5">
                    <property name="sizeConstraint">
@@ -178,7 +236,7 @@
                     <number>40</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>5</number>
+                    <number>0</number>
                    </property>
                    <item row="12" column="3">
                     <widget class="Line" name="line_17">
@@ -194,6 +252,22 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="1" column="4">
+                    <widget class="QLabel" name="label_15">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="10" column="2" rowspan="2" colspan="2">
                     <widget class="Line" name="line_6">
                      <property name="orientation">
@@ -203,6 +277,9 @@
                    </item>
                    <item row="11" column="3">
                     <widget class="QDoubleSpinBox" name="spinBox4DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
                      <property name="minimum">
                       <double>-180.000000000000000</double>
                      </property>
@@ -213,6 +290,9 @@
                    </item>
                    <item row="10" column="1" rowspan="2">
                     <widget class="QDial" name="dial4DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
                      <property name="minimum">
                       <number>-180</number>
                      </property>
@@ -223,6 +303,9 @@
                    </item>
                    <item row="8" column="3">
                     <widget class="QDoubleSpinBox" name="spinBox3DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
                      <property name="minimum">
                       <double>-180.000000000000000</double>
                      </property>
@@ -270,6 +353,19 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="14" column="3">
+                    <widget class="QDoubleSpinBox" name="spinBox5DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
+                     <property name="minimum">
+                      <double>-180.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>180.000000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="8" column="0">
                     <widget class="QLabel" name="label_14">
                      <property name="maximumSize">
@@ -296,18 +392,11 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="14" column="3">
-                    <widget class="QDoubleSpinBox" name="spinBox5DOF">
-                     <property name="minimum">
-                      <double>-180.000000000000000</double>
-                     </property>
-                     <property name="maximum">
-                      <double>180.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="4" column="1" rowspan="2">
                     <widget class="QDial" name="dial2DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
                      <property name="minimum">
                       <number>-180</number>
                      </property>
@@ -316,6 +405,26 @@
                      </property>
                      <property name="notchesVisible">
                       <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="3">
+                    <widget class="QDoubleSpinBox" name="spinBox2DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
+                     <property name="minimum">
+                      <double>-180.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>180.000000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="17" column="2" rowspan="2">
+                    <widget class="Line" name="line_8">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
                      </property>
                     </widget>
                    </item>
@@ -335,23 +444,6 @@
                      </property>
                      <property name="text">
                       <string>5</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="17" column="2" rowspan="2">
-                    <widget class="Line" name="line_8">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="3">
-                    <widget class="QDoubleSpinBox" name="spinBox2DOF">
-                     <property name="minimum">
-                      <double>-180.000000000000000</double>
-                     </property>
-                     <property name="maximum">
-                      <double>180.000000000000000</double>
                      </property>
                     </widget>
                    </item>
@@ -378,6 +470,9 @@
                    </item>
                    <item row="1" column="3">
                     <widget class="QDoubleSpinBox" name="spinBox1DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
                      <property name="minimum">
                       <double>-180.000000000000000</double>
                      </property>
@@ -386,8 +481,18 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="16" column="1">
+                    <widget class="Line" name="line_18">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="17" column="1" rowspan="2">
                     <widget class="QDial" name="dial6DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
                      <property name="minimum">
                       <number>-180</number>
                      </property>
@@ -402,8 +507,8 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="16" column="1">
-                    <widget class="Line" name="line_18">
+                   <item row="3" column="1">
+                    <widget class="Line" name="line_11">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
@@ -428,26 +533,6 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="1">
-                    <widget class="Line" name="line_11">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="13" column="1" rowspan="2">
-                    <widget class="QDial" name="dial5DOF">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="notchesVisible">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="9" column="1">
                     <widget class="Line" name="line_14">
                      <property name="orientation">
@@ -459,6 +544,29 @@
                     <widget class="Line" name="line_12">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="3">
+                    <widget class="Line" name="line_13">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="1" rowspan="2">
+                    <widget class="QDial" name="dial3DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="notchesVisible">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -481,40 +589,23 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="3">
-                    <widget class="Line" name="line_13">
+                   <item row="12" column="1">
+                    <widget class="Line" name="line_16">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="1" rowspan="2">
-                    <widget class="QDial" name="dial3DOF">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="notchesVisible">
-                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
                    <item row="18" column="3">
                     <widget class="QDoubleSpinBox" name="spinBox6DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento</string>
+                     </property>
                      <property name="minimum">
                       <double>-180.000000000000000</double>
                      </property>
                      <property name="maximum">
                       <double>180.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="12" column="1">
-                    <widget class="Line" name="line_16">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
                      </property>
                     </widget>
                    </item>
@@ -534,41 +625,6 @@
                      </property>
                      <property name="text">
                       <string>6</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1" rowspan="2">
-                    <widget class="QDial" name="dial1DOF">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="tracking">
-                      <bool>true</bool>
-                     </property>
-                     <property name="wrapping">
-                      <bool>false</bool>
-                     </property>
-                     <property name="notchesVisible">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="4">
-                    <widget class="QLabel" name="label_15">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -637,6 +693,44 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="13" column="1" rowspan="2">
+                    <widget class="QDial" name="dial5DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="notchesVisible">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" rowspan="2">
+                    <widget class="QDial" name="dial1DOF">
+                     <property name="toolTip">
+                      <string>Ajusta el dialer para reposicionar el robot</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="tracking">
+                      <bool>true</bool>
+                     </property>
+                     <property name="wrapping">
+                      <bool>false</bool>
+                     </property>
+                     <property name="notchesVisible">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -647,7 +741,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="2">
+                <item row="0" column="2" rowspan="2">
                  <widget class="QGroupBox" name="gridGroupBox2">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -660,260 +754,12 @@
                     <enum>QLayout::SetNoConstraint</enum>
                    </property>
                    <property name="horizontalSpacing">
-                    <number>1</number>
+                    <number>9</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>18</number>
+                    <number>8</number>
                    </property>
-                   <item row="12" column="2">
-                    <widget class="QLabel" name="label_59">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="2">
-                    <widget class="QLabel" name="label_29">
-                     <property name="text">
-                      <string>Meters</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="12" column="1">
-                    <widget class="QLabel" name="fkRoll">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="2">
-                    <widget class="QLabel" name="label_30">
-                     <property name="text">
-                      <string>Meters</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="2">
-                    <widget class="QLabel" name="label_58">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="2">
-                    <widget class="QLabel" name="label_31">
-                     <property name="text">
-                      <string>Meters</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLabel" name="fkX">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="0">
-                    <widget class="QLabel" name="label_11">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Z</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="1">
-                    <widget class="QLabel" name="fkZ">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QCheckBox" name="checkBox_2">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>EJECUTAR MOVIMIENTO</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="0">
-                    <widget class="QLabel" name="label_49">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <italic>false</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Yaw&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="1">
-                    <widget class="QLabel" name="fkPitch">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="12" column="0">
-                    <widget class="QLabel" name="label_55">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Roll&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="0">
-                    <widget class="QLabel" name="label_53">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pitch&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="2">
-                    <widget class="QLabel" name="label_57">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="0">
-                    <widget class="QLabel" name="label_10">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Y</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QLabel" name="fkY">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="0">
-                    <widget class="QLabel" name="label_5">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>X</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="1">
-                    <widget class="QLabel" name="fkYaw">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
+                   <item row="21" column="2">
                     <spacer name="verticalSpacer_3">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
@@ -926,14 +772,501 @@
                      </property>
                     </spacer>
                    </item>
+                   <item row="9" column="2" colspan="2">
+                    <widget class="QLabel" name="fkZ">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en metros  del TCP en el eje Z</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="10" column="1" colspan="4">
+                    <widget class="Line" name="line_45">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="14" column="1" colspan="4">
+                    <widget class="Line" name="line_46">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="22" column="2">
+                    <spacer name="verticalSpacer_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="18" column="4">
+                    <widget class="QLabel" name="label_59">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="4">
+                    <widget class="QLabel" name="label_29">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="4">
+                    <widget class="QLabel" name="label_30">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="16" column="4">
+                    <widget class="QLabel" name="label_58">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="4">
+                    <widget class="QLabel" name="label_31">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="1">
+                    <widget class="QLabel" name="label_11">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Z&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                     <property name="margin">
+                      <number>0</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="13" column="1">
+                    <widget class="QLabel" name="label_49">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <italic>false</italic>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Yaw&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                     <property name="margin">
+                      <number>0</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="18" column="1">
+                    <widget class="QLabel" name="label_55">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Roll&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                     <property name="margin">
+                      <number>0</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="16" column="1">
+                    <widget class="QLabel" name="label_53">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Pitch&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                     <property name="margin">
+                      <number>0</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="13" column="4">
+                    <widget class="QLabel" name="label_57">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="1">
+                    <widget class="QLabel" name="label_10">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Y&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="20" column="2">
+                    <spacer name="verticalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="7" column="0">
+                    <widget class="Line" name="line_58">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1" colspan="4">
+                    <widget class="Line" name="line_21">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="13" column="2" colspan="2">
+                    <widget class="QLabel" name="fkYaw">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en grados  del TCP en el rotacional Yaw</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="17" column="1" colspan="4">
+                    <widget class="Line" name="line_47">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="1" colspan="4">
+                    <widget class="Line" name="line_44">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="Line" name="line_59">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="5">
+                    <widget class="Line" name="line_48">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="16" column="5">
+                    <widget class="Line" name="line_52">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="19" column="2">
+                    <spacer name="verticalSpacer_5">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="13" column="5">
+                    <widget class="Line" name="line_51">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="2" colspan="2">
+                    <widget class="QLabel" name="fkX">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en metros  del TCP en el eje X</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="5">
+                    <widget class="Line" name="line_49">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="5">
+                    <widget class="Line" name="line_50">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="18" column="0">
+                    <widget class="Line" name="line_54">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="2" colspan="2">
+                    <widget class="QLabel" name="fkY">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en metros  del TCP en el eje Y</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QLabel" name="label_5">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;X&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="18" column="5">
+                    <widget class="Line" name="line_53">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="0">
+                    <widget class="Line" name="line_57">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="16" column="0">
+                    <widget class="Line" name="line_55">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="13" column="0">
+                    <widget class="Line" name="line_56">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <spacer name="verticalSpacer_6">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="16" column="2" colspan="2">
+                    <widget class="QLabel" name="fkPitch">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en grados  del TCP en el rotacional Pitch</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="18" column="2" colspan="2">
+                    <widget class="QLabel" name="fkRoll">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Posicion en grados  del TCP en el rotacional Roll</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" colspan="4">
+                    <widget class="QCheckBox" name="checkBox_2">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Ejecuta el movimiento de los SpinBox</string>
+                     </property>
+                     <property name="text">
+                      <string>EJECUTAR MOVIMIENTO</string>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
                </layout>
               </item>
               <item row="0" column="0">
-               <layout class="QGridLayout" name="gridLayout_11">
-                <item row="1" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Cinematica Directa</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QLabel" name="label_6">
                   <property name="font">
                    <font>
@@ -953,27 +1286,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_7">
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Cinematica Directa</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="pushButton_3">
-                  <property name="text">
-                   <string>+TEORIA</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
              </layout>
@@ -984,7 +1296,267 @@
              </attribute>
              <layout class="QGridLayout" name="gridLayout_16">
               <item row="0" column="0">
-               <layout class="QGridLayout" name="gridLayout">
+               <layout class="QGridLayout" name="gridLayout_15">
+                <item row="5" column="0">
+                 <layout class="QGridLayout" name="gridLayout_11">
+                  <item row="1" column="4">
+                   <widget class="QLabel" name="label_62">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="10" colspan="2">
+                   <widget class="QLabel" name="label_69">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_60">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="label_39">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3" rowspan="2">
+                   <widget class="Line" name="line_41">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="6" rowspan="2">
+                   <widget class="Line" name="line_39">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="9" rowspan="2">
+                   <widget class="Line" name="line_43">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="10">
+                   <widget class="QLabel" name="label_63">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="4" colspan="2">
+                   <widget class="QLabel" name="label_67">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="7">
+                   <widget class="QLabel" name="label_61">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="8">
+                   <widget class="QLabel" name="label_41">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="5">
+                   <widget class="QLabel" name="label_40">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="11">
+                   <widget class="QLabel" name="label_72">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="7" colspan="2">
+                   <widget class="QLabel" name="label_68">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="12" rowspan="2">
+                   <widget class="Line" name="line_42">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="13" colspan="2">
+                   <widget class="QLabel" name="label_70">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="16" colspan="2">
+                   <widget class="QLabel" name="label_71">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="16">
+                   <widget class="QLabel" name="label_65">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="14">
+                   <widget class="QLabel" name="label_73">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="17">
+                   <widget class="QLabel" name="label_74">
+                    <property name="maximumSize">
+                     <size>
+                      <width>11</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>16</pointsize>
+                      <italic>true</italic>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>°</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="13">
+                   <widget class="QLabel" name="label_64">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="15" rowspan="2">
+                   <widget class="Line" name="line_40">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1" colspan="2">
+                   <widget class="QLabel" name="label_66">
+                    <property name="font">
+                     <font>
+                      <pointsize>8</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_9">
                   <property name="font">
@@ -1002,27 +1574,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
-                 <widget class="QPushButton" name="pushButton_2">
-                  <property name="text">
-                   <string>+TEORIA CI</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="font">
-                   <font>
-                    <pointsize>14</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Cinematica Inversa</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="0">
                  <spacer name="horizontalSpacer_3">
                   <property name="orientation">
@@ -1036,151 +1587,34 @@
                   </property>
                  </spacer>
                 </item>
-               </layout>
-              </item>
-              <item row="1" column="0">
-               <layout class="QGridLayout" name="gridLayout_15">
-                <item row="0" column="0">
+                <item row="7" column="0">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="3" column="0">
                  <widget class="QGroupBox" name="groupBox">
                   <property name="title">
                    <string>Posicion deseada del TCP</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_14">
-                   <item row="6" column="1" colspan="2">
-                    <widget class="Line" name="line_32">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="2">
-                    <widget class="QLabel" name="label_33">
+                   <item row="7" column="0">
+                    <widget class="QLabel" name="label_16">
                      <property name="text">
-                      <string>Meters</string>
+                      <string>Yaw</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="7" column="1">
-                    <widget class="QSlider" name="yawSlider">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="singleStep">
-                      <number>5</number>
-                     </property>
-                     <property name="pageStep">
-                      <number>5</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::TicksAbove</enum>
-                     </property>
-                     <property name="tickInterval">
-                      <number>5</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1" colspan="2">
-                    <widget class="Line" name="line_28">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="3">
-                    <widget class="Line" name="line_27">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="3">
-                    <widget class="Line" name="line_23">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QSlider" name="xSlider">
-                     <property name="minimum">
-                      <number>-100</number>
-                     </property>
-                     <property name="maximum">
-                      <number>100</number>
-                     </property>
-                     <property name="singleStep">
-                      <number>10</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::TicksAbove</enum>
-                     </property>
-                     <property name="tickInterval">
-                      <number>5</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="6">
-                    <widget class="QDoubleSpinBox" name="pitchBox">
-                     <property name="minimumSize">
-                      <size>
-                       <width>80</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="decimals">
-                      <number>2</number>
-                     </property>
-                     <property name="minimum">
-                      <double>-180.000000000000000</double>
-                     </property>
-                     <property name="maximum">
-                      <double>180.000000000000000</double>
-                     </property>
-                     <property name="singleStep">
-                      <double>1.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="2">
-                    <widget class="QLabel" name="label_34">
-                     <property name="text">
-                      <string>Meters</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="QSlider" name="ySlider">
-                     <property name="minimum">
-                      <number>-100</number>
-                     </property>
-                     <property name="maximum">
-                      <number>100</number>
-                     </property>
-                     <property name="singleStep">
-                      <number>10</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::TicksAbove</enum>
-                     </property>
-                     <property name="tickInterval">
-                      <number>5</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="7">
-                    <widget class="QLabel" name="label_46">
+                   <item row="7" column="2">
+                    <widget class="QLabel" name="label_35">
                      <property name="font">
                       <font>
                        <pointsize>16</pointsize>
@@ -1192,67 +1626,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="2">
-                    <widget class="QLabel" name="label_32">
-                     <property name="text">
-                      <string>Meters</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="1">
-                    <widget class="QSlider" name="rollSlider">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="singleStep">
-                      <number>5</number>
-                     </property>
-                     <property name="pageStep">
-                      <number>5</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::TicksAbove</enum>
-                     </property>
-                     <property name="tickInterval">
-                      <number>5</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="6">
-                    <widget class="Line" name="line_29">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="6">
-                    <widget class="Line" name="line_33">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="3">
-                    <widget class="Line" name="line_20">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="0">
-                    <widget class="QLabel" name="label_16">
-                     <property name="text">
-                      <string>Yaw</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="6">
+                   <item row="1" column="4">
                     <widget class="QDoubleSpinBox" name="xBox">
                      <property name="minimumSize">
                       <size>
@@ -1260,31 +1634,26 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
+                     </property>
                      <property name="decimals">
                       <number>2</number>
                      </property>
                      <property name="minimum">
-                      <double>-100.000000000000000</double>
+                      <double>-10.000000000000000</double>
                      </property>
                      <property name="maximum">
-                      <double>100.000000000000000</double>
+                      <double>10.000000000000000</double>
                      </property>
                      <property name="singleStep">
-                      <double>1.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="6">
-                    <widget class="QCheckBox" name="checkBox">
-                     <property name="text">
-                      <string>EJECUTAR</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QLabel" name="label_2">
-                     <property name="text">
-                      <string>X</string>
+                      <double>0.100000000000000</double>
                      </property>
                     </widget>
                    </item>
@@ -1295,16 +1664,84 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="1">
-                    <widget class="QSlider" name="zSlider">
+                   <item row="11" column="2">
+                    <widget class="QLabel" name="label_37">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="4">
+                    <widget class="Line" name="line_31">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="4">
+                    <widget class="QDoubleSpinBox" name="yBox">
+                     <property name="minimumSize">
+                      <size>
+                       <width>80</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
+                     </property>
+                     <property name="decimals">
+                      <number>2</number>
+                     </property>
                      <property name="minimum">
-                      <number>-100</number>
+                      <double>-10.000000000000000</double>
                      </property>
                      <property name="maximum">
-                      <number>100</number>
+                      <double>10.000000000000000</double>
                      </property>
                      <property name="singleStep">
+                      <double>0.100000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1" colspan="2">
+                    <widget class="Line" name="line_32">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="3">
+                    <widget class="Line" name="line_26">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QSlider" name="zSlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-10</number>
+                     </property>
+                     <property name="maximum">
                       <number>10</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>1</number>
                      </property>
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
@@ -1320,131 +1757,22 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="8" column="1" colspan="2">
-                    <widget class="Line" name="line_34">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="3">
-                    <widget class="Line" name="line_26">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="2">
-                    <widget class="QLabel" name="label_36">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="7">
-                    <widget class="QLabel" name="label_43">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="0">
-                    <widget class="QLabel" name="label_18">
-                     <property name="text">
-                      <string>Roll</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0" colspan="3">
-                    <widget class="QLabel" name="label_38">
-                     <property name="text">
-                      <string>Introducir Valores Cinematica Inversa</string>
-                     </property>
-                     <property name="wordWrap">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="10" column="1" colspan="2">
-                    <widget class="Line" name="line_37">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="6">
-                    <widget class="QDoubleSpinBox" name="yawBox">
-                     <property name="minimumSize">
-                      <size>
-                       <width>80</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="decimals">
-                      <number>2</number>
+                   <item row="1" column="1">
+                    <widget class="QSlider" name="xSlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
                      </property>
                      <property name="minimum">
-                      <double>-180000000.000000000000000</double>
+                      <number>-10</number>
                      </property>
                      <property name="maximum">
-                      <double>180.000000000000000</double>
+                      <number>10</number>
                      </property>
                      <property name="singleStep">
-                      <double>1.000000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="7">
-                    <widget class="QLabel" name="label_45">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="7">
-                    <widget class="QLabel" name="label_47">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="1">
-                    <widget class="QSlider" name="pitchSlider">
-                     <property name="minimum">
-                      <number>-180</number>
-                     </property>
-                     <property name="maximum">
-                      <number>180</number>
-                     </property>
-                     <property name="singleStep">
-                      <number>5</number>
+                      <number>1</number>
                      </property>
                      <property name="pageStep">
-                      <number>5</number>
+                      <number>0</number>
                      </property>
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
@@ -1464,8 +1792,8 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="7" column="2">
-                    <widget class="QLabel" name="label_35">
+                   <item row="11" column="5">
+                    <widget class="QLabel" name="label_47">
                      <property name="font">
                       <font>
                        <pointsize>16</pointsize>
@@ -1477,15 +1805,33 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="0">
-                    <widget class="QLabel" name="label_4">
-                     <property name="text">
-                      <string>Y</string>
+                   <item row="3" column="1">
+                    <widget class="QSlider" name="ySlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-10</number>
+                     </property>
+                     <property name="maximum">
+                      <number>10</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>1</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::TicksAbove</enum>
+                     </property>
+                     <property name="tickInterval">
+                      <number>5</number>
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="7">
-                    <widget class="QLabel" name="label_44">
+                   <item row="9" column="5">
+                    <widget class="QLabel" name="label_46">
                      <property name="font">
                       <font>
                        <pointsize>16</pointsize>
@@ -1497,13 +1843,71 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="11" column="6">
-                    <widget class="QDoubleSpinBox" name="rollBox">
+                   <item row="2" column="4">
+                    <widget class="Line" name="line_29">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QLabel" name="label_32">
+                     <property name="text">
+                      <string>Meters</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="4">
+                    <widget class="Line" name="line_35">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="11" column="1">
+                    <widget class="QSlider" name="rollSlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>5</number>
+                     </property>
+                     <property name="pageStep">
+                      <number>5</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::TicksAbove</enum>
+                     </property>
+                     <property name="tickInterval">
+                      <number>5</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="4">
+                    <widget class="QDoubleSpinBox" name="pitchBox">
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
                        <height>0</height>
                       </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
                      </property>
                      <property name="decimals">
                       <number>2</number>
@@ -1515,55 +1919,106 @@
                       <double>180.000000000000000</double>
                      </property>
                      <property name="singleStep">
-                      <double>1.000000000000000</double>
+                      <double>0.100000000000000</double>
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="0">
-                    <widget class="QLabel" name="label_19">
+                   <item row="5" column="2">
+                    <widget class="QLabel" name="label_34">
                      <property name="text">
-                      <string>Z</string>
+                      <string>Meters</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="6">
-                    <widget class="QDoubleSpinBox" name="zBox">
+                   <item row="7" column="4">
+                    <widget class="QDoubleSpinBox" name="yawBox">
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
+                     </property>
                      <property name="decimals">
                       <number>2</number>
                      </property>
                      <property name="minimum">
-                      <double>-100.000000000000000</double>
+                      <double>-180000000.000000000000000</double>
                      </property>
                      <property name="maximum">
-                      <double>100.000000000000000</double>
+                      <double>180.000000000000000</double>
                      </property>
                      <property name="singleStep">
-                      <double>1.000000000000000</double>
+                      <double>0.100000000000000</double>
+                     </property>
+                     <property name="value">
+                      <double>0.000000000000000</double>
                      </property>
                     </widget>
                    </item>
-                   <item row="9" column="0">
-                    <widget class="QLabel" name="label_17">
+                   <item row="7" column="5">
+                    <widget class="QLabel" name="label_45">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
                      <property name="text">
-                      <string>Pitch</string>
+                      <string>°</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="10" column="6">
-                    <widget class="Line" name="line_36">
+                   <item row="3" column="5">
+                    <widget class="QLabel" name="label_43">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-style:normal;&quot;&gt;Meters&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="10" column="1" colspan="2">
+                    <widget class="Line" name="line_37">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
                     </widget>
                    </item>
-                   <item row="8" column="6">
-                    <widget class="Line" name="line_35">
+                   <item row="11" column="0">
+                    <widget class="QLabel" name="label_18">
+                     <property name="text">
+                      <string>Roll</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="2">
+                    <widget class="QLabel" name="label_36">
+                     <property name="font">
+                      <font>
+                       <pointsize>16</pointsize>
+                       <italic>true</italic>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>°</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="1" colspan="2">
+                    <widget class="Line" name="line_34">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
@@ -1576,8 +2031,15 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="11" column="2">
-                    <widget class="QLabel" name="label_37">
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="label_19">
+                     <property name="text">
+                      <string>Z</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="5">
+                    <widget class="QLabel" name="label_44">
                      <property name="font">
                       <font>
                        <pointsize>16</pointsize>
@@ -1585,284 +2047,240 @@
                       </font>
                      </property>
                      <property name="text">
-                      <string>°</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-style:normal;&quot;&gt;Meters&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="6">
-                    <widget class="QDoubleSpinBox" name="yBox">
+                   <item row="11" column="4">
+                    <widget class="QDoubleSpinBox" name="rollBox">
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
+                     </property>
                      <property name="decimals">
                       <number>2</number>
                      </property>
                      <property name="minimum">
-                      <double>-100.000000000000000</double>
+                      <double>-180.000000000000000</double>
                      </property>
                      <property name="maximum">
-                      <double>100.000000000000000</double>
+                      <double>180.000000000000000</double>
                      </property>
                      <property name="singleStep">
-                      <double>1.000000000000000</double>
+                      <double>0.100000000000000</double>
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="6">
-                    <widget class="Line" name="line_31">
+                   <item row="9" column="0">
+                    <widget class="QLabel" name="label_17">
+                     <property name="text">
+                      <string>Pitch</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="3">
+                    <widget class="Line" name="line_23">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1" colspan="2">
+                    <widget class="Line" name="line_28">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="7">
-                    <widget class="QLabel" name="label_42">
+                   <item row="11" column="3">
+                    <widget class="Line" name="line_27">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="10" column="4">
+                    <widget class="Line" name="line_36">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="4">
+                    <widget class="QDoubleSpinBox" name="zBox">
+                     <property name="minimumSize">
+                      <size>
+                       <width>80</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Para Mayor Precision</string>
+                     </property>
+                     <property name="decimals">
+                      <number>2</number>
+                     </property>
+                     <property name="minimum">
+                      <double>-10.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>10.000000000000000</double>
+                     </property>
+                     <property name="singleStep">
+                      <double>0.100000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0" colspan="4">
+                    <widget class="QLabel" name="label_38">
+                     <property name="text">
+                      <string>Introducir Valores Cinematica Inversa</string>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="4">
+                    <widget class="Line" name="line_33">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="1">
+                    <widget class="QSlider" name="yawSlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>5</number>
+                     </property>
+                     <property name="pageStep">
+                      <number>5</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::TicksAbove</enum>
+                     </property>
+                     <property name="tickInterval">
+                      <number>5</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <widget class="QLabel" name="label_33">
                      <property name="text">
                       <string>Meters</string>
                      </property>
                     </widget>
                    </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QFrame" name="horizontalFrame">
-                  <layout class="QGridLayout" name="gridLayout_20">
-                   <item row="0" column="5" rowspan="2">
-                    <widget class="Line" name="line_40">
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>X</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="1">
+                    <widget class="QSlider" name="pitchSlider">
+                     <property name="toolTip">
+                      <string>Menos Precision</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-180</number>
+                     </property>
+                     <property name="maximum">
+                      <number>180</number>
+                     </property>
+                     <property name="singleStep">
+                      <number>5</number>
+                     </property>
+                     <property name="pageStep">
+                      <number>5</number>
+                     </property>
                      <property name="orientation">
-                      <enum>Qt::Vertical</enum>
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::TicksAbove</enum>
+                     </property>
+                     <property name="tickInterval">
+                      <number>5</number>
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="12">
-                    <widget class="QLabel" name="label_64">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="label_4">
                      <property name="text">
-                      <string/>
+                      <string>Y</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="15">
-                    <widget class="QLabel" name="label_71">
+                   <item row="1" column="5">
+                    <widget class="QLabel" name="label_42">
                      <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Meters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="9">
-                    <widget class="QLabel" name="label_69">
+                   <item row="0" column="4" colspan="2">
+                    <widget class="QCheckBox" name="checkBox">
                      <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="16">
-                    <widget class="QLabel" name="label_74">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="7">
-                    <widget class="QLabel" name="label_41">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="9">
-                    <widget class="QLabel" name="label_63">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="14" rowspan="2">
-                    <widget class="Line" name="line_43">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="label_39">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_66">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="4">
-                    <widget class="QLabel" name="label_40">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
+                      <string>EJECUTAR</string>
                      </property>
                     </widget>
                    </item>
                    <item row="1" column="3">
-                    <widget class="QLabel" name="label_62">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="6">
-                    <widget class="QLabel" name="label_61">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="12">
-                    <widget class="QLabel" name="label_70">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="6">
-                    <widget class="QLabel" name="label_68">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="15">
-                    <widget class="QLabel" name="label_65">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="8" rowspan="2">
-                    <widget class="Line" name="line_41">
+                    <widget class="Line" name="line_20">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="3">
-                    <widget class="QLabel" name="label_67">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="13">
-                    <widget class="QLabel" name="label_73">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QLabel" name="label_60">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2" rowspan="2">
-                    <widget class="Line" name="line_39">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="11" rowspan="2">
-                    <widget class="Line" name="line_42">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="10">
-                    <widget class="QLabel" name="label_72">
-                     <property name="font">
-                      <font>
-                       <pointsize>16</pointsize>
-                       <italic>true</italic>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>°</string>
                      </property>
                     </widget>
                    </item>
                   </layout>
                  </widget>
                 </item>
-                <item row="3" column="0">
-                 <spacer name="horizontalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
+                  <property name="text">
+                   <string>Cinematica Inversa</string>
                   </property>
-                 </spacer>
+                 </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="6" column="0">
                  <spacer name="horizontalSpacer_4">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1885,303 +2303,504 @@
              </attribute>
              <layout class="QGridLayout" name="gridLayout_7">
               <item row="0" column="0">
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="text">
-                 <string>+TEORIA</string>
+               <layout class="QGridLayout" name="gridLayout_21">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_50">
+                  <property name="font">
+                   <font>
+                    <family>Ubuntu</family>
+                    <pointsize>14</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Denavit - Hartemberg</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <layout class="QGridLayout" name="gridLayout_22">
+                  <item row="0" column="1">
+                   <widget class="QTableWidget" name="tableWidget">
+                    <row>
+                     <property name="text">
+                      <string>joint1</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>joint2</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>joint3</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>joint4</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>joint6</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </row>
+                    <column>
+                     <property name="text">
+                      <string>ai</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>a1</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>alpha i</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>theta i</string>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </column>
+                    <item row="0" column="0">
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="textAlignment">
+                      <set>AlignCenter</set>
+                     </property>
+                    </item>
+                    <item row="0" column="1">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </item>
+                    <item row="1" column="0">
+                     <property name="textAlignment">
+                      <set>AlignLeading|AlignVCenter</set>
+                     </property>
+                    </item>
+                    <item row="4" column="3">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <spacer name="verticalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item row="3" column="0">
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_51">
+                  <property name="text">
+                   <string>El problema se plantea de la siguiente manera: dada la posición y orientación del efector final del manipulador, se calcula todos los conjuntos posibles de ángulos articulares que podrían utilizarse para obtener esta posición y orientación dadas. Este es un problema fundamental en el uso práctico de los manipuladores. </string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QTabWidget" name="tabWidget1">
+            <property name="maximumSize">
+             <size>
+              <width>450</width>
+              <height>720</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <italic>false</italic>
+             </font>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tabWidgetPage1">
+             <property name="maximumSize">
+              <size>
+               <width>450</width>
+               <height>91</height>
+              </size>
+             </property>
+             <attribute name="title">
+              <string>Robots Industriales</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="gridGroupBox_3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>450</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="title">
+                 <string>Elige tu Robot</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_4">
+                 <property name="horizontalSpacing">
+                  <number>6</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="3">
+                  <widget class="QCheckBox" name="checkBox5DOFI">
+                   <property name="toolTip">
+                    <string>Modelo de Robot Motoman MH5, CTRL + 4</string>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../rvizglabno/resources.qrc">
+                     <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>55</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+4</string>
+                   </property>
+                   <property name="tristate">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QCheckBox" name="checkBox4DOFI">
+                   <property name="toolTip">
+                    <string>Modelo de Robot Kuka KR210L, CTRL + 1</string>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../rvizglabno/resources.qrc">
+                     <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>55</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+1</string>
+                   </property>
+                   <property name="tristate">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QCheckBox" name="checkBox6DOFI">
+                   <property name="toolTip">
+                    <string>Modelo de Robot ABB IRB120, CTRL + 3</string>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../rvizglabno/resources.qrc">
+                     <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+3</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="4">
+                  <widget class="QCheckBox" name="checkBox3DOFI">
+                   <property name="toolTip">
+                    <string>Modelo de Robot Motoman BMDA3, CTRL + 5</string>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../rvizglabno/resources.qrc">
+                     <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>55</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+5</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QCheckBox" name="checkBox2DOFI">
+                   <property name="toolTip">
+                    <string>Modelo de Robot ABB IRB5400, CTRL + 2</string>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../../rvizglabno/resources.qrc">
+                     <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+2</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_52">
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;KR210&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLabel" name="label_54">
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IRB5400&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLabel" name="label_56">
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;IRB120&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="3">
+                  <widget class="QLabel" name="label_75">
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;MH5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="4">
+                  <widget class="QLabel" name="label_76">
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;BMDA3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QTableWidget" name="tableWidget">
-                <row>
-                 <property name="text">
-                  <string>New Row</string>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabWidgetPage2">
+             <attribute name="title">
+              <string>Robots Simples</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="gridGroupBox_2">
+                <property name="maximumSize">
+                 <size>
+                  <width>460</width>
+                  <height>200</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Elige tu Robot</string>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <property name="leftMargin">
+                  <number>2</number>
                  </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>joint1</string>
+                 <property name="topMargin">
+                  <number>2</number>
                  </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>joint2</string>
+                 <property name="rightMargin">
+                  <number>2</number>
                  </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>joint3</string>
+                 <property name="bottomMargin">
+                  <number>2</number>
                  </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>joint4</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>joint6</string>
-                 </property>
-                </row>
-                <column>
-                 <property name="text">
-                  <string>LINK</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>ai</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>a1</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>alpha i</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>theta i</string>
-                 </property>
-                </column>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox2DOFs">
+                   <property name="text">
+                    <string>2DOF</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox3DOFs">
+                   <property name="text">
+                    <string>3DOF</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox4DOFs">
+                   <property name="text">
+                    <string>4DOF</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox5DOFs">
+                   <property name="text">
+                    <string>5DOF</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox6DOFs">
+                   <property name="text">
+                    <string>6DOF</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
             </widget>
            </widget>
           </item>
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QTabWidget" name="tabWidget">
-              <property name="maximumSize">
-               <size>
-                <width>1080</width>
-                <height>720</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <italic>false</italic>
-               </font>
-              </property>
-              <property name="currentIndex">
-               <number>1</number>
-              </property>
-              <widget class="QWidget" name="tabWidgetPage1">
-               <attribute name="title">
-                <string>Robots Industriales</string>
-               </attribute>
-               <layout class="QGridLayout" name="gridLayout_3">
-                <item row="0" column="0">
-                 <widget class="QGroupBox" name="gridGroupBox_3">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>550</width>
-                    <height>100</height>
-                   </size>
-                  </property>
-                  <property name="autoFillBackground">
-                   <bool>true</bool>
-                  </property>
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_17">
-                   <item row="0" column="0">
-                    <widget class="QCheckBox" name="checkBox4DOFI">
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>KR210</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>37</width>
-                       <height>23</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QCheckBox" name="checkBox6DOFI">
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>IRB120</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>27</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="4">
-                    <widget class="QCheckBox" name="checkBox3DOFI">
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>BMDA3</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>28</width>
-                       <height>23</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="3">
-                    <widget class="QCheckBox" name="checkBox5DOFI">
-                     <property name="layoutDirection">
-                      <enum>Qt::LeftToRight</enum>
-                     </property>
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>MH5</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>28</width>
-                       <height>23</height>
-                      </size>
-                     </property>
-                     <property name="tristate">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QCheckBox" name="checkBox2DOFI">
-                     <property name="autoFillBackground">
-                      <bool>true</bool>
-                     </property>
-                     <property name="text">
-                      <string>IRB5400</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resources.qrc">
-                       <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>27</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="tabWidgetPage2">
-               <attribute name="title">
-                <string>Robots Simples</string>
-               </attribute>
-               <layout class="QGridLayout" name="gridLayout_8">
-                <item row="0" column="0">
-                 <widget class="QGroupBox" name="gridGroupBox_2">
-                  <property name="maximumSize">
-                   <size>
-                    <width>460</width>
-                    <height>200</height>
-                   </size>
-                  </property>
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_4">
-                   <item row="0" column="3">
-                    <widget class="QCheckBox" name="checkBox5DOFs">
-                     <property name="text">
-                      <string>5DOF</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="4">
-                    <widget class="QCheckBox" name="checkBox6DOFs">
-                     <property name="text">
-                      <string>6DOF</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QCheckBox" name="checkBox4DOFs">
-                     <property name="text">
-                      <string>4DOF</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QCheckBox" name="checkBox3DOFs">
-                     <property name="text">
-                      <string>3DOF</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0">
-                    <widget class="QCheckBox" name="checkBox2DOFs">
-                     <property name="text">
-                      <string>2DOF</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="1" rowspan="2">
-           <widget class="Line" name="line_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_7">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>4</number>
+          </property>
           <item>
            <widget class="Line" name="line">
             <property name="font">
@@ -2197,8 +2816,72 @@
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout_19">
+            <item row="0" column="2">
+             <widget class="QComboBox" name="comboBox_2">
+              <property name="toolTip">
+               <string>Herramientas de interaccion con el modelo 3D</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>Interactuar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/Interact.png</normaloff>:/images/img/Interact.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Mover Camara</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/MoveCamera.png</normaloff>:/images/img/MoveCamera.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Seleccionar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/Select.png</normaloff>:/images/img/Select.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Medir En Pantalla de Simulación</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/Measure.png</normaloff>:/images/img/Measure.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Enfoque de Camara</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/FocusCamera.png</normaloff>:/images/img/FocusCamera.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Punto en coordenadas XYZ</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources.qrc">
+                 <normaloff>:/images/img/PublishPoint.png</normaloff>:/images/img/PublishPoint.png</iconset>
+               </property>
+              </item>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QComboBox" name="comboBox">
+              <property name="toolTip">
+               <string>&quot;Elige el perfil de visualizacion de tu robot&quot;</string>
+              </property>
               <item>
                <property name="text">
                 <string>Show All</string>
@@ -2240,7 +2923,7 @@
                 <string>Show Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="../../rvizglabno/resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -2256,6 +2939,9 @@
               </property>
               <property name="text">
                <string>RVIZ  TOOLS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -2285,6 +2971,13 @@
          </layout>
         </item>
        </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="Line" name="line_22">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
@@ -2322,7 +3015,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1497</width>
+     <width>1400</width>
      <height>18</height>
     </rect>
    </property>
@@ -2334,16 +3027,9 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
     <addaction name="actionExit"/>
+    <addaction name="actionHHH"/>
    </widget>
    <addaction name="menuFILE"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
@@ -2380,9 +3066,15 @@
     <string>TF RVIZ</string>
    </property>
   </action>
+  <action name="actionHHH">
+   <property name="text">
+    <string>HHH</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../../rvizglabno/resources.qrc"/>
   <include location="../resources.qrc"/>
  </resources>
  <connections>
@@ -2393,12 +3085,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>354</x>
-     <y>398</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>378</x>
-     <y>396</y>
+     <x>420</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -2409,12 +3101,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>194</x>
-     <y>400</y>
+     <x>445</x>
+     <y>141</y>
     </hint>
     <hint type="destinationlabel">
-     <x>205</x>
-     <y>402</y>
+     <x>247</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -2425,12 +3117,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>271</x>
-     <y>400</y>
+     <x>103</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>290</x>
-     <y>395</y>
+     <x>332</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -2441,12 +3133,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>399</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>281</x>
-     <y>394</y>
+     <x>103</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2457,12 +3149,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>127</x>
-     <y>398</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>346</x>
-     <y>395</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2473,12 +3165,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>127</x>
-     <y>399</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>156</x>
-     <y>409</y>
+     <x>198</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -2489,12 +3181,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>391</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>398</y>
+     <x>445</x>
+     <y>141</y>
     </hint>
    </hints>
   </connection>
@@ -2505,12 +3197,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
-     <y>398</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>446</x>
-     <y>398</y>
+     <x>273</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2521,12 +3213,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>426</x>
-     <y>393</y>
+     <x>273</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>207</x>
-     <y>391</y>
+     <x>445</x>
+     <y>141</y>
     </hint>
    </hints>
   </connection>
@@ -2537,12 +3229,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>442</x>
-     <y>400</y>
+     <x>273</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>463</x>
-     <y>404</y>
+     <x>450</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -2550,175 +3242,175 @@
    <sender>checkBox4DOFI</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox3DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox2DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox6DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox4DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>273</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox6DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox5DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>273</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox5DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox5DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox6DOFs</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>360</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox4DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox6DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox2DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>273</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox5DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox4DOFs</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>360</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox5DOFI</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox4DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox4DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox5DOFs</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>274</x>
-     <y>398</y>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>199</x>
-     <y>402</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox3DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox2DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>210</x>
-     <y>395</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>116</x>
-     <y>394</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox6DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox4DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>433</x>
-     <y>395</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>270</x>
-     <y>393</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox6DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox5DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>453</x>
-     <y>395</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>379</x>
-     <y>394</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox3DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox5DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>212</x>
-     <y>399</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>365</x>
-     <y>394</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox5DOFs</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>382</x>
-     <y>426</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>434</x>
-     <y>430</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox3DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox4DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>399</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>287</x>
-     <y>392</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox6DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox2DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>450</x>
-     <y>395</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>114</x>
-     <y>400</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox5DOFs</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox4DOFs</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>355</x>
-     <y>427</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>429</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox5DOFI</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox4DOFI</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>361</x>
-     <y>392</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>294</x>
-     <y>397</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox4DOFs</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox5DOFs</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>314</x>
-     <y>426</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>370</x>
-     <y>427</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2729,12 +3421,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>292</x>
-     <y>401</y>
+     <x>103</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>369</x>
-     <y>399</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2742,31 +3434,31 @@
    <sender>checkBox3DOFI</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox6DOFI</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox2DOFs</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>189</x>
-     <y>398</y>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>393</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox3DOFs</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox2DOFs</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>182</x>
-     <y>419</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>151</x>
-     <y>419</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2777,12 +3469,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>308</x>
-     <y>431</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>442</x>
-     <y>432</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2793,12 +3485,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>290</x>
-     <y>394</y>
+     <x>103</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>124</x>
-     <y>392</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2809,12 +3501,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>236</x>
-     <y>423</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>354</x>
-     <y>427</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2825,12 +3517,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>358</x>
-     <y>398</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>440</x>
-     <y>399</y>
+     <x>273</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2841,12 +3533,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>239</x>
-     <y>433</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>271</x>
-     <y>432</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2857,12 +3549,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>132</x>
-     <y>436</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>361</x>
-     <y>430</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2873,12 +3565,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>397</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>126</x>
-     <y>399</y>
+     <x>188</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -2889,12 +3581,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>377</x>
-     <y>430</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>426</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2905,12 +3597,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>456</x>
-     <y>423</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>108</x>
-     <y>425</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2921,12 +3613,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
-     <y>425</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>92</x>
-     <y>421</y>
+     <x>134</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2937,12 +3629,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>486</x>
-     <y>429</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>195</x>
-     <y>426</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2953,12 +3645,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
-     <y>432</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>179</x>
-     <y>430</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -2969,12 +3661,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>437</x>
-     <y>429</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>409</x>
-     <y>419</y>
+     <x>451</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -2985,12 +3677,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>279</x>
-     <y>395</y>
+     <x>103</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>450</x>
-     <y>392</y>
+     <x>273</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -3001,12 +3693,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>361</x>
-     <y>430</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>213</x>
-     <y>428</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3017,12 +3709,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>394</y>
+     <x>359</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>210</x>
-     <y>400</y>
+     <x>445</x>
+     <y>141</y>
     </hint>
    </hints>
   </connection>
@@ -3033,12 +3725,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>436</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>264</x>
-     <y>429</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3049,12 +3741,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>282</x>
-     <y>423</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>232</x>
-     <y>427</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3065,12 +3757,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>309</x>
-     <y>428</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>124</x>
-     <y>427</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3081,12 +3773,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>429</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>281</x>
-     <y>421</y>
+     <x>323</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -3097,12 +3789,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>452</x>
-     <y>430</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>271</x>
-     <y>430</y>
+     <x>274</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3113,12 +3805,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>433</y>
+     <x>103</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>434</x>
-     <y>434</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3129,12 +3821,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
-     <y>427</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>173</x>
-     <y>422</y>
+     <x>215</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -3145,12 +3837,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>222</x>
-     <y>426</y>
+     <x>189</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
      <x>445</x>
-     <y>420</y>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -3161,12 +3853,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>346</x>
-     <y>426</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>324</x>
-     <y>421</y>
+     <x>366</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -3177,12 +3869,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>449</x>
-     <y>427</y>
+     <x>445</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>381</x>
-     <y>431</y>
+     <x>360</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>

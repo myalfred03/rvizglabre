@@ -1,8 +1,8 @@
-#include "include/rosgui.h"
-#include "include/ui_rosgui.h"
-#include "include/secondwindow.h"
-#include "include/thirdwindow.h"
-#include "include/rvizg.h"
+#include "rosgui.h"
+//#include "include/ui_rosgui.h"
+#include <ui_rosgui.h>
+//#include "include/secondwindow.h"
+//#include "include/thirdwindow.h"
 #include <QProcess>
 //#include "include/rvizg_node.h"
 #include <QApplication>
@@ -21,24 +21,9 @@ int main(int argc, char **argv)
 //    ros::Rate loop_rate(30);
   }
    QApplication a(argc, argv);
-   ROSGUI z;
+   ROSGUI *rosgui = new ROSGUI;
 
-
-
-
-  //  QNode node(argc, argv, "GUI_ROS");
-    //QNode node2(argc, argv, "GUI_ROS2");
-
-    SecondWindow w;
-    thirdwindow x;
-    //w.show();
-    //x.show();
-    z.show();
-
-
-
-    a.exec();
-
-
-    return 0;
+    rosgui->show();
+    return a.exec();
+    delete rosgui;
 }

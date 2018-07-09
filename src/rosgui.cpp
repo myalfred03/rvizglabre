@@ -22,18 +22,20 @@
 
 
 
-#include "include/rosgui.h"
-#include "include/ui_rosgui.h"
-#include <include/rvizg.h>
+#include "rosgui.h"
+#include <ui_rosgui.h>
+
+//#include "include/ui_rosgui.h"
+#include "rvizg.h"
 
 
-#include "include/secondwindow.h"
-#include "include/ui_secondwindow.h"
-#include "include/thirdwindow.h"
-#include "include/ui_thirdwindow.h"
-#include "include/fourth.h"
-#include "include/ui_fourth.h"
-//#include "secondwindow.h"
+//#include "include/secondwindow.h"
+////#include "include/ui_secondwindow.h"
+//#include "include/thirdwindow.h"
+////#include "include/ui_thirdwindow.h"
+//#include "include/fourth.h"
+////#include "include/ui_fourth.h"
+////#include "secondwindow.h"
 
 
 #include <ros/ros.h>
@@ -66,19 +68,21 @@ const double ToG    = 57.295779513;
 const double resetv  = 0;
 
 
-ROSGUI::ROSGUI()
- : QMainWindow()
+ROSGUI::ROSGUI(QWidget *parent)
+  :QMainWindow(parent),
+  main_window_ui_(new Ui::ROSGUI)
+
 {
 // proc = new QProcess();     //   <QtGui>
 //  proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
 
 
-    main_window_ui_.setupUi(&main_window_);
+    main_window_ui_->setupUi(this);
 
    // qnode->on_init();
 
-    mRviz = new MyViz();
-    main_window_ui_.mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint);
+    mRviz = new MyViz(main_window_ui_->mdiArea);
+    main_window_ui_->mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint); //mdiarea various screen
 
    // mRviz->adjustSize();
   //  mRviz->setMaximumHeight();
@@ -88,113 +92,122 @@ ROSGUI::ROSGUI()
 //    ui->mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint); // FramelessWindowHint removes close, minimize and maximize title bar
     mRviz->showMaximized();
 
-    QPixmap pix(":/images/img/ROS_INDUSTRIAL.png");
-    main_window_ui_.label_3->setPixmap(pix);
+    QPixmap pix(":/images/img/Uni.jpg");
+    main_window_ui_->label_3->setPixmap(pix);
 
-    publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
     // readJntLimitsFromROSParamURDF(&n);
 
     //Mostrando ventanas emergentes//
 
     //CD
-    secwindow = new QMainWindow();
-    Ui::SecondWindow SecondWindowUI;
-    SecondWindowUI.setupUi(secwindow);
-    QPixmap pix2(":/images/img/CD.png");
-    SecondWindowUI.label->setPixmap(pix2);
-    //CI
-    thwindow = new QMainWindow();
-    Ui::thirdwindow thWindowUI;
-    thWindowUI.setupUi(thwindow);
-    QPixmap pix3(":/images/img/CI.png");
-    thWindowUI.label_2->setPixmap(pix3);
-    //DH
-    fourwindow = new QMainWindow();
-    Ui::fourth frWindowUI;
-    frWindowUI.setupUi(fourwindow);
-    QPixmap pix4(":/images/img/dhparameter.png");
-    frWindowUI.label_2->setPixmap(pix4);
+//    secwindow = new QMainWindow();
+//    Ui::SecondWindow SecondWindowUI;
+//    SecondWindowUI.setupUi(secwindow);
+//    QPixmap pix2(":/images/img/CD.png");
+//    SecondWindowUI.label->setPixmap(pix2);
+//    //CI
+//    thwindow = new QMainWindow();
+//    Ui::thirdwindow thWindowUI;
+//    thWindowUI.setupUi(thwindow);
+//    QPixmap pix3(":/images/img/CI.png");
+//    thWindowUI.label_2->setPixmap(pix3);
+//    //DH
+//    fourwindow = new QMainWindow();
+//    Ui::fourth frWindowUI;
+//    frWindowUI.setupUi(fourwindow);
+//    QPixmap pix4(":/images/img/dhparameter.png");
+//    frWindowUI.label_2->setPixmap(pix4);
 
     //SIGNAL and SLOTS
     //Acciones de la GUI
 
-    QObject::connect(main_window_ui_.actionOpen,   SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered()));
-    QObject::connect(main_window_ui_.pushButton_3, SIGNAL(clicked()),   this, SLOT(on_pushButton_3_clicked()));
-    QObject::connect(main_window_ui_.pushButton_2, SIGNAL(clicked()),   this, SLOT(on_pushButton_2_clicked()));
-    QObject::connect(main_window_ui_.pushButton_4, SIGNAL(clicked()),   this, SLOT(on_pushButton_4_clicked()));
-    QObject::connect(SecondWindowUI.pushButton,    SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
-    QObject::connect(thWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
-    QObject::connect(frWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
+    connect(main_window_ui_->actionOpen,   SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered()));
+    connect(main_window_ui_->pushButton,   SIGNAL(clicked()),   this, SLOT(on_pushButton_clicked()));
+//    connect(main_window_ui_.pushButton_2, SIGNAL(clicked()),   this, SLOT(on_pushButton_2_clicked()));
+//    connect(main_window_ui_.pushButton_4, SIGNAL(clicked()),   this, SLOT(on_pushButton_4_clicked()));
+//    connect(SecondWindowUI.pushButton,    SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
+//    connect(thWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
+//    connect(frWindowUI.pushButton,        SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
 
     //Cinematica Inversa
     //Execute IK
-    QObject::connect(main_window_ui_.checkBox,     SIGNAL(toggled(bool)),SLOT(executeIK()));
+    connect(main_window_ui_->checkBox,     SIGNAL(toggled(bool)),SLOT(executeIK()));
     //Execute IK
-    QObject::connect(main_window_ui_.xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
-    QObject::connect(main_window_ui_.ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
-    QObject::connect(main_window_ui_.zSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
-    QObject::connect(main_window_ui_.rollSlider,   SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
-    QObject::connect(main_window_ui_.pitchSlider,  SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
-    QObject::connect(main_window_ui_.yawSlider,    SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->zSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->rollSlider,   SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->pitchSlider,  SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
+    connect(main_window_ui_->yawSlider,    SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
 
-    QObject::connect(main_window_ui_.xBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
-    QObject::connect(main_window_ui_.yBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
-    QObject::connect(main_window_ui_.zBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
-    QObject::connect(main_window_ui_.rollBox,      SIGNAL(valueChanged(double)), SLOT(updateSlider()));
-    QObject::connect(main_window_ui_.pitchBox,     SIGNAL(valueChanged(double)), SLOT(updateSlider()));
-    QObject::connect(main_window_ui_.yawBox,       SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->xBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->yBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->zBox,         SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->rollBox,      SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->pitchBox,     SIGNAL(valueChanged(double)), SLOT(updateSlider()));
+    connect(main_window_ui_->yawBox,       SIGNAL(valueChanged(double)), SLOT(updateSlider()));
     //Cinematica Inversa
 
     //Control de dialer y spinbox activos
-    QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
-    QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    QObject::connect(main_window_ui_.checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
-    QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
-    QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    QObject::connect(main_window_ui_.checkBox5DOFs, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
-    QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    QObject::connect(main_window_ui_.checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
+    connect(main_window_ui_->checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
+    connect(main_window_ui_->checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
+    connect(main_window_ui_->checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox5DOFs, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
+    connect(main_window_ui_->checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     //Cinematica Directa
     //Execute FK
-    QObject::connect(main_window_ui_.checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
+    connect(main_window_ui_->checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
     //Execute FK
-    QObject::connect(main_window_ui_.dial1DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
-    QObject::connect(main_window_ui_.dial2DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
-    QObject::connect(main_window_ui_.dial3DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
-    QObject::connect(main_window_ui_.dial4DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
-    QObject::connect(main_window_ui_.dial5DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
-    QObject::connect(main_window_ui_.dial6DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial1DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial2DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial3DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial4DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial5DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
+    connect(main_window_ui_->dial6DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
 
-    QObject::connect(main_window_ui_.spinBox1DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
-    QObject::connect(main_window_ui_.spinBox2DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
-    QObject::connect(main_window_ui_.spinBox3DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
-    QObject::connect(main_window_ui_.spinBox4DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
-    QObject::connect(main_window_ui_.spinBox5DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
-    QObject::connect(main_window_ui_.spinBox6DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox1DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox2DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox3DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox4DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox5DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
+    connect(main_window_ui_->spinBox6DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     //Cinematica Directa
 
 
-    QObject::connect(main_window_ui_.checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on6DOFI_URDF()));
-    QObject::connect(main_window_ui_.checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on5DOFI_URDF()));
-    QObject::connect(main_window_ui_.checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on4DOFI_URDF()));
-    QObject::connect(main_window_ui_.checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
-    QObject::connect(main_window_ui_.checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
-    QObject::connect(main_window_ui_.checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
-    QObject::connect(main_window_ui_.checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on3DOFs_URDF()));
-    QObject::connect(main_window_ui_.checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
+    connect(main_window_ui_->checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on6DOFI_URDF()));
+    connect(main_window_ui_->checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on5DOFI_URDF()));
+    connect(main_window_ui_->checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on4DOFI_URDF()));
+    connect(main_window_ui_->checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
+    connect(main_window_ui_->checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
+    connect(main_window_ui_->checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
+    connect(main_window_ui_->checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on3DOFs_URDF()));
+    connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
 
+    //KeySecuence
+//    main_window_ui_->checkBox4DOFI->setShortcut( QKeySequence( QString( "Ctrl+1" )));
+
+//    //ToolTip
+//    main_window_ui_->checkBox4DOFI->setToolTip("Robot - Kuka Modelo KR2100, Ctrl+1");
+//    main_window_ui_->comboBox->setToolTip("Elige los perfiles de /nvisualización de tu modelo");
 
 
 
 //   QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
 //   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
  //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
-   QObject::connect(main_window_ui_.comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
+   connect(main_window_ui_->comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
+   connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
+//   connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
 
-offWidgets();
+
+
+//offWidgets();
 
 QTemporaryDir temporaryDir2;
 QFile::copy(":/robots/URDF/modelos/uni.urdf", temporaryDir2.path() + "/uni.urdf");
@@ -209,15 +222,16 @@ this->updateURDF(file_contents);
 //main_window_ui_.dial1DOF->setMinimum(0);
 //main_window_ui_.dial1DOF->setMaximum(10);
 
+//     mRviz->datameasure(dataM);
+//     main_window_ui_->label_60->setText(dataM);
 
-
-
+publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
 }
 
-ROSGUI::~ROSGUI(void)
+ROSGUI::~ROSGUI()
 {
-    //delete ui;
+  delete mRviz;
   if(publisher_thread_ != NULL)
     {
       publisher_thread_->interrupt();
@@ -230,6 +244,7 @@ ROSGUI::~ROSGUI(void)
     delete robot_tree_;
   if(robot_state_pub_ != NULL)
     delete robot_state_pub_;
+  delete main_window_ui_;
 
 
 
@@ -238,52 +253,66 @@ ROSGUI::~ROSGUI(void)
 //Funcionalidades Ventana principal
 //Ventanas EMERGENTES TUTORIALES
 
-void ROSGUI::show()
+//void ROSGUI::show()
+//{
+//  main_window_.show();
+//}
+
+//void ROSGUI::openDialoginfo()
+//{
+//   /* QMessageBox::StandardButton reply;
+//    reply =*/ QMessageBox::information(this, tr("Teoria de Cinematica"), tr("<p>Se encuentra toda la informacion de cinematica directa, " \
+//                                                                                "y Cinematica inversa en la pagina principal de este laboratorio virtual." \
+//                                                                                "<p>Sigue las instrucciones de la guia del uso y ejemplos  " \
+//                                                                                "Para el adecuado uso de esta ventana de practicas.")
+//                                    );
+////    if (reply == QMessageBox::Ok)
+////        informationLabel->setText(tr("OK"));
+////    else
+////        informationLabel->setText(tr("Escape"));
+//}
+
+//void ROSGUI::openCI()
+//{
+//   thwindow->show();
+//}
+
+//void ROSGUI::openDH()
+//{
+//  fourwindow->show();
+//}
+
+void ROSGUI::on_pushButton_clicked()
 {
-  main_window_.show();
+
+//  ROSGUI::openDialoginfo();
+  QMessageBox::information(this, tr("Teoria de Cinematica"), tr("<p>Se encuentra toda la informacion de cinematica directa, " \
+                                                                                  "y Cinematica inversa en la pagina principal de este laboratorio virtual." \
+                                                                                  "<p>Sigue las instrucciones de la guia del uso y ejemplos  " \
+                                                                                  "Para el adecuado uso de esta ventana de practicas.")
+                                      );
+
 }
 
-void ROSGUI::openCD()
-{
-    secwindow->show();
-}
 
-void ROSGUI::openCI()
-{
-   thwindow->show();
-}
+//void ROSGUI::on_pushButton_2_clicked()
+//{
 
-void ROSGUI::openDH()
-{
-  fourwindow->show();
-}
+// openCI();
 
-void ROSGUI::on_pushButton_3_clicked()
-{
+//}
+//void ROSGUI::on_pushButton_4_clicked()
+//{
+//    openDH();
+//}
 
-  openCD();
+//void ROSGUI::on_pushButton_SW_clicked()
+//{
+//  secwindow->close();
+//  thwindow->close();
+//  fourwindow->close();
 
-}
-
-
-void ROSGUI::on_pushButton_2_clicked()
-{
-
- openCI();
-
-}
-void ROSGUI::on_pushButton_4_clicked()
-{
-    openDH();
-}
-
-void ROSGUI::on_pushButton_SW_clicked()
-{
-  secwindow->close();
-  thwindow->close();
-  fourwindow->close();
-
-}
+//}
 
 void ROSGUI::on_actionOpen_triggered()
 {
@@ -310,15 +339,15 @@ void ROSGUI::on_actionSave_as_triggered()
 }
 
 
-void ROSGUI::on_actionExit_triggered()
-{
- main_window_.close();
-}
+//void ROSGUI::on_actionExit_triggered()
+//{
+// main_window_.close();
+//}
 
 
 void ROSGUI::on2DOFI_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -336,7 +365,7 @@ void ROSGUI::on2DOFI_URDF()
 
 void ROSGUI::on3DOFI_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -353,7 +382,7 @@ void ROSGUI::on3DOFI_URDF()
 
 void ROSGUI::on4DOFI_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -370,7 +399,7 @@ void ROSGUI::on4DOFI_URDF()
 
 void ROSGUI::on5DOFI_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -398,7 +427,7 @@ void ROSGUI::on6DOFI_URDF()
 //  // SIN COPIA DE ARCHIVO
 
 // CON COPIA DE ARCHIVO
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -445,15 +474,15 @@ void ROSGUI::on4DOFs_URDF()
 
 void ROSGUI::on2DOFs_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
   QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/robot2dof.urdf", temporaryDir2.path() + "/robot2dof.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/robot2dof.urdf").toStdString().c_str());
+  QFile::copy(":/robots/URDF/modelos/two_link.urdf", temporaryDir2.path() + "/two_link.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/two_link.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -461,7 +490,7 @@ void ROSGUI::on2DOFs_URDF()
 }
 void ROSGUI::on3DOFs_URDF()
 {
-  main_window_ui_.comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -507,13 +536,13 @@ void ROSGUI::updateURDF(const std::string& urdf)
     it != segments.end(); it++)
   {
     joint_positions_[it->second.segment.getJoint().getName()] = 0.0;
+
   }
 
   // refresh the preview
   mRviz->refresh("my_lab_uni/" + robot_tree_->getRootSegment()->first);
 
  // mRviz->subscribeTopics("joint_states");
-
 
 }
 
@@ -529,6 +558,20 @@ void ROSGUI::publishJointStates()
       {
          robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
          robot_state_pub_->publishFixedTransforms("my_lab_uni");
+         auto it2 = joint_positions_.rbegin();
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+         std::cout << it2->first << " : " << it2->second << std::endl;
+         it2++;
+//         for(int i,)
          //ROS_INFO_STREAM(joint_positions_.size());
         //  ROS_INFO(joint_positions_);
         // sensor_msgs::JointState::ConstPtr& msg;
@@ -556,52 +599,52 @@ void ROSGUI::publishJointStates()
 
 void ROSGUI::updateSpinboxes()
 {
-        main_window_ui_.yBox->    blockSignals(true);
-        main_window_ui_.zBox->    blockSignals(true);
-        main_window_ui_.rollBox-> blockSignals(true);
-        main_window_ui_.pitchBox->blockSignals(true);
-        main_window_ui_.yawBox->  blockSignals(true);
+        main_window_ui_->yBox->    blockSignals(true);
+        main_window_ui_->zBox->    blockSignals(true);
+        main_window_ui_->rollBox-> blockSignals(true);
+        main_window_ui_->pitchBox->blockSignals(true);
+        main_window_ui_->yawBox->  blockSignals(true);
 
-        main_window_ui_.xBox->    setValue((main_window_ui_.xSlider->value() * FACTOR));
-        main_window_ui_.yBox->    setValue((main_window_ui_.ySlider->value() * FACTOR));
-        main_window_ui_.zBox->    setValue((main_window_ui_.zSlider->value() * FACTOR));
-        main_window_ui_.rollBox-> setValue((main_window_ui_.rollSlider->value() * FACTOR));
-        main_window_ui_.pitchBox->setValue((main_window_ui_.pitchSlider->value() * FACTOR));
-        main_window_ui_.yawBox->  setValue((main_window_ui_.yawSlider->value() * FACTOR));
+        main_window_ui_->xBox->    setValue((main_window_ui_->xSlider->value() * FACTOR));
+        main_window_ui_->yBox->    setValue((main_window_ui_->ySlider->value() * FACTOR));
+        main_window_ui_->zBox->    setValue((main_window_ui_->zSlider->value() * FACTOR));
+        main_window_ui_->rollBox-> setValue((main_window_ui_->rollSlider->value() * FACTOR));
+        main_window_ui_->pitchBox->setValue((main_window_ui_->pitchSlider->value() * FACTOR));
+        main_window_ui_->yawBox->  setValue((main_window_ui_->yawSlider->value() * FACTOR));
 
 
-        main_window_ui_.xBox->    blockSignals(false);
-        main_window_ui_.yBox->    blockSignals(false);
-        main_window_ui_.zBox->    blockSignals(false);
-        main_window_ui_.rollBox-> blockSignals(false);
-        main_window_ui_.pitchBox->blockSignals(false);
-        main_window_ui_.yawBox->  blockSignals(false);
+        main_window_ui_->xBox->    blockSignals(false);
+        main_window_ui_->yBox->    blockSignals(false);
+        main_window_ui_->zBox->    blockSignals(false);
+        main_window_ui_->rollBox-> blockSignals(false);
+        main_window_ui_->pitchBox->blockSignals(false);
+        main_window_ui_->yawBox->  blockSignals(false);
 
 }
 void ROSGUI::updateSlider()
 {
-        main_window_ui_.xSlider->    blockSignals(true);
-        main_window_ui_.ySlider->    blockSignals(true);
-        main_window_ui_.zSlider->    blockSignals(true);
-        main_window_ui_.rollSlider-> blockSignals(true);
-        main_window_ui_.pitchSlider->blockSignals(true);
-        main_window_ui_.yawSlider->  blockSignals(true);
+        main_window_ui_->xSlider->    blockSignals(true);
+        main_window_ui_->ySlider->    blockSignals(true);
+        main_window_ui_->zSlider->    blockSignals(true);
+        main_window_ui_->rollSlider-> blockSignals(true);
+        main_window_ui_->pitchSlider->blockSignals(true);
+        main_window_ui_->yawSlider->  blockSignals(true);
 
-        main_window_ui_.xSlider->    setValue((main_window_ui_.xBox->value() / FACTOR));
-        main_window_ui_.ySlider->    setValue((main_window_ui_.yBox->value() / FACTOR));
-        main_window_ui_.zSlider->    setValue((main_window_ui_.zBox->value() / FACTOR));
-        main_window_ui_.rollSlider-> setValue((main_window_ui_.rollBox->value() / FACTOR));
-        main_window_ui_.pitchSlider->setValue((main_window_ui_.pitchBox->value() / FACTOR));
-        main_window_ui_.yawSlider->  setValue((main_window_ui_.yawBox->value() / FACTOR));
+        main_window_ui_->xSlider->    setValue((main_window_ui_->xBox->value() / FACTOR));
+        main_window_ui_->ySlider->    setValue((main_window_ui_->yBox->value() / FACTOR));
+        main_window_ui_->zSlider->    setValue((main_window_ui_->zBox->value() / FACTOR));
+        main_window_ui_->rollSlider-> setValue((main_window_ui_->rollBox->value() / FACTOR));
+        main_window_ui_->pitchSlider->setValue((main_window_ui_->pitchBox->value() / FACTOR));
+        main_window_ui_->yawSlider->  setValue((main_window_ui_->yawBox->value() / FACTOR));
 
 
 
-        main_window_ui_.xSlider->    blockSignals(false);
-        main_window_ui_.ySlider->    blockSignals(false);
-        main_window_ui_.zSlider->    blockSignals(false);
-        main_window_ui_.rollSlider-> blockSignals(false);
-        main_window_ui_.pitchSlider->blockSignals(false);
-        main_window_ui_.yawSlider->  blockSignals(false);
+        main_window_ui_->xSlider->    blockSignals(false);
+        main_window_ui_->ySlider->    blockSignals(false);
+        main_window_ui_->zSlider->    blockSignals(false);
+        main_window_ui_->rollSlider-> blockSignals(false);
+        main_window_ui_->pitchSlider->blockSignals(false);
+        main_window_ui_->yawSlider->  blockSignals(false);
 
 }
 
@@ -609,19 +652,19 @@ void ROSGUI::updateDialer()
 {
 
 
-  main_window_ui_.dial1DOF->    blockSignals(true);
-  main_window_ui_.dial2DOF->    blockSignals(true);
-  main_window_ui_.dial3DOF->    blockSignals(true);
-  main_window_ui_.dial4DOF->    blockSignals(true);
-  main_window_ui_.dial5DOF->    blockSignals(true);
-  main_window_ui_.dial6DOF->    blockSignals(true);
+  main_window_ui_->dial1DOF->    blockSignals(true);
+  main_window_ui_->dial2DOF->    blockSignals(true);
+  main_window_ui_->dial3DOF->    blockSignals(true);
+  main_window_ui_->dial4DOF->    blockSignals(true);
+  main_window_ui_->dial5DOF->    blockSignals(true);
+  main_window_ui_->dial6DOF->    blockSignals(true);
 
-  main_window_ui_.dial1DOF->    setValue((main_window_ui_.spinBox1DOF->value() / FACTOR));
-  main_window_ui_.dial2DOF->    setValue((main_window_ui_.spinBox2DOF->value() / FACTOR));
-  main_window_ui_.dial3DOF->    setValue((main_window_ui_.spinBox3DOF->value() / FACTOR));
-  main_window_ui_.dial4DOF->    setValue((main_window_ui_.spinBox4DOF->value() / FACTOR));
-  main_window_ui_.dial5DOF->    setValue((main_window_ui_.spinBox5DOF->value() / FACTOR));
-  main_window_ui_.dial6DOF->    setValue((main_window_ui_.spinBox6DOF->value() / FACTOR));
+  main_window_ui_->dial1DOF->    setValue((main_window_ui_->spinBox1DOF->value() / FACTOR));
+  main_window_ui_->dial2DOF->    setValue((main_window_ui_->spinBox2DOF->value() / FACTOR));
+  main_window_ui_->dial3DOF->    setValue((main_window_ui_->spinBox3DOF->value() / FACTOR));
+  main_window_ui_->dial4DOF->    setValue((main_window_ui_->spinBox4DOF->value() / FACTOR));
+  main_window_ui_->dial5DOF->    setValue((main_window_ui_->spinBox5DOF->value() / FACTOR));
+  main_window_ui_->dial6DOF->    setValue((main_window_ui_->spinBox6DOF->value() / FACTOR));
 
 //  joint_positions_["joint_1"]= main_window_ui_.spinBox1DOF->value()/ToG;
 //  joint_positions_["joint_2"]= main_window_ui_.spinBox2DOF->value()/ToG;
@@ -631,12 +674,12 @@ void ROSGUI::updateDialer()
 //  joint_positions_["joint_6"]= main_window_ui_.spinBox6DOF->value()/ToG;
 
 
-  main_window_ui_.dial1DOF->    blockSignals(false);
-  main_window_ui_.dial2DOF->    blockSignals(false);
-  main_window_ui_.dial3DOF->    blockSignals(false);
-  main_window_ui_.dial4DOF->    blockSignals(false);
-  main_window_ui_.dial5DOF->    blockSignals(false);
-  main_window_ui_.dial6DOF->    blockSignals(false);
+  main_window_ui_->dial1DOF->    blockSignals(false);
+  main_window_ui_->dial2DOF->    blockSignals(false);
+  main_window_ui_->dial3DOF->    blockSignals(false);
+  main_window_ui_->dial4DOF->    blockSignals(false);
+  main_window_ui_->dial5DOF->    blockSignals(false);
+  main_window_ui_->dial6DOF->    blockSignals(false);
 
 //  j(nj)=0;
 //  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
@@ -674,42 +717,42 @@ void ROSGUI::updateSpinboxesD()
 {
 
 
-    main_window_ui_.spinBox1DOF->    blockSignals(true);
-    main_window_ui_.spinBox2DOF->    blockSignals(true);
-    main_window_ui_.spinBox3DOF->    blockSignals(true);
-    main_window_ui_.spinBox4DOF->    blockSignals(true);
-    main_window_ui_.spinBox5DOF->    blockSignals(true);
-    main_window_ui_.spinBox6DOF->    blockSignals(true);
+    main_window_ui_->spinBox1DOF->    blockSignals(true);
+    main_window_ui_->spinBox2DOF->    blockSignals(true);
+    main_window_ui_->spinBox3DOF->    blockSignals(true);
+    main_window_ui_->spinBox4DOF->    blockSignals(true);
+    main_window_ui_->spinBox5DOF->    blockSignals(true);
+    main_window_ui_->spinBox6DOF->    blockSignals(true);
 
-    main_window_ui_.spinBox1DOF->    setValue((main_window_ui_.dial1DOF->value() * FACTOR));
-    main_window_ui_.spinBox2DOF->    setValue((main_window_ui_.dial2DOF->value() * FACTOR));
-    main_window_ui_.spinBox3DOF->    setValue((main_window_ui_.dial3DOF->value() * FACTOR));
-    main_window_ui_.spinBox4DOF->    setValue((main_window_ui_.dial4DOF->value() * FACTOR));
-    main_window_ui_.spinBox5DOF->    setValue((main_window_ui_.dial5DOF->value() * FACTOR));
-    main_window_ui_.spinBox6DOF->    setValue((main_window_ui_.dial6DOF->value() * FACTOR));
+    main_window_ui_->spinBox1DOF->    setValue((main_window_ui_->dial1DOF->value() * FACTOR));
+    main_window_ui_->spinBox2DOF->    setValue((main_window_ui_->dial2DOF->value() * FACTOR));
+    main_window_ui_->spinBox3DOF->    setValue((main_window_ui_->dial3DOF->value() * FACTOR));
+    main_window_ui_->spinBox4DOF->    setValue((main_window_ui_->dial4DOF->value() * FACTOR));
+    main_window_ui_->spinBox5DOF->    setValue((main_window_ui_->dial5DOF->value() * FACTOR));
+    main_window_ui_->spinBox6DOF->    setValue((main_window_ui_->dial6DOF->value() * FACTOR));
 
-    joint_positions_["joint_1"]= main_window_ui_.dial1DOF->value()/ToG;
-    joint_positions_["joint_2"]= main_window_ui_.dial2DOF->value()/ToG;
-    joint_positions_["joint_3"]= main_window_ui_.dial3DOF->value()/ToG;
-    joint_positions_["joint_4"]= main_window_ui_.dial4DOF->value()/ToG;
-    joint_positions_["joint_5"]= main_window_ui_.dial5DOF->value()/ToG;
-    joint_positions_["joint_6"]= main_window_ui_.dial6DOF->value()/ToG;
+    joint_positions_["joint_1"]= main_window_ui_->dial1DOF->value()/ToG;
+    joint_positions_["joint_2"]= main_window_ui_->dial2DOF->value()/ToG;
+    joint_positions_["joint_3"]= main_window_ui_->dial3DOF->value()/ToG;
+    joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
+    joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
+    joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
 
 
-    main_window_ui_.spinBox1DOF->    blockSignals(false);
-    main_window_ui_.spinBox2DOF->    blockSignals(false);
-    main_window_ui_.spinBox3DOF->    blockSignals(false);
-    main_window_ui_.spinBox4DOF->    blockSignals(false);
-    main_window_ui_.spinBox5DOF->    blockSignals(false);
-    main_window_ui_.spinBox6DOF->    blockSignals(false);
+    main_window_ui_->spinBox1DOF->    blockSignals(false);
+    main_window_ui_->spinBox2DOF->    blockSignals(false);
+    main_window_ui_->spinBox3DOF->    blockSignals(false);
+    main_window_ui_->spinBox4DOF->    blockSignals(false);
+    main_window_ui_->spinBox5DOF->    blockSignals(false);
+    main_window_ui_->spinBox6DOF->    blockSignals(false);
 
     j(nj)=0;
-    j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
-    j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
-    j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
-    j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
-    j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
-    j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
+    j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
+    j(1) = main_window_ui_->spinBox2DOF->value()/ToG;
+    j(2) = main_window_ui_->spinBox3DOF->value()/ToG;
+    j(3) = main_window_ui_->spinBox4DOF->value()/ToG;
+    j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
+    j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
     if(!jointsv->ForwardK(pos_mat, j, nj))
     {
@@ -724,13 +767,13 @@ void ROSGUI::updateSpinboxesD()
     stringPitch = QString::number(pitch*ToG);
     stringRoll  = QString::number(roll*ToG);
 
-     main_window_ui_.fkX->setText(stringX);
-     main_window_ui_.fkY->setText(stringY);
-     main_window_ui_.fkZ->setText(stringZ);
+     main_window_ui_->fkX->setText(stringX);
+     main_window_ui_->fkY->setText(stringY);
+     main_window_ui_->fkZ->setText(stringZ);
 
-     main_window_ui_.fkYaw->setText(stringYaw);
-     main_window_ui_.fkPitch->setText(stringPitch);
-     main_window_ui_.fkRoll->setText(stringRoll);
+     main_window_ui_->fkYaw->setText(stringYaw);
+     main_window_ui_->fkPitch->setText(stringPitch);
+     main_window_ui_->fkRoll->setText(stringRoll);
 
 
 
@@ -742,101 +785,101 @@ void ROSGUI::updateSpinboxesD()
 
 void ROSGUI::on_2DOF()
 {
-        main_window_ui_.dial1DOF->   setEnabled(true);
-        main_window_ui_.dial2DOF->   setEnabled(true);
-        main_window_ui_.dial3DOF->   setEnabled(false);
-        main_window_ui_.dial4DOF->   setEnabled(false);
-        main_window_ui_.dial5DOF->   setEnabled(false);
-        main_window_ui_.dial6DOF->   setEnabled(false);
-        main_window_ui_.spinBox1DOF->setEnabled(true);
-        main_window_ui_.spinBox2DOF->setEnabled(true);
-        main_window_ui_.spinBox3DOF->setEnabled(false);
-        main_window_ui_.spinBox4DOF->setEnabled(false);
-        main_window_ui_.spinBox5DOF->setEnabled(false);
-        main_window_ui_.spinBox6DOF->setEnabled(false);
+        main_window_ui_->dial1DOF->   setEnabled(true);
+        main_window_ui_->dial2DOF->   setEnabled(true);
+        main_window_ui_->dial3DOF->   setEnabled(false);
+        main_window_ui_->dial4DOF->   setEnabled(false);
+        main_window_ui_->dial5DOF->   setEnabled(false);
+        main_window_ui_->dial6DOF->   setEnabled(false);
+        main_window_ui_->spinBox1DOF->setEnabled(true);
+        main_window_ui_->spinBox2DOF->setEnabled(true);
+        main_window_ui_->spinBox3DOF->setEnabled(false);
+        main_window_ui_->spinBox4DOF->setEnabled(false);
+        main_window_ui_->spinBox5DOF->setEnabled(false);
+        main_window_ui_->spinBox6DOF->setEnabled(false);
 }
 
 void ROSGUI::on_3DOF()
 {
-        main_window_ui_.dial1DOF->   setEnabled(true);
-        main_window_ui_.dial2DOF->   setEnabled(true);
-        main_window_ui_.dial3DOF->   setEnabled(true);
-        main_window_ui_.dial4DOF->   setEnabled(false);
-        main_window_ui_.dial5DOF->   setEnabled(false);
-        main_window_ui_.dial6DOF->   setEnabled(false);
-        main_window_ui_.spinBox1DOF->setEnabled(true);
-        main_window_ui_.spinBox2DOF->setEnabled(true);
-        main_window_ui_.spinBox3DOF->setEnabled(true);
-        main_window_ui_.spinBox4DOF->setEnabled(false);
-        main_window_ui_.spinBox5DOF->setEnabled(false);
-        main_window_ui_.spinBox6DOF->setEnabled(false);
+        main_window_ui_->dial1DOF->   setEnabled(true);
+        main_window_ui_->dial2DOF->   setEnabled(true);
+        main_window_ui_->dial3DOF->   setEnabled(true);
+        main_window_ui_->dial4DOF->   setEnabled(false);
+        main_window_ui_->dial5DOF->   setEnabled(false);
+        main_window_ui_->dial6DOF->   setEnabled(false);
+        main_window_ui_->spinBox1DOF->setEnabled(true);
+        main_window_ui_->spinBox2DOF->setEnabled(true);
+        main_window_ui_->spinBox3DOF->setEnabled(true);
+        main_window_ui_->spinBox4DOF->setEnabled(false);
+        main_window_ui_->spinBox5DOF->setEnabled(false);
+        main_window_ui_->spinBox6DOF->setEnabled(false);
 }
 
 void ROSGUI::on_4DOF()
 {
-        main_window_ui_.dial1DOF->   setEnabled(true);
-        main_window_ui_.dial2DOF->   setEnabled(true);
-        main_window_ui_.dial3DOF->   setEnabled(true);
-        main_window_ui_.dial4DOF->   setEnabled(true);
-        main_window_ui_.dial5DOF->   setEnabled(false);
-        main_window_ui_.dial6DOF->   setEnabled(false);
-        main_window_ui_.spinBox1DOF->setEnabled(true);
-        main_window_ui_.spinBox2DOF->setEnabled(true);
-        main_window_ui_.spinBox3DOF->setEnabled(true);
-        main_window_ui_.spinBox4DOF->setEnabled(true);
-        main_window_ui_.spinBox5DOF->setEnabled(false);
-        main_window_ui_.spinBox6DOF->setEnabled(false);
+        main_window_ui_->dial1DOF->   setEnabled(true);
+        main_window_ui_->dial2DOF->   setEnabled(true);
+        main_window_ui_->dial3DOF->   setEnabled(true);
+        main_window_ui_->dial4DOF->   setEnabled(true);
+        main_window_ui_->dial5DOF->   setEnabled(false);
+        main_window_ui_->dial6DOF->   setEnabled(false);
+        main_window_ui_->spinBox1DOF->setEnabled(true);
+        main_window_ui_->spinBox2DOF->setEnabled(true);
+        main_window_ui_->spinBox3DOF->setEnabled(true);
+        main_window_ui_->spinBox4DOF->setEnabled(true);
+        main_window_ui_->spinBox5DOF->setEnabled(false);
+        main_window_ui_->spinBox6DOF->setEnabled(false);
 
 }
 
 
 void ROSGUI::on_5DOF()
 {
-        main_window_ui_.dial1DOF->   setEnabled(true);
-        main_window_ui_.dial2DOF->   setEnabled(true);
-        main_window_ui_.dial3DOF->   setEnabled(true);
-        main_window_ui_.dial4DOF->   setEnabled(true);
-        main_window_ui_.dial5DOF->   setEnabled(true);
-        main_window_ui_.dial6DOF->   setEnabled(false);
-        main_window_ui_.spinBox1DOF->setEnabled(true);
-        main_window_ui_.spinBox2DOF->setEnabled(true);
-        main_window_ui_.spinBox3DOF->setEnabled(true);
-        main_window_ui_.spinBox4DOF->setEnabled(true);
-        main_window_ui_.spinBox5DOF->setEnabled(true);
-        main_window_ui_.spinBox6DOF->setEnabled(false);
+        main_window_ui_->dial1DOF->   setEnabled(true);
+        main_window_ui_->dial2DOF->   setEnabled(true);
+        main_window_ui_->dial3DOF->   setEnabled(true);
+        main_window_ui_->dial4DOF->   setEnabled(true);
+        main_window_ui_->dial5DOF->   setEnabled(true);
+        main_window_ui_->dial6DOF->   setEnabled(false);
+        main_window_ui_->spinBox1DOF->setEnabled(true);
+        main_window_ui_->spinBox2DOF->setEnabled(true);
+        main_window_ui_->spinBox3DOF->setEnabled(true);
+        main_window_ui_->spinBox4DOF->setEnabled(true);
+        main_window_ui_->spinBox5DOF->setEnabled(true);
+        main_window_ui_->spinBox6DOF->setEnabled(false);
 
 }
 
 
 void ROSGUI::on_6DOF()
 {
-       main_window_ui_.dial1DOF->   setEnabled(true);
-       main_window_ui_.dial2DOF->   setEnabled(true);
-       main_window_ui_.dial3DOF->   setEnabled(true);
-       main_window_ui_.dial4DOF->   setEnabled(true);
-       main_window_ui_.dial5DOF->   setEnabled(true);
-       main_window_ui_.dial6DOF->   setEnabled(true);
-       main_window_ui_.spinBox1DOF->setEnabled(true);
-       main_window_ui_.spinBox2DOF->setEnabled(true);
-       main_window_ui_.spinBox3DOF->setEnabled(true);
-       main_window_ui_.spinBox4DOF->setEnabled(true);
-       main_window_ui_.spinBox5DOF->setEnabled(true);
-       main_window_ui_.spinBox6DOF->setEnabled(true);
+       main_window_ui_->dial1DOF->   setEnabled(true);
+       main_window_ui_->dial2DOF->   setEnabled(true);
+       main_window_ui_->dial3DOF->   setEnabled(true);
+       main_window_ui_->dial4DOF->   setEnabled(true);
+       main_window_ui_->dial5DOF->   setEnabled(true);
+       main_window_ui_->dial6DOF->   setEnabled(true);
+       main_window_ui_->spinBox1DOF->setEnabled(true);
+       main_window_ui_->spinBox2DOF->setEnabled(true);
+       main_window_ui_->spinBox3DOF->setEnabled(true);
+       main_window_ui_->spinBox4DOF->setEnabled(true);
+       main_window_ui_->spinBox5DOF->setEnabled(true);
+       main_window_ui_->spinBox6DOF->setEnabled(true);
 }
 
 void ROSGUI::offWidgets(){
-  main_window_ui_.dial1DOF->   setEnabled(false);
-  main_window_ui_.dial2DOF->   setEnabled(false);
-  main_window_ui_.dial3DOF->   setEnabled(false);
-  main_window_ui_.dial4DOF->   setEnabled(false);
-  main_window_ui_.dial5DOF->   setEnabled(false);
-  main_window_ui_.dial6DOF->   setEnabled(false);
-  main_window_ui_.spinBox1DOF->setEnabled(false);
-  main_window_ui_.spinBox2DOF->setEnabled(false);
-  main_window_ui_.spinBox3DOF->setEnabled(false);
-  main_window_ui_.spinBox4DOF->setEnabled(false);
-  main_window_ui_.spinBox5DOF->setEnabled(false);
-  main_window_ui_.spinBox6DOF->setEnabled(false);
+  main_window_ui_->dial1DOF->   setEnabled(false);
+  main_window_ui_->dial2DOF->   setEnabled(false);
+  main_window_ui_->dial3DOF->   setEnabled(false);
+  main_window_ui_->dial4DOF->   setEnabled(false);
+  main_window_ui_->dial5DOF->   setEnabled(false);
+  main_window_ui_->dial6DOF->   setEnabled(false);
+  main_window_ui_->spinBox1DOF->setEnabled(false);
+  main_window_ui_->spinBox2DOF->setEnabled(false);
+  main_window_ui_->spinBox3DOF->setEnabled(false);
+  main_window_ui_->spinBox4DOF->setEnabled(false);
+  main_window_ui_->spinBox5DOF->setEnabled(false);
+  main_window_ui_->spinBox6DOF->setEnabled(false);
 }
 
 
@@ -870,35 +913,46 @@ void ROSGUI::on_comboBox_currentIndexChanged(int index=0)
   switch (index){
    case 0:
   {
-   mRviz->refreshTF(true, true, true);
-   mRviz->refreshRM(true);
+    mRviz->refreshTF(false, false, false);
+    mRviz->refreshRM(true);
+
    break;
   }
    case 1:
  {
-  mRviz->refreshTF(false, false, false);
-  mRviz->refreshRM(true);
-  break;
+    mRviz->refreshTF(true, true, false);
+    mRviz->refreshRM(true);
+   break;
  }
    case 2:
   {
-   mRviz->refreshTF(true, true, false);
-   mRviz->refreshRM(true);
+    mRviz->refreshTF(true, true, true);
+    mRviz->refreshRM(false);
    break;
   }
    case 3:
  {
-  mRviz->refreshTF(true, true, true);
-  mRviz->refreshRM(false);
-  break;
+    mRviz->refreshTF(true, true, false);
+    mRviz->refreshRM(false);
+   break;
  }
    case 4:
  {
-  mRviz->refreshTF(true, true, false);
-  mRviz->refreshRM(false);
-  break;
+    mRviz->refreshTF(true, true, true);
+    mRviz->refreshRM(true);
+
+   break;
    }
   }
+}
+
+void ROSGUI::on_comboBox_2_currentIndexChanged(int index=0)
+{
+  mRviz->setTool(index);
+  if (index==4 || index==5){
+  main_window_ui_->comboBox_2->setCurrentIndex(1);
+  }
+
 }
 
 
@@ -989,74 +1043,74 @@ void ROSGUI::updatetoURDF()
  stringPitch = QString::number(pitch*ToG);
  stringRoll  = QString::number(roll*ToG);
 
-  main_window_ui_.fkX->setText(stringX);
-  main_window_ui_.fkY->setText(stringY);
-  main_window_ui_.fkZ->setText(stringZ);
+  main_window_ui_->fkX->setText(stringX);
+  main_window_ui_->fkY->setText(stringY);
+  main_window_ui_->fkZ->setText(stringZ);
 
-  main_window_ui_.fkYaw->setText(stringYaw);
-  main_window_ui_.fkPitch->setText(stringPitch);
-  main_window_ui_.fkRoll->setText(stringRoll);
+  main_window_ui_->fkYaw->setText(stringYaw);
+  main_window_ui_->fkPitch->setText(stringPitch);
+  main_window_ui_->fkRoll->setText(stringRoll);
 
 
 
-  main_window_ui_.dial1DOF->setMinimum(joint_lower[0]*ToG);
-  main_window_ui_.dial1DOF->setMaximum(joint_upper[0]*ToG);
-  main_window_ui_.dial1DOF->setSingleStep(1);
-  main_window_ui_.spinBox1DOF->setMinimum(joint_lower[0]*ToG);
-  main_window_ui_.spinBox1DOF->setMaximum(joint_upper[0]*ToG);
-  main_window_ui_.spinBox1DOF->setSingleStep(1);
+  main_window_ui_->dial1DOF->setMinimum(joint_lower[0]*ToG);
+  main_window_ui_->dial1DOF->setMaximum(joint_upper[0]*ToG);
+  main_window_ui_->dial1DOF->setSingleStep(1);
+  main_window_ui_->spinBox1DOF->setMinimum(joint_lower[0]*ToG);
+  main_window_ui_->spinBox1DOF->setMaximum(joint_upper[0]*ToG);
+  main_window_ui_->spinBox1DOF->setSingleStep(1);
 
-  main_window_ui_.dial2DOF->setMinimum(joint_lower[1]*ToG);
-  main_window_ui_.dial2DOF->setMaximum(joint_upper[1]*ToG);
-  main_window_ui_.dial2DOF->setSingleStep(1);
-  main_window_ui_.spinBox2DOF->setMinimum(joint_lower[1]*ToG);
-  main_window_ui_.spinBox2DOF->setMaximum(joint_upper[1]*ToG);
-  main_window_ui_.spinBox2DOF->setSingleStep(1);
+  main_window_ui_->dial2DOF->setMinimum(joint_lower[1]*ToG);
+  main_window_ui_->dial2DOF->setMaximum(joint_upper[1]*ToG);
+  main_window_ui_->dial2DOF->setSingleStep(1);
+  main_window_ui_->spinBox2DOF->setMinimum(joint_lower[1]*ToG);
+  main_window_ui_->spinBox2DOF->setMaximum(joint_upper[1]*ToG);
+  main_window_ui_->spinBox2DOF->setSingleStep(1);
 
-  main_window_ui_.dial3DOF->setMinimum(joint_lower[2]*ToG);
-  main_window_ui_.dial3DOF->setMaximum(joint_upper[2]*ToG);
-  main_window_ui_.dial3DOF->setSingleStep(1);
-  main_window_ui_.spinBox3DOF->setMinimum(joint_lower[2]*ToG);
-  main_window_ui_.spinBox3DOF->setMaximum(joint_upper[2]*ToG);
-  main_window_ui_.spinBox3DOF->setSingleStep(1);
+  main_window_ui_->dial3DOF->setMinimum(joint_lower[2]*ToG);
+  main_window_ui_->dial3DOF->setMaximum(joint_upper[2]*ToG);
+  main_window_ui_->dial3DOF->setSingleStep(1);
+  main_window_ui_->spinBox3DOF->setMinimum(joint_lower[2]*ToG);
+  main_window_ui_->spinBox3DOF->setMaximum(joint_upper[2]*ToG);
+  main_window_ui_->spinBox3DOF->setSingleStep(1);
 
-  main_window_ui_.dial4DOF->setMinimum(joint_lower[3]*ToG);
-  main_window_ui_.dial4DOF->setMaximum(joint_upper[3]*ToG);
-  main_window_ui_.dial4DOF->setSingleStep(1);
-  main_window_ui_.spinBox4DOF->setMinimum(joint_lower[3]*ToG);
-  main_window_ui_.spinBox4DOF->setMaximum(joint_upper[3]*ToG);
-  main_window_ui_.spinBox4DOF->setSingleStep(1);
+  main_window_ui_->dial4DOF->setMinimum(joint_lower[3]*ToG);
+  main_window_ui_->dial4DOF->setMaximum(joint_upper[3]*ToG);
+  main_window_ui_->dial4DOF->setSingleStep(1);
+  main_window_ui_->spinBox4DOF->setMinimum(joint_lower[3]*ToG);
+  main_window_ui_->spinBox4DOF->setMaximum(joint_upper[3]*ToG);
+  main_window_ui_->spinBox4DOF->setSingleStep(1);
 
-  main_window_ui_.dial5DOF->setMinimum(joint_lower[4]*ToG);
-  main_window_ui_.dial5DOF->setMaximum(joint_upper[4]*ToG);
-  main_window_ui_.dial5DOF->setSingleStep(1);
-  main_window_ui_.spinBox5DOF->setMinimum(joint_lower[4]*ToG);
-  main_window_ui_.spinBox5DOF->setMaximum(joint_upper[4]*ToG);
-  main_window_ui_.spinBox5DOF->setSingleStep(1);
+  main_window_ui_->dial5DOF->setMinimum(joint_lower[4]*ToG);
+  main_window_ui_->dial5DOF->setMaximum(joint_upper[4]*ToG);
+  main_window_ui_->dial5DOF->setSingleStep(1);
+  main_window_ui_->spinBox5DOF->setMinimum(joint_lower[4]*ToG);
+  main_window_ui_->spinBox5DOF->setMaximum(joint_upper[4]*ToG);
+  main_window_ui_->spinBox5DOF->setSingleStep(1);
 
-  main_window_ui_.dial6DOF->setMinimum(joint_lower[5]*ToG);
-  main_window_ui_.dial6DOF->setMaximum(joint_upper[5]*ToG);
-  main_window_ui_.dial6DOF->setSingleStep(1);
-  main_window_ui_.spinBox6DOF->setMinimum(joint_lower[5]*ToG);
-  main_window_ui_.spinBox6DOF->setMaximum(joint_upper[5]*ToG);
-  main_window_ui_.spinBox6DOF->setSingleStep(1);
+  main_window_ui_->dial6DOF->setMinimum(joint_lower[5]*ToG);
+  main_window_ui_->dial6DOF->setMaximum(joint_upper[5]*ToG);
+  main_window_ui_->dial6DOF->setSingleStep(1);
+  main_window_ui_->spinBox6DOF->setMinimum(joint_lower[5]*ToG);
+  main_window_ui_->spinBox6DOF->setMaximum(joint_upper[5]*ToG);
+  main_window_ui_->spinBox6DOF->setSingleStep(1);
 }
 
 void ROSGUI::resetvalue(){
-  main_window_ui_.dial1DOF->    setValue(resetv);
-  main_window_ui_.dial2DOF->    setValue(resetv);
-  main_window_ui_.dial3DOF->    setValue(resetv);
-  main_window_ui_.dial4DOF->    setValue(resetv);
-  main_window_ui_.dial5DOF->    setValue(resetv);
-  main_window_ui_.dial6DOF->    setValue(resetv);
+  main_window_ui_->dial1DOF->    setValue(resetv);
+  main_window_ui_->dial2DOF->    setValue(resetv);
+  main_window_ui_->dial3DOF->    setValue(resetv);
+  main_window_ui_->dial4DOF->    setValue(resetv);
+  main_window_ui_->dial5DOF->    setValue(resetv);
+  main_window_ui_->dial6DOF->    setValue(resetv);
 
 
-  main_window_ui_.spinBox1DOF->    setValue(resetv);
-  main_window_ui_.spinBox2DOF->    setValue(resetv);
-  main_window_ui_.spinBox3DOF->    setValue(resetv);
-  main_window_ui_.spinBox4DOF->    setValue(resetv);
-  main_window_ui_.spinBox5DOF->    setValue(resetv);
-  main_window_ui_.spinBox6DOF->    setValue(resetv);
+  main_window_ui_->spinBox1DOF->    setValue(resetv);
+  main_window_ui_->spinBox2DOF->    setValue(resetv);
+  main_window_ui_->spinBox3DOF->    setValue(resetv);
+  main_window_ui_->spinBox4DOF->    setValue(resetv);
+  main_window_ui_->spinBox5DOF->    setValue(resetv);
+  main_window_ui_->spinBox6DOF->    setValue(resetv);
 }
 void ROSGUI::executeIK(){
 //KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_.xBox->value(),main_window_ui_.yBox->value(),main_window_ui_.zBox->value());
@@ -1064,7 +1118,7 @@ void ROSGUI::executeIK(){
 
   KDL::Vector tcpXYZ  = KDL::Vector(0.3,0.0,0.0);
   //KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.1,0.0,0.0);
+  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.7,0.0,0.0);
 
     if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
     {
@@ -1072,17 +1126,18 @@ void ROSGUI::executeIK(){
 
     }
 
+
 }
 
 void ROSGUI::executeFK(){
 
   j(nj)=0;
-  j(0) = main_window_ui_.spinBox1DOF->value()/ToG;
-  j(1) = main_window_ui_.spinBox2DOF->value()/ToG;
-  j(2) = main_window_ui_.spinBox3DOF->value()/ToG;
-  j(3) = main_window_ui_.spinBox4DOF->value()/ToG;
-  j(4) = main_window_ui_.spinBox5DOF->value()/ToG;
-  j(5) = main_window_ui_.spinBox6DOF->value()/ToG;
+  j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
+  j(1) = main_window_ui_->spinBox2DOF->value()/ToG;
+  j(2) = main_window_ui_->spinBox3DOF->value()/ToG;
+  j(3) = main_window_ui_->spinBox4DOF->value()/ToG;
+  j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
+  j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
   if(!jointsv->ForwardK(pos_mat, j, nj))
   {
@@ -1097,20 +1152,20 @@ void ROSGUI::executeFK(){
   stringPitch = QString::number(pitch*ToG);
   stringRoll  = QString::number(roll*ToG);
 
-   main_window_ui_.fkX->setText(stringX);
-   main_window_ui_.fkY->setText(stringY);
-   main_window_ui_.fkZ->setText(stringZ);
+   main_window_ui_->fkX->setText(stringX);
+   main_window_ui_->fkY->setText(stringY);
+   main_window_ui_->fkZ->setText(stringZ);
 
-   main_window_ui_.fkYaw->setText(stringYaw);
-   main_window_ui_.fkPitch->setText(stringPitch);
-   main_window_ui_.fkRoll->setText(stringRoll);
+   main_window_ui_->fkYaw->setText(stringYaw);
+   main_window_ui_->fkPitch->setText(stringPitch);
+   main_window_ui_->fkRoll->setText(stringRoll);
 
-   joint_positions_["joint_1"]= main_window_ui_.dial1DOF->value()/ToG;
-   joint_positions_["joint_2"]= main_window_ui_.dial2DOF->value()/ToG;
-   joint_positions_["joint_3"]= main_window_ui_.dial3DOF->value()/ToG;
-   joint_positions_["joint_4"]= main_window_ui_.dial4DOF->value()/ToG;
-   joint_positions_["joint_5"]= main_window_ui_.dial5DOF->value()/ToG;
-   joint_positions_["joint_6"]= main_window_ui_.dial6DOF->value()/ToG;
+   joint_positions_["joint_1"]= main_window_ui_->dial1DOF->value()/ToG;
+   joint_positions_["joint_2"]= main_window_ui_->dial2DOF->value()/ToG;
+   joint_positions_["joint_3"]= main_window_ui_->dial3DOF->value()/ToG;
+   joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
+   joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
+   joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
 
 
 }

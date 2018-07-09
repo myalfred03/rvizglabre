@@ -10,9 +10,9 @@
 #include <QVector>
 
 
-#include "include/rvizg.h"
+#include "rvizg.h"
 //#include "include/rvizg_node.h"
-#include "include/ui_secondwindow.h"
+#include <ui_secondwindow.h>
 //#include "rosgui.h"
 
 namespace Ui {

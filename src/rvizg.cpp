@@ -1,4 +1,4 @@
-#include <include/rvizg.h>
+#include "rvizg.h"
 #include <QSlider>
 #include <QLabel>
 #include <QGridLayout>
@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <QVariant>
 #include <QPushButton>
+#include <QStatusBar>
+
 
 
 #include "rviz/visualization_manager.h"
@@ -15,86 +17,78 @@
 
 #include "rviz/default_plugin/grid_display.h"
 #include <rviz/default_plugin/robot_model_display.h>
+
 #include <rviz/frame_manager.h>
 
 
-MyViz::MyViz( QWidget* parent )
-  : QWidget( parent )
+MyViz::MyViz( QWidget* parent ):
+  QWidget( parent )
 {
-  QHBoxLayout* main_layout = new QHBoxLayout;
+  QVBoxLayout* main_layout = new QVBoxLayout;
+  status_label_ = new QLabel("");
+  status_label_->setMinimumHeight(4);
+  status_label_->setMinimumWidth(4);
+  status_label_->setMaximumHeight(18);
+  status_label_->setMaximumWidth(600);
+  status_label_->setContentsMargins(0,0,0,0);
+  status_label_->setAlignment(Qt::AlignRight);
+
   // Construct render panel.
   render_panel_ = new rviz::RenderPanel();
 
 //  render_panel_->setMaximumHeight(parent->isFullScreen());
-//  render_panel_->setMaximumWidth(parent->isFullScreen());
-//  render_panel_->setMinimumHeight(parent->height());
-//  render_panel_->setMinimumWidth(parent->width());
 
   main_layout->addWidget( render_panel_ );
-
-  // Layout
-  //QPushButton* interact = new QPushButton( "Interact" );
-
-
-
-
-//  main_layout->addLayout( controls_layout );
-  //main_layout->addWidget(interact);
+  main_layout->addWidget(status_label_);
+  connect( this, SIGNAL( statusUpdate( const QString& )), status_label_, SLOT( setText( const QString& )));
 
   // Set the top-level layout for this MyViz widget.
   setLayout( main_layout );
 
-  // Next we initialize the main RViz classes.
-  //
-  // The VisualizationManager is the container for Display objects,
-  // holds the main Ogre scene, holds the ViewController, etc.  It is
-  // very central and we will probably need one in every usage of
-  // librviz.
   manager_ = new rviz::VisualizationManager( render_panel_ );
+  rviz::YamlConfigReader reader;
+  rviz::Config config;
+  std::string filename = ros::package::getPath("rvizglabre")+"/config/homer_display.rviz" ;
+  reader.readFile( config, QString::fromStdString( filename ));
+      if( !reader.error() )
+      {
+          manager_->load( config.mapGetChild( "Visualization Manager" ));
+      }
+
   render_panel_->initialize( manager_->getSceneManager(), manager_ );
+  manager_->setFixedFrame (QString::fromStdString("base_link"));
   manager_->initialize();
   manager_->startUpdate();
 
-  manager_->setFixedFrame( "/my_frame3" );
-
-
-
-//  //other tuto
-//  manager_->setFixedFrame (QString::fromStdString("base_link"));
-//  robot_state_display_ = new moveit_rviz_plugin::RobotStateDisplay();
-//  robot_state_display_->setName("Robot State");
-
-//  manager_->addDisplay(robot_state_display_, true);
-
-//  // Create an interaction tool..
-//  rviz::ToolManager * tm = manager_->getToolManager();
+  // Create an interaction tool..
+  tm=new rviz::ToolManager(manager_);
+  tm = manager_->getToolManager();
+  pointTool_    = tm->addTool("rviz/PublishPoint");
+  measureTool_  = tm->addTool("rviz/Measure");
+  selectTool_   = tm->addTool("rviz/Select");
+  interactTool_ = tm->addTool("rviz/Interact");
+  moveCamera_   = tm->addTool("rviz/MoveCamera");
+  focusCamera_  = tm->addTool("rviz/FocusCamera");
 //  tm->addTool( "rviz/Interact");
-//  rviz::Tool * default_tool = tm->getTool(1);
-//  tm->setDefaultTool(default_tool);
+//  default_tool = tm->getTool(0);
+  tm->setDefaultTool(interactTool_);
 //  tm->setCurrentTool(default_tool);
-//  QStringList tools = tm->getToolClasses();
-//  ROS_INFO("The current tools are");
-//  for (int i = 0; i < tools.size(); i++)
-//  {
-//      ROS_INFO("Tool: %s", tools.at(i).toStdString().c_str());
-//  }
-
-//  // Add the marker display here
-//  interactive_marker_display_ = new rviz::InteractiveMarkerDisplay();
-//  interactive_marker_display_->setTopic(QString("/interactive_mount_points_server/update"), QString());
+  QStringList tools = tm->getToolClasses();
+  ROS_INFO("The current tools are");
+  for (int i = 0; i < tools.size(); i++)
+  {
+      ROS_INFO("Tool: %s", tools.at(i).toStdString().c_str());
+  }
 
 
+// Set MoveIt! Robot
+//      robot_state_display_->subProp("Robot Description")->setValue(QString::fromStdString( "robot_description" ));
+//      robot_display_ = new moveit_rviz_plugin::RobotStateDisplay();
+//      robot_display_->setName("RobotModel");
+//      manager_->addDisplay(robot_display_, true);
+// Set MoveIt! Robot
 
-
-////  manager_->addDisplay(interactive_marker_display_, true);
-
-//  // Set robot description
-//  robot_state_display_->subProp("Robot Description")->setValue(QString::fromStdString( "robot_description" ));
-
-//  // Zoom into robot
-//  rviz::ViewController* view = manager_->getViewManager()->getCurrent();
-//  view->subProp( "Distance" )->setValue( 4.0f );
-
+  connect( manager_, SIGNAL( statusUpdate( const QString& )), this, SIGNAL( statusUpdate( const QString& )));
 
 
 
@@ -104,7 +98,10 @@ MyViz::MyViz( QWidget* parent )
   robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
   grid_ = manager_->createDisplay( "rviz/Grid", "adjustable grid", true );
-  tF_   = manager_->createDisplay( "rviz/TF","TF", true); // active mode or disable at load model robot
+  grid_->subProp( "Line Style" )->setValue( "Billboards" );
+  grid_->subProp( "Color" )->setValue( QColor( Qt::black ) );
+  tF_   = manager_->createDisplay( "rviz/TF","TF", false); // active mode or disable at load model robot
+
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
 
@@ -141,15 +138,7 @@ MyViz::~MyViz()
 
 void MyViz::refresh(const std::string& fixed_frame)
 {
-//  manager_->createDisplay( "rviz/TF","TF", tfrv );
-//    tF_->reset();//->setValue(tfrv);
-
-//    tF_->subProp("Show Axes")->setValue(true);
-//    tF_->subProp( "Show Arrows" )->setValue(true);
-   // tF_->onDisable();
-
-
-    manager_->setFixedFrame(QString::fromStdString(fixed_frame));
+  manager_->setFixedFrame(QString::fromStdString(fixed_frame));
 
 	if(robot_model_ != NULL)
 		delete robot_model_;
@@ -161,6 +150,8 @@ void MyViz::refresh(const std::string& fixed_frame)
   robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
   robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
   robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
+//  robot_display_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
+
 
 }
 
@@ -178,4 +169,68 @@ void MyViz::refreshRM(bool rbrv)
 {
   robot_model_->setEnabled(rbrv);
 }
+//void MyViz::datameasure(QString &data)
+//{
+//  data=datam;
+//}
 
+void MyViz::setStatus( const QString & message )
+{
+  Q_EMIT statusUpdate( message );
+}
+
+void MyViz::setTool(int tool)
+{
+ switch (tool){
+     case 0:
+    {
+//   tm->addTool("rviz/MoveCamera");
+//   default_tool = tm->getTool(0);
+   tm->setCurrentTool(moveCamera_);
+     break;
+    }
+     case 1:
+   {
+//   tm->addTool( "rviz/Interact");
+//   default_tool = tm->getTool(1);
+   tm->setCurrentTool(interactTool_);
+    break;
+   }
+     case 2:
+    {
+//     tm->addTool("rviz/Select");
+//     default_tool = tm->getTool(2);
+     tm->setCurrentTool(selectTool_);
+     break;
+    }
+     case 3:
+   {
+//   tm->addTool("rviz/Measure");
+//   default_tool = tm->getTool(6);
+   tm->setCurrentTool(measureTool_);
+
+    break;
+   }
+     case 4:
+   {
+
+   tm->setCurrentTool(focusCamera_);
+
+    break;
+     }
+     case 5:
+    {
+
+    tm->setCurrentTool(pointTool_);
+
+    break;
+     }
+
+    }
+// QStringList tools = tm->getToolClasses();
+// ROS_INFO("The current tools are");
+// for (int i = 0; i < tools.size(); i++)
+// {
+//     ROS_INFO("Tool: %s", tools.at(i).toStdString().c_str());
+// }
+}

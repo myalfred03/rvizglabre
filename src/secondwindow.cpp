@@ -1,6 +1,6 @@
-#include "include/secondwindow.h"
-#include "include/rosgui.h"
-#include "include/ui_secondwindow.h"
+#include "secondwindow.h"
+#include "rosgui.h"
+#include <ui_secondwindow.h>
 #include <QMessageBox>
 #include <QMdiArea>
 

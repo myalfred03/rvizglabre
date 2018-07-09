@@ -18,6 +18,13 @@
         <file>img/noun_319786_cc.png</file>
         <file>img/noun_1036029_cc.png</file>
         <file>img/noun_1035985_cc (1).png</file>
+        <file>img/Virtual Laboratory_078.png</file>
+        <file>img/Interact.png</file>
+        <file>img/MoveCamera.png</file>
+        <file>img/Select.png</file>
+        <file>img/Measure.png</file>
+        <file>img/FocusCamera.png</file>
+        <file>img/PublishPoint.png</file>
     </qresource>
     <qresource prefix="/robots/URDF">
         <file>modelos/bmda3.urdf</file>
@@ -33,5 +40,6 @@
         <file>modelos/uni.urdf</file>
         <file>modelos/pan_tilt.urdf</file>
         <file>modelos/3dof.urdf</file>
+        <file>modelos/two_link.urdf</file>
     </qresource>
 </RCC>

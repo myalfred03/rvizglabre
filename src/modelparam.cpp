@@ -153,6 +153,7 @@ for(int i=0;i<njnt;i++)
     return true;
 }else{
     printf("%s \n","Error: could not calculate forward kinematics :(");
+    return false;
 }
 
 

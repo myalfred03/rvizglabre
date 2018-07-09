@@ -1,6 +1,6 @@
-#include "include/thirdwindow.h"
-#include "include/ui_thirdwindow.h"
-#include "include/rosgui.h"
+#include "thirdwindow.h"
+#include <ui_thirdwindow.h>
+#include "rosgui.h"
 #include <QMessageBox>
 #include <QMdiArea>
 
