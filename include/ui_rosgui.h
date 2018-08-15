@@ -273,9 +273,13 @@ public:
     QVBoxLayout *verticalLayout_7;
     QFrame *line;
     QGridLayout *gridLayout_19;
-    QComboBox *comboBox_2;
-    QComboBox *comboBox;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_23;
+    QComboBox *comboBox;
+    QComboBox *comboBox_2;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_78;
+    QComboBox *comboBox_3;
     QFrame *line_3;
     QGridLayout *gridLayout_10;
     QMdiArea *mdiArea;
@@ -1878,58 +1882,86 @@ public:
         gridLayout_19 = new QGridLayout();
         gridLayout_19->setSpacing(6);
         gridLayout_19->setObjectName(QStringLiteral("gridLayout_19"));
-        comboBox_2 = new QComboBox(centralWidget);
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/images/img/Interact.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon4, QString());
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/images/img/MoveCamera.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon5, QString());
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/images/img/Select.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon6, QString());
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/images/img/Measure.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon7, QString());
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/images/img/FocusCamera.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon8, QString());
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/images/img/PublishPoint.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox_2->addItem(icon9, QString());
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-
-        gridLayout_19->addWidget(comboBox_2, 0, 2, 1, 1);
-
-        comboBox = new QComboBox(centralWidget);
-        QIcon icon10;
-        icon10.addFile(QStringLiteral(":/images/img/noun_.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox->addItem(icon10, QString());
-        QIcon icon11;
-        icon11.addFile(QStringLiteral(":/images/img/noun_1035985_cc (1).png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox->addItem(icon11, QString());
-        QIcon icon12;
-        icon12.addFile(QStringLiteral(":/images/img/noun_319786_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox->addItem(icon12, QString());
-        QIcon icon13;
-        icon13.addFile(QStringLiteral(":/images/img/noun_1450480_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox->addItem(icon13, QString());
-        QIcon icon14;
-        icon14.addFile(QStringLiteral(":/images/img/noun_1036029_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
-        comboBox->addItem(icon14, QString());
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-
-        gridLayout_19->addWidget(comboBox, 0, 0, 1, 1);
-
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_23 = new QLabel(centralWidget);
         label_23->setObjectName(QStringLiteral("label_23"));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Abyssinica SIL"));
-        font12.setPointSize(15);
-        label_23->setFont(font12);
         label_23->setAlignment(Qt::AlignCenter);
 
-        gridLayout_19->addWidget(label_23, 0, 1, 1, 1);
+        horizontalLayout->addWidget(label_23);
+
+        comboBox = new QComboBox(centralWidget);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/images/img/noun_.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon4, QString());
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/images/img/noun_1035985_cc (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon5, QString());
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/images/img/noun_319786_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon6, QString());
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/images/img/noun_1450480_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon7, QString());
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/images/img/noun_1036029_cc.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon8, QString());
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        horizontalLayout->addWidget(comboBox);
+
+        comboBox_2 = new QComboBox(centralWidget);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/images/img/Interact.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon9, QString());
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/images/img/MoveCamera.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon10, QString());
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/images/img/Select.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon11, QString());
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/images/img/Measure.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon12, QString());
+        QIcon icon13;
+        icon13.addFile(QStringLiteral(":/images/img/FocusCamera.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon13, QString());
+        QIcon icon14;
+        icon14.addFile(QStringLiteral(":/images/img/PublishPoint.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_2->addItem(icon14, QString());
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+
+        horizontalLayout->addWidget(comboBox_2);
+
+
+        gridLayout_19->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        label_78 = new QLabel(centralWidget);
+        label_78->setObjectName(QStringLiteral("label_78"));
+        label_78->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_6->addWidget(label_78);
+
+        comboBox_3 = new QComboBox(centralWidget);
+        QIcon icon15;
+        icon15.addFile(QStringLiteral(":/images/img/kinetics.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_3->addItem(icon15, QString());
+        QIcon icon16;
+        icon16.addFile(QStringLiteral(":/images/img/turn_left.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox_3->addItem(icon16, QString());
+        comboBox_3->addItem(QString());
+        comboBox_3->addItem(QString());
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setLayoutDirection(Qt::RightToLeft);
+
+        horizontalLayout_6->addWidget(comboBox_3);
+
+
+        gridLayout_19->addLayout(horizontalLayout_6, 0, 1, 1, 1);
 
 
         verticalLayout_7->addLayout(gridLayout_19);
@@ -1969,12 +2001,12 @@ public:
 
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        QFont font13;
-        font13.setFamily(QStringLiteral("Arial Black"));
-        font13.setPointSize(14);
-        font13.setBold(true);
-        font13.setWeight(75);
-        label->setFont(font13);
+        QFont font12;
+        font12.setFamily(QStringLiteral("Arial Black"));
+        font12.setPointSize(14);
+        font12.setBold(true);
+        font12.setWeight(75);
+        label->setFont(font12);
         label->setLayoutDirection(Qt::LeftToRight);
         label->setTextFormat(Qt::RichText);
         label->setAlignment(Qt::AlignCenter);
@@ -2312,6 +2344,16 @@ public:
         checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
         checkBox6DOFs->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("ROSGUI", "Robots Simples", Q_NULLPTR));
+        label_23->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">Tools RVIZ</span></p></body></html>", Q_NULLPTR));
+        comboBox->setItemText(0, QApplication::translate("ROSGUI", "Show only Robot", Q_NULLPTR));
+        comboBox->setItemText(1, QApplication::translate("ROSGUI", "Show Robot with Axes", Q_NULLPTR));
+        comboBox->setItemText(2, QApplication::translate("ROSGUI", "Show Axes with Names", Q_NULLPTR));
+        comboBox->setItemText(3, QApplication::translate("ROSGUI", "Show Axes", Q_NULLPTR));
+        comboBox->setItemText(4, QApplication::translate("ROSGUI", "Show All", Q_NULLPTR));
+
+#ifndef QT_NO_TOOLTIP
+        comboBox->setToolTip(QApplication::translate("ROSGUI", "\"Elige el perfil de visualizacion de tu robot\"", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         comboBox_2->setItemText(0, QApplication::translate("ROSGUI", "Interactuar", Q_NULLPTR));
         comboBox_2->setItemText(1, QApplication::translate("ROSGUI", "Mover Camara", Q_NULLPTR));
         comboBox_2->setItemText(2, QApplication::translate("ROSGUI", "Seleccionar", Q_NULLPTR));
@@ -2322,16 +2364,12 @@ public:
 #ifndef QT_NO_TOOLTIP
         comboBox_2->setToolTip(QApplication::translate("ROSGUI", "Herramientas de interaccion con el modelo 3D", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        comboBox->setItemText(0, QApplication::translate("ROSGUI", "Show only Robot", Q_NULLPTR));
-        comboBox->setItemText(1, QApplication::translate("ROSGUI", "Show Robot with Axes", Q_NULLPTR));
-        comboBox->setItemText(2, QApplication::translate("ROSGUI", "Show Axes with Names", Q_NULLPTR));
-        comboBox->setItemText(3, QApplication::translate("ROSGUI", "Show Axes", Q_NULLPTR));
-        comboBox->setItemText(4, QApplication::translate("ROSGUI", "Show All", Q_NULLPTR));
+        label_78->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">Tools MoveIt! </span></p></body></html>", Q_NULLPTR));
+        comboBox_3->setItemText(0, QApplication::translate("ROSGUI", "Show Trail ", Q_NULLPTR));
+        comboBox_3->setItemText(1, QApplication::translate("ROSGUI", "Show Loop Animation", Q_NULLPTR));
+        comboBox_3->setItemText(2, QApplication::translate("ROSGUI", "Show Query Start", Q_NULLPTR));
+        comboBox_3->setItemText(3, QApplication::translate("ROSGUI", "Show Query Goal", Q_NULLPTR));
 
-#ifndef QT_NO_TOOLTIP
-        comboBox->setToolTip(QApplication::translate("ROSGUI", "\"Elige el perfil de visualizacion de tu robot\"", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        label_23->setText(QApplication::translate("ROSGUI", "RVIZ  TOOLS", Q_NULLPTR));
         label->setText(QApplication::translate("ROSGUI", "LABORATORIO VIRTUAL ROB\303\223TICA B\303\201SICA", Q_NULLPTR));
         menuFILE->setTitle(QApplication::translate("ROSGUI", "FILE", Q_NULLPTR));
     } // retranslateUi

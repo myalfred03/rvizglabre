@@ -13,7 +13,8 @@
 //#include "include/secondwindow.h"
 //#include "include/thirdwindow.h"
 //#include "fourth.h"
-#include "rvizg.h"
+#include "rvizg_render.h"
+#include "rviz_main.h"
 //#include "include/rvizg_node.h"
 #include "ui_rosgui.h"
 //#include "include/ui_secondwindow.h"
@@ -41,12 +42,15 @@
 
 //Show value of urdf
 #include "modelparam.h"
+#include <urdf/model.h>
 
 
 ////robot editor
 
 
+class QMainWindow;
 class MyViz;
+//class rvizMain;
 namespace robot_state_publisher { class RobotStatePublisher; }
 namespace boost { class thread; }
 ////robot editor
@@ -67,6 +71,8 @@ public:
       std::vector<double> joints_upper_limit_;
       std::vector< double > joint_upper;
       std::vector< double > joint_lower;
+      std::vector< double > jointV;
+
       void updatetoURDF();
       void resetvalue();
       KDL::JntArray j =KDL::JntArray(6);
@@ -83,8 +89,10 @@ public:
       double positions;
       unsigned int nj;
 
+      void updateURDF(const std::string& urdf);
 
 
+      void publishJointStates();
 
 
 
@@ -165,15 +173,15 @@ public Q_SLOTS:
       void on_comboBox_currentIndexChanged(int index);
       void on_comboBox_2_currentIndexChanged(int index);
 
+Q_SIGNALS:
+void statusTool(int message );
 
 
-private slots:
+//private slots:
 
-private:
+//private:
 
-    //robot editor
-   void updateURDF(const std::string& urdf);
-   void publishJointStates();
+//    //robot editor
 
 //   bool readJntLimitsFromROSParamURDF(/*std::vector<std::string>& limited_jnt_names,
 //           std::vector<double>& lower_limits,
@@ -184,6 +192,7 @@ private:
 //                                      );
 
    //QMainWindow main_window_;
+//protected:
 
 private:
 
@@ -197,7 +206,7 @@ private:
    boost::thread* publisher_thread_;
    std::map<std::string, double> joint_positions_;
    ros::NodeHandle nh_;
-   MyViz *mRviz;
+   MyViz *mRviz;/* = new MyViz;*/
 
     //robot editor
 //   QMainWindow main_window_;
@@ -207,6 +216,8 @@ private:
 //   QMainWindow *fourwindow;
   // QNode *qnode;
    modelparam* jointsv;
+
+//   rvizMain* showModel/* = new rvizMain*/;
 
 
    QProcess *proc;

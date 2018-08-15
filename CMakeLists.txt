@@ -25,6 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_msgs
   pluginlib
   visualization_marker_tutorials
+  interactive_markers
   #roboteditor
   urdf
   tf
@@ -48,7 +49,7 @@ find_package(orocos_kdl REQUIRED)
 #roboteditor
 find_package(Boost REQUIRED COMPONENTS thread)
 #roboteditor
-#add_definitions(-DQT_NO_KEYWORDS)
+add_definitions(-DQT_NO_KEYWORDS)
 
 
 #find_package(gazebo REQUIRED)
@@ -131,9 +132,12 @@ include_directories (${PROJECT_BINARY_DIR})
 #        )
 
 set (MyProject_src
-	  src/rvizg.cpp
 	  src/main.cpp
 	  src/rosgui.cpp
+          src/rviz_main.cpp
+	  src/rvizg_render.cpp
+          src/rvizg_robot_motion.cpp
+
 #	  src/secondwindow.cpp
 #	  src/thirdwindow.cpp
 #          src/fourth.cpp
@@ -157,12 +161,14 @@ set (MyProjectLib_ui
 
 set (MyProjectLib_hdr
 
-             include/rvizg.h
-             include/rosgui.h
+                include/rosgui.h
+		include/rviz_main.h
+		include/rvizg_render.h
+		include/rvizg_robot_motion.h
 #             include/secondwindow.h
 #             include/thirdwindow.h
 #             include/fourth.h
-             include/ui_rosgui.h
+                include/ui_rosgui.h
 #             include/ui_secondwindow.h
 #             include/ui_thirdwindow.h
 #             include/ui_fourth.h

@@ -10,8 +10,8 @@
 
 int main(int argc, char **argv)
 {
- QProcess proc;     //   <QtGui>
- proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
+// QProcess proc;     //   <QtGui>
+// proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
   if(!ros::isInitialized())
   {
     ros::init(argc, argv, "my_lab_uni", ros::init_options::AnonymousName);

@@ -26,7 +26,7 @@
 #include <ui_rosgui.h>
 
 //#include "include/ui_rosgui.h"
-#include "rvizg.h"
+//#include "rvizg.h"
 
 
 //#include "include/secondwindow.h"
@@ -82,15 +82,18 @@ ROSGUI::ROSGUI(QWidget *parent)
    // qnode->on_init();
 
     mRviz = new MyViz(main_window_ui_->mdiArea);
+
     main_window_ui_->mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint); //mdiarea various screen
 
    // mRviz->adjustSize();
-  //  mRviz->setMaximumHeight();
+//    mRviz->setMaximumHeight();
 
-
-    // Add rviz to mdiArea as a subwindow and maximize it
-//    ui->mdiArea->addSubWindow(mRviz, Qt::FramelessWindowHint); // FramelessWindowHint removes close, minimize and maximize title bar
     mRviz->showMaximized();
+
+//    showModel = new rvizMain(main_window_ui_->mdiArea);
+    // Add rviz to mdiArea as a subwindow and maximize it
+//    main_window_ui_->mdiArea->addSubWindow(showModel, Qt::FramelessWindowHint); // FramelessWindowHint removes close, minimize and maximize title bar
+//    showModel->showMaximized();
 
     QPixmap pix(":/images/img/Uni.jpg");
     main_window_ui_->label_3->setPixmap(pix);
@@ -121,7 +124,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //SIGNAL and SLOTS
     //Acciones de la GUI
-
+//    QObject::connect(this, SIGNAL(statusTool(int )),showModel, SLOT(setTool(int )));
     connect(main_window_ui_->actionOpen,   SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered()));
     connect(main_window_ui_->pushButton,   SIGNAL(clicked()),   this, SLOT(on_pushButton_clicked()));
 //    connect(main_window_ui_.pushButton_2, SIGNAL(clicked()),   this, SLOT(on_pushButton_2_clicked()));
@@ -245,9 +248,7 @@ ROSGUI::~ROSGUI()
   if(robot_state_pub_ != NULL)
     delete robot_state_pub_;
   delete main_window_ui_;
-
-
-
+//  delete showModel;
 }
 
 //Funcionalidades Ventana principal
@@ -510,21 +511,54 @@ void ROSGUI::on3DOFs_URDF()
 
 void ROSGUI::updateURDF(const std::string& urdf)
 {
+
+//  std::string param_nameR = "robot_description";
+//  std::string full_param_name;
+//  std::string xml_string;
+//  urdf::Model urdf_model;
+//  nh_.searchParam(param_nameR, full_param_name);
+//    if (nh_.hasParam(full_param_name)){nh_.getParam(full_param_name.c_str(), xml_string);}
+//    if (!urdf_model.initString(xml_string))    //Si se abre desde una direccion de ruta de archivo .initFile
+//    {
+//        ROS_ERROR("Failed to parse urdf file in model param");
+//        nh_.shutdown();
+//        //return false;
+//    }
+
+//  XmlRpc::XmlRpcValue robot_description(xml_string);
+//  nh_.setParam("my_lab_uni/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
+////  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
+///
   XmlRpc::XmlRpcValue robot_description(urdf);
-  nh_.setParam("my_lab_uni/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
-//  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
+    nh_.setParam("my_lab_uni/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
+  //  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
-  if(robot_tree_ != NULL)
-    delete robot_tree_;
-  if(robot_state_pub_ != NULL)
-    delete robot_state_pub_;
+    if(robot_tree_ != NULL)
+      delete robot_tree_;
+    if(robot_state_pub_ != NULL)
+      delete robot_state_pub_;
 
-  robot_tree_ = new KDL::Tree();
-  if(!kdl_parser::treeFromString(urdf, *robot_tree_))
-  {
-    ROS_ERROR("Failed to construct KDL tree");
-    return;
-  }
+    robot_tree_ = new KDL::Tree();
+    if(!kdl_parser::treeFromString(urdf, *robot_tree_))
+    {
+      ROS_ERROR("Failed to construct KDL tree");
+      return;
+    }
+
+
+
+
+//  if(robot_tree_ != NULL)
+//    delete robot_tree_;
+//  if(robot_state_pub_ != NULL)
+//    delete robot_state_pub_;
+
+//  robot_tree_ = new KDL::Tree();
+//  if(!kdl_parser::treeFromString(xml_string, *robot_tree_))
+//  {
+//    ROS_ERROR("Failed to construct KDL tree");
+//    return;
+//  }
 
   // create a robot state publisher from the tree
   robot_state_pub_ = new robot_state_publisher::RobotStatePublisher(*robot_tree_);
@@ -558,19 +592,21 @@ void ROSGUI::publishJointStates()
       {
          robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
          robot_state_pub_->publishFixedTransforms("my_lab_uni");
-         auto it2 = joint_positions_.rbegin();
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
-         std::cout << it2->first << " : " << it2->second << std::endl;
-         it2++;
+//         auto it2 = joint_positions_.rbegin();
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+//         std::cout << it2->first << " : " << it2->second << std::endl;
+//         it2++;
+
+
 //         for(int i,)
          //ROS_INFO_STREAM(joint_positions_.size());
         //  ROS_INFO(joint_positions_);
@@ -775,7 +811,15 @@ void ROSGUI::updateSpinboxesD()
      main_window_ui_->fkPitch->setText(stringPitch);
      main_window_ui_->fkRoll->setText(stringRoll);
 
-
+//Vigir
+     jointV.resize(6);
+     jointV[0] = main_window_ui_->spinBox1DOF->value()/ToG;
+     jointV[1] = main_window_ui_->spinBox2DOF->value()/ToG;
+     jointV[2] = main_window_ui_->spinBox3DOF->value()/ToG;
+     jointV[3] = main_window_ui_->spinBox4DOF->value()/ToG;
+     jointV[4] = main_window_ui_->spinBox5DOF->value()/ToG;
+     jointV[5] = main_window_ui_->spinBox6DOF->value()/ToG;
+     mRviz->refreshJoint(jointV);
 
 }
 
@@ -950,8 +994,9 @@ void ROSGUI::on_comboBox_2_currentIndexChanged(int index=0)
 {
   mRviz->setTool(index);
   if (index==4 || index==5){
-  main_window_ui_->comboBox_2->setCurrentIndex(1);
+  main_window_ui_->comboBox_2->setCurrentIndex(0);
   }
+  Q_EMIT statusTool(index) ;
 
 }
 
@@ -989,11 +1034,11 @@ bool ROSGUI::init()
   KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
 
-  if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
-  {
-    std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
-   return false;
-  }
+//  if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
+//  {
+//    std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
+//   return false;
+//  }
 
   j(nj) =  0;
 //  j(1) =  0;
