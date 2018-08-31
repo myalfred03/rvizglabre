@@ -16,8 +16,8 @@
 #include <QTextCursor>
 #include <QFileDialog>
 #include <QFile>
-
-
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 
 
@@ -191,6 +191,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
     connect(main_window_ui_->checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on3DOFs_URDF()));
     connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
+    connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on6DOFs_URDF()));
+
 
     //KeySecuence
 //    main_window_ui_->checkBox4DOFI->setShortcut( QKeySequence( QString( "Ctrl+1" )));
@@ -207,7 +209,21 @@ ROSGUI::ROSGUI(QWidget *parent)
    connect(main_window_ui_->comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
    connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
 //   connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
+//    main_window_ui_->tableWidget_3->setRowCount(4);
+//    main_window_ui_->tableWidget_3->setColumnCount(4);
+////    main_window_ui_->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+//    QTableWidgetItem *newItem = new QTableWidgetItem();
+//    newItem->setText(QString("4"));
+////    newItem2->setText("2");
+//    main_window_ui_->tableWidget_3->setItem(1,0,newItem);//item(0, 0)->setText("0");
+//    main_window_ui_->tableWidget_3->setItem(1,1,newItem);
+////    main_window_ui_->tableWidget_3->setItem(2,0,newItem2);
+////    main_window_ui_->tableWidget_3->setItem(3,0,newItem2);
+////    main_window_ui_->tableWidget_3->item(1, 0)->;
+//    main_window_ui_->tableWidget_3->item(2, 0)->setText(QString("0"));
 
+
+//   main_window_ui_->tableWidget->item(0, 0)->
 
 
 //offWidgets();
@@ -505,7 +521,30 @@ void ROSGUI::on3DOFs_URDF()
   updatetoURDF();
 
 }
+void ROSGUI::on6DOFs_URDF(){
+if(!jointsv->treeforDH(model))
+{
+   std::cerr << "Error at model DH" <<std::endl;
+}
+this->updatetreeforDH(model);
+}
 
+void ROSGUI::updatetreeforDH(KDL::Tree modelU){
+
+  robot_state_pubDH_ = new robot_state_publisher::RobotStatePublisher(modelU);
+  joint_positionsDH_.clear();
+  const std::map<std::string, KDL::TreeElement>& segments = modelU.getSegments();
+  for(std::map<std::string, KDL::TreeElement>::const_iterator it=segments.begin();
+    it != segments.end(); it++)
+  {
+    joint_positionsDH_[it->second.segment.getJoint().getName()] = 0.0;
+
+  }
+
+  // refresh the preview
+  mRviz->refreshDH("my_lab_uni/" + modelU.getRootSegment()->first);
+
+}
 
 
 
@@ -588,11 +627,19 @@ void ROSGUI::publishJointStates()
   {
     { // lock the state publisher objects and run
       boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
-      if(robot_state_pub_ != NULL)
+
+//      if(robot_state_pub_ != NULL)
+//      {
+//         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
+//         robot_state_pub_->publishFixedTransforms("my_lab_uni");
+
+//      }
+      if(robot_state_pubDH_ != NULL)
       {
-         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
-         robot_state_pub_->publishFixedTransforms("my_lab_uni");
-//         auto it2 = joint_positions_.rbegin();
+         robot_state_pubDH_->publishTransforms(joint_positionsDH_, ros::Time::now(), "my_lab_uni");
+         robot_state_pubDH_->publishFixedTransforms("my_lab_uni");
+      }
+         //         auto it2 = joint_positions_.rbegin();
 //         std::cout << it2->first << " : " << it2->second << std::endl;
 //         it2++;
 //         std::cout << it2->first << " : " << it2->second << std::endl;
@@ -619,7 +666,7 @@ void ROSGUI::publishJointStates()
         // ROS_INFO("Published joint state info");
 
         // ROS_INFO(" Lower %f \n Upper %f",ROSGUI::lower_limits[1], ROSGUI::upper_limits[1]);
-      }
+
     }
     try {
       boost::this_thread::interruption_point();
@@ -783,33 +830,13 @@ void ROSGUI::updateSpinboxesD()
     main_window_ui_->spinBox6DOF->    blockSignals(false);
 
     j(nj)=0;
-    j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
-    j(1) = main_window_ui_->spinBox2DOF->value()/ToG;
-    j(2) = main_window_ui_->spinBox3DOF->value()/ToG;
-    j(3) = main_window_ui_->spinBox4DOF->value()/ToG;
-    j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
-    j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
+    j(0) = main_window_ui_->dial1DOF->value()/ToG;
+    j(1) = main_window_ui_->dial2DOF->value()/ToG;
+    j(2) = main_window_ui_->dial3DOF->value()/ToG;
+    j(3) = main_window_ui_->dial4DOF->value()/ToG;
+    j(4) = main_window_ui_->dial5DOF->value()/ToG;
+    j(5) = main_window_ui_->dial6DOF->value()/ToG;
 
-    if(!jointsv->ForwardK(pos_mat, j, nj))
-    {
-             std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
-    }
-    stringX = QString::number(pos_mat.p.x()); //Convert Double to String
-    stringY = QString::number(pos_mat.p.y());
-    stringZ = QString::number(pos_mat.p.z());
-
-    pos_mat.M.GetRPY(roll, pitch, yaw);
-    stringYaw   = QString::number(yaw*ToG); //Convert Double to String
-    stringPitch = QString::number(pitch*ToG);
-    stringRoll  = QString::number(roll*ToG);
-
-     main_window_ui_->fkX->setText(stringX);
-     main_window_ui_->fkY->setText(stringY);
-     main_window_ui_->fkZ->setText(stringZ);
-
-     main_window_ui_->fkYaw->setText(stringYaw);
-     main_window_ui_->fkPitch->setText(stringPitch);
-     main_window_ui_->fkRoll->setText(stringRoll);
 
 //Vigir
      jointV.resize(6);
@@ -819,7 +846,10 @@ void ROSGUI::updateSpinboxesD()
      jointV[3] = main_window_ui_->spinBox4DOF->value()/ToG;
      jointV[4] = main_window_ui_->spinBox5DOF->value()/ToG;
      jointV[5] = main_window_ui_->spinBox6DOF->value()/ToG;
-     mRviz->refreshJoint(jointV);
+
+     //Datos de Joints a MoveIT
+//     mRviz->refreshJoint(jointV);
+     this->FKdata(j);
 
 }
 
@@ -1024,12 +1054,6 @@ bool ROSGUI::init()
          return false;
  }
 
-
-  if(!jointsv->ForwardK(pos_mat, j, nj))
-  {
-           std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
-          return false;
-  }
   KDL::Vector tcpXYZ  = KDL::Vector(0.0,0.0,0.0);
   KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
@@ -1041,11 +1065,7 @@ bool ROSGUI::init()
 //  }
 
   j(nj) =  0;
-//  j(1) =  0;
-//  j(2) =  0;
-//  j(3) =  0;
-//  j(4) =  0;
-//  j(5) =  0;
+  this->FKdata(j);
    return true;
 
 }
@@ -1075,15 +1095,15 @@ void ROSGUI::updatetoURDF()
  // chainFK     = chain();
 
 
- std::cout << " px "<< pos_mat.p.x() <<	" py "<< pos_mat.p.y() <<	" pz "<< pos_mat.p.z() <<std::endl;
+ std::cout << " px "<< pos_mat6.p.x() <<	" py "<< pos_mat6.p.y() <<	" pz "<< pos_mat6.p.z() <<std::endl;
 
  // std::cout << std::setprecision(3) << pos_mat << "\t\t";
 
- stringX = QString::number(pos_mat.p.x()); //Convert Double to String
- stringY = QString::number(pos_mat.p.y());
- stringZ = QString::number(pos_mat.p.z());
+ stringX = QString::number(pos_mat6.p.x()); //Convert Double to String
+ stringY = QString::number(pos_mat6.p.y());
+ stringZ = QString::number(pos_mat6.p.z());
 
- pos_mat.M.GetRPY(roll, pitch, yaw);
+ pos_mat6.M.GetRPY(roll, pitch, yaw);
  stringYaw   = QString::number(yaw*ToG); //Convert Double to String
  stringPitch = QString::number(pitch*ToG);
  stringRoll  = QString::number(roll*ToG);
@@ -1184,15 +1204,35 @@ void ROSGUI::executeFK(){
   j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
   j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
-  if(!jointsv->ForwardK(pos_mat, j, nj))
+   joint_positions_["joint_1"]= main_window_ui_->dial1DOF->value()/ToG;
+   joint_positions_["joint_2"]= main_window_ui_->dial2DOF->value()/ToG;
+   joint_positions_["joint_3"]= main_window_ui_->dial3DOF->value()/ToG;
+   joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
+   joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
+   joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
+   this->FKdata(j);
+
+}
+void ROSGUI::FKdata(KDL::JntArray j){
+
+
+  if(!jointsv->ForwardK(pos_mat6,
+                        pos_mat5,
+                        pos_mat4,
+                        pos_mat3,
+                        pos_mat2,
+                        pos_mat1,
+                        j,
+                        nj))
   {
            std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
   }
-  stringX = QString::number(pos_mat.p.x()); //Convert Double to String
-  stringY = QString::number(pos_mat.p.y());
-  stringZ = QString::number(pos_mat.p.z());
+  stringX = QString::number(pos_mat6.p.x()); //Convert Double to String
+  stringY = QString::number(pos_mat6.p.y());
+  stringZ = QString::number(pos_mat6.p.z());
 
-  pos_mat.M.GetRPY(roll, pitch, yaw);
+  pos_mat6.M.GetRPY(roll, pitch, yaw);
+
   stringYaw   = QString::number(yaw*ToG); //Convert Double to String
   stringPitch = QString::number(pitch*ToG);
   stringRoll  = QString::number(roll*ToG);
@@ -1205,12 +1245,107 @@ void ROSGUI::executeFK(){
    main_window_ui_->fkPitch->setText(stringPitch);
    main_window_ui_->fkRoll->setText(stringRoll);
 
-   joint_positions_["joint_1"]= main_window_ui_->dial1DOF->value()/ToG;
-   joint_positions_["joint_2"]= main_window_ui_->dial2DOF->value()/ToG;
-   joint_positions_["joint_3"]= main_window_ui_->dial3DOF->value()/ToG;
-   joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
-   joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
-   joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
+    main_window_ui_->label_1MT1x1->setText(QString::number(pos_mat1.M.UnitX().x()));
+    main_window_ui_->label_1MT1x2->setText(QString::number(pos_mat1.M.UnitX().y()));
+    main_window_ui_->label_1MT1x3->setText(QString::number(pos_mat1.M.UnitX().z()));
+    main_window_ui_->label_1MT1x4->setText(QString::number(pos_mat1.p.x()));
+    main_window_ui_->label_1MT2x1->setText(QString::number(pos_mat1.M.UnitY().x()));
+    main_window_ui_->label_1MT2x2->setText(QString::number(pos_mat1.M.UnitY().y()));
+    main_window_ui_->label_1MT2x3->setText(QString::number(pos_mat1.M.UnitY().z()));
+    main_window_ui_->label_1MT2x4->setText(QString::number(pos_mat1.p.y()));
+    main_window_ui_->label_1MT3x1->setText(QString::number(pos_mat1.M.UnitZ().x()));
+    main_window_ui_->label_1MT3x2->setText(QString::number(pos_mat1.M.UnitZ().y()));
+    main_window_ui_->label_1MT3x3->setText(QString::number(pos_mat1.M.UnitZ().z()));
+    main_window_ui_->label_1MT3x4->setText(QString::number(pos_mat1.p.z()));
+    main_window_ui_->label_1MT4x1->setText(QString("0"));
+    main_window_ui_->label_1MT4x2->setText(QString("0"));
+    main_window_ui_->label_1MT4x3->setText(QString("0"));
+    main_window_ui_->label_1MT4x4->setText(QString("1"));
+
+    main_window_ui_->label_2MT1x1->setText(QString::number(pos_mat2.M.UnitX().x()));
+    main_window_ui_->label_2MT1x2->setText(QString::number(pos_mat2.M.UnitX().y()));
+    main_window_ui_->label_2MT1x3->setText(QString::number(pos_mat2.M.UnitX().z()));
+    main_window_ui_->label_2MT1x4->setText(QString::number(pos_mat2.p.x()));
+    main_window_ui_->label_2MT2x1->setText(QString::number(pos_mat2.M.UnitY().x()));
+    main_window_ui_->label_2MT2x2->setText(QString::number(pos_mat2.M.UnitY().y()));
+    main_window_ui_->label_2MT2x3->setText(QString::number(pos_mat2.M.UnitY().z()));
+    main_window_ui_->label_2MT2x4->setText(QString::number(pos_mat2.p.y()));
+    main_window_ui_->label_2MT3x1->setText(QString::number(pos_mat2.M.UnitZ().x()));
+    main_window_ui_->label_2MT3x2->setText(QString::number(pos_mat2.M.UnitZ().y()));
+    main_window_ui_->label_2MT3x3->setText(QString::number(pos_mat2.M.UnitZ().z()));
+    main_window_ui_->label_2MT3x4->setText(QString::number(pos_mat2.p.z()));
+    main_window_ui_->label_2MT4x1->setText(QString("0"));
+    main_window_ui_->label_2MT4x2->setText(QString("0"));
+    main_window_ui_->label_2MT4x3->setText(QString("0"));
+    main_window_ui_->label_2MT4x4->setText(QString("1"));
+
+    main_window_ui_->label_3MT1x1->setText(QString::number(pos_mat3.M.UnitX().x()));
+    main_window_ui_->label_3MT1x2->setText(QString::number(pos_mat3.M.UnitX().y()));
+    main_window_ui_->label_3MT1x3->setText(QString::number(pos_mat3.M.UnitX().z()));
+    main_window_ui_->label_3MT1x4->setText(QString::number(pos_mat3.p.x()));
+    main_window_ui_->label_3MT2x1->setText(QString::number(pos_mat3.M.UnitY().x()));
+    main_window_ui_->label_3MT2x2->setText(QString::number(pos_mat3.M.UnitY().y()));
+    main_window_ui_->label_3MT2x3->setText(QString::number(pos_mat3.M.UnitY().z()));
+    main_window_ui_->label_3MT2x4->setText(QString::number(pos_mat3.p.y()));
+    main_window_ui_->label_3MT3x1->setText(QString::number(pos_mat3.M.UnitZ().x()));
+    main_window_ui_->label_3MT3x2->setText(QString::number(pos_mat3.M.UnitZ().y()));
+    main_window_ui_->label_3MT3x3->setText(QString::number(pos_mat3.M.UnitZ().z()));
+    main_window_ui_->label_3MT3x4->setText(QString::number(pos_mat3.p.z()));
+    main_window_ui_->label_3MT4x1->setText(QString("0"));
+    main_window_ui_->label_3MT4x2->setText(QString("0"));
+    main_window_ui_->label_3MT4x3->setText(QString("0"));
+    main_window_ui_->label_3MT4x4->setText(QString("1"));
+
+    main_window_ui_->label_4MT1x1->setText(QString::number(pos_mat4.M.UnitX().x()));
+    main_window_ui_->label_4MT1x2->setText(QString::number(pos_mat4.M.UnitX().y()));
+    main_window_ui_->label_4MT1x3->setText(QString::number(pos_mat4.M.UnitX().z()));
+    main_window_ui_->label_4MT1x4->setText(QString::number(pos_mat4.p.x()));
+    main_window_ui_->label_4MT2x1->setText(QString::number(pos_mat4.M.UnitY().x()));
+    main_window_ui_->label_4MT2x2->setText(QString::number(pos_mat4.M.UnitY().y()));
+    main_window_ui_->label_4MT2x3->setText(QString::number(pos_mat4.M.UnitY().z()));
+    main_window_ui_->label_4MT2x4->setText(QString::number(pos_mat4.p.y()));
+    main_window_ui_->label_4MT3x1->setText(QString::number(pos_mat4.M.UnitZ().x()));
+    main_window_ui_->label_4MT3x2->setText(QString::number(pos_mat4.M.UnitZ().y()));
+    main_window_ui_->label_4MT3x3->setText(QString::number(pos_mat4.M.UnitZ().z()));
+    main_window_ui_->label_4MT3x4->setText(QString::number(pos_mat4.p.z()));
+    main_window_ui_->label_4MT4x1->setText(QString("0"));
+    main_window_ui_->label_4MT4x2->setText(QString("0"));
+    main_window_ui_->label_4MT4x3->setText(QString("0"));
+    main_window_ui_->label_4MT4x4->setText(QString("1"));
+
+    main_window_ui_->label_5MT1x1->setText(QString::number(pos_mat5.M.UnitX().x()));
+    main_window_ui_->label_5MT1x2->setText(QString::number(pos_mat5.M.UnitX().y()));
+    main_window_ui_->label_5MT1x3->setText(QString::number(pos_mat5.M.UnitX().z()));
+    main_window_ui_->label_5MT1x4->setText(QString::number(pos_mat5.p.x()));
+    main_window_ui_->label_5MT2x1->setText(QString::number(pos_mat5.M.UnitY().x()));
+    main_window_ui_->label_5MT2x2->setText(QString::number(pos_mat5.M.UnitY().y()));
+    main_window_ui_->label_5MT2x3->setText(QString::number(pos_mat5.M.UnitY().z()));
+    main_window_ui_->label_5MT2x4->setText(QString::number(pos_mat5.p.y()));
+    main_window_ui_->label_5MT3x1->setText(QString::number(pos_mat5.M.UnitZ().x()));
+    main_window_ui_->label_5MT3x2->setText(QString::number(pos_mat5.M.UnitZ().y()));
+    main_window_ui_->label_5MT3x3->setText(QString::number(pos_mat5.M.UnitZ().z()));
+    main_window_ui_->label_5MT3x4->setText(QString::number(pos_mat5.p.z()));
+    main_window_ui_->label_5MT4x1->setText(QString("0"));
+    main_window_ui_->label_5MT4x2->setText(QString("0"));
+    main_window_ui_->label_5MT4x3->setText(QString("0"));
+    main_window_ui_->label_5MT4x4->setText(QString("1"));
+
+    main_window_ui_->label_6MT1x1->setText(QString::number(pos_mat6.M.UnitX().x()));
+    main_window_ui_->label_6MT1x2->setText(QString::number(pos_mat6.M.UnitX().y()));
+    main_window_ui_->label_6MT1x3->setText(QString::number(pos_mat6.M.UnitX().z()));
+    main_window_ui_->label_6MT1x4->setText(QString::number(pos_mat6.p.x()));
+    main_window_ui_->label_6MT2x1->setText(QString::number(pos_mat6.M.UnitY().x()));
+    main_window_ui_->label_6MT2x2->setText(QString::number(pos_mat6.M.UnitY().y()));
+    main_window_ui_->label_6MT2x3->setText(QString::number(pos_mat6.M.UnitY().z()));
+    main_window_ui_->label_6MT2x4->setText(QString::number(pos_mat6.p.y()));
+    main_window_ui_->label_6MT3x1->setText(QString::number(pos_mat6.M.UnitZ().x()));
+    main_window_ui_->label_6MT3x2->setText(QString::number(pos_mat6.M.UnitZ().y()));
+    main_window_ui_->label_6MT3x3->setText(QString::number(pos_mat6.M.UnitZ().z()));
+    main_window_ui_->label_6MT3x4->setText(QString::number(pos_mat6.p.z()));
+    main_window_ui_->label_6MT4x1->setText(QString("0"));
+    main_window_ui_->label_6MT4x2->setText(QString("0"));
+    main_window_ui_->label_6MT4x3->setText(QString("0"));
+    main_window_ui_->label_6MT4x4->setText(QString("1"));
 
 
 }

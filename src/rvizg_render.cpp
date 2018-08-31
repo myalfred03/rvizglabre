@@ -24,7 +24,7 @@ QWidget(parent)
 {
 //  QHBoxLayout* main_layout = new QHBoxLayout(parent);
 
-      QVBoxLayout* main_layout = new QVBoxLayout(parent);
+      QVBoxLayout* main_layout = new QVBoxLayout();
       status_label_ = new QLabel("12");
       status_label_->setMinimumHeight(4);
       status_label_->setMinimumWidth(4);
@@ -103,14 +103,22 @@ QWidget(parent)
 //  rviz::Display::onInitialize();
 
 
+
+
+
 // Set MoveIt! Robot
-      robot_display_ = new moveit_rviz_plugin::MotionPlanningDisplay();
-      robot_display_->setName("RobotModel");
-//      robot_display_ = new rvizRobot();
-//      robot_display_->setName("Robot Visualization");
-//      robot_display_->initialize(context_);
-//      robot_display_->setEnabled(true);
-      manager_->addDisplay(robot_display_, true);
+//                            robot_display_ = new moveit_rviz_plugin::MotionPlanningDisplay();
+//                            robot_display_->setName("RobotModel");
+//                      //      robot_display_ = new rvizRobot();
+//                      //      robot_display_->setName("Robot Visualization");
+//                      //      robot_display_->initialize(context_);
+//                      //      robot_display_->setEnabled(true);
+//                            manager_->addDisplay(robot_display_, false);
+
+
+
+
+
 //      robot_display_->update(wall_dt, ros_dt);
 
 //      robot_model_loader_.reset(new robot_model_loader::RobotModelLoader("robot_description"));
@@ -158,26 +166,35 @@ QWidget(parent)
 //          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/RobotState", "Robot Lab", true );
 //          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/MotionPlanning", "MoveIt", true );
 
-          ROS_ASSERT( robot_display_ != NULL );
-//          robot_display_->subProp( "Robot Description" )->setValue( "my_lab_uni/robot_description" );
-                //          robot_display_->subProp("Robot Description")->setValue("robot_description");
-                          robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
-                          robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/marker" );
-                          robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
-                          robot_display_->subProp( "Robot Alpha" )->setValue( 0.5f );
-                          robot_display_->subProp ("Scene Robot")->subProp("Show Robot Visual")->setValue(true);
-                          robot_display_->subProp ("Planning Request")->subProp("Planning Group")->setValue("panda_arm_hand");
-                          robot_display_->subProp ("Planning Request")->subProp("Interactive Marker Size")->setValue("0.2");
-                          robot_display_->subProp ("Planning Request")->subProp("Query Goal State")->setValue(true);
-                          robot_display_->subProp ("Planned Path")->subProp("Trajectory Topic")->setValue("/move_group/display_planned_path");
-                          robot_display_->subProp ("Planned Path")->subProp("Show Robot Visual")->setValue(true);
-                          robot_display_->subProp ("Planned Path")->subProp("Show Trail")->setValue(true);
-//                          robot_display_->subProp ("Planned Path")->subProp("Loop Animation")->setValue(true);
 
 
-                          robot_display_->setEnabled(true);
+
+              //          ROS_ASSERT( robot_display_ != NULL );
+              ////          robot_display_->subProp( "Robot Description" )->setValue( "my_lab_uni/robot_description" );
+              //                //          robot_display_->subProp("Robot Description")->setValue("robot_description");
+              //                          robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
+              //                          robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/marker" );
+              //                          robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
+              //                          robot_display_->subProp( "Robot Alpha" )->setValue( 0.5f );
+              //                          robot_display_->subProp ("Scene Robot")->subProp("Show Robot Visual")->setValue(true);
+              //                          robot_display_->subProp ("Planning Request")->subProp("Planning Group")->setValue("panda_arm_hand");
+              //                          robot_display_->subProp ("Planning Request")->subProp("Interactive Marker Size")->setValue("0.2");
+              //                          robot_display_->subProp ("Planning Request")->subProp("Query Goal State")->setValue(true);
+              //                          robot_display_->subProp ("Planned Path")->subProp("Trajectory Topic")->setValue("/move_group/display_planned_path");
+              //                          robot_display_->subProp ("Planned Path")->subProp("Show Robot Visual")->setValue(true);
+              //                          robot_display_->subProp ("Planned Path")->subProp("Show Trail")->setValue(true);
+              ////                          robot_display_->subProp ("Planned Path")->subProp("Loop Animation")->setValue(true);
+
+
+              //                          robot_display_->setEnabled(true);
 
 //          robot_display_->subProp ("Show Workspace")->setValue(true);
+
+
+
+
+
+
 
 //   Vigir
 // Set MoveIt! Robot
@@ -188,6 +205,8 @@ QWidget(parent)
 
 
 //  // Create a Grid display.
+  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
+  robot_model_->subProp("Robot Description")->setValue(QString::fromStdString("my_lab_uni/robot_description"));
 
 
 //  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
@@ -201,6 +220,7 @@ QWidget(parent)
 
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
+  this->refreshDH();
 
 
 
@@ -251,22 +271,25 @@ void MyViz::refresh(const std::string& fixed_frame)
 //  robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
 //  robot_model_->subProp("Robot Description")->setValue("robot_description");
 
-  ROS_ASSERT( robot_display_ != NULL );
+//  ROS_ASSERT( robot_display_ != NULL );
 
 
 //  robot_display_->subProp("Robot Description")->setValue("robot_description");
 //  robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/marker" );
 //  robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
 //  robot_display_->subProp( "Robot Alpha" )->setValue( 0.9f );
-  robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
-  robot_display_->subProp ("Show Robot Visual")->setValue(true);
-  robot_display_->subProp ("Scene Robot")->subProp("Show Robot Visual")->setValue(true);
-  robot_display_->subProp ("Planning Request")->subProp("Planning Group")->setValue("panda_arm_hand");
-  robot_display_->subProp ("Planning Request")->subProp("Interactive Marker Size")->setValue("0.2");
-  robot_display_->subProp ("Planning Request")->subProp("Query Goal State")->setValue(true);
-//  robot_display_->subProp ("Planning Request")->subProp("Show Workspace")->setValue(true);
-  robot_display_->subProp ("Planned Path")->subProp("Trajectory Topic")->setValue("/move_group/display_planned_path");
-  robot_display_->subProp ("Planned Path")->subProp("Show Robot Visual")->setValue(true);
+
+
+//                                        robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
+//                                        robot_display_->subProp ("Show Robot Visual")->setValue(true);
+//                                        robot_display_->subProp ("Scene Robot")->subProp("Show Robot Visual")->setValue(true);
+//                                        robot_display_->subProp ("Planning Request")->subProp("Planning Group")->setValue("panda_arm_hand");
+//                                        robot_display_->subProp ("Planning Request")->subProp("Interactive Marker Size")->setValue("0.2");
+//                                        robot_display_->subProp ("Planning Request")->subProp("Query Goal State")->setValue(true);
+//                                      //  robot_display_->subProp ("Planning Request")->subProp("Show Workspace")->setValue(true);
+//                                        robot_display_->subProp ("Planned Path")->subProp("Trajectory Topic")->setValue("/move_group/display_planned_path");
+//                                        robot_display_->subProp ("Planned Path")->subProp("Show Robot Visual")->setValue(true);
+
 //  robot_display_->subProp ("Planned Path")->subProp("Show Trail")->setValue(true);
 //  robot_display_->subProp ("Planned Path")->subProp("Loop Animation")->setValue(true);
 
@@ -284,91 +307,123 @@ void MyViz::refresh(const std::string& fixed_frame)
 
          int_marker_display_->subProp( "Show Axes" )->setValue( true );
          int_marker_display_->subProp( "Show Visual Aids" )->setValue( true );
-  try
-        {
-            robot_model_loader_.reset(new robot_model_loader::RobotModelLoader("robot_description"));
-            robot_model_ptr_ = robot_model_loader_->getModel();
 
-            if (robot_model_ptr_.get()){
-              robot_state_ptr_.reset(new robot_state::RobotState(robot_model_ptr_));
-              robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/marker",1, true);
-              if(robot_model_ptr_->hasJointModelGroup("panda_arm_hand"))
-              {
-                Rjoint_names_.clear();
-                Rjoint_names_ = robot_model_ptr_->getJointModelGroup("panda_arm_hand")->getJointModelNames();// getActiveJointModelNames();
-                ROS_ERROR("NO JOINTS FOUND FOR ");
 
-              }else{
-                ROS_ERROR("NO JOINTS FOUND FOR GHOST RIGHT HAND USING: manipulator");
-              }
-              for(int i = 0; i < Rjoint_names_.size(); i++)
-                ROS_INFO("Base 3d widget loading right joint %d: %s",i,Rjoint_names_[i].c_str());
-            }
-              else{
-              ROS_ERROR("Right hand robot model null pointer!");
-            }
-        }
-        catch(...)
-        {
-            ROS_ERROR("Base3DView: MoveIt! failed to load right hand robot description.");
-        }
-  robot_display_->setEnabled(true);
+//  try
+//        {
+//            robot_model_loader_.reset(new robot_model_loader::RobotModelLoader("robot_description"));
+//            robot_model_ptr_ = robot_model_loader_->getModel();
+
+//            if (robot_model_ptr_.get()){
+//              robot_state_ptr_.reset(new robot_state::RobotState(robot_model_ptr_));
+//              robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/marker",1, true);
+//              if(robot_model_ptr_->hasJointModelGroup("panda_arm_hand"))
+//              {
+//                Rjoint_names_.clear();
+//                Rjoint_names_ = robot_model_ptr_->getJointModelGroup("panda_arm_hand")->getJointModelNames();// getActiveJointModelNames();
+//                ROS_ERROR("NO JOINTS FOUND FOR ");
+
+//              }else{
+//                ROS_ERROR("NO JOINTS FOUND FOR GHOST RIGHT HAND USING: manipulator");
+//              }
+//              for(int i = 0; i < Rjoint_names_.size(); i++)
+//                ROS_INFO("Base 3d widget loading right joint %d: %s",i,Rjoint_names_[i].c_str());
+//            }
+//              else{
+//              ROS_ERROR("Right hand robot model null pointer!");
+//            }
+//        }
+//        catch(...)
+//        {
+//            ROS_ERROR("Base3DView: MoveIt! failed to load right hand robot description.");
+//        }
+//  robot_display_->setEnabled(true);
+
+
+
   rviz::Tool* current_tool = manager_->getToolManager()->getCurrentTool();
     if (current_tool->getClassId().toStdString() == "rviz/Interact") {
           int_marker_display_->setEnabled(true);
         }
 int_marker_display_->setEnabled(true);
 
+if(robot_model_ != NULL)
+    delete robot_model_;
 
+  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
+
+  ROS_ASSERT(robot_model_ != NULL);
+
+  robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
+  robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
+  robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
+
+//  robot_model_->setEnabled(true);
+
+
+}
+
+void MyViz::refreshDH(const std::string &fixed_frame){
+  manager_->setFixedFrame(QString::fromStdString(fixed_frame));
+
+  if(robot_model_ != NULL)
+      delete robot_model_;
+
+    robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
+
+    ROS_ASSERT(robot_model_ != NULL);
+
+    robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
+    robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
 }
 void MyViz::refreshJoint(std::vector<double> joint){
   sensor_msgs::JointState joint_states;
 
-  joint_states.header.stamp = ros::Time::now();
-  joint_states.header.frame_id = std::string("/MOVEITJOINTS");
+//  joint_states.header.stamp = ros::Time::now();
+//  joint_states.header.frame_id = std::string("/MOVEITJOINTS");
 
-  std::string J1 = ("joint_1");
-  std::string J2 = ("joint_2");
-  std::string J3 = ("joint_3");
-  std::string J4 = ("joint_4");
-  std::string J5 = ("joint_5");
-  std::string J6 = ("joint_6");
+//  std::string J1 = ("joint_1");
+//  std::string J2 = ("joint_2");
+//  std::string J3 = ("joint_3");
+//  std::string J4 = ("joint_4");
+//  std::string J5 = ("joint_5");
+//  std::string J6 = ("joint_6");
 
-  joint_states.name.push_back(J1);
-  joint_states.name.push_back(J2);
-  joint_states.name.push_back(J3);
-  joint_states.name.push_back(J4);
-  joint_states.name.push_back(J5);
-  joint_states.name.push_back(J6);
+//  joint_states.name.push_back(J1);
+//  joint_states.name.push_back(J2);
+//  joint_states.name.push_back(J3);
+//  joint_states.name.push_back(J4);
+//  joint_states.name.push_back(J5);
+//  joint_states.name.push_back(J6);
 
-  moveit_msgs::ObjectColor tmp;
-//                    tmp.id = J1;
-//                     tmp.id = J2;
-//                      tmp.id = J3;
-//                       tmp.id = J4;
-                      tmp.id = J5;
-//                         tmp.id = J6;
-                  tmp.color.a = 0.0f;
-                  tmp.color.r = 0.0f;
-                  tmp.color.g = 0.0f;
-                  tmp.color.b = 0.0f;
-                  display_state_msg_.highlight_links.push_back(tmp);
+//  moveit_msgs::ObjectColor tmp;
+////                    tmp.id = J1;
+////                     tmp.id = J2;
+////                      tmp.id = J3;
+////                       tmp.id = J4;
+//                      tmp.id = J5;
+////                         tmp.id = J6;
+//                  tmp.color.a = 0.0f;
+//                  tmp.color.r = 0.0f;
+//                  tmp.color.g = 0.0f;
+//                  tmp.color.b = 0.0f;
+//                  display_state_msg_.highlight_links.push_back(tmp);
 
-  joint_states.position.resize(6);
-  joint_states.effort.resize(6);
-  joint_states.velocity.resize(6);
+//  joint_states.position.resize(6);
+//  joint_states.effort.resize(6);
+//  joint_states.velocity.resize(6);
 
-  for(unsigned int i = 0; i < 6; ++i)
-      {
-          joint_states.effort[i] = 23;
-          joint_states.velocity[i] = 12;
-          joint_states.position[i] = joint[i];
-      }
-//moveit_core/robot_state/src/conversions.cpp
-//    robot_state::jointStateToRobotState(joint_states, *robot_state_ptr_);
-  moveit::core::jointStateToRobotState(joint_states, *robot_state_ptr_);
-  robot_state::robotStateToRobotStateMsg(*robot_state_ptr_, display_state_msg_.state);
-  robot_state_vis_pub_.publish(display_state_msg_);
+//  for(unsigned int i = 0; i < 6; ++i)
+//      {
+//          joint_states.effort[i] = 23;
+//          joint_states.velocity[i] = 12;
+//          joint_states.position[i] = joint[i];
+//      }
+////moveit_core/robot_state/src/conversions.cpp
+////    robot_state::jointStateToRobotState(joint_states, *robot_state_ptr_);
+//  moveit::core::jointStateToRobotState(joint_states, *robot_state_ptr_);
+//  robot_state::robotStateToRobotStateMsg(*robot_state_ptr_, display_state_msg_.state);
+//  robot_state_vis_pub_.publish(display_state_msg_);
 }
 
 // control de muestra de TF
@@ -383,7 +438,7 @@ void MyViz::refreshTF(bool tfrv, bool tfa , bool tfnm)
 }
 void MyViz::refreshRM(bool rbrv)
 {
-//  robot_model_->setEnabled(rbrv);
+  robot_model_->setEnabled(rbrv);
 //  robot_display_->setEnabled(rbrv);
 
 }

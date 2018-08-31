@@ -107,6 +107,8 @@ public:
 
   void subscribeTopics(const QString qnode_name);
   void refresh(const std::string& fixed_frame = "/map");  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
+  void refreshDH(const std::string& fixed_frame = "/map");  // Para la inicializacion de una variable siempre indicar el estado ex.: True or False/
+
   void refreshTF(bool tfrv = true, bool tfa = true, bool tfnm=true);
   void refreshRM(bool rbrv = true);
   void refreshJoint(std::vector< double > joint);
@@ -167,7 +169,7 @@ rviz::VisualizationManager* manager_;
 private:
   rviz::RenderPanel* render_panel_;
 //  rviz::Display* grid_;
-//  rviz::Display* robot_model_;
+  rviz::Display* robot_model_;
 //  rvizRobot * robot_display_;
     moveit_rviz_plugin::MotionPlanningDisplay *robot_display_;
     robot_model_loader::RobotModelLoaderPtr robot_model_loader_;

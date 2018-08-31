@@ -74,10 +74,18 @@ public:
       std::vector< double > jointV;
 
       void updatetoURDF();
+      void FKdata(KDL::JntArray j);
       void resetvalue();
       KDL::JntArray j =KDL::JntArray(6);
       KDL::JntArray pos_joint;
-      KDL::Frame pos_mat;
+      KDL::Frame pos_mat1;
+      KDL::Frame pos_mat2;
+      KDL::Frame pos_mat3;
+      KDL::Frame pos_mat4;
+      KDL::Frame pos_mat5;
+      KDL::Frame pos_mat6;
+      KDL::Tree model;
+
       KDL::Vector tcpXYZ  = KDL::Vector(0.0,0.0,0.0);
       KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
       double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
@@ -90,7 +98,7 @@ public:
       unsigned int nj;
 
       void updateURDF(const std::string& urdf);
-
+      void updatetreeforDH(KDL::Tree modelU);
 
       void publishJointStates();
 
@@ -164,6 +172,7 @@ public Q_SLOTS:
       void on4DOFs_URDF();
       void on2DOFs_URDF();
       void on3DOFs_URDF();
+      void on6DOFs_URDF();
 
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);
@@ -202,9 +211,14 @@ private:
    boost::mutex state_pub_mutex_;
    KDL::Tree* robot_tree_ = NULL;
    robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
+   robot_state_publisher::RobotStatePublisher* robot_state_pubDH_ = NULL;
+
+
    sensor_msgs::JointState* msg;
    boost::thread* publisher_thread_;
    std::map<std::string, double> joint_positions_;
+   std::map<std::string, double> joint_positionsDH_;
+
    ros::NodeHandle nh_;
    MyViz *mRviz;/* = new MyViz;*/
 
