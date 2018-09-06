@@ -538,7 +538,7 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
     it != segments.end(); it++)
   {
     joint_positionsDH_[it->second.segment.getJoint().getName()] = 0.0;
-
+    std::cout << it->second.segment.getJoint().getName() <<std::endl;
   }
 
   // refresh the preview
@@ -609,7 +609,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
     it != segments.end(); it++)
   {
     joint_positions_[it->second.segment.getJoint().getName()] = 0.0;
-
+ std::cout << it->second.segment.getJoint().getName() <<std::endl;
   }
 
   // refresh the preview
@@ -628,12 +628,12 @@ void ROSGUI::publishJointStates()
     { // lock the state publisher objects and run
       boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
-//      if(robot_state_pub_ != NULL)
-//      {
-//         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
-//         robot_state_pub_->publishFixedTransforms("my_lab_uni");
+      if(robot_state_pub_ != NULL)
+      {
+         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
+         robot_state_pub_->publishFixedTransforms("my_lab_uni");
 
-//      }
+      }
       if(robot_state_pubDH_ != NULL)
       {
          robot_state_pubDH_->publishTransforms(joint_positionsDH_, ros::Time::now(), "my_lab_uni");

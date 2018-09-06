@@ -305,30 +305,30 @@ bool modelparam::treeforDH(KDL::Tree &model){
 //    KDL::Chain chain_palm_finger_right_1;
 //    KDL::Chain chain_palm_finger_right_2;
 
-     chain_palm.addSegment(KDL::Segment("palm_trasl_x_link",Joint(Joint::TransX),Frame(Vector(0.0,0.0,0.0))));
-     chain_palm.addSegment(KDL::Segment("palm_trasl_y_link",Joint(Joint::TransY),Frame(Vector(0.0,0.0,0.0))));
-     chain_palm.addSegment(KDL::Segment("palm_trasl_z_link",Joint(Joint::TransZ),Frame(Vector(0.0,0.0,0.0))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_x_link",Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.0))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_y_link",Joint(Joint::RotY),Frame(Vector(0.0,0.0,0.0))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_z_link",Joint(Joint::RotZ),Frame(Vector(0.0,0.0,0.0))));
+     chain_palm.addSegment(KDL::Segment("palm_trasl_x_link",Joint(Joint::TransX),Frame(Vector(0.0,0.0,3))));
+     chain_palm.addSegment(KDL::Segment("palm_trasl_y_link",Joint(Joint::TransY),Frame(Vector(0.0,0.0,3))));
+     chain_palm.addSegment(KDL::Segment("palm_trasl_z_link",Joint(Joint::TransZ),Frame(Vector(0.0,0.0,3))));
+     chain_palm.addSegment(KDL::Segment("palm_rot_x_link",Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_palm.addSegment(KDL::Segment("palm_rot_y_link",Joint(Joint::RotY),Frame(Vector(0.0,0.0,3))));
+     chain_palm.addSegment(KDL::Segment("palm_rot_z_link",Joint(Joint::RotZ),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_right_0.addSegment(KDL::Segment("finger_right_proximal_link_0",KDL::Joint(KDL::Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
-     chain_finger_right_0.addSegment(KDL::Segment("finger_right_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_right_0.addSegment(KDL::Segment("finger_right_proximal_link_0",KDL::Joint(KDL::Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_finger_right_0.addSegment(KDL::Segment("finger_right_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_left_0.addSegment(KDL::Segment("finger_left_proximal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.3))));
-     chain_finger_left_0.addSegment(KDL::Segment("finger_left_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_left_0.addSegment(KDL::Segment("finger_left_proximal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_finger_left_0.addSegment(KDL::Segment("finger_left_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_right_1.addSegment(KDL::Segment("finger_right_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
-     chain_finger_right_1.addSegment(KDL::Segment("finger_right_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_right_1.addSegment(KDL::Segment("finger_right_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_finger_right_1.addSegment(KDL::Segment("finger_right_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_left_1.addSegment(KDL::Segment("finger_left_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.3))));
-     chain_finger_left_1.addSegment(KDL::Segment("finger_left_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_left_1.addSegment(KDL::Segment("finger_left_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_finger_left_1.addSegment(KDL::Segment("finger_left_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_right_2.addSegment(KDL::Segment("finger_right_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
-     chain_finger_right_2.addSegment(KDL::Segment("finger_right_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_right_2.addSegment(KDL::Segment("finger_right_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_finger_right_2.addSegment(KDL::Segment("finger_right_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
 
-     chain_finger_left_2.addSegment(KDL::Segment("finger_left_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.3))));
-     chain_finger_left_2.addSegment(KDL::Segment("finger_left_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,0.03))));
+     chain_finger_left_2.addSegment(KDL::Segment("finger_left_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,2))));
+     chain_finger_left_2.addSegment(KDL::Segment("finger_left_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,2))));
 
 
 
