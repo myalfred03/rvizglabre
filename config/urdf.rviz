@@ -63,52 +63,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        link_support1:
+        link_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_support1x:
+        link_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_support1y:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_support2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_support2x:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_support3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_support4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        x_axis_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        y_axis_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        z_axis_link:
+        link_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -120,19 +85,39 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
+        link_1:
+          Value: true
+        link_2:
+          Value: true
+        link_3:
+          Value: true
+        robot_editor/base_link:
+          Value: true
+        robot_editor/link_1:
+          Value: true
+        robot_editor/link_2:
+          Value: true
+        robot_editor/link_3:
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        base_link:
+          link_1:
+            link_2:
+              link_3:
+                {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -158,25 +143,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.02628946
+      Distance: 2.79863358
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.127088651
-        Y: -0.0453369617
-        Z: -0.632345557
+        X: -0.275510371
+        Y: -0.251162916
+        Z: -0.0119541306
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.844796538
+      Pitch: 0.629796743
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.923553348
+      Yaw: 0.463553786
     Saved: ~
 Window Geometry:
   Displays:
@@ -195,4 +180,4 @@ Window Geometry:
     collapsed: false
   Width: 1200
   X: 60
-  Y: 74
+  Y: 21

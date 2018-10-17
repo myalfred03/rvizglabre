@@ -4,9 +4,9 @@
  <link name="base_link">
 
     <visual>
-        <origin xyz="0 0 0.05 " rpy="0 0 0" />
+        <origin xyz="0 0 0 " rpy="0 0 0" />
         <geometry>
-          <box size="1.0 1.0 0.1" />
+          <box size="1.0 1.0 0.05" />
         </geometry>
         <material name="red">
         <color rgba="0.8 0.0 0.0 1.0"/>
@@ -14,9 +14,9 @@
     </visual>
 
  <visual>
-        <origin xyz="0 0 0.14 " rpy="0 0 0" />
+        <origin xyz="0 0 0.05 " rpy="0 0 0" />
         <geometry>
-    <cylinder length="0.05" radius="0.3"/>
+    <cylinder length="0.05" radius="0.15"/>
         </geometry>
   <material name="SickBlue">
     <color rgba="0.3058 0.5921 0.7294 1.0"/>
@@ -30,9 +30,42 @@
 <link name="link_1">
 
    <visual>
-        <origin xyz="0 0 0.6 " rpy="0 0 0" />
+        <origin xyz="0 0 0.5 " rpy="0 0 0" />
         <geometry>
-    <cylinder length="1" radius="0.05"/>
+<!--
+         <box size="0.05 0.05 1" />
+-->
+     
+<cylinder length="1" radius="0.025"/>
+
+        </geometry>
+  <material name="HandGray">
+    <color rgba="0.953 0.996 0.694 1.0"/>
+  </material>
+    </visual>
+
+  </link>
+
+<link name="link_2">
+
+   <visual>
+        <origin xyz="0 0.15 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.06 0.7 0.08" />
+        </geometry>
+  <material name="HandGray">
+    <color rgba="0.953 0.996 0.694 1.0"/>
+  </material>
+    </visual>
+
+  </link>
+
+<link name="link_3">
+
+   <visual>
+        <origin xyz="0 -0.2 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.4 0.05" />
         </geometry>
   <material name="HandGray">
     <color rgba="0.953 0.996 0.694 1.0"/>
@@ -44,9 +77,25 @@
  <joint name="joint_1" type="revolute">
     <axis xyz="0 0 1"/>
     <limit effort="306" lower="-3.14159" upper="3.14159" velocity="0.5"/>
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.05"/>
     <parent link="base_link"/>
     <child link="link_1"/>
   </joint>
+
+    <joint name="joint_2" type="prismatic">
+        <axis xyz="0 0 1"/>
+        <parent link="link_1"/>
+        <child link="link_2"/>
+        <origin xyz="0 0 0.075" rpy="0 0 0"/>
+        <limit lower="0" upper="0.85" effort="1000.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="joint_3" type="prismatic">
+        <axis xyz="0 1 0"/>
+        <parent link="link_2"/>
+        <child link="link_3"/>
+        <origin xyz="0 0.55 0" rpy="0 0 0"/>
+        <limit lower="0" upper="0.35" effort="1000.0" velocity="1.0"/>
+    </joint>
 
 </robot>
