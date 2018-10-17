@@ -155,7 +155,7 @@ fksolver4= new KDL::ChainFkSolverPos_recursive(kdl_chain4);
 fksolver5= new KDL::ChainFkSolverPos_recursive(kdl_chain5);
 fksolver6= new KDL::ChainFkSolverPos_recursive(kdl_chain6);
 
-fksolvertree = new KDL::TreeFkSolverPos_recursive(kdl_tree);
+fksolvertree = new KDL::TreeFkSolverPos_recursive(kdl_tree); //probando el treeFk solver
 
     KDL::JntArray q6(nj),q5(nj_5),q4(nj_4),q3(nj_3),q2(nj_2),q1(nj_1);
 
@@ -194,7 +194,7 @@ for(unsigned int i = 0; i< nj_1; i++)
  fksolver2->JntToCart(q2, result2,nj_2);
  fksolver1->JntToCart(q1, result1,nj_1);
 
- fksolvertree->JntToCart(q6,resultTree,"link_1");
+ fksolvertree->JntToCart(q6,resultTree,"link_1");  //probando el FK solver hasta el Link _ 1
 
  KDL::Rotation R;
    R = result6.M;
@@ -204,8 +204,8 @@ for(unsigned int i = 0; i< nj_1; i++)
    pos_mat5 = result5;
    pos_mat4 = result4;
    pos_mat3 = result3;
-   pos_mat2 = result1;
-   pos_mat1 = resultTree;
+   pos_mat2 = result2;
+   pos_mat1 = result1;
 
    std::cout << result6<< "\n" <<std::endl;
    std::cout << nj<< "\n"  << nj_5<< "\n" << nj_4<< "\n"  << nj_3<< "\n"  << nj_2<< "\n"  << nj_1<< "\n"<<std::endl;

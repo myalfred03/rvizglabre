@@ -64,7 +64,7 @@
 
 #include "std_msgs/Int32MultiArray.h"
 const double FACTOR = 1;
-const double ToG    = 57.295779513;
+double ToG    = 57.295779513;
 const double resetv  = 0;
 
 
@@ -193,6 +193,17 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
     connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on6DOFs_URDF()));
 
+    //Classic Robots
+    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
+
+    //Basic Joints
+    connect(main_window_ui_->checkBoxRevolute,  SIGNAL(toggled(bool)), SLOT(onRevol_URDF()));
+    connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(onPrism_URDF()));
+    connect(main_window_ui_->checkBoxRev_Pris,  SIGNAL(toggled(bool)), SLOT(onPris_Rev_URDF()));
+    connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
+
+
+
 
     //KeySecuence
 //    main_window_ui_->checkBox4DOFI->setShortcut( QKeySequence( QString( "Ctrl+1" )));
@@ -244,7 +255,17 @@ this->updateURDF(file_contents);
 //     mRviz->datameasure(dataM);
 //     main_window_ui_->label_60->setText(dataM);
 
-publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
+
+
+        //d_=ros::Duration(0);
+        ////itTime_ =d_;
+        publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
+
+            joint_pub = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 1);
+            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory",1,&ROSGUI::trajectoryCallback,this);
+
+
+
 
 }
 
@@ -361,10 +382,65 @@ void ROSGUI::on_actionSave_as_triggered()
 // main_window_.close();
 //}
 
+void ROSGUI::on3DOF_URDF()
+{
+
+}
+void ROSGUI::onRevol_URDF(){
+
+}
+
+void ROSGUI::onPrism_URDF(){
+  ToG =10; //Meter ->Centimeter
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("Cm");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/URDF/modelos/prismatic.urdf", temporaryDir2.path() + "/prismatic.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/prismatic.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+}
+
+void ROSGUI::onPris_Rev_URDF(){
+
+}
+
+void ROSGUI::onCartesian_URDF(){
+  ToG =10; //Meter ->Centimeter
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("Cm");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/URDF/modelos/cartesian.urdf", temporaryDir2.path() + "/cartesian.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/cartesian.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+}
+
 
 void ROSGUI::on2DOFI_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
+
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -382,7 +458,11 @@ void ROSGUI::on2DOFI_URDF()
 
 void ROSGUI::on3DOFI_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 12, QFont::Bold);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -399,7 +479,10 @@ void ROSGUI::on3DOFI_URDF()
 
 void ROSGUI::on4DOFI_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -416,7 +499,9 @@ void ROSGUI::on4DOFI_URDF()
 
 void ROSGUI::on5DOFI_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -432,6 +517,7 @@ void ROSGUI::on5DOFI_URDF()
 }
 void ROSGUI::on6DOFI_URDF()
 {
+  ToG    = 57.295779513;
 
 //  // SIN COPIA DE ARCHIVO
 
@@ -445,6 +531,8 @@ void ROSGUI::on6DOFI_URDF()
 
 // CON COPIA DE ARCHIVO
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -469,13 +557,14 @@ void ROSGUI::on6DOFI_URDF()
 
 void ROSGUI::on4DOFs_URDF()
 {
+  ToG    = 57.295779513;
 
 //  file_name_ = "/home/udp/ros_qtc_plugin/src/urdf/urdf/robot1.urdf";
 ////  std::string file_contents =
 //  std::ifstream selected_file(file_name_.toStdString().c_str());
 //  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 //  this->updateURDF(file_contents);
-
+  main_window_ui_->label_15->setText("°");
   QTemporaryDir temporaryDir2;
   QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir2.path() + "/irb5400.urdf");
   std::ifstream selected_file(QString(temporaryDir2.path() + "/irb5400.urdf").toStdString().c_str());
@@ -491,15 +580,17 @@ void ROSGUI::on4DOFs_URDF()
 
 void ROSGUI::on2DOFs_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
   QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/two_link.urdf", temporaryDir2.path() + "/two_link.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/two_link.urdf").toStdString().c_str());
+  QFile::copy(":/robots/URDF/modelos/two_link_planarxy.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/two_link_planarxy.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -507,7 +598,9 @@ void ROSGUI::on2DOFs_URDF()
 }
 void ROSGUI::on3DOFs_URDF()
 {
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -522,6 +615,7 @@ void ROSGUI::on3DOFs_URDF()
 
 }
 void ROSGUI::on6DOFs_URDF(){
+  ToG    = 57.295779513;
 if(!jointsv->treeforDH(model))
 {
    std::cerr << "Error at model DH" <<std::endl;
@@ -619,8 +713,24 @@ void ROSGUI::updateURDF(const std::string& urdf)
 
 }
 
-void ROSGUI::publishJointStates()
+void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajectory*/)
 {
+
+
+
+//  trajectory_msgs::JointTrajectoryPoint* point =  trajectory.points;
+////  std::vector<trajectory_msgs::JointTrajectoryPoint> point(6);
+////  point =;
+////  point[0].positions.resize(1);
+//  joint_positions_["joint_1"]= point[0].positions[0];
+//  joint_positions_["joint_2"]= main_window_ui_->spinBox2DOF->value()/ToG;
+//  joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
+//  joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
+//  joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
+//  joint_positions_["joint_6"]= main_window_ui_->spinBox6DOF->value()/ToG;
+
+
+
   ros::Rate loop_rate(10);
 
   while(true)
@@ -630,7 +740,7 @@ void ROSGUI::publishJointStates()
 
       if(robot_state_pub_ != NULL)
       {
-         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now(), "my_lab_uni");
+         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now()/*+d_*/, "my_lab_uni");
          robot_state_pub_->publishFixedTransforms("my_lab_uni");
 
       }
@@ -677,7 +787,7 @@ void ROSGUI::publishJointStates()
 
     loop_rate.sleep();
   }
-
+//return true;
 }
 
 void ROSGUI::updateSpinboxes()
@@ -820,6 +930,7 @@ void ROSGUI::updateSpinboxesD()
     joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
     joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
     joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
+
 
 
     main_window_ui_->spinBox1DOF->    blockSignals(false);
@@ -1116,6 +1227,8 @@ void ROSGUI::updatetoURDF()
   main_window_ui_->fkPitch->setText(stringPitch);
   main_window_ui_->fkRoll->setText(stringRoll);
 
+//if (main_window_ui_->checkBoxPrismatic->checkState()){
+//ToG=1;
 
 
   main_window_ui_->dial1DOF->setMinimum(joint_lower[0]*ToG);
@@ -1159,6 +1272,7 @@ void ROSGUI::updatetoURDF()
   main_window_ui_->spinBox6DOF->setMinimum(joint_lower[5]*ToG);
   main_window_ui_->spinBox6DOF->setMaximum(joint_upper[5]*ToG);
   main_window_ui_->spinBox6DOF->setSingleStep(1);
+
 }
 
 void ROSGUI::resetvalue(){
@@ -1204,15 +1318,75 @@ void ROSGUI::executeFK(){
   j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
   j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
-   joint_positions_["joint_1"]= main_window_ui_->dial1DOF->value()/ToG;
-   joint_positions_["joint_2"]= main_window_ui_->dial2DOF->value()/ToG;
-   joint_positions_["joint_3"]= main_window_ui_->dial3DOF->value()/ToG;
-   joint_positions_["joint_4"]= main_window_ui_->dial4DOF->value()/ToG;
-   joint_positions_["joint_5"]= main_window_ui_->dial5DOF->value()/ToG;
-   joint_positions_["joint_6"]= main_window_ui_->dial6DOF->value()/ToG;
+//   joint_positions_["joint_1"]= main_window_ui_->spinBox1DOF->value()/ToG;
+//   joint_positions_["joint_2"]= main_window_ui_->spinBox2DOF->value()/ToG;
+//   joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
+//   joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
+//   joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
+//   joint_positions_["joint_6"]= main_window_ui_->spinBox6DOF->value()/ToG;
+
+//                 double jointx;
+////                 int second =500;
+//              //    boost::chrono::milliseconds ms(100);
+//                 jointx = main_window_ui_->spinBox1DOF->value()/ToG;
+//                 for (double i = 0; i<(jointx*10); i++){
+//              //    typedef  boost::chrono::steady_clock Clock;
+//              //    typedef  Clock::time_point time_point;
+//              //     time_point t0 = Clock::now();
+
+
+//              //      boost::this_thread::sleep_until(boost::chrono::milliseconds(t0 + ms));
+//              //     boost::this_thread::sleep_until(t0 + ms);
+////              ros::Rate r(30);
+////              while (ros::ok()) {
+//                joint_positions_["joint_1"]= (i/10);
+//                d_=ros::Duration(5+i);
+////                  r.sleep();
+////              }
+
+//              //   boost::this_thread::sleep(boost::posix_time::milliseconds(second));
+
+//                 }
+
+
+
+
+
+
+//   QTimer::singleShot(2, this, SLOT(timeOut()));
+//     timer = true;
+   trajectory_msgs::JointTrajectory msg;
+
+     std::vector<double> jointvalues(5);
+
+     // move arm straight up
+     jointvalues[0] = 2.95;
+     jointvalues[1] = 1.05;
+     jointvalues[2] = -2.44;
+     jointvalues[3] = 1.73;
+     jointvalues[4] = 2.95;
+     msg = this->createArmPositionCommand(jointvalues);
+     joint_pub.publish(msg);
+     ros::Duration(5);
+
+     // move arm back
+     jointvalues[0] = 0.11;
+     jointvalues[1] = 0.11;
+     jointvalues[2] = -0.11;
+     jointvalues[3] = 0.11;
+     jointvalues[4] = 0.111;
+     msg = this->createArmPositionCommand(jointvalues);
+     joint_pub.publish(msg);
+   ros::Duration(5);
+
    this->FKdata(j);
 
 }
+void ROSGUI::timeOut()
+{
+
+}
+
 void ROSGUI::FKdata(KDL::JntArray j){
 
 
@@ -1349,7 +1523,65 @@ void ROSGUI::FKdata(KDL::JntArray j){
 
 
 }
+trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<double>& newPositions)
+{
+  int numberOfJoints = 5;
+  trajectory_msgs::JointTrajectory msg;
 
+  trajectory_msgs::JointTrajectoryPoint point;
+
+  for (int i = 0; i < 5; i++) {
+    point.positions.push_back(newPositions[i]);
+    point.velocities.push_back(0);
+    point.accelerations.push_back(0);
+  }
+  point.time_from_start = ros::Duration(5);
+  msg.points.push_back(point);
+
+  for (int i = 0; i < 5; i++) {
+    std::stringstream jointName;
+    jointName << "joint_" << (i + 1);
+    msg.joint_names.push_back(jointName.str());
+  }
+
+  msg.header.frame_id = "my_lab_uni";
+  msg.header.stamp = ros::Time::now();
+
+  return msg;
+}
+
+void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
+{
+// double joint_positions[6] {0.0};
+// int i =0;
+//  joint_positions[i]=msg.points[i].positions[i];
+
+     joint_positions1_["joint_1"]= msg.points[0].positions[0];
+     joint_positions1_["joint_2"]= msg.points[0].positions[1];
+  //   joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
+  //   joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
+  //   joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
+  //   joint_positions_["joint_6"]= main_window_ui_->spinBox6DOF->value()/ToG;
+
+//ROS_INFO("the [%d] positions are[%f]\n",i,joint_positions[0]/*,joint_positions[1]*//*,joint_positions[2],joint_positions[3],joint_positions[4],joint_positions[5]*/);
+std::cout <<  msg << std::endl;
+ros::Rate loop_rate(10);
+
+while(true)
+{
+   // lock the state publisher objects and run
+
+//    if(robot_state_pub_ != NULL)
+//    {
+       robot_state_pub_->publishTransforms(joint_positions1_, ros::Time::now()/*+ msg.points[0].time_from_start*/, "my_lab_uni");
+       robot_state_pub_->publishFixedTransforms("my_lab_uni");
+
+//    }
+    loop_rate.sleep();
+
+ }
+
+}
 
 //void ROSGUI::on_comboBox_currentIndexChanged(int index)
 //{

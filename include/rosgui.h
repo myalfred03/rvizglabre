@@ -25,6 +25,7 @@
 #include <string>
 #include <map>
 #include <boost/thread/mutex.hpp>
+#include <boost/thread/thread.hpp> //espera retardo
 #include <QFileDialog>
 #include <QString>
 #include <kdl_parser/kdl_parser.hpp>
@@ -46,7 +47,8 @@
 
 
 ////robot editor
-
+#include <trajectory_msgs/JointTrajectory.h>
+#include <trajectory_msgs/JointTrajectoryPoint.h>
 
 class QMainWindow;
 class MyViz;
@@ -99,12 +101,13 @@ public:
 
       void updateURDF(const std::string& urdf);
       void updatetreeforDH(KDL::Tree modelU);
+      void timeOut();
+      void publishJointStates(/*const trajectory_msgs::JointTrajectory &trajectory*/);
 
-      void publishJointStates();
-
-
-
-
+      ros::NodeHandle nh_;
+      ros::Publisher joint_pub;
+      ros::Subscriber joint_sub;
+      void trajectoryCallback(const trajectory_msgs::JointTrajectory & msg); // MoveIt
 
 // void openDialoginfo();
  //      void openCI();
@@ -174,6 +177,13 @@ public Q_SLOTS:
       void on3DOFs_URDF();
       void on6DOFs_URDF();
 
+      void onPrism_URDF();
+      void onRevol_URDF();
+      void onPris_Rev_URDF();
+      void onCartesian_URDF();
+      void on3DOF_URDF();
+trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& newPositions);
+
       //Herramientas de RVIZ
      // void toggleTFRVIZ(int checked);
 //      void on_checkBox_2_toggled(int checked);
@@ -217,9 +227,13 @@ private:
    sensor_msgs::JointState* msg;
    boost::thread* publisher_thread_;
    std::map<std::string, double> joint_positions_;
+   std::map<std::string, double> joint_positions1_;
+
+//   ros::Time itTime_;
+   ros::Duration d_;
    std::map<std::string, double> joint_positionsDH_;
 
-   ros::NodeHandle nh_;
+
    MyViz *mRviz;/* = new MyViz;*/
 
     //robot editor

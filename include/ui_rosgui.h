@@ -53,39 +53,6 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QGridLayout *gridLayout_6;
     QFrame *line_2;
-    QTabWidget *tabWidget1;
-    QWidget *tabWidgetPage1;
-    QGridLayout *gridLayout_3;
-    QGroupBox *gridGroupBox_3;
-    QGridLayout *gridLayout_4;
-    QCheckBox *checkBox5DOFI;
-    QCheckBox *checkBox4DOFI;
-    QCheckBox *checkBox6DOFI;
-    QCheckBox *checkBox3DOFI;
-    QCheckBox *checkBox2DOFI;
-    QLabel *label_52;
-    QLabel *label_54;
-    QLabel *label_56;
-    QLabel *label_75;
-    QLabel *label_76;
-    QWidget *tab_5;
-    QGridLayout *gridLayout_24;
-    QGroupBox *gridGroupBox_4;
-    QGridLayout *gridLayout_23;
-    QCheckBox *checkBox3Cl;
-    QCheckBox *checkBox4Cl;
-    QCheckBox *checkBox1Cl;
-    QCheckBox *checkBox2Cl;
-    QCheckBox *checkBox6DOFs_2;
-    QWidget *tabWidgetPage2;
-    QGridLayout *gridLayout_8;
-    QGroupBox *gridGroupBox_2;
-    QGridLayout *gridLayout_20;
-    QCheckBox *checkBox2DOFs;
-    QCheckBox *checkBox3DOFs;
-    QCheckBox *checkBox4DOFs;
-    QCheckBox *checkBox5DOFs;
-    QCheckBox *checkBox6DOFs;
     QTabWidget *tabWidget;
     QWidget *tab;
     QGridLayout *gridLayout;
@@ -180,7 +147,7 @@ public:
     QFrame *line_6;
     QLabel *label_6;
     QVBoxLayout *verticalLayout_3;
-    QTabWidget *tabWidget2;
+    QTabWidget *tabWidget1;
     QWidget *tabWidgetPage1_2;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout_35;
@@ -399,6 +366,48 @@ public:
     QTableWidget *tableWidget;
     QTableWidget *tableWidget_2;
     QSpacerItem *horizontalSpacer_7;
+    QTabWidget *tabWidget11;
+    QWidget *tab_10;
+    QGridLayout *gridLayout_30;
+    QGroupBox *gridGroupBox_5;
+    QGridLayout *gridLayout_29;
+    QCheckBox *checkBoxRevolute;
+    QCheckBox *checkBoxPrismatic;
+    QCheckBox *checkBoxRev_Pris;
+    QCheckBox *checkBoxRev3D;
+    QCheckBox *checkBox6DOFs_3;
+    QWidget *tabWidgetPage2;
+    QGridLayout *gridLayout_8;
+    QGroupBox *gridGroupBox_2;
+    QGridLayout *gridLayout_20;
+    QCheckBox *checkBox2DOFs;
+    QCheckBox *checkBox3DOFs;
+    QCheckBox *checkBox4DOFs;
+    QCheckBox *checkBox5DOFs;
+    QCheckBox *checkBox6DOFs;
+    QWidget *tab_5;
+    QGridLayout *gridLayout_24;
+    QGroupBox *gridGroupBox_4;
+    QGridLayout *gridLayout_23;
+    QCheckBox *checkBox3Cl;
+    QCheckBox *checkBox4Cl;
+    QCheckBox *checkBox1Cl;
+    QCheckBox *checkBox2Cl;
+    QCheckBox *checkBox6DOFs_2;
+    QWidget *tabWidgetPage1;
+    QGridLayout *gridLayout_3;
+    QGroupBox *gridGroupBox_3;
+    QGridLayout *gridLayout_4;
+    QCheckBox *checkBox5DOFI;
+    QCheckBox *checkBox4DOFI;
+    QCheckBox *checkBox6DOFI;
+    QCheckBox *checkBox2DOFI;
+    QLabel *label_52;
+    QLabel *label_54;
+    QLabel *label_56;
+    QLabel *label_75;
+    QLabel *label_76;
+    QCheckBox *checkBox3DOFI;
     QVBoxLayout *verticalLayout_7;
     QFrame *line;
     QGridLayout *gridLayout_19;
@@ -422,7 +431,7 @@ public:
     {
         if (ROSGUI->objectName().isEmpty())
             ROSGUI->setObjectName(QStringLiteral("ROSGUI"));
-        ROSGUI->resize(1400, 813);
+        ROSGUI->resize(2467, 813);
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -483,202 +492,7 @@ public:
         line_2->setFrameShape(QFrame::VLine);
         line_2->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_6->addWidget(line_2, 0, 1, 3, 1);
-
-        tabWidget1 = new QTabWidget(centralWidget);
-        tabWidget1->setObjectName(QStringLiteral("tabWidget1"));
-        tabWidget1->setMaximumSize(QSize(450, 720));
-        QFont font;
-        font.setPointSize(10);
-        font.setItalic(false);
-        tabWidget1->setFont(font);
-        tabWidgetPage1 = new QWidget();
-        tabWidgetPage1->setObjectName(QStringLiteral("tabWidgetPage1"));
-        tabWidgetPage1->setMaximumSize(QSize(450, 91));
-        gridLayout_3 = new QGridLayout(tabWidgetPage1);
-        gridLayout_3->setSpacing(2);
-        gridLayout_3->setContentsMargins(11, 11, 11, 11);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        gridLayout_3->setContentsMargins(2, 2, 2, 2);
-        gridGroupBox_3 = new QGroupBox(tabWidgetPage1);
-        gridGroupBox_3->setObjectName(QStringLiteral("gridGroupBox_3"));
-        sizePolicy1.setHeightForWidth(gridGroupBox_3->sizePolicy().hasHeightForWidth());
-        gridGroupBox_3->setSizePolicy(sizePolicy1);
-        gridGroupBox_3->setMaximumSize(QSize(450, 100));
-        gridGroupBox_3->setAutoFillBackground(true);
-        gridLayout_4 = new QGridLayout(gridGroupBox_3);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        gridLayout_4->setHorizontalSpacing(6);
-        gridLayout_4->setVerticalSpacing(0);
-        checkBox5DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox5DOFI->setObjectName(QStringLiteral("checkBox5DOFI"));
-        checkBox5DOFI->setLayoutDirection(Qt::LeftToRight);
-        checkBox5DOFI->setAutoFillBackground(true);
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/images/img/Yaskawa_Motoman_Logo.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkBox5DOFI->setIcon(icon1);
-        checkBox5DOFI->setIconSize(QSize(55, 22));
-        checkBox5DOFI->setTristate(false);
-
-        gridLayout_4->addWidget(checkBox5DOFI, 0, 3, 1, 1);
-
-        checkBox4DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox4DOFI->setObjectName(QStringLiteral("checkBox4DOFI"));
-        checkBox4DOFI->setLayoutDirection(Qt::LeftToRight);
-        checkBox4DOFI->setAutoFillBackground(true);
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/images/img/1448635827949.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkBox4DOFI->setIcon(icon2);
-        checkBox4DOFI->setIconSize(QSize(55, 22));
-        checkBox4DOFI->setTristate(false);
-
-        gridLayout_4->addWidget(checkBox4DOFI, 0, 0, 1, 1);
-
-        checkBox6DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox6DOFI->setObjectName(QStringLiteral("checkBox6DOFI"));
-        checkBox6DOFI->setAutoFillBackground(true);
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/images/img/ABB.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkBox6DOFI->setIcon(icon3);
-        checkBox6DOFI->setIconSize(QSize(46, 22));
-
-        gridLayout_4->addWidget(checkBox6DOFI, 0, 2, 1, 1);
-
-        checkBox3DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox3DOFI->setObjectName(QStringLiteral("checkBox3DOFI"));
-        checkBox3DOFI->setAutoFillBackground(true);
-        checkBox3DOFI->setIcon(icon1);
-        checkBox3DOFI->setIconSize(QSize(55, 20));
-
-        gridLayout_4->addWidget(checkBox3DOFI, 0, 4, 1, 1);
-
-        checkBox2DOFI = new QCheckBox(gridGroupBox_3);
-        checkBox2DOFI->setObjectName(QStringLiteral("checkBox2DOFI"));
-        checkBox2DOFI->setAutoFillBackground(true);
-        checkBox2DOFI->setIcon(icon3);
-        checkBox2DOFI->setIconSize(QSize(46, 22));
-
-        gridLayout_4->addWidget(checkBox2DOFI, 0, 1, 1, 1);
-
-        label_52 = new QLabel(gridGroupBox_3);
-        label_52->setObjectName(QStringLiteral("label_52"));
-
-        gridLayout_4->addWidget(label_52, 1, 0, 1, 1);
-
-        label_54 = new QLabel(gridGroupBox_3);
-        label_54->setObjectName(QStringLiteral("label_54"));
-
-        gridLayout_4->addWidget(label_54, 1, 1, 1, 1);
-
-        label_56 = new QLabel(gridGroupBox_3);
-        label_56->setObjectName(QStringLiteral("label_56"));
-
-        gridLayout_4->addWidget(label_56, 1, 2, 1, 1);
-
-        label_75 = new QLabel(gridGroupBox_3);
-        label_75->setObjectName(QStringLiteral("label_75"));
-
-        gridLayout_4->addWidget(label_75, 1, 3, 1, 1);
-
-        label_76 = new QLabel(gridGroupBox_3);
-        label_76->setObjectName(QStringLiteral("label_76"));
-
-        gridLayout_4->addWidget(label_76, 1, 4, 1, 1);
-
-
-        gridLayout_3->addWidget(gridGroupBox_3, 0, 0, 1, 1);
-
-        tabWidget1->addTab(tabWidgetPage1, QString());
-        tab_5 = new QWidget();
-        tab_5->setObjectName(QStringLiteral("tab_5"));
-        gridLayout_24 = new QGridLayout(tab_5);
-        gridLayout_24->setSpacing(6);
-        gridLayout_24->setContentsMargins(11, 11, 11, 11);
-        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
-        gridGroupBox_4 = new QGroupBox(tab_5);
-        gridGroupBox_4->setObjectName(QStringLiteral("gridGroupBox_4"));
-        gridGroupBox_4->setMaximumSize(QSize(460, 200));
-        gridLayout_23 = new QGridLayout(gridGroupBox_4);
-        gridLayout_23->setSpacing(6);
-        gridLayout_23->setContentsMargins(11, 11, 11, 11);
-        gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
-        gridLayout_23->setContentsMargins(2, 2, 2, 2);
-        checkBox3Cl = new QCheckBox(gridGroupBox_4);
-        checkBox3Cl->setObjectName(QStringLiteral("checkBox3Cl"));
-
-        gridLayout_23->addWidget(checkBox3Cl, 0, 2, 1, 1);
-
-        checkBox4Cl = new QCheckBox(gridGroupBox_4);
-        checkBox4Cl->setObjectName(QStringLiteral("checkBox4Cl"));
-
-        gridLayout_23->addWidget(checkBox4Cl, 0, 3, 1, 1);
-
-        checkBox1Cl = new QCheckBox(gridGroupBox_4);
-        checkBox1Cl->setObjectName(QStringLiteral("checkBox1Cl"));
-
-        gridLayout_23->addWidget(checkBox1Cl, 0, 0, 1, 1);
-
-        checkBox2Cl = new QCheckBox(gridGroupBox_4);
-        checkBox2Cl->setObjectName(QStringLiteral("checkBox2Cl"));
-
-        gridLayout_23->addWidget(checkBox2Cl, 0, 1, 1, 1);
-
-        checkBox6DOFs_2 = new QCheckBox(gridGroupBox_4);
-        checkBox6DOFs_2->setObjectName(QStringLiteral("checkBox6DOFs_2"));
-
-        gridLayout_23->addWidget(checkBox6DOFs_2, 0, 4, 1, 1);
-
-
-        gridLayout_24->addWidget(gridGroupBox_4, 0, 0, 1, 1);
-
-        tabWidget1->addTab(tab_5, QString());
-        tabWidgetPage2 = new QWidget();
-        tabWidgetPage2->setObjectName(QStringLiteral("tabWidgetPage2"));
-        gridLayout_8 = new QGridLayout(tabWidgetPage2);
-        gridLayout_8->setSpacing(6);
-        gridLayout_8->setContentsMargins(11, 11, 11, 11);
-        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        gridGroupBox_2 = new QGroupBox(tabWidgetPage2);
-        gridGroupBox_2->setObjectName(QStringLiteral("gridGroupBox_2"));
-        gridGroupBox_2->setMaximumSize(QSize(460, 200));
-        gridLayout_20 = new QGridLayout(gridGroupBox_2);
-        gridLayout_20->setSpacing(6);
-        gridLayout_20->setContentsMargins(11, 11, 11, 11);
-        gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
-        gridLayout_20->setContentsMargins(2, 2, 2, 2);
-        checkBox2DOFs = new QCheckBox(gridGroupBox_2);
-        checkBox2DOFs->setObjectName(QStringLiteral("checkBox2DOFs"));
-
-        gridLayout_20->addWidget(checkBox2DOFs, 0, 0, 1, 1);
-
-        checkBox3DOFs = new QCheckBox(gridGroupBox_2);
-        checkBox3DOFs->setObjectName(QStringLiteral("checkBox3DOFs"));
-
-        gridLayout_20->addWidget(checkBox3DOFs, 0, 1, 1, 1);
-
-        checkBox4DOFs = new QCheckBox(gridGroupBox_2);
-        checkBox4DOFs->setObjectName(QStringLiteral("checkBox4DOFs"));
-
-        gridLayout_20->addWidget(checkBox4DOFs, 0, 2, 1, 1);
-
-        checkBox5DOFs = new QCheckBox(gridGroupBox_2);
-        checkBox5DOFs->setObjectName(QStringLiteral("checkBox5DOFs"));
-
-        gridLayout_20->addWidget(checkBox5DOFs, 0, 3, 1, 1);
-
-        checkBox6DOFs = new QCheckBox(gridGroupBox_2);
-        checkBox6DOFs->setObjectName(QStringLiteral("checkBox6DOFs"));
-
-        gridLayout_20->addWidget(checkBox6DOFs, 0, 4, 1, 1);
-
-
-        gridLayout_8->addWidget(gridGroupBox_2, 0, 0, 1, 1);
-
-        tabWidget1->addTab(tabWidgetPage2, QString());
-
-        gridLayout_6->addWidget(tabWidget1, 1, 0, 1, 1);
+        gridLayout_6->addWidget(line_2, 0, 2, 3, 1);
 
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
@@ -785,9 +599,9 @@ public:
         label_55 = new QLabel(tab_2);
         label_55->setObjectName(QStringLiteral("label_55"));
         label_55->setMaximumSize(QSize(16777215, 20));
-        QFont font1;
-        font1.setPointSize(14);
-        label_55->setFont(font1);
+        QFont font;
+        font.setPointSize(14);
+        label_55->setFont(font);
         label_55->setLayoutDirection(Qt::LeftToRight);
         label_55->setMargin(0);
 
@@ -811,7 +625,7 @@ public:
         label_53 = new QLabel(tab_2);
         label_53->setObjectName(QStringLiteral("label_53"));
         label_53->setMaximumSize(QSize(16777215, 20));
-        label_53->setFont(font1);
+        label_53->setFont(font);
         label_53->setLayoutDirection(Qt::LeftToRight);
         label_53->setMargin(0);
 
@@ -835,10 +649,10 @@ public:
         label_57 = new QLabel(tab_2);
         label_57->setObjectName(QStringLiteral("label_57"));
         label_57->setMaximumSize(QSize(16777215, 20));
-        QFont font2;
-        font2.setPointSize(16);
-        font2.setItalic(true);
-        label_57->setFont(font2);
+        QFont font1;
+        font1.setPointSize(16);
+        font1.setItalic(true);
+        label_57->setFont(font1);
 
         gridLayout_5->addWidget(label_57, 7, 4, 1, 1);
 
@@ -853,11 +667,11 @@ public:
         label_10 = new QLabel(tab_2);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setMaximumSize(QSize(16777215, 20));
-        QFont font3;
-        font3.setPointSize(14);
-        font3.setBold(true);
-        font3.setWeight(75);
-        label_10->setFont(font3);
+        QFont font2;
+        font2.setPointSize(14);
+        font2.setBold(true);
+        font2.setWeight(75);
+        label_10->setFont(font2);
         label_10->setLayoutDirection(Qt::LeftToRight);
 
         gridLayout_5->addWidget(label_10, 3, 0, 1, 1);
@@ -871,7 +685,7 @@ public:
         label_5 = new QLabel(tab_2);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setMaximumSize(QSize(16777215, 20));
-        label_5->setFont(font3);
+        label_5->setFont(font2);
         label_5->setLayoutDirection(Qt::LeftToRight);
 
         gridLayout_5->addWidget(label_5, 1, 0, 1, 1);
@@ -879,14 +693,14 @@ public:
         label_58 = new QLabel(tab_2);
         label_58->setObjectName(QStringLiteral("label_58"));
         label_58->setMaximumSize(QSize(16777215, 20));
-        label_58->setFont(font2);
+        label_58->setFont(font1);
 
         gridLayout_5->addWidget(label_58, 9, 4, 1, 1);
 
         label_59 = new QLabel(tab_2);
         label_59->setObjectName(QStringLiteral("label_59"));
         label_59->setMaximumSize(QSize(16777215, 20));
-        label_59->setFont(font2);
+        label_59->setFont(font1);
 
         gridLayout_5->addWidget(label_59, 11, 4, 1, 1);
 
@@ -901,7 +715,7 @@ public:
         label_11 = new QLabel(tab_2);
         label_11->setObjectName(QStringLiteral("label_11"));
         label_11->setMaximumSize(QSize(16777215, 20));
-        label_11->setFont(font3);
+        label_11->setFont(font2);
         label_11->setLayoutDirection(Qt::LeftToRight);
         label_11->setMargin(0);
 
@@ -910,10 +724,10 @@ public:
         label_49 = new QLabel(tab_2);
         label_49->setObjectName(QStringLiteral("label_49"));
         label_49->setMaximumSize(QSize(16777215, 20));
-        QFont font4;
-        font4.setPointSize(14);
-        font4.setItalic(false);
-        label_49->setFont(font4);
+        QFont font3;
+        font3.setPointSize(14);
+        font3.setItalic(false);
+        label_49->setFont(font3);
         label_49->setLayoutDirection(Qt::LeftToRight);
         label_49->setMargin(0);
 
@@ -1037,10 +851,10 @@ public:
 
         checkBox_2 = new QCheckBox(tab_2);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-        QFont font5;
-        font5.setPointSize(11);
-        font5.setItalic(true);
-        checkBox_2->setFont(font5);
+        QFont font4;
+        font4.setPointSize(11);
+        font4.setItalic(true);
+        checkBox_2->setFont(font4);
 
         gridLayout_5->addWidget(checkBox_2, 0, 0, 1, 5);
 
@@ -1066,10 +880,10 @@ public:
         label_20 = new QLabel(tab_2);
         label_20->setObjectName(QStringLiteral("label_20"));
         label_20->setMaximumSize(QSize(16, 16));
-        QFont font6;
-        font6.setFamily(QStringLiteral("FreeMono"));
-        font6.setPointSize(14);
-        label_20->setFont(font6);
+        QFont font5;
+        font5.setFamily(QStringLiteral("FreeMono"));
+        font5.setPointSize(14);
+        label_20->setFont(font5);
 
         gridLayout_17->addWidget(label_20, 7, 0, 1, 1);
 
@@ -1086,7 +900,7 @@ public:
         label_12 = new QLabel(tab_2);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setMaximumSize(QSize(16, 16));
-        label_12->setFont(font6);
+        label_12->setFont(font5);
 
         gridLayout_17->addWidget(label_12, 1, 0, 1, 1);
 
@@ -1138,7 +952,7 @@ public:
         label_14 = new QLabel(tab_2);
         label_14->setObjectName(QStringLiteral("label_14"));
         label_14->setMaximumSize(QSize(16, 16));
-        label_14->setFont(font6);
+        label_14->setFont(font5);
 
         gridLayout_17->addWidget(label_14, 5, 0, 1, 1);
 
@@ -1165,14 +979,14 @@ public:
         sizePolicy3.setHeightForWidth(label_27->sizePolicy().hasHeightForWidth());
         label_27->setSizePolicy(sizePolicy3);
         label_27->setMaximumSize(QSize(16777215, 20));
-        label_27->setFont(font2);
+        label_27->setFont(font1);
 
         gridLayout_17->addWidget(label_27, 9, 4, 1, 1);
 
         label_22 = new QLabel(tab_2);
         label_22->setObjectName(QStringLiteral("label_22"));
         label_22->setMaximumSize(QSize(16, 16));
-        label_22->setFont(font6);
+        label_22->setFont(font5);
 
         gridLayout_17->addWidget(label_22, 11, 0, 1, 1);
 
@@ -1201,7 +1015,7 @@ public:
         sizePolicy3.setHeightForWidth(label_26->sizePolicy().hasHeightForWidth());
         label_26->setSizePolicy(sizePolicy3);
         label_26->setMaximumSize(QSize(16777215, 20));
-        label_26->setFont(font2);
+        label_26->setFont(font1);
 
         gridLayout_17->addWidget(label_26, 7, 4, 1, 1);
 
@@ -1234,7 +1048,7 @@ public:
         sizePolicy3.setHeightForWidth(label_25->sizePolicy().hasHeightForWidth());
         label_25->setSizePolicy(sizePolicy3);
         label_25->setMaximumSize(QSize(16777215, 20));
-        label_25->setFont(font2);
+        label_25->setFont(font1);
 
         gridLayout_17->addWidget(label_25, 5, 4, 1, 1);
 
@@ -1294,7 +1108,7 @@ public:
         label_13 = new QLabel(tab_2);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setMaximumSize(QSize(16, 16));
-        label_13->setFont(font6);
+        label_13->setFont(font5);
 
         gridLayout_17->addWidget(label_13, 3, 0, 1, 1);
 
@@ -1303,7 +1117,7 @@ public:
         sizePolicy3.setHeightForWidth(label_28->sizePolicy().hasHeightForWidth());
         label_28->setSizePolicy(sizePolicy3);
         label_28->setMaximumSize(QSize(16777215, 20));
-        label_28->setFont(font2);
+        label_28->setFont(font1);
 
         gridLayout_17->addWidget(label_28, 11, 4, 1, 1);
 
@@ -1341,7 +1155,7 @@ public:
         label_21 = new QLabel(tab_2);
         label_21->setObjectName(QStringLiteral("label_21"));
         label_21->setMaximumSize(QSize(16, 16));
-        label_21->setFont(font6);
+        label_21->setFont(font5);
 
         gridLayout_17->addWidget(label_21, 9, 0, 1, 1);
 
@@ -1369,7 +1183,7 @@ public:
         sizePolicy3.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
         label_15->setSizePolicy(sizePolicy3);
         label_15->setMaximumSize(QSize(16777215, 20));
-        label_15->setFont(font2);
+        label_15->setFont(font1);
         label_15->setScaledContents(false);
 
         gridLayout_17->addWidget(label_15, 1, 4, 1, 1);
@@ -1387,7 +1201,7 @@ public:
         sizePolicy3.setHeightForWidth(label_24->sizePolicy().hasHeightForWidth());
         label_24->setSizePolicy(sizePolicy3);
         label_24->setMaximumSize(QSize(16777215, 20));
-        label_24->setFont(font2);
+        label_24->setFont(font1);
 
         gridLayout_17->addWidget(label_24, 3, 4, 1, 1);
 
@@ -1436,15 +1250,15 @@ public:
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        tabWidget2 = new QTabWidget(tab_2);
-        tabWidget2->setObjectName(QStringLiteral("tabWidget2"));
+        tabWidget1 = new QTabWidget(tab_2);
+        tabWidget1->setObjectName(QStringLiteral("tabWidget1"));
         QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(tabWidget2->sizePolicy().hasHeightForWidth());
-        tabWidget2->setSizePolicy(sizePolicy5);
-        tabWidget2->setMinimumSize(QSize(0, 0));
-        tabWidget2->setMaximumSize(QSize(16777215, 400));
+        sizePolicy5.setHeightForWidth(tabWidget1->sizePolicy().hasHeightForWidth());
+        tabWidget1->setSizePolicy(sizePolicy5);
+        tabWidget1->setMinimumSize(QSize(0, 0));
+        tabWidget1->setMaximumSize(QSize(16777215, 400));
         tabWidgetPage1_2 = new QWidget();
         tabWidgetPage1_2->setObjectName(QStringLiteral("tabWidgetPage1_2"));
         gridLayout_2 = new QGridLayout(tabWidgetPage1_2);
@@ -1605,7 +1419,7 @@ public:
 
         gridLayout_2->addLayout(gridLayout_35, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tabWidgetPage1_2, QString());
+        tabWidget1->addTab(tabWidgetPage1_2, QString());
         tabWidgetPage2_2 = new QWidget();
         tabWidgetPage2_2->setObjectName(QStringLiteral("tabWidgetPage2_2"));
         gridLayout_25 = new QGridLayout(tabWidgetPage2_2);
@@ -1766,7 +1580,7 @@ public:
 
         gridLayout_25->addLayout(gridLayout_36, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tabWidgetPage2_2, QString());
+        tabWidget1->addTab(tabWidgetPage2_2, QString());
         tab_6 = new QWidget();
         tab_6->setObjectName(QStringLiteral("tab_6"));
         gridLayout_28 = new QGridLayout(tab_6);
@@ -1927,7 +1741,7 @@ public:
 
         gridLayout_28->addLayout(gridLayout_26, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tab_6, QString());
+        tabWidget1->addTab(tab_6, QString());
         tab_7 = new QWidget();
         tab_7->setObjectName(QStringLiteral("tab_7"));
         gridLayout_34 = new QGridLayout(tab_7);
@@ -2088,7 +1902,7 @@ public:
 
         gridLayout_34->addLayout(gridLayout_33, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tab_7, QString());
+        tabWidget1->addTab(tab_7, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QStringLiteral("tab_8"));
         gridLayout_39 = new QGridLayout(tab_8);
@@ -2249,7 +2063,7 @@ public:
 
         gridLayout_39->addLayout(gridLayout_37, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tab_8, QString());
+        tabWidget1->addTab(tab_8, QString());
         tab_9 = new QWidget();
         tab_9->setObjectName(QStringLiteral("tab_9"));
         gridLayout_40 = new QGridLayout(tab_9);
@@ -2410,9 +2224,9 @@ public:
 
         gridLayout_40->addLayout(gridLayout_38, 0, 0, 1, 1);
 
-        tabWidget2->addTab(tab_9, QString());
+        tabWidget1->addTab(tab_9, QString());
 
-        verticalLayout_3->addWidget(tabWidget2);
+        verticalLayout_3->addWidget(tabWidget1);
 
 
         gridLayout_13->addLayout(verticalLayout_3, 2, 0, 1, 1);
@@ -2450,7 +2264,7 @@ public:
         label_39 = new QLabel(tab_3);
         label_39->setObjectName(QStringLiteral("label_39"));
         label_39->setMaximumSize(QSize(11, 16777215));
-        label_39->setFont(font2);
+        label_39->setFont(font1);
 
         gridLayout_11->addWidget(label_39, 1, 2, 1, 1);
 
@@ -2495,21 +2309,21 @@ public:
         label_41 = new QLabel(tab_3);
         label_41->setObjectName(QStringLiteral("label_41"));
         label_41->setMaximumSize(QSize(11, 16777215));
-        label_41->setFont(font2);
+        label_41->setFont(font1);
 
         gridLayout_11->addWidget(label_41, 1, 8, 1, 1);
 
         label_40 = new QLabel(tab_3);
         label_40->setObjectName(QStringLiteral("label_40"));
         label_40->setMaximumSize(QSize(11, 16777215));
-        label_40->setFont(font2);
+        label_40->setFont(font1);
 
         gridLayout_11->addWidget(label_40, 1, 5, 1, 1);
 
         label_72 = new QLabel(tab_3);
         label_72->setObjectName(QStringLiteral("label_72"));
         label_72->setMaximumSize(QSize(11, 16777215));
-        label_72->setFont(font2);
+        label_72->setFont(font1);
 
         gridLayout_11->addWidget(label_72, 1, 11, 1, 1);
 
@@ -2544,14 +2358,14 @@ public:
         label_73 = new QLabel(tab_3);
         label_73->setObjectName(QStringLiteral("label_73"));
         label_73->setMaximumSize(QSize(11, 16777215));
-        label_73->setFont(font2);
+        label_73->setFont(font1);
 
         gridLayout_11->addWidget(label_73, 1, 14, 1, 1);
 
         label_74 = new QLabel(tab_3);
         label_74->setObjectName(QStringLiteral("label_74"));
         label_74->setMaximumSize(QSize(11, 16777215));
-        label_74->setFont(font2);
+        label_74->setFont(font1);
 
         gridLayout_11->addWidget(label_74, 1, 17, 1, 1);
 
@@ -2570,9 +2384,9 @@ public:
 
         label_66 = new QLabel(tab_3);
         label_66->setObjectName(QStringLiteral("label_66"));
-        QFont font7;
-        font7.setPointSize(8);
-        label_66->setFont(font7);
+        QFont font6;
+        font6.setPointSize(8);
+        label_66->setFont(font6);
 
         gridLayout_11->addWidget(label_66, 0, 1, 1, 2);
 
@@ -2581,11 +2395,11 @@ public:
 
         label_9 = new QLabel(tab_3);
         label_9->setObjectName(QStringLiteral("label_9"));
-        QFont font8;
-        font8.setPointSize(10);
-        font8.setBold(false);
-        font8.setWeight(50);
-        label_9->setFont(font8);
+        QFont font7;
+        font7.setPointSize(10);
+        font7.setBold(false);
+        font7.setWeight(50);
+        label_9->setFont(font7);
         label_9->setWordWrap(true);
 
         gridLayout_15->addWidget(label_9, 1, 0, 1, 1);
@@ -2611,7 +2425,7 @@ public:
 
         label_35 = new QLabel(groupBox);
         label_35->setObjectName(QStringLiteral("label_35"));
-        label_35->setFont(font2);
+        label_35->setFont(font1);
 
         gridLayout_14->addWidget(label_35, 7, 2, 1, 1);
 
@@ -2635,7 +2449,7 @@ public:
 
         label_37 = new QLabel(groupBox);
         label_37->setObjectName(QStringLiteral("label_37"));
-        label_37->setFont(font2);
+        label_37->setFont(font1);
 
         gridLayout_14->addWidget(label_37, 11, 2, 1, 1);
 
@@ -2704,7 +2518,7 @@ public:
 
         label_47 = new QLabel(groupBox);
         label_47->setObjectName(QStringLiteral("label_47"));
-        label_47->setFont(font2);
+        label_47->setFont(font1);
 
         gridLayout_14->addWidget(label_47, 11, 5, 1, 1);
 
@@ -2721,7 +2535,7 @@ public:
 
         label_46 = new QLabel(groupBox);
         label_46->setObjectName(QStringLiteral("label_46"));
-        label_46->setFont(font2);
+        label_46->setFont(font1);
 
         gridLayout_14->addWidget(label_46, 9, 5, 1, 1);
 
@@ -2786,13 +2600,13 @@ public:
 
         label_45 = new QLabel(groupBox);
         label_45->setObjectName(QStringLiteral("label_45"));
-        label_45->setFont(font2);
+        label_45->setFont(font1);
 
         gridLayout_14->addWidget(label_45, 7, 5, 1, 1);
 
         label_43 = new QLabel(groupBox);
         label_43->setObjectName(QStringLiteral("label_43"));
-        label_43->setFont(font2);
+        label_43->setFont(font1);
 
         gridLayout_14->addWidget(label_43, 3, 5, 1, 1);
 
@@ -2810,7 +2624,7 @@ public:
 
         label_36 = new QLabel(groupBox);
         label_36->setObjectName(QStringLiteral("label_36"));
-        label_36->setFont(font2);
+        label_36->setFont(font1);
 
         gridLayout_14->addWidget(label_36, 9, 2, 1, 1);
 
@@ -2835,7 +2649,7 @@ public:
 
         label_44 = new QLabel(groupBox);
         label_44->setObjectName(QStringLiteral("label_44"));
-        label_44->setFont(font2);
+        label_44->setFont(font1);
 
         gridLayout_14->addWidget(label_44, 5, 5, 1, 1);
 
@@ -2968,11 +2782,11 @@ public:
 
         label_8 = new QLabel(tab_3);
         label_8->setObjectName(QStringLiteral("label_8"));
-        QFont font9;
-        font9.setPointSize(14);
-        font9.setBold(false);
-        font9.setWeight(50);
-        label_8->setFont(font9);
+        QFont font8;
+        font8.setPointSize(14);
+        font8.setBold(false);
+        font8.setWeight(50);
+        label_8->setFont(font8);
 
         gridLayout_15->addWidget(label_8, 0, 0, 1, 1);
 
@@ -2995,10 +2809,10 @@ public:
         gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
         label_50 = new QLabel(tab_4);
         label_50->setObjectName(QStringLiteral("label_50"));
-        QFont font10;
-        font10.setFamily(QStringLiteral("Ubuntu"));
-        font10.setPointSize(14);
-        label_50->setFont(font10);
+        QFont font9;
+        font9.setFamily(QStringLiteral("Ubuntu"));
+        font9.setPointSize(14);
+        label_50->setFont(font9);
 
         gridLayout_21->addWidget(label_50, 0, 0, 1, 1);
 
@@ -3083,6 +2897,244 @@ public:
         tabWidget->addTab(tab_4, QString());
 
         gridLayout_6->addWidget(tabWidget, 2, 0, 1, 1);
+
+        tabWidget11 = new QTabWidget(centralWidget);
+        tabWidget11->setObjectName(QStringLiteral("tabWidget11"));
+        tabWidget11->setMaximumSize(QSize(450, 720));
+        QFont font10;
+        font10.setPointSize(10);
+        font10.setItalic(false);
+        tabWidget11->setFont(font10);
+        tab_10 = new QWidget();
+        tab_10->setObjectName(QStringLiteral("tab_10"));
+        gridLayout_30 = new QGridLayout(tab_10);
+        gridLayout_30->setSpacing(6);
+        gridLayout_30->setContentsMargins(11, 11, 11, 11);
+        gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
+        gridGroupBox_5 = new QGroupBox(tab_10);
+        gridGroupBox_5->setObjectName(QStringLiteral("gridGroupBox_5"));
+        gridGroupBox_5->setMaximumSize(QSize(460, 200));
+        gridLayout_29 = new QGridLayout(gridGroupBox_5);
+        gridLayout_29->setSpacing(6);
+        gridLayout_29->setContentsMargins(11, 11, 11, 11);
+        gridLayout_29->setObjectName(QStringLiteral("gridLayout_29"));
+        gridLayout_29->setContentsMargins(2, 2, 2, 2);
+        checkBoxRevolute = new QCheckBox(gridGroupBox_5);
+        checkBoxRevolute->setObjectName(QStringLiteral("checkBoxRevolute"));
+
+        gridLayout_29->addWidget(checkBoxRevolute, 0, 0, 1, 1);
+
+        checkBoxPrismatic = new QCheckBox(gridGroupBox_5);
+        checkBoxPrismatic->setObjectName(QStringLiteral("checkBoxPrismatic"));
+
+        gridLayout_29->addWidget(checkBoxPrismatic, 0, 1, 1, 1);
+
+        checkBoxRev_Pris = new QCheckBox(gridGroupBox_5);
+        checkBoxRev_Pris->setObjectName(QStringLiteral("checkBoxRev_Pris"));
+
+        gridLayout_29->addWidget(checkBoxRev_Pris, 0, 2, 1, 1);
+
+        checkBoxRev3D = new QCheckBox(gridGroupBox_5);
+        checkBoxRev3D->setObjectName(QStringLiteral("checkBoxRev3D"));
+
+        gridLayout_29->addWidget(checkBoxRev3D, 0, 3, 1, 1);
+
+        checkBox6DOFs_3 = new QCheckBox(gridGroupBox_5);
+        checkBox6DOFs_3->setObjectName(QStringLiteral("checkBox6DOFs_3"));
+
+        gridLayout_29->addWidget(checkBox6DOFs_3, 0, 4, 1, 1);
+
+
+        gridLayout_30->addWidget(gridGroupBox_5, 0, 0, 1, 1);
+
+        tabWidget11->addTab(tab_10, QString());
+        tabWidgetPage2 = new QWidget();
+        tabWidgetPage2->setObjectName(QStringLiteral("tabWidgetPage2"));
+        gridLayout_8 = new QGridLayout(tabWidgetPage2);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
+        gridGroupBox_2 = new QGroupBox(tabWidgetPage2);
+        gridGroupBox_2->setObjectName(QStringLiteral("gridGroupBox_2"));
+        gridGroupBox_2->setMaximumSize(QSize(460, 200));
+        gridLayout_20 = new QGridLayout(gridGroupBox_2);
+        gridLayout_20->setSpacing(6);
+        gridLayout_20->setContentsMargins(11, 11, 11, 11);
+        gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
+        gridLayout_20->setContentsMargins(2, 2, 2, 2);
+        checkBox2DOFs = new QCheckBox(gridGroupBox_2);
+        checkBox2DOFs->setObjectName(QStringLiteral("checkBox2DOFs"));
+
+        gridLayout_20->addWidget(checkBox2DOFs, 0, 0, 1, 1);
+
+        checkBox3DOFs = new QCheckBox(gridGroupBox_2);
+        checkBox3DOFs->setObjectName(QStringLiteral("checkBox3DOFs"));
+
+        gridLayout_20->addWidget(checkBox3DOFs, 0, 1, 1, 1);
+
+        checkBox4DOFs = new QCheckBox(gridGroupBox_2);
+        checkBox4DOFs->setObjectName(QStringLiteral("checkBox4DOFs"));
+
+        gridLayout_20->addWidget(checkBox4DOFs, 0, 2, 1, 1);
+
+        checkBox5DOFs = new QCheckBox(gridGroupBox_2);
+        checkBox5DOFs->setObjectName(QStringLiteral("checkBox5DOFs"));
+
+        gridLayout_20->addWidget(checkBox5DOFs, 0, 3, 1, 1);
+
+        checkBox6DOFs = new QCheckBox(gridGroupBox_2);
+        checkBox6DOFs->setObjectName(QStringLiteral("checkBox6DOFs"));
+
+        gridLayout_20->addWidget(checkBox6DOFs, 0, 4, 1, 1);
+
+
+        gridLayout_8->addWidget(gridGroupBox_2, 0, 0, 1, 1);
+
+        tabWidget11->addTab(tabWidgetPage2, QString());
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QStringLiteral("tab_5"));
+        gridLayout_24 = new QGridLayout(tab_5);
+        gridLayout_24->setSpacing(6);
+        gridLayout_24->setContentsMargins(11, 11, 11, 11);
+        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
+        gridGroupBox_4 = new QGroupBox(tab_5);
+        gridGroupBox_4->setObjectName(QStringLiteral("gridGroupBox_4"));
+        gridGroupBox_4->setMaximumSize(QSize(460, 200));
+        gridLayout_23 = new QGridLayout(gridGroupBox_4);
+        gridLayout_23->setSpacing(6);
+        gridLayout_23->setContentsMargins(11, 11, 11, 11);
+        gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
+        gridLayout_23->setContentsMargins(2, 2, 2, 2);
+        checkBox3Cl = new QCheckBox(gridGroupBox_4);
+        checkBox3Cl->setObjectName(QStringLiteral("checkBox3Cl"));
+
+        gridLayout_23->addWidget(checkBox3Cl, 0, 2, 1, 1);
+
+        checkBox4Cl = new QCheckBox(gridGroupBox_4);
+        checkBox4Cl->setObjectName(QStringLiteral("checkBox4Cl"));
+
+        gridLayout_23->addWidget(checkBox4Cl, 0, 3, 1, 1);
+
+        checkBox1Cl = new QCheckBox(gridGroupBox_4);
+        checkBox1Cl->setObjectName(QStringLiteral("checkBox1Cl"));
+
+        gridLayout_23->addWidget(checkBox1Cl, 0, 0, 1, 1);
+
+        checkBox2Cl = new QCheckBox(gridGroupBox_4);
+        checkBox2Cl->setObjectName(QStringLiteral("checkBox2Cl"));
+
+        gridLayout_23->addWidget(checkBox2Cl, 0, 1, 1, 1);
+
+        checkBox6DOFs_2 = new QCheckBox(gridGroupBox_4);
+        checkBox6DOFs_2->setObjectName(QStringLiteral("checkBox6DOFs_2"));
+
+        gridLayout_23->addWidget(checkBox6DOFs_2, 0, 4, 1, 1);
+
+
+        gridLayout_24->addWidget(gridGroupBox_4, 0, 0, 1, 1);
+
+        tabWidget11->addTab(tab_5, QString());
+        tabWidgetPage1 = new QWidget();
+        tabWidgetPage1->setObjectName(QStringLiteral("tabWidgetPage1"));
+        tabWidgetPage1->setMaximumSize(QSize(450, 91));
+        gridLayout_3 = new QGridLayout(tabWidgetPage1);
+        gridLayout_3->setSpacing(2);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        gridLayout_3->setContentsMargins(2, 2, 2, 2);
+        gridGroupBox_3 = new QGroupBox(tabWidgetPage1);
+        gridGroupBox_3->setObjectName(QStringLiteral("gridGroupBox_3"));
+        sizePolicy1.setHeightForWidth(gridGroupBox_3->sizePolicy().hasHeightForWidth());
+        gridGroupBox_3->setSizePolicy(sizePolicy1);
+        gridGroupBox_3->setMaximumSize(QSize(450, 100));
+        gridGroupBox_3->setAutoFillBackground(true);
+        gridLayout_4 = new QGridLayout(gridGroupBox_3);
+        gridLayout_4->setSpacing(6);
+        gridLayout_4->setContentsMargins(11, 11, 11, 11);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        gridLayout_4->setHorizontalSpacing(6);
+        gridLayout_4->setVerticalSpacing(0);
+        checkBox5DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox5DOFI->setObjectName(QStringLiteral("checkBox5DOFI"));
+        checkBox5DOFI->setLayoutDirection(Qt::LeftToRight);
+        checkBox5DOFI->setAutoFillBackground(true);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/images/img/Yaskawa_Motoman_Logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox5DOFI->setIcon(icon1);
+        checkBox5DOFI->setIconSize(QSize(55, 22));
+        checkBox5DOFI->setTristate(false);
+
+        gridLayout_4->addWidget(checkBox5DOFI, 0, 3, 1, 1);
+
+        checkBox4DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox4DOFI->setObjectName(QStringLiteral("checkBox4DOFI"));
+        checkBox4DOFI->setLayoutDirection(Qt::LeftToRight);
+        checkBox4DOFI->setAutoFillBackground(true);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/images/img/1448635827949.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox4DOFI->setIcon(icon2);
+        checkBox4DOFI->setIconSize(QSize(55, 22));
+        checkBox4DOFI->setTristate(false);
+
+        gridLayout_4->addWidget(checkBox4DOFI, 0, 0, 1, 1);
+
+        checkBox6DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox6DOFI->setObjectName(QStringLiteral("checkBox6DOFI"));
+        checkBox6DOFI->setAutoFillBackground(true);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/images/img/ABB.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkBox6DOFI->setIcon(icon3);
+        checkBox6DOFI->setIconSize(QSize(46, 22));
+
+        gridLayout_4->addWidget(checkBox6DOFI, 0, 2, 1, 1);
+
+        checkBox2DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox2DOFI->setObjectName(QStringLiteral("checkBox2DOFI"));
+        checkBox2DOFI->setAutoFillBackground(true);
+        checkBox2DOFI->setIcon(icon3);
+        checkBox2DOFI->setIconSize(QSize(46, 22));
+
+        gridLayout_4->addWidget(checkBox2DOFI, 0, 1, 1, 1);
+
+        label_52 = new QLabel(gridGroupBox_3);
+        label_52->setObjectName(QStringLiteral("label_52"));
+
+        gridLayout_4->addWidget(label_52, 1, 0, 1, 1);
+
+        label_54 = new QLabel(gridGroupBox_3);
+        label_54->setObjectName(QStringLiteral("label_54"));
+
+        gridLayout_4->addWidget(label_54, 1, 1, 1, 1);
+
+        label_56 = new QLabel(gridGroupBox_3);
+        label_56->setObjectName(QStringLiteral("label_56"));
+
+        gridLayout_4->addWidget(label_56, 1, 2, 1, 1);
+
+        label_75 = new QLabel(gridGroupBox_3);
+        label_75->setObjectName(QStringLiteral("label_75"));
+
+        gridLayout_4->addWidget(label_75, 1, 3, 1, 1);
+
+        label_76 = new QLabel(gridGroupBox_3);
+        label_76->setObjectName(QStringLiteral("label_76"));
+
+        gridLayout_4->addWidget(label_76, 1, 4, 1, 1);
+
+        checkBox3DOFI = new QCheckBox(gridGroupBox_3);
+        checkBox3DOFI->setObjectName(QStringLiteral("checkBox3DOFI"));
+        checkBox3DOFI->setAutoFillBackground(true);
+        checkBox3DOFI->setIcon(icon1);
+        checkBox3DOFI->setIconSize(QSize(55, 20));
+
+        gridLayout_4->addWidget(checkBox3DOFI, 0, 4, 1, 1);
+
+
+        gridLayout_3->addWidget(gridGroupBox_3, 0, 0, 1, 1);
+
+        tabWidget11->addTab(tabWidgetPage1, QString());
+
+        gridLayout_6->addWidget(tabWidget11, 1, 0, 1, 1);
 
 
         horizontalLayout_5->addLayout(gridLayout_6);
@@ -3243,7 +3295,7 @@ public:
         ROSGUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ROSGUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1400, 19));
+        menuBar->setGeometry(QRect(0, 0, 2467, 18));
         menuFILE = new QMenu(menuBar);
         menuFILE->setObjectName(QStringLiteral("menuFILE"));
         ROSGUI->setMenuBar(menuBar);
@@ -3259,10 +3311,151 @@ public:
         menuFILE->addAction(actionHHH);
 
         retranslateUi(ROSGUI);
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), checkBox2DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), checkBox6DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), checkBox5DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), checkBox3DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), checkBox4DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), checkBox6DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), checkBox5DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), checkBox3DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), checkBox4DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), checkBox2DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), checkBox5DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), checkBox3DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), checkBox6DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), checkBox3DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), checkBox2DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), checkBox4DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), checkBox5DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), checkBox6DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), checkBox2DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), checkBox4DOFI, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFI, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFI, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFI, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFI, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFI, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), checkBox4Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), checkBox3Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), checkBox2Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), checkBox1Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), checkBox6DOFs_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), checkBox3Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), checkBox2Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), checkBox1Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), checkBox6DOFs_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), checkBox4Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), checkBox2Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), checkBox1Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), checkBox1Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), checkBox3Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), checkBox4Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), checkBox6DOFs_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), checkBox2Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), checkBox3Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), checkBox4Cl, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), checkBox6DOFs_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox1Cl, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2Cl, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3Cl, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4Cl, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_2, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), gridGroupBox_5, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox3DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox5DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox2DOFs, SIGNAL(toggled(bool)), checkBox6DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), checkBox5DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox3DOFs, SIGNAL(toggled(bool)), checkBox6DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), checkBox3DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), checkBox5DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox4DOFs, SIGNAL(toggled(bool)), checkBox6DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), checkBox6DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), checkBox3DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox5DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox3DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs, SIGNAL(toggled(bool)), checkBox2DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox5DOFs, SIGNAL(toggled(bool)), checkBox4DOFs, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), gridGroupBox_2, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), gridGroupBox_4, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(gridGroupBox_5, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), gridGroupBox_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), checkBoxPrismatic, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), checkBoxRev_Pris, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), checkBoxRev3D, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRevolute, SIGNAL(toggled(bool)), checkBox6DOFs_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), checkBoxRevolute, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), checkBoxRev_Pris, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), checkBoxRev3D, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxPrismatic, SIGNAL(toggled(bool)), checkBox6DOFs_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), checkBoxPrismatic, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), checkBoxRevolute, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), checkBoxRev3D, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev_Pris, SIGNAL(toggled(bool)), checkBox6DOFs_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), checkBoxRev_Pris, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), checkBox6DOFs_3, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), checkBoxPrismatic, SLOT(setDisabled(bool)));
+        QObject::connect(checkBoxRev3D, SIGNAL(toggled(bool)), checkBoxRevolute, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxRev3D, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxRev_Pris, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxPrismatic, SLOT(setDisabled(bool)));
+        QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxRevolute, SLOT(setDisabled(bool)));
 
+        tabWidget->setCurrentIndex(1);
         tabWidget1->setCurrentIndex(0);
-        tabWidget->setCurrentIndex(2);
-        tabWidget2->setCurrentIndex(0);
+        tabWidget11->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ROSGUI);
@@ -3280,52 +3473,6 @@ public:
         actionExit->setShortcut(QApplication::translate("ROSGUI", "Ctrl+E", Q_NULLPTR));
         actionTF_RVIZ->setText(QApplication::translate("ROSGUI", "TF RVIZ", Q_NULLPTR));
         actionHHH->setText(QApplication::translate("ROSGUI", "HHH", Q_NULLPTR));
-        gridGroupBox_3->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        checkBox5DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Motoman MH5, CTRL + 4", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        checkBox5DOFI->setText(QString());
-        checkBox5DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+4", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        checkBox4DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Kuka KR210L, CTRL + 1", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        checkBox4DOFI->setText(QString());
-        checkBox4DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+1", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        checkBox6DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot ABB IRB120, CTRL + 3", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        checkBox6DOFI->setText(QString());
-        checkBox6DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+3", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        checkBox3DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Motoman BMDA3, CTRL + 5", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        checkBox3DOFI->setText(QString());
-        checkBox3DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+5", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        checkBox2DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot ABB IRB5400, CTRL + 2", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        checkBox2DOFI->setText(QString());
-        checkBox2DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+2", Q_NULLPTR));
-        label_52->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">KR210</span></p></body></html>", Q_NULLPTR));
-        label_54->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">IRB5400</span></p></body></html>", Q_NULLPTR));
-        label_56->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">IRB120</span></p></body></html>", Q_NULLPTR));
-        label_75->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">MH5</span></p></body></html>", Q_NULLPTR));
-        label_76->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">BMDA3</span></p></body></html>", Q_NULLPTR));
-        tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage1), QApplication::translate("ROSGUI", "Robots Industriales", Q_NULLPTR));
-        gridGroupBox_4->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
-        checkBox3Cl->setText(QApplication::translate("ROSGUI", "Cilindrico", Q_NULLPTR));
-        checkBox4Cl->setText(QApplication::translate("ROSGUI", "Esferico", Q_NULLPTR));
-        checkBox1Cl->setText(QApplication::translate("ROSGUI", "Puma560", Q_NULLPTR));
-        checkBox2Cl->setText(QApplication::translate("ROSGUI", "Cartesiano", Q_NULLPTR));
-        checkBox6DOFs_2->setText(QApplication::translate("ROSGUI", "Scara", Q_NULLPTR));
-        tabWidget1->setTabText(tabWidget1->indexOf(tab_5), QApplication::translate("ROSGUI", "Robots Clasicos", Q_NULLPTR));
-        gridGroupBox_2->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
-        checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
-        checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
-        checkBox4DOFs->setText(QApplication::translate("ROSGUI", "4DOF", Q_NULLPTR));
-        checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
-        checkBox6DOFs->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
-        tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("ROSGUI", "Robots Simples", Q_NULLPTR));
         label_3->setText(QString());
         label_48->setText(QApplication::translate("ROSGUI", "Ventana de Simulacion de Cinematica Directa e Inversa", Q_NULLPTR));
         pushButton->setText(QApplication::translate("ROSGUI", "Teoria de Cinematica", Q_NULLPTR));
@@ -3417,7 +3564,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         spinBox4DOF->setToolTip(QApplication::translate("ROSGUI", "Ajusta el valor de movimiento con mas precision y luego ejecuta el movimiento", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        label_6->setText(QApplication::translate("ROSGUI", "DOF Grados", Q_NULLPTR));
+        label_6->setText(QApplication::translate("ROSGUI", "DOF Grados / Meters", Q_NULLPTR));
         label_1MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_1MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_1MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3436,7 +3583,7 @@ public:
         label_1MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_83->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_84->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tabWidgetPage1_2), QApplication::translate("ROSGUI", "1DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage1_2), QApplication::translate("ROSGUI", "1DOF", Q_NULLPTR));
         label_2MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_2MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_2MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3455,7 +3602,7 @@ public:
         label_2MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_85->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_86->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tabWidgetPage2_2), QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2_2), QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
         label_3MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_3MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_3MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3474,7 +3621,7 @@ public:
         label_3MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_7->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_77->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tab_6), QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tab_6), QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
         label_4MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_4MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_4MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3493,7 +3640,7 @@ public:
         label_4MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_81->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_82->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tab_7), QApplication::translate("ROSGUI", "4DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tab_7), QApplication::translate("ROSGUI", "4DOF", Q_NULLPTR));
         label_5MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_5MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_5MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3512,7 +3659,7 @@ public:
         label_5MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_87->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_88->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tab_8), QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tab_8), QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
         label_6MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_6MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_6MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3531,7 +3678,7 @@ public:
         label_6MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
         label_89->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_90->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
-        tabWidget2->setTabText(tabWidget2->indexOf(tab_9), QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
+        tabWidget1->setTabText(tabWidget1->indexOf(tab_9), QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ROSGUI", "CINEMATICA DIRECTA", Q_NULLPTR));
         label_62->setText(QString());
         label_69->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">JOINT 4</span></p></body></html>", Q_NULLPTR));
@@ -3639,6 +3786,59 @@ public:
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget_2->verticalHeaderItem(0);
         ___qtablewidgetitem9->setText(QApplication::translate("ROSGUI", "Matriz de Transformacion del TCP", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVITH HATEMEBERG", Q_NULLPTR));
+        gridGroupBox_5->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
+        checkBoxRevolute->setText(QApplication::translate("ROSGUI", "Revoluci\303\263n", Q_NULLPTR));
+        checkBoxPrismatic->setText(QApplication::translate("ROSGUI", "Prismatico", Q_NULLPTR));
+        checkBoxRev_Pris->setText(QApplication::translate("ROSGUI", "Rev - Prism", Q_NULLPTR));
+        checkBoxRev3D->setText(QApplication::translate("ROSGUI", "3DOF EJE", Q_NULLPTR));
+        checkBox6DOFs_3->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
+        tabWidget11->setTabText(tabWidget11->indexOf(tab_10), QApplication::translate("ROSGUI", "Basic Joints", Q_NULLPTR));
+        gridGroupBox_2->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
+        checkBox2DOFs->setText(QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
+        checkBox3DOFs->setText(QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
+        checkBox4DOFs->setText(QApplication::translate("ROSGUI", "4DOF", Q_NULLPTR));
+        checkBox5DOFs->setText(QApplication::translate("ROSGUI", "5DOF", Q_NULLPTR));
+        checkBox6DOFs->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
+        tabWidget11->setTabText(tabWidget11->indexOf(tabWidgetPage2), QApplication::translate("ROSGUI", "Robots Simples", Q_NULLPTR));
+        gridGroupBox_4->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
+        checkBox3Cl->setText(QApplication::translate("ROSGUI", "Cilindrico", Q_NULLPTR));
+        checkBox4Cl->setText(QApplication::translate("ROSGUI", "Esferico", Q_NULLPTR));
+        checkBox1Cl->setText(QApplication::translate("ROSGUI", "Puma560", Q_NULLPTR));
+        checkBox2Cl->setText(QApplication::translate("ROSGUI", "Cartesiano", Q_NULLPTR));
+        checkBox6DOFs_2->setText(QApplication::translate("ROSGUI", "Scara", Q_NULLPTR));
+        tabWidget11->setTabText(tabWidget11->indexOf(tab_5), QApplication::translate("ROSGUI", "Robots Clasicos", Q_NULLPTR));
+        gridGroupBox_3->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox5DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Motoman MH5, CTRL + 4", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox5DOFI->setText(QString());
+        checkBox5DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+4", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox4DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Kuka KR210L, CTRL + 1", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox4DOFI->setText(QString());
+        checkBox4DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+1", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox6DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot ABB IRB120, CTRL + 3", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox6DOFI->setText(QString());
+        checkBox6DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+3", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox2DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot ABB IRB5400, CTRL + 2", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox2DOFI->setText(QString());
+        checkBox2DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+2", Q_NULLPTR));
+        label_52->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">KR210</span></p></body></html>", Q_NULLPTR));
+        label_54->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">IRB5400</span></p></body></html>", Q_NULLPTR));
+        label_56->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">IRB120</span></p></body></html>", Q_NULLPTR));
+        label_75->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">MH5</span></p></body></html>", Q_NULLPTR));
+        label_76->setText(QApplication::translate("ROSGUI", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">BMDA3</span></p></body></html>", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox3DOFI->setToolTip(QApplication::translate("ROSGUI", "Modelo de Robot Motoman BMDA3, CTRL + 5", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox3DOFI->setText(QString());
+        checkBox3DOFI->setShortcut(QApplication::translate("ROSGUI", "Ctrl+5", Q_NULLPTR));
+        tabWidget11->setTabText(tabWidget11->indexOf(tabWidgetPage1), QApplication::translate("ROSGUI", "Robots Industriales", Q_NULLPTR));
         label_23->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">Tools RVIZ</span></p></body></html>", Q_NULLPTR));
         comboBox->setItemText(0, QApplication::translate("ROSGUI", "Show only Robot", Q_NULLPTR));
         comboBox->setItemText(1, QApplication::translate("ROSGUI", "Show Robot with Axes", Q_NULLPTR));
