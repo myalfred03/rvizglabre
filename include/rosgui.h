@@ -181,6 +181,7 @@ public Q_SLOTS:
       void onRevol_URDF();
       void onPris_Rev_URDF();
       void onCartesian_URDF();
+      void onCylindrical_URDF();
       void on3DOF_URDF();
 trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& newPositions);
 

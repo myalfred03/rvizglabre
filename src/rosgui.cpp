@@ -195,6 +195,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Classic Robots
     connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
+    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(onCylindrical_URDF()));
 
     //Basic Joints
     connect(main_window_ui_->checkBoxRevolute,  SIGNAL(toggled(bool)), SLOT(onRevol_URDF()));
@@ -262,7 +263,8 @@ this->updateURDF(file_contents);
         publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
             joint_pub = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 1);
-            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory",1,&ROSGUI::trajectoryCallback,this);
+            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory_delay",1,&ROSGUI::trajectoryCallback,this);
+            //Son pasados los valores via Suscripcion a la función
 
 
 
@@ -427,6 +429,26 @@ void ROSGUI::onCartesian_URDF(){
   QTemporaryDir temporaryDir2;
   QFile::copy(":/robots/URDF/modelos/cartesian.urdf", temporaryDir2.path() + "/cartesian.urdf");
   std::ifstream selected_file(QString(temporaryDir2.path() + "/cartesian.urdf").toStdString().c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+}
+
+void ROSGUI::onCylindrical_URDF()
+{
+  ToG =10; //Meter ->Centimeter
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("Cm");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  QTemporaryDir temporaryDir2;
+  QFile::copy(":/robots/URDF/modelos/cylindrical.urdf", temporaryDir2.path() + "/cylindrical.urdf");
+  std::ifstream selected_file(QString(temporaryDir2.path() + "/cylindrical.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -1357,27 +1379,28 @@ void ROSGUI::executeFK(){
 //     timer = true;
    trajectory_msgs::JointTrajectory msg;
 
-     std::vector<double> jointvalues(5);
+     std::vector<double> jointvalues(5); //joint Values format Double
 
-     // move arm straight up
-     jointvalues[0] = 2.95;
+//     // move arm straight up
+     jointvalues[0] = main_window_ui_->spinBox1DOF->value();
      jointvalues[1] = 1.05;
      jointvalues[2] = -2.44;
      jointvalues[3] = 1.73;
      jointvalues[4] = 2.95;
      msg = this->createArmPositionCommand(jointvalues);
      joint_pub.publish(msg);
-     ros::Duration(5);
 
-     // move arm back
-     jointvalues[0] = 0.11;
-     jointvalues[1] = 0.11;
-     jointvalues[2] = -0.11;
-     jointvalues[3] = 0.11;
-     jointvalues[4] = 0.111;
-     msg = this->createArmPositionCommand(jointvalues);
-     joint_pub.publish(msg);
-   ros::Duration(5);
+
+//     ros::Duration(5).sleep();
+
+//     // move arm back
+//     jointvalues[0] = 0.11;
+//     jointvalues[1] = 0.11;
+//     jointvalues[2] = -0.11;
+//     jointvalues[3] = 0.11;
+//     jointvalues[4] = 0.111;
+//     msg = this->createArmPositionCommand(jointvalues);
+//     joint_pub.publish(msg); // son publicados en el nodo
 
    this->FKdata(j);
 
@@ -1535,7 +1558,7 @@ trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<do
     point.velocities.push_back(0);
     point.accelerations.push_back(0);
   }
-  point.time_from_start = ros::Duration(5);
+  point.time_from_start = ros::Duration(0.1);
   msg.points.push_back(point);
 
   for (int i = 0; i < 5; i++) {
@@ -1547,7 +1570,7 @@ trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<do
   msg.header.frame_id = "my_lab_uni";
   msg.header.stamp = ros::Time::now();
 
-  return msg;
+  return msg; //Son Empaquetados en Mensajes En formato de Joints
 }
 
 void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
@@ -1556,8 +1579,8 @@ void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
 // int i =0;
 //  joint_positions[i]=msg.points[i].positions[i];
 
-     joint_positions1_["joint_1"]= msg.points[0].positions[0];
-     joint_positions1_["joint_2"]= msg.points[0].positions[1];
+     joint_positions_["joint_1"]= msg.points[0].positions[0]/ToG;
+//     joint_positions_["joint_2"]= msg.points[0].positions[1]/ToG;
   //   joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
   //   joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
   //   joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
@@ -1565,21 +1588,21 @@ void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
 
 //ROS_INFO("the [%d] positions are[%f]\n",i,joint_positions[0]/*,joint_positions[1]*//*,joint_positions[2],joint_positions[3],joint_positions[4],joint_positions[5]*/);
 std::cout <<  msg << std::endl;
-ros::Rate loop_rate(10);
+//ros::Rate loop_rate(10);
 
-while(true)
-{
-   // lock the state publisher objects and run
+//while(true)
+//{
+//   // lock the state publisher objects and run
 
-//    if(robot_state_pub_ != NULL)
-//    {
-       robot_state_pub_->publishTransforms(joint_positions1_, ros::Time::now()/*+ msg.points[0].time_from_start*/, "my_lab_uni");
-       robot_state_pub_->publishFixedTransforms("my_lab_uni");
+////    if(robot_state_pub_ != NULL)
+////    {
+//       robot_state_pub_->publishTransforms(joint_positions1_, ros::Time::now()/*+ msg.points[0].time_from_start*/, "my_lab_uni");
+//       robot_state_pub_->publishFixedTransforms("my_lab_uni");
 
-//    }
-    loop_rate.sleep();
+////    }
+//    loop_rate.sleep();
 
- }
+// }
 
 }
 

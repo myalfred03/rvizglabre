@@ -47,5 +47,6 @@
         <file>modelos/prismatic.urdf</file>
         <file>modelos/two_link_planarxy.urdf</file>
         <file>modelos/cartesian.urdf</file>
+        <file>modelos/cylindrical.urdf</file>
     </qresource>
 </RCC>

@@ -4950,7 +4950,7 @@
                   </widget>
                  </item>
                  <item row="0" column="4">
-                  <widget class="QCheckBox" name="checkBox6DOFs_2">
+                  <widget class="QCheckBox" name="checkBox5Cl">
                    <property name="text">
                     <string>Scara</string>
                    </property>
@@ -6099,7 +6099,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox4Cl</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6115,7 +6115,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox3Cl</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6131,7 +6131,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox2Cl</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6147,7 +6147,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>checkBox1Cl</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6165,7 +6165,7 @@
   <connection>
    <sender>checkBox4Cl</sender>
    <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs_2</receiver>
+   <receiver>checkBox5Cl</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -6229,7 +6229,7 @@
   <connection>
    <sender>checkBox3Cl</sender>
    <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs_2</receiver>
+   <receiver>checkBox5Cl</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -6341,7 +6341,7 @@
   <connection>
    <sender>checkBox2Cl</sender>
    <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs_2</receiver>
+   <receiver>checkBox5Cl</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -6405,7 +6405,7 @@
   <connection>
    <sender>checkBox1Cl</sender>
    <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs_2</receiver>
+   <receiver>checkBox5Cl</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -6483,7 +6483,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>gridGroupBox_3</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6563,7 +6563,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>gridGroupBox_2</receiver>
    <slot>setDisabled(bool)</slot>
@@ -6643,7 +6643,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkBox6DOFs_2</sender>
+   <sender>checkBox5Cl</sender>
    <signal>toggled(bool)</signal>
    <receiver>gridGroupBox_5</receiver>
    <slot>setDisabled(bool)</slot>
