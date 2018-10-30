@@ -221,7 +221,7 @@ bool modelparam::InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY , KDL::JntArr
 {
 
 KDL::ChainIkSolverVel_pinv iksolverV(kdl_chain6);
-KDL::ChainIkSolverPos_NR   iksolver (kdl_chain6,*fksolver6,iksolverV,100,1e-3);
+KDL::ChainIkSolverPos_NR   iksolver (kdl_chain6,*fksolver6,iksolverV,100,1e-2);
 KDL::Frame cartpos(tcpRPY,tcpXYZ);
 KDL::JntArray q_init(njnt);
 

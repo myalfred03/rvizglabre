@@ -262,8 +262,8 @@ this->updateURDF(file_contents);
         ////itTime_ =d_;
         publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
-            joint_pub = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 1);
-            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory_delay",1,&ROSGUI::trajectoryCallback,this);
+            joint_pub = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
+            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
             //Son pasados los valores via Suscripcion a la función
 
 
@@ -1379,14 +1379,15 @@ void ROSGUI::executeFK(){
 //     timer = true;
    trajectory_msgs::JointTrajectory msg;
 
-     std::vector<double> jointvalues(5); //joint Values format Double
+     std::vector<double> jointvalues(6); //joint Values format Double
 
 //     // move arm straight up
      jointvalues[0] = main_window_ui_->spinBox1DOF->value();
-     jointvalues[1] = 1.05;
-     jointvalues[2] = -2.44;
-     jointvalues[3] = 1.73;
-     jointvalues[4] = 2.95;
+     jointvalues[1] = main_window_ui_->spinBox2DOF->value();
+     jointvalues[2] = main_window_ui_->spinBox3DOF->value();
+     jointvalues[3] = main_window_ui_->spinBox4DOF->value();
+     jointvalues[4] = main_window_ui_->spinBox5DOF->value();
+     jointvalues[5] = main_window_ui_->spinBox6DOF->value();
      msg = this->createArmPositionCommand(jointvalues);
      joint_pub.publish(msg);
 
@@ -1548,12 +1549,13 @@ void ROSGUI::FKdata(KDL::JntArray j){
 }
 trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<double>& newPositions)
 {
-  int numberOfJoints = 5;
+  int numberOfJoints = 6;
   trajectory_msgs::JointTrajectory msg;
 
   trajectory_msgs::JointTrajectoryPoint point;
-
-  for (int i = 0; i < 5; i++) {
+/*  msg.points.resize(1);
+  point.positions.resize(5); */       // Do not resize like That ----> | point.resize | point[0].positions|
+  for (int i = 0; i < 6; i++) {
     point.positions.push_back(newPositions[i]);
     point.velocities.push_back(0);
     point.accelerations.push_back(0);
@@ -1561,7 +1563,7 @@ trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<do
   point.time_from_start = ros::Duration(0.1);
   msg.points.push_back(point);
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 6; i++) {
     std::stringstream jointName;
     jointName << "joint_" << (i + 1);
     msg.joint_names.push_back(jointName.str());
@@ -1580,11 +1582,11 @@ void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
 //  joint_positions[i]=msg.points[i].positions[i];
 
      joint_positions_["joint_1"]= msg.points[0].positions[0]/ToG;
-//     joint_positions_["joint_2"]= msg.points[0].positions[1]/ToG;
-  //   joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
-  //   joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
-  //   joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
-  //   joint_positions_["joint_6"]= main_window_ui_->spinBox6DOF->value()/ToG;
+     joint_positions_["joint_2"]= msg.points[0].positions[1]/ToG;
+     joint_positions_["joint_3"]= msg.points[0].positions[2]/ToG;
+     joint_positions_["joint_4"]= msg.points[0].positions[3]/ToG;
+     joint_positions_["joint_5"]= msg.points[0].positions[4]/ToG;
+     joint_positions_["joint_6"]= msg.points[0].positions[5]/ToG;
 
 //ROS_INFO("the [%d] positions are[%f]\n",i,joint_positions[0]/*,joint_positions[1]*//*,joint_positions[2],joint_positions[3],joint_positions[4],joint_positions[5]*/);
 std::cout <<  msg << std::endl;

@@ -1,0 +1,5 @@
+<launch>
+<node name="rvizglabre" pkg="rvizglabre" type="rvizglabre"/>
+<node name="interpreter_gui" pkg="interpreter_gui" type="interpreter_gui"/>
+<node name="interpreter_xyz_rpy" pkg="interpreter_xyz_rpy" type="interpreter_xyz_rpy"/>
+</launch>
