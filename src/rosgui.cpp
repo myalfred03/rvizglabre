@@ -153,16 +153,17 @@ ROSGUI::ROSGUI(QWidget *parent)
     //Cinematica Inversa
 
     //Control de dialer y spinbox activos
-    connect(main_window_ui_->checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on_2DOF()));
-    connect(main_window_ui_->checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
-    connect(main_window_ui_->checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
-    connect(main_window_ui_->checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox5DOFs, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
-    connect(main_window_ui_->checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
+    connect(main_window_ui_->checkBox2DOFs,     SIGNAL(toggled(bool)), SLOT(on_2DOF()));
+    connect(main_window_ui_->checkBox2DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox3DOFs,     SIGNAL(toggled(bool)), SLOT(on_3DOF()));
+    connect(main_window_ui_->checkBox3DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox4DOFs,     SIGNAL(toggled(bool)), SLOT(on_4DOF()));
+    connect(main_window_ui_->checkBox4DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox5DOFs,     SIGNAL(toggled(bool)), SLOT(on_5DOF()));
+    connect(main_window_ui_->checkBox5DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox6DOFs,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBox6DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     //Cinematica Directa
     //Execute FK
     connect(main_window_ui_->checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
@@ -203,6 +204,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxRev_Pris,  SIGNAL(toggled(bool)), SLOT(onPris_Rev_URDF()));
     connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
 
+    //Denavith Select parameters to load
+    connect(main_window_ui_->spinBox, SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
 
 
 
@@ -262,9 +265,12 @@ this->updateURDF(file_contents);
         ////itTime_ =d_;
         publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
-            joint_pub = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
-            joint_sub = nh_.subscribe/*<trajectory_msgs::JointTrajectory>*/("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
+            joint_pub        = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
+            joint_value_pub  = nh_.advertise<std_msgs::Float32MultiArray>("joint_limits", 10);
+            joint_sub        = nh_.subscribe("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
             //Son pasados los valores via Suscripcion a la función
+            //Valores de posicion de MoveIt
+            robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
 
 
 
@@ -610,9 +616,15 @@ void ROSGUI::on2DOFs_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/two_link_planarxy.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/two_link_planarxy.urdf").toStdString().c_str());
+//  QTemporaryDir temporaryDir2;
+
+//  QFile::copy(":/robots/URDF/modelos/two_link_yz.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
+
+
+
+  //    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/two_link_yz.urdf";
+  std::ifstream selected_file(filePath.c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -638,22 +650,36 @@ void ROSGUI::on3DOFs_URDF()
 }
 void ROSGUI::on6DOFs_URDF(){
   ToG    = 57.295779513;
-if(!jointsv->treeforDH(model))
+if(!jointsv->treeforDH(model,nj_2))
 {
    std::cerr << "Error at model DH" <<std::endl;
+}
+switch (nj_2){
+
+case 1:
+  Q_EMIT(on_1DOF());
+case 2:
+  Q_EMIT(on_2DOF());
+case 3:
+  Q_EMIT(on_3DOF());
+case 4:
+  Q_EMIT(on_4DOF());
+
 }
 this->updatetreeforDH(model);
 }
 
 void ROSGUI::updatetreeforDH(KDL::Tree modelU){
+  if(robot_state_pub_ != NULL)
+    delete robot_state_pub_;
 
-  robot_state_pubDH_ = new robot_state_publisher::RobotStatePublisher(modelU);
-  joint_positionsDH_.clear();
+  robot_state_pub_ = new robot_state_publisher::RobotStatePublisher(modelU);
+  joint_positions_.clear();
   const std::map<std::string, KDL::TreeElement>& segments = modelU.getSegments();
   for(std::map<std::string, KDL::TreeElement>::const_iterator it=segments.begin();
     it != segments.end(); it++)
   {
-    joint_positionsDH_[it->second.segment.getJoint().getName()] = 0.0;
+    joint_positions_[it->second.segment.getJoint().getName()] = 0.0;
     std::cout << it->second.segment.getJoint().getName() <<std::endl;
   }
 
@@ -766,11 +792,11 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
          robot_state_pub_->publishFixedTransforms("my_lab_uni");
 
       }
-      if(robot_state_pubDH_ != NULL)
-      {
-         robot_state_pubDH_->publishTransforms(joint_positionsDH_, ros::Time::now(), "my_lab_uni");
-         robot_state_pubDH_->publishFixedTransforms("my_lab_uni");
-      }
+//      if(robot_state_pubDH_ != NULL)
+//      {
+//         robot_state_pubDH_->publishTransforms(joint_positionsDH_, ros::Time::now(), "my_lab_uni");
+//         robot_state_pubDH_->publishFixedTransforms("my_lab_uni");
+//      }
          //         auto it2 = joint_positions_.rbegin();
 //         std::cout << it2->first << " : " << it2->second << std::endl;
 //         it2++;
@@ -987,7 +1013,21 @@ void ROSGUI::updateSpinboxesD()
 }
 
 
-
+void ROSGUI::on_1DOF()
+{
+        main_window_ui_->dial1DOF->   setEnabled(true);
+        main_window_ui_->dial2DOF->   setEnabled(false);
+        main_window_ui_->dial3DOF->   setEnabled(false);
+        main_window_ui_->dial4DOF->   setEnabled(false);
+        main_window_ui_->dial5DOF->   setEnabled(false);
+        main_window_ui_->dial6DOF->   setEnabled(false);
+        main_window_ui_->spinBox1DOF->setEnabled(true);
+        main_window_ui_->spinBox2DOF->setEnabled(false);
+        main_window_ui_->spinBox3DOF->setEnabled(false);
+        main_window_ui_->spinBox4DOF->setEnabled(false);
+        main_window_ui_->spinBox5DOF->setEnabled(false);
+        main_window_ui_->spinBox6DOF->setEnabled(false);
+}
 
 
 void ROSGUI::on_2DOF()
@@ -1294,8 +1334,15 @@ void ROSGUI::updatetoURDF()
   main_window_ui_->spinBox6DOF->setMinimum(joint_lower[5]*ToG);
   main_window_ui_->spinBox6DOF->setMaximum(joint_upper[5]*ToG);
   main_window_ui_->spinBox6DOF->setSingleStep(1);
-
+  send_val.data.resize(12);
+  for (int i =0; i<6;i++)
+  {
+  send_val.data[i] = joint_lower[i]*ToG;
+  send_val.data[i+6] = joint_upper[i]*ToG;
 }
+  joint_value_pub.publish(send_val);
+
+  }
 
 void ROSGUI::resetvalue(){
   main_window_ui_->dial1DOF->    setValue(resetv);
@@ -1314,23 +1361,38 @@ void ROSGUI::resetvalue(){
   main_window_ui_->spinBox6DOF->    setValue(resetv);
 }
 void ROSGUI::executeIK(){
-//KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_.xBox->value(),main_window_ui_.yBox->value(),main_window_ui_.zBox->value());
+
+  trajectory_msgs::JointTrajectory msg;
+  msg.points.resize(1);
+  msg.points[0].positions.resize(6);
+
+  KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_->xBox->value(),main_window_ui_->yBox->value(),main_window_ui_->zBox->value());
 //KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_.xSlider->value(),main_window_ui_.ySlider->value(),main_window_ui_.zSlider->value());
 
-  KDL::Vector tcpXYZ  = KDL::Vector(0.3,0.0,0.0);
+//  KDL::Vector tcpXYZ  = KDL::Vector(0.2,0.0,0.0);
   //KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
-  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.7,0.0,0.0);
+
+  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.0,0.0,0.0);
 
     if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
     {
-      std::cerr << "Error at Publish Joint for IKinematics" <<std::endl;
-
+      for(int i=0;i<6;i++){
+      msg.points[0].positions[i] = pos_joint(i); //array [i]
+      std::cout << pos_joint(i) <<std::endl;
+      std::cerr << "Publish Joint for IKinematics" <<std::endl;
+         }
     }
-
+     msg.points[0].time_from_start = ros::Duration(0.1);
+     msg.header.frame_id = "my_lab_uni_IK";
+     msg.header.stamp = ros::Time::now();
+     joint_pub.publish(msg) ;
 
 }
 
 void ROSGUI::executeFK(){
+
+  trajectory_msgs::JointTrajectory msg;
+  std::vector<double> jointvalues(6); //joint Values format Double
 
   j(nj)=0;
   j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
@@ -1340,46 +1402,6 @@ void ROSGUI::executeFK(){
   j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
   j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
-//   joint_positions_["joint_1"]= main_window_ui_->spinBox1DOF->value()/ToG;
-//   joint_positions_["joint_2"]= main_window_ui_->spinBox2DOF->value()/ToG;
-//   joint_positions_["joint_3"]= main_window_ui_->spinBox3DOF->value()/ToG;
-//   joint_positions_["joint_4"]= main_window_ui_->spinBox4DOF->value()/ToG;
-//   joint_positions_["joint_5"]= main_window_ui_->spinBox5DOF->value()/ToG;
-//   joint_positions_["joint_6"]= main_window_ui_->spinBox6DOF->value()/ToG;
-
-//                 double jointx;
-////                 int second =500;
-//              //    boost::chrono::milliseconds ms(100);
-//                 jointx = main_window_ui_->spinBox1DOF->value()/ToG;
-//                 for (double i = 0; i<(jointx*10); i++){
-//              //    typedef  boost::chrono::steady_clock Clock;
-//              //    typedef  Clock::time_point time_point;
-//              //     time_point t0 = Clock::now();
-
-
-//              //      boost::this_thread::sleep_until(boost::chrono::milliseconds(t0 + ms));
-//              //     boost::this_thread::sleep_until(t0 + ms);
-////              ros::Rate r(30);
-////              while (ros::ok()) {
-//                joint_positions_["joint_1"]= (i/10);
-//                d_=ros::Duration(5+i);
-////                  r.sleep();
-////              }
-
-//              //   boost::this_thread::sleep(boost::posix_time::milliseconds(second));
-
-//                 }
-
-
-
-
-
-
-//   QTimer::singleShot(2, this, SLOT(timeOut()));
-//     timer = true;
-   trajectory_msgs::JointTrajectory msg;
-
-     std::vector<double> jointvalues(6); //joint Values format Double
 
 //     // move arm straight up
      jointvalues[0] = main_window_ui_->spinBox1DOF->value();
@@ -1608,7 +1630,384 @@ std::cout <<  msg << std::endl;
 
 }
 
-//void ROSGUI::on_comboBox_currentIndexChanged(int index)
-//{
 
-//}
+
+void ROSGUI::on_spinBox_valueChanged(int arg1)
+{
+  std::cout <<  arg1 << std::endl;
+  switch (arg1){
+
+    case 0:
+    {
+    main_window_ui_->lineDH11->setEnabled(false);
+    main_window_ui_->lineDH12->setEnabled(false);
+    main_window_ui_->lineDH13->setEnabled(false);
+    main_window_ui_->lineDH14->setEnabled(false);
+
+    main_window_ui_->lineDH21->setEnabled(false);
+    main_window_ui_->lineDH22->setEnabled(false);
+    main_window_ui_->lineDH23->setEnabled(false);
+    main_window_ui_->lineDH24->setEnabled(false);
+
+    main_window_ui_->lineDH31->setEnabled(false);
+    main_window_ui_->lineDH32->setEnabled(false);
+    main_window_ui_->lineDH33->setEnabled(false);
+    main_window_ui_->lineDH34->setEnabled(false);
+
+    main_window_ui_->lineDH41->setEnabled(false);
+    main_window_ui_->lineDH42->setEnabled(false);
+    main_window_ui_->lineDH43->setEnabled(false);
+    main_window_ui_->lineDH44->setEnabled(false);
+
+    main_window_ui_->lineDH51->setEnabled(false);
+    main_window_ui_->lineDH52->setEnabled(false);
+    main_window_ui_->lineDH53->setEnabled(false);
+    main_window_ui_->lineDH54->setEnabled(false);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+
+    break;
+    }
+    case 1:
+    {
+    main_window_ui_->lineDH11->setEnabled(true);
+    main_window_ui_->lineDH12->setEnabled(true);
+    main_window_ui_->lineDH13->setEnabled(true);
+    main_window_ui_->lineDH14->setEnabled(true);
+
+    main_window_ui_->lineDH21->setEnabled(false);
+    main_window_ui_->lineDH22->setEnabled(false);
+    main_window_ui_->lineDH23->setEnabled(false);
+    main_window_ui_->lineDH24->setEnabled(false);
+
+    main_window_ui_->lineDH31->setEnabled(false);
+    main_window_ui_->lineDH32->setEnabled(false);
+    main_window_ui_->lineDH33->setEnabled(false);
+    main_window_ui_->lineDH34->setEnabled(false);
+
+    main_window_ui_->lineDH41->setEnabled(false);
+    main_window_ui_->lineDH42->setEnabled(false);
+    main_window_ui_->lineDH43->setEnabled(false);
+    main_window_ui_->lineDH44->setEnabled(false);
+
+    main_window_ui_->lineDH51->setEnabled(false);
+    main_window_ui_->lineDH52->setEnabled(false);
+    main_window_ui_->lineDH53->setEnabled(false);
+    main_window_ui_->lineDH54->setEnabled(false);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+    break;
+    }
+
+    case 2:
+    {
+    main_window_ui_->lineDH11->setEnabled(true);
+    main_window_ui_->lineDH12->setEnabled(true);
+    main_window_ui_->lineDH13->setEnabled(true);
+    main_window_ui_->lineDH14->setEnabled(true);
+
+    main_window_ui_->lineDH21->setEnabled(true);
+    main_window_ui_->lineDH22->setEnabled(true);
+    main_window_ui_->lineDH23->setEnabled(true);
+    main_window_ui_->lineDH24->setEnabled(true);
+
+    main_window_ui_->lineDH31->setEnabled(false);
+    main_window_ui_->lineDH32->setEnabled(false);
+    main_window_ui_->lineDH33->setEnabled(false);
+    main_window_ui_->lineDH34->setEnabled(false);
+
+    main_window_ui_->lineDH41->setEnabled(false);
+    main_window_ui_->lineDH42->setEnabled(false);
+    main_window_ui_->lineDH43->setEnabled(false);
+    main_window_ui_->lineDH44->setEnabled(false);
+
+    main_window_ui_->lineDH51->setEnabled(false);
+    main_window_ui_->lineDH52->setEnabled(false);
+    main_window_ui_->lineDH53->setEnabled(false);
+    main_window_ui_->lineDH54->setEnabled(false);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+
+    break;
+    }
+    case 3:
+    {
+    main_window_ui_->lineDH11->setEnabled(true);
+    main_window_ui_->lineDH12->setEnabled(true);
+    main_window_ui_->lineDH13->setEnabled(true);
+    main_window_ui_->lineDH14->setEnabled(true);
+
+    main_window_ui_->lineDH21->setEnabled(true);
+    main_window_ui_->lineDH22->setEnabled(true);
+    main_window_ui_->lineDH23->setEnabled(true);
+    main_window_ui_->lineDH24->setEnabled(true);
+
+    main_window_ui_->lineDH31->setEnabled(true);
+    main_window_ui_->lineDH32->setEnabled(true);
+    main_window_ui_->lineDH33->setEnabled(true);
+    main_window_ui_->lineDH34->setEnabled(true);
+
+    main_window_ui_->lineDH41->setEnabled(false);
+    main_window_ui_->lineDH42->setEnabled(false);
+    main_window_ui_->lineDH43->setEnabled(false);
+    main_window_ui_->lineDH44->setEnabled(false);
+
+    main_window_ui_->lineDH51->setEnabled(false);
+    main_window_ui_->lineDH52->setEnabled(false);
+    main_window_ui_->lineDH53->setEnabled(false);
+    main_window_ui_->lineDH54->setEnabled(false);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+
+    break;
+    }
+    case 4:
+    {
+    main_window_ui_->lineDH11->setEnabled(true);
+    main_window_ui_->lineDH12->setEnabled(true);
+    main_window_ui_->lineDH13->setEnabled(true);
+    main_window_ui_->lineDH14->setEnabled(true);
+
+    main_window_ui_->lineDH21->setEnabled(true);
+    main_window_ui_->lineDH22->setEnabled(true);
+    main_window_ui_->lineDH23->setEnabled(true);
+    main_window_ui_->lineDH24->setEnabled(true);
+
+    main_window_ui_->lineDH31->setEnabled(true);
+    main_window_ui_->lineDH32->setEnabled(true);
+    main_window_ui_->lineDH33->setEnabled(true);
+    main_window_ui_->lineDH34->setEnabled(true);
+
+    main_window_ui_->lineDH41->setEnabled(true);
+    main_window_ui_->lineDH42->setEnabled(true);
+    main_window_ui_->lineDH43->setEnabled(true);
+    main_window_ui_->lineDH44->setEnabled(true);
+
+    main_window_ui_->lineDH51->setEnabled(false);
+    main_window_ui_->lineDH52->setEnabled(false);
+    main_window_ui_->lineDH53->setEnabled(false);
+    main_window_ui_->lineDH54->setEnabled(false);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+    break;
+    }
+
+    case 5:
+    {
+    main_window_ui_->lineDH11->setEnabled(true);
+    main_window_ui_->lineDH12->setEnabled(true);
+    main_window_ui_->lineDH13->setEnabled(true);
+    main_window_ui_->lineDH14->setEnabled(true);
+
+    main_window_ui_->lineDH21->setEnabled(true);
+    main_window_ui_->lineDH22->setEnabled(true);
+    main_window_ui_->lineDH23->setEnabled(true);
+    main_window_ui_->lineDH24->setEnabled(true);
+
+    main_window_ui_->lineDH31->setEnabled(true);
+    main_window_ui_->lineDH32->setEnabled(true);
+    main_window_ui_->lineDH33->setEnabled(true);
+    main_window_ui_->lineDH34->setEnabled(true);
+
+    main_window_ui_->lineDH41->setEnabled(true);
+    main_window_ui_->lineDH42->setEnabled(true);
+    main_window_ui_->lineDH43->setEnabled(true);
+    main_window_ui_->lineDH44->setEnabled(true);
+
+    main_window_ui_->lineDH51->setEnabled(true);
+    main_window_ui_->lineDH52->setEnabled(true);
+    main_window_ui_->lineDH53->setEnabled(true);
+    main_window_ui_->lineDH54->setEnabled(true);
+
+    main_window_ui_->lineDH61->setEnabled(false);
+    main_window_ui_->lineDH62->setEnabled(false);
+    main_window_ui_->lineDH63->setEnabled(false);
+    main_window_ui_->lineDH64->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH2min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH2max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH3min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH3max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH4min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH4max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH5min->setEnabled(true);
+    main_window_ui_->doubleSpinBoxDH5max->setEnabled(true);
+
+    main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
+    main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+
+    break;
+    }
+    case 6:
+{
+  main_window_ui_->lineDH11->setEnabled(true);
+  main_window_ui_->lineDH12->setEnabled(true);
+  main_window_ui_->lineDH13->setEnabled(true);
+  main_window_ui_->lineDH14->setEnabled(true);
+
+  main_window_ui_->lineDH21->setEnabled(true);
+  main_window_ui_->lineDH22->setEnabled(true);
+  main_window_ui_->lineDH23->setEnabled(true);
+  main_window_ui_->lineDH24->setEnabled(true);
+
+  main_window_ui_->lineDH31->setEnabled(true);
+  main_window_ui_->lineDH32->setEnabled(true);
+  main_window_ui_->lineDH33->setEnabled(true);
+  main_window_ui_->lineDH34->setEnabled(true);
+
+  main_window_ui_->lineDH41->setEnabled(true);
+  main_window_ui_->lineDH42->setEnabled(true);
+  main_window_ui_->lineDH43->setEnabled(true);
+  main_window_ui_->lineDH44->setEnabled(true);
+
+  main_window_ui_->lineDH51->setEnabled(true);
+  main_window_ui_->lineDH52->setEnabled(true);
+  main_window_ui_->lineDH53->setEnabled(true);
+  main_window_ui_->lineDH54->setEnabled(true);
+
+  main_window_ui_->lineDH61->setEnabled(true);
+  main_window_ui_->lineDH62->setEnabled(true);
+  main_window_ui_->lineDH63->setEnabled(true);
+  main_window_ui_->lineDH64->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH2min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH2max->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH3min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH3max->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH4min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH4max->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH5min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH5max->setEnabled(true);
+
+  main_window_ui_->doubleSpinBoxDH6min->setEnabled(true);
+  main_window_ui_->doubleSpinBoxDH6max->setEnabled(true);
+
+
+break;
+}
+  } //switch
+
+}

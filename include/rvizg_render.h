@@ -131,12 +131,8 @@ private Q_SLOTS:
 
 protected:
 rviz::VisualizationManager* manager_;
-//  moveit_rviz_plugin::RobotStateDisplay* robot_display_;
-
- std::vector<std::string>   Rjoint_names_;
-
+std::vector<std::string>   Rjoint_names_;
 // robot_interaction::RobotInteractionPtr robot_interaction_;
-
 
   ros::Publisher robot_state_vis_pub_;
   ros::NodeHandle nh_;
@@ -144,7 +140,6 @@ rviz::VisualizationManager* manager_;
 //  boost::shared_ptr<tf::TransformListener> transformer_;
 
 
-//  rviz::Display* robot_display_;
 //  rviz::InteractiveMarkerDisplay* int_marker_display_;
 //  rviz::Display* int_marker_display_;
   QLabel* bound_;
@@ -170,8 +165,10 @@ private:
   rviz::RenderPanel* render_panel_;
 //  rviz::Display* grid_;
   rviz::Display* robot_model_;
-//  rvizRobot * robot_display_;
-    moveit_rviz_plugin::MotionPlanningDisplay *robot_display_;
+  rviz::Display* robot_display_;
+  //moveit_rviz_plugin::RobotStateDisplay* robot_display_;
+
+  //moveit_rviz_plugin::MotionPlanningDisplay *robot_display_;
     robot_model_loader::RobotModelLoaderPtr robot_model_loader_;
     robot_model::RobotModelPtr robot_model_ptr_;
   //  robot_model::RobotModelConstPtr &kmodel;

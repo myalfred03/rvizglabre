@@ -43,10 +43,10 @@
         <file>modelos/uni.urdf</file>
         <file>modelos/pan_tilt.urdf</file>
         <file>modelos/3dof.urdf</file>
-        <file>modelos/two_link.urdf</file>
         <file>modelos/prismatic.urdf</file>
-        <file>modelos/two_link_planarxy.urdf</file>
         <file>modelos/cartesian.urdf</file>
         <file>modelos/cylindrical.urdf</file>
+        <file>modelos/two_link_planar_xy.urdf</file>
+        <file>modelos/two_link_yz.urdf</file>
     </qresource>
 </RCC>

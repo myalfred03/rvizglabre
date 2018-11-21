@@ -23,6 +23,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMenu>
@@ -30,9 +31,9 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -193,24 +194,24 @@ public:
     QWidget *tab_6;
     QGridLayout *gridLayout_28;
     QGridLayout *gridLayout_26;
-    QLabel *label_3MT1x3;
-    QLabel *label_3MT2x2;
-    QLabel *label_3MT2x1;
-    QLabel *label_3MT1x4;
-    QLabel *label_3MT1x2;
-    QLabel *label_3MT3x4;
-    QLabel *label_3MT3x2;
-    QLabel *label_3MT1x1;
-    QLabel *label_3MT3x1;
-    QLabel *label_3MT3x3;
-    QLabel *label_3MT2x3;
-    QLabel *label_3MT2x4;
     QLabel *label_3MT4x1;
-    QLabel *label_3MT4x2;
-    QLabel *label_3MT4x3;
+    QLabel *label_3MT1x3;
     QLabel *label_3MT4x4;
+    QLabel *label_3MT3x2;
+    QLabel *label_3MT4x2;
+    QLabel *label_3MT3x3;
+    QLabel *label_3MT1x4;
     QLabel *label_7;
     QLabel *label_77;
+    QLabel *label_3MT2x2;
+    QLabel *label_3MT1x2;
+    QLabel *label_3MT3x1;
+    QLabel *label_3MT2x3;
+    QLabel *label_3MT2x1;
+    QLabel *label_3MT3x4;
+    QLabel *label_3MT4x3;
+    QLabel *label_3MT2x4;
+    QLabel *label_3MT1x1;
     QWidget *tab_7;
     QGridLayout *gridLayout_34;
     QGridLayout *gridLayout_33;
@@ -360,12 +361,107 @@ public:
     QGridLayout *gridLayout_7;
     QGridLayout *gridLayout_21;
     QLabel *label_50;
-    QSpacerItem *horizontalSpacer;
     QLabel *label_51;
     QGridLayout *gridLayout_22;
-    QTableWidget *tableWidget;
-    QTableWidget *tableWidget_2;
-    QSpacerItem *horizontalSpacer_7;
+    QFrame *line_67;
+    QLineEdit *lineDH41;
+    QLineEdit *lineDH61;
+    QFrame *line_72;
+    QLabel *label_92;
+    QLineEdit *lineDH52;
+    QLineEdit *lineDH12;
+    QDoubleSpinBox *doubleSpinBoxDH1max;
+    QLineEdit *lineDH11;
+    QLineEdit *lineDH14;
+    QDoubleSpinBox *doubleSpinBoxDH1min;
+    QLabel *label_79;
+    QLineEdit *lineDH13;
+    QSpinBox *spinBox;
+    QLabel *label_80;
+    QFrame *line_62;
+    QLineEdit *lineDH34;
+    QFrame *line_64;
+    QDoubleSpinBox *doubleSpinBoxDH3max;
+    QLineEdit *lineDH31;
+    QLineEdit *lineDH42;
+    QDoubleSpinBox *doubleSpinBoxDH6min;
+    QFrame *line_63;
+    QFrame *line_66;
+    QLineEdit *lineDH62;
+    QLineEdit *lineDH64;
+    QDoubleSpinBox *doubleSpinBoxDH6max;
+    QLineEdit *lineDH63;
+    QDoubleSpinBox *doubleSpinBoxDH2max;
+    QLineEdit *lineDH21;
+    QDoubleSpinBox *doubleSpinBoxDH4max;
+    QLineEdit *lineDH53;
+    QLineEdit *lineDH23;
+    QLineEdit *lineDH32;
+    QFrame *line_61;
+    QFrame *line_60;
+    QLabel *label_94;
+    QLineEdit *lineDH43;
+    QDoubleSpinBox *doubleSpinBoxDH5max;
+    QFrame *line_65;
+    QDoubleSpinBox *doubleSpinBoxDH5min;
+    QFrame *line_70;
+    QLabel *label_99;
+    QLabel *label_96;
+    QLabel *label_95;
+    QLineEdit *lineDH22;
+    QDoubleSpinBox *doubleSpinBoxDH4min;
+    QDoubleSpinBox *doubleSpinBoxDH2min;
+    QLabel *label_91;
+    QDoubleSpinBox *doubleSpinBoxDH3min;
+    QLineEdit *lineDH33;
+    QLineEdit *lineDH54;
+    QLabel *label_93;
+    QLineEdit *lineDH44;
+    QLineEdit *lineDH51;
+    QLineEdit *lineDH24;
+    QLabel *label_97;
+    QLabel *label_98;
+    QFrame *line_69;
+    QFrame *line_71;
+    QFrame *line_68;
+    QFrame *line_73;
+    QFrame *line_74;
+    QFrame *line_75;
+    QFrame *line_76;
+    QFrame *line_77;
+    QFrame *line_78;
+    QLabel *label_100;
+    QLabel *label_101;
+    QGridLayout *gridLayout_32;
+    QLabel *label_106;
+    QLabel *label_103;
+    QLabel *label_122;
+    QLabel *label_108;
+    QLabel *label_114;
+    QLabel *label_105;
+    QLabel *label_109;
+    QLabel *label_113;
+    QLabel *label_112;
+    QLabel *label_104;
+    QLabel *label_110;
+    QLabel *label_102;
+    QLabel *label_111;
+    QLabel *label_107;
+    QLabel *label_115;
+    QLabel *label_117;
+    QLabel *label_116;
+    QLabel *label_119;
+    QLabel *label_124;
+    QLabel *label_121;
+    QLabel *label_123;
+    QLabel *label_125;
+    QLabel *label_120;
+    QLabel *label_118;
+    QLabel *label_126;
+    QLabel *label_127;
+    QLabel *label_128;
+    QLabel *label_129;
+    QSpacerItem *horizontalSpacer;
     QTabWidget *tabWidget11;
     QWidget *tab_10;
     QGridLayout *gridLayout_30;
@@ -889,6 +985,7 @@ public:
 
         dial4DOF = new QDial(tab_2);
         dial4DOF->setObjectName(QStringLiteral("dial4DOF"));
+        dial4DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial4DOF->sizePolicy().hasHeightForWidth());
         dial4DOF->setSizePolicy(sizePolicy3);
         dial4DOF->setMaximumSize(QSize(40, 40));
@@ -922,6 +1019,7 @@ public:
 
         dial5DOF = new QDial(tab_2);
         dial5DOF->setObjectName(QStringLiteral("dial5DOF"));
+        dial5DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial5DOF->sizePolicy().hasHeightForWidth());
         dial5DOF->setSizePolicy(sizePolicy3);
         dial5DOF->setMaximumSize(QSize(40, 40));
@@ -933,6 +1031,7 @@ public:
 
         spinBox5DOF = new QDoubleSpinBox(tab_2);
         spinBox5DOF->setObjectName(QStringLiteral("spinBox5DOF"));
+        spinBox5DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox5DOF->sizePolicy().hasHeightForWidth());
         spinBox5DOF->setSizePolicy(sizePolicy3);
         spinBox5DOF->setMaximumSize(QSize(16777215, 20));
@@ -966,6 +1065,7 @@ public:
 
         spinBox1DOF = new QDoubleSpinBox(tab_2);
         spinBox1DOF->setObjectName(QStringLiteral("spinBox1DOF"));
+        spinBox1DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox1DOF->sizePolicy().hasHeightForWidth());
         spinBox1DOF->setSizePolicy(sizePolicy3);
         spinBox1DOF->setMaximumSize(QSize(16777215, 20));
@@ -992,6 +1092,7 @@ public:
 
         dial6DOF = new QDial(tab_2);
         dial6DOF->setObjectName(QStringLiteral("dial6DOF"));
+        dial6DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial6DOF->sizePolicy().hasHeightForWidth());
         dial6DOF->setSizePolicy(sizePolicy3);
         dial6DOF->setMaximumSize(QSize(40, 40));
@@ -1054,6 +1155,7 @@ public:
 
         dial2DOF = new QDial(tab_2);
         dial2DOF->setObjectName(QStringLiteral("dial2DOF"));
+        dial2DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial2DOF->sizePolicy().hasHeightForWidth());
         dial2DOF->setSizePolicy(sizePolicy3);
         dial2DOF->setMaximumSize(QSize(40, 40));
@@ -1089,6 +1191,7 @@ public:
 
         spinBox2DOF = new QDoubleSpinBox(tab_2);
         spinBox2DOF->setObjectName(QStringLiteral("spinBox2DOF"));
+        spinBox2DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox2DOF->sizePolicy().hasHeightForWidth());
         spinBox2DOF->setSizePolicy(sizePolicy3);
         spinBox2DOF->setMaximumSize(QSize(16777215, 20));
@@ -1131,6 +1234,7 @@ public:
 
         dial1DOF = new QDial(tab_2);
         dial1DOF->setObjectName(QStringLiteral("dial1DOF"));
+        dial1DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial1DOF->sizePolicy().hasHeightForWidth());
         dial1DOF->setSizePolicy(sizePolicy3);
         dial1DOF->setMaximumSize(QSize(40, 40));
@@ -1144,6 +1248,7 @@ public:
 
         spinBox3DOF = new QDoubleSpinBox(tab_2);
         spinBox3DOF->setObjectName(QStringLiteral("spinBox3DOF"));
+        spinBox3DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox3DOF->sizePolicy().hasHeightForWidth());
         spinBox3DOF->setSizePolicy(sizePolicy3);
         spinBox3DOF->setMaximumSize(QSize(16777215, 20));
@@ -1169,6 +1274,7 @@ public:
 
         dial3DOF = new QDial(tab_2);
         dial3DOF->setObjectName(QStringLiteral("dial3DOF"));
+        dial3DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(dial3DOF->sizePolicy().hasHeightForWidth());
         dial3DOF->setSizePolicy(sizePolicy3);
         dial3DOF->setMaximumSize(QSize(40, 40));
@@ -1207,6 +1313,7 @@ public:
 
         spinBox6DOF = new QDoubleSpinBox(tab_2);
         spinBox6DOF->setObjectName(QStringLiteral("spinBox6DOF"));
+        spinBox6DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox6DOF->sizePolicy().hasHeightForWidth());
         spinBox6DOF->setSizePolicy(sizePolicy3);
         spinBox6DOF->setMaximumSize(QSize(16777215, 20));
@@ -1217,6 +1324,7 @@ public:
 
         spinBox4DOF = new QDoubleSpinBox(tab_2);
         spinBox4DOF->setObjectName(QStringLiteral("spinBox4DOF"));
+        spinBox4DOF->setEnabled(false);
         sizePolicy3.setHeightForWidth(spinBox4DOF->sizePolicy().hasHeightForWidth());
         spinBox4DOF->setSizePolicy(sizePolicy3);
         spinBox4DOF->setMaximumSize(QSize(16777215, 20));
@@ -1590,6 +1698,15 @@ public:
         gridLayout_26 = new QGridLayout();
         gridLayout_26->setSpacing(6);
         gridLayout_26->setObjectName(QStringLiteral("gridLayout_26"));
+        label_3MT4x1 = new QLabel(tab_6);
+        label_3MT4x1->setObjectName(QStringLiteral("label_3MT4x1"));
+        label_3MT4x1->setFrameShape(QFrame::StyledPanel);
+        label_3MT4x1->setFrameShadow(QFrame::Sunken);
+        label_3MT4x1->setAlignment(Qt::AlignCenter);
+        label_3MT4x1->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT4x1, 4, 0, 1, 1);
+
         label_3MT1x3 = new QLabel(tab_6);
         label_3MT1x3->setObjectName(QStringLiteral("label_3MT1x3"));
         label_3MT1x3->setFrameShape(QFrame::NoFrame);
@@ -1598,21 +1715,38 @@ public:
 
         gridLayout_26->addWidget(label_3MT1x3, 1, 2, 1, 1);
 
-        label_3MT2x2 = new QLabel(tab_6);
-        label_3MT2x2->setObjectName(QStringLiteral("label_3MT2x2"));
-        label_3MT2x2->setFrameShape(QFrame::NoFrame);
-        label_3MT2x2->setAlignment(Qt::AlignCenter);
-        label_3MT2x2->setMargin(0);
+        label_3MT4x4 = new QLabel(tab_6);
+        label_3MT4x4->setObjectName(QStringLiteral("label_3MT4x4"));
+        label_3MT4x4->setFrameShape(QFrame::NoFrame);
+        label_3MT4x4->setAlignment(Qt::AlignCenter);
+        label_3MT4x4->setMargin(0);
 
-        gridLayout_26->addWidget(label_3MT2x2, 2, 1, 1, 1);
+        gridLayout_26->addWidget(label_3MT4x4, 4, 3, 1, 1);
 
-        label_3MT2x1 = new QLabel(tab_6);
-        label_3MT2x1->setObjectName(QStringLiteral("label_3MT2x1"));
-        label_3MT2x1->setFrameShape(QFrame::NoFrame);
-        label_3MT2x1->setAlignment(Qt::AlignCenter);
-        label_3MT2x1->setMargin(0);
+        label_3MT3x2 = new QLabel(tab_6);
+        label_3MT3x2->setObjectName(QStringLiteral("label_3MT3x2"));
+        label_3MT3x2->setFrameShape(QFrame::NoFrame);
+        label_3MT3x2->setAlignment(Qt::AlignCenter);
+        label_3MT3x2->setMargin(0);
 
-        gridLayout_26->addWidget(label_3MT2x1, 2, 0, 1, 1);
+        gridLayout_26->addWidget(label_3MT3x2, 3, 1, 1, 1);
+
+        label_3MT4x2 = new QLabel(tab_6);
+        label_3MT4x2->setObjectName(QStringLiteral("label_3MT4x2"));
+        label_3MT4x2->setFrameShape(QFrame::StyledPanel);
+        label_3MT4x2->setFrameShadow(QFrame::Sunken);
+        label_3MT4x2->setAlignment(Qt::AlignCenter);
+        label_3MT4x2->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT4x2, 4, 1, 1, 1);
+
+        label_3MT3x3 = new QLabel(tab_6);
+        label_3MT3x3->setObjectName(QStringLiteral("label_3MT3x3"));
+        label_3MT3x3->setFrameShape(QFrame::NoFrame);
+        label_3MT3x3->setAlignment(Qt::AlignCenter);
+        label_3MT3x3->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT3x3, 3, 2, 1, 1);
 
         label_3MT1x4 = new QLabel(tab_6);
         label_3MT1x4->setObjectName(QStringLiteral("label_3MT1x4"));
@@ -1624,6 +1758,25 @@ public:
 
         gridLayout_26->addWidget(label_3MT1x4, 1, 3, 1, 1);
 
+        label_7 = new QLabel(tab_6);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setAlignment(Qt::AlignCenter);
+
+        gridLayout_26->addWidget(label_7, 0, 3, 1, 1);
+
+        label_77 = new QLabel(tab_6);
+        label_77->setObjectName(QStringLiteral("label_77"));
+
+        gridLayout_26->addWidget(label_77, 0, 0, 1, 1);
+
+        label_3MT2x2 = new QLabel(tab_6);
+        label_3MT2x2->setObjectName(QStringLiteral("label_3MT2x2"));
+        label_3MT2x2->setFrameShape(QFrame::NoFrame);
+        label_3MT2x2->setAlignment(Qt::AlignCenter);
+        label_3MT2x2->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT2x2, 2, 1, 1, 1);
+
         label_3MT1x2 = new QLabel(tab_6);
         label_3MT1x2->setObjectName(QStringLiteral("label_3MT1x2"));
         label_3MT1x2->setFrameShape(QFrame::NoFrame);
@@ -1631,6 +1784,30 @@ public:
         label_3MT1x2->setMargin(0);
 
         gridLayout_26->addWidget(label_3MT1x2, 1, 1, 1, 1);
+
+        label_3MT3x1 = new QLabel(tab_6);
+        label_3MT3x1->setObjectName(QStringLiteral("label_3MT3x1"));
+        label_3MT3x1->setFrameShape(QFrame::NoFrame);
+        label_3MT3x1->setAlignment(Qt::AlignCenter);
+        label_3MT3x1->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT3x1, 3, 0, 1, 1);
+
+        label_3MT2x3 = new QLabel(tab_6);
+        label_3MT2x3->setObjectName(QStringLiteral("label_3MT2x3"));
+        label_3MT2x3->setFrameShape(QFrame::NoFrame);
+        label_3MT2x3->setAlignment(Qt::AlignCenter);
+        label_3MT2x3->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT2x3, 2, 2, 1, 1);
+
+        label_3MT2x1 = new QLabel(tab_6);
+        label_3MT2x1->setObjectName(QStringLiteral("label_3MT2x1"));
+        label_3MT2x1->setFrameShape(QFrame::NoFrame);
+        label_3MT2x1->setAlignment(Qt::AlignCenter);
+        label_3MT2x1->setMargin(0);
+
+        gridLayout_26->addWidget(label_3MT2x1, 2, 0, 1, 1);
 
         label_3MT3x4 = new QLabel(tab_6);
         label_3MT3x4->setObjectName(QStringLiteral("label_3MT3x4"));
@@ -1642,45 +1819,14 @@ public:
 
         gridLayout_26->addWidget(label_3MT3x4, 3, 3, 1, 1);
 
-        label_3MT3x2 = new QLabel(tab_6);
-        label_3MT3x2->setObjectName(QStringLiteral("label_3MT3x2"));
-        label_3MT3x2->setFrameShape(QFrame::NoFrame);
-        label_3MT3x2->setAlignment(Qt::AlignCenter);
-        label_3MT3x2->setMargin(0);
+        label_3MT4x3 = new QLabel(tab_6);
+        label_3MT4x3->setObjectName(QStringLiteral("label_3MT4x3"));
+        label_3MT4x3->setFrameShape(QFrame::StyledPanel);
+        label_3MT4x3->setFrameShadow(QFrame::Sunken);
+        label_3MT4x3->setAlignment(Qt::AlignCenter);
+        label_3MT4x3->setMargin(0);
 
-        gridLayout_26->addWidget(label_3MT3x2, 3, 1, 1, 1);
-
-        label_3MT1x1 = new QLabel(tab_6);
-        label_3MT1x1->setObjectName(QStringLiteral("label_3MT1x1"));
-        label_3MT1x1->setFrameShape(QFrame::NoFrame);
-        label_3MT1x1->setAlignment(Qt::AlignCenter);
-        label_3MT1x1->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT1x1, 1, 0, 1, 1);
-
-        label_3MT3x1 = new QLabel(tab_6);
-        label_3MT3x1->setObjectName(QStringLiteral("label_3MT3x1"));
-        label_3MT3x1->setFrameShape(QFrame::NoFrame);
-        label_3MT3x1->setAlignment(Qt::AlignCenter);
-        label_3MT3x1->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT3x1, 3, 0, 1, 1);
-
-        label_3MT3x3 = new QLabel(tab_6);
-        label_3MT3x3->setObjectName(QStringLiteral("label_3MT3x3"));
-        label_3MT3x3->setFrameShape(QFrame::NoFrame);
-        label_3MT3x3->setAlignment(Qt::AlignCenter);
-        label_3MT3x3->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT3x3, 3, 2, 1, 1);
-
-        label_3MT2x3 = new QLabel(tab_6);
-        label_3MT2x3->setObjectName(QStringLiteral("label_3MT2x3"));
-        label_3MT2x3->setFrameShape(QFrame::NoFrame);
-        label_3MT2x3->setAlignment(Qt::AlignCenter);
-        label_3MT2x3->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT2x3, 2, 2, 1, 1);
+        gridLayout_26->addWidget(label_3MT4x3, 4, 2, 1, 1);
 
         label_3MT2x4 = new QLabel(tab_6);
         label_3MT2x4->setObjectName(QStringLiteral("label_3MT2x4"));
@@ -1692,51 +1838,13 @@ public:
 
         gridLayout_26->addWidget(label_3MT2x4, 2, 3, 1, 1);
 
-        label_3MT4x1 = new QLabel(tab_6);
-        label_3MT4x1->setObjectName(QStringLiteral("label_3MT4x1"));
-        label_3MT4x1->setFrameShape(QFrame::StyledPanel);
-        label_3MT4x1->setFrameShadow(QFrame::Sunken);
-        label_3MT4x1->setAlignment(Qt::AlignCenter);
-        label_3MT4x1->setMargin(0);
+        label_3MT1x1 = new QLabel(tab_6);
+        label_3MT1x1->setObjectName(QStringLiteral("label_3MT1x1"));
+        label_3MT1x1->setFrameShape(QFrame::NoFrame);
+        label_3MT1x1->setAlignment(Qt::AlignCenter);
+        label_3MT1x1->setMargin(0);
 
-        gridLayout_26->addWidget(label_3MT4x1, 4, 0, 1, 1);
-
-        label_3MT4x2 = new QLabel(tab_6);
-        label_3MT4x2->setObjectName(QStringLiteral("label_3MT4x2"));
-        label_3MT4x2->setFrameShape(QFrame::StyledPanel);
-        label_3MT4x2->setFrameShadow(QFrame::Sunken);
-        label_3MT4x2->setAlignment(Qt::AlignCenter);
-        label_3MT4x2->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT4x2, 4, 1, 1, 1);
-
-        label_3MT4x3 = new QLabel(tab_6);
-        label_3MT4x3->setObjectName(QStringLiteral("label_3MT4x3"));
-        label_3MT4x3->setFrameShape(QFrame::StyledPanel);
-        label_3MT4x3->setFrameShadow(QFrame::Sunken);
-        label_3MT4x3->setAlignment(Qt::AlignCenter);
-        label_3MT4x3->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT4x3, 4, 2, 1, 1);
-
-        label_3MT4x4 = new QLabel(tab_6);
-        label_3MT4x4->setObjectName(QStringLiteral("label_3MT4x4"));
-        label_3MT4x4->setFrameShape(QFrame::NoFrame);
-        label_3MT4x4->setAlignment(Qt::AlignCenter);
-        label_3MT4x4->setMargin(0);
-
-        gridLayout_26->addWidget(label_3MT4x4, 4, 3, 1, 1);
-
-        label_7 = new QLabel(tab_6);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setAlignment(Qt::AlignCenter);
-
-        gridLayout_26->addWidget(label_7, 0, 3, 1, 1);
-
-        label_77 = new QLabel(tab_6);
-        label_77->setObjectName(QStringLiteral("label_77"));
-
-        gridLayout_26->addWidget(label_77, 0, 0, 1, 1);
+        gridLayout_26->addWidget(label_3MT1x1, 1, 0, 1, 1);
 
 
         gridLayout_28->addLayout(gridLayout_26, 0, 0, 1, 1);
@@ -2816,10 +2924,6 @@ public:
 
         gridLayout_21->addWidget(label_50, 0, 0, 1, 1);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_21->addItem(horizontalSpacer, 3, 0, 1, 1);
-
         label_51 = new QLabel(tab_4);
         label_51->setObjectName(QStringLiteral("label_51"));
         label_51->setWordWrap(true);
@@ -2827,69 +2931,719 @@ public:
         gridLayout_21->addWidget(label_51, 2, 0, 1, 1);
 
         gridLayout_22 = new QGridLayout();
-        gridLayout_22->setSpacing(6);
+        gridLayout_22->setSpacing(1);
         gridLayout_22->setObjectName(QStringLiteral("gridLayout_22"));
-        tableWidget = new QTableWidget(tab_4);
-        if (tableWidget->columnCount() < 4)
-            tableWidget->setColumnCount(4);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        __qtablewidgetitem->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        __qtablewidgetitem1->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        __qtablewidgetitem2->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        __qtablewidgetitem3->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        if (tableWidget->rowCount() < 5)
-            tableWidget->setRowCount(5);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        __qtablewidgetitem5->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem5);
-        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem6);
-        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem8);
-        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        __qtablewidgetitem9->setTextAlignment(Qt::AlignCenter);
-        tableWidget->setItem(0, 0, __qtablewidgetitem9);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        tableWidget->setItem(0, 1, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        __qtablewidgetitem11->setTextAlignment(Qt::AlignLeading|Qt::AlignVCenter);
-        tableWidget->setItem(1, 0, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        tableWidget->setItem(4, 3, __qtablewidgetitem12);
-        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        line_67 = new QFrame(tab_4);
+        line_67->setObjectName(QStringLiteral("line_67"));
+        line_67->setFrameShape(QFrame::HLine);
+        line_67->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_22->addWidget(tableWidget, 0, 0, 1, 1);
+        gridLayout_22->addWidget(line_67, 11, 1, 1, 1);
 
-        tableWidget_2 = new QTableWidget(tab_4);
-        if (tableWidget_2->rowCount() < 1)
-            tableWidget_2->setRowCount(1);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(0, __qtablewidgetitem13);
-        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
+        lineDH41 = new QLineEdit(tab_4);
+        lineDH41->setObjectName(QStringLiteral("lineDH41"));
+        lineDH41->setEnabled(false);
+        lineDH41->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH41->setAlignment(Qt::AlignCenter);
 
-        gridLayout_22->addWidget(tableWidget_2, 2, 0, 1, 1);
+        gridLayout_22->addWidget(lineDH41, 8, 1, 1, 1);
 
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        lineDH61 = new QLineEdit(tab_4);
+        lineDH61->setObjectName(QStringLiteral("lineDH61"));
+        lineDH61->setEnabled(false);
+        lineDH61->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH61->setAlignment(Qt::AlignCenter);
 
-        gridLayout_22->addItem(horizontalSpacer_7, 1, 0, 1, 1);
+        gridLayout_22->addWidget(lineDH61, 10, 1, 1, 1);
+
+        line_72 = new QFrame(tab_4);
+        line_72->setObjectName(QStringLiteral("line_72"));
+        line_72->setFrameShape(QFrame::HLine);
+        line_72->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_72, 3, 10, 1, 1);
+
+        label_92 = new QLabel(tab_4);
+        label_92->setObjectName(QStringLiteral("label_92"));
+        label_92->setMaximumSize(QSize(16777215, 16));
+        label_92->setStyleSheet(QStringLiteral(""));
+        label_92->setTextFormat(Qt::AutoText);
+        label_92->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_92, 2, 5, 1, 1);
+
+        lineDH52 = new QLineEdit(tab_4);
+        lineDH52->setObjectName(QStringLiteral("lineDH52"));
+        lineDH52->setEnabled(false);
+        lineDH52->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH52->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH52, 9, 3, 1, 1);
+
+        lineDH12 = new QLineEdit(tab_4);
+        lineDH12->setObjectName(QStringLiteral("lineDH12"));
+        lineDH12->setEnabled(false);
+        lineDH12->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH12->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH12, 4, 3, 1, 1);
+
+        doubleSpinBoxDH1max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH1max->setObjectName(QStringLiteral("doubleSpinBoxDH1max"));
+        doubleSpinBoxDH1max->setEnabled(false);
+        doubleSpinBoxDH1max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH1max, 4, 10, 1, 1);
+
+        lineDH11 = new QLineEdit(tab_4);
+        lineDH11->setObjectName(QStringLiteral("lineDH11"));
+        lineDH11->setEnabled(false);
+        QFont font10;
+        font10.setBold(true);
+        font10.setWeight(75);
+        lineDH11->setFont(font10);
+        lineDH11->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH11->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH11, 4, 1, 1, 1);
+
+        lineDH14 = new QLineEdit(tab_4);
+        lineDH14->setObjectName(QStringLiteral("lineDH14"));
+        lineDH14->setEnabled(false);
+        lineDH14->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH14->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH14, 4, 7, 1, 1);
+
+        doubleSpinBoxDH1min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH1min->setObjectName(QStringLiteral("doubleSpinBoxDH1min"));
+        doubleSpinBoxDH1min->setEnabled(false);
+        doubleSpinBoxDH1min->setMinimum(-200);
+        doubleSpinBoxDH1min->setMaximum(0);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH1min, 4, 9, 1, 1);
+
+        label_79 = new QLabel(tab_4);
+        label_79->setObjectName(QStringLiteral("label_79"));
+        label_79->setMaximumSize(QSize(16777215, 50));
+
+        gridLayout_22->addWidget(label_79, 1, 3, 1, 1);
+
+        lineDH13 = new QLineEdit(tab_4);
+        lineDH13->setObjectName(QStringLiteral("lineDH13"));
+        lineDH13->setEnabled(false);
+        lineDH13->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH13->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH13, 4, 5, 1, 1);
+
+        spinBox = new QSpinBox(tab_4);
+        spinBox->setObjectName(QStringLiteral("spinBox"));
+
+        gridLayout_22->addWidget(spinBox, 1, 1, 1, 1);
+
+        label_80 = new QLabel(tab_4);
+        label_80->setObjectName(QStringLiteral("label_80"));
+        label_80->setMaximumSize(QSize(16777215, 16));
+        label_80->setStyleSheet(QStringLiteral(""));
+        label_80->setTextFormat(Qt::AutoText);
+        label_80->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_80, 2, 1, 1, 1);
+
+        line_62 = new QFrame(tab_4);
+        line_62->setObjectName(QStringLiteral("line_62"));
+        line_62->setFrameShape(QFrame::VLine);
+        line_62->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_62, 2, 6, 9, 1);
+
+        lineDH34 = new QLineEdit(tab_4);
+        lineDH34->setObjectName(QStringLiteral("lineDH34"));
+        lineDH34->setEnabled(false);
+        lineDH34->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH34->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH34, 7, 7, 1, 1);
+
+        line_64 = new QFrame(tab_4);
+        line_64->setObjectName(QStringLiteral("line_64"));
+        line_64->setFrameShape(QFrame::HLine);
+        line_64->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_64, 3, 3, 1, 1);
+
+        doubleSpinBoxDH3max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH3max->setObjectName(QStringLiteral("doubleSpinBoxDH3max"));
+        doubleSpinBoxDH3max->setEnabled(false);
+        doubleSpinBoxDH3max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH3max, 7, 10, 1, 1);
+
+        lineDH31 = new QLineEdit(tab_4);
+        lineDH31->setObjectName(QStringLiteral("lineDH31"));
+        lineDH31->setEnabled(false);
+        lineDH31->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH31->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH31, 7, 1, 1, 1);
+
+        lineDH42 = new QLineEdit(tab_4);
+        lineDH42->setObjectName(QStringLiteral("lineDH42"));
+        lineDH42->setEnabled(false);
+        lineDH42->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH42->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH42, 8, 3, 1, 1);
+
+        doubleSpinBoxDH6min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH6min->setObjectName(QStringLiteral("doubleSpinBoxDH6min"));
+        doubleSpinBoxDH6min->setEnabled(false);
+        doubleSpinBoxDH6min->setMinimum(-200);
+        doubleSpinBoxDH6min->setMaximum(0);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH6min, 10, 9, 1, 1);
+
+        line_63 = new QFrame(tab_4);
+        line_63->setObjectName(QStringLiteral("line_63"));
+        line_63->setFrameShape(QFrame::HLine);
+        line_63->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_63, 3, 1, 1, 1);
+
+        line_66 = new QFrame(tab_4);
+        line_66->setObjectName(QStringLiteral("line_66"));
+        line_66->setFrameShape(QFrame::HLine);
+        line_66->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_66, 3, 7, 1, 1);
+
+        lineDH62 = new QLineEdit(tab_4);
+        lineDH62->setObjectName(QStringLiteral("lineDH62"));
+        lineDH62->setEnabled(false);
+        lineDH62->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH62->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH62, 10, 3, 1, 1);
+
+        lineDH64 = new QLineEdit(tab_4);
+        lineDH64->setObjectName(QStringLiteral("lineDH64"));
+        lineDH64->setEnabled(false);
+        lineDH64->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH64->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH64, 10, 7, 1, 1);
+
+        doubleSpinBoxDH6max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH6max->setObjectName(QStringLiteral("doubleSpinBoxDH6max"));
+        doubleSpinBoxDH6max->setEnabled(false);
+        doubleSpinBoxDH6max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH6max, 10, 10, 1, 1);
+
+        lineDH63 = new QLineEdit(tab_4);
+        lineDH63->setObjectName(QStringLiteral("lineDH63"));
+        lineDH63->setEnabled(false);
+        lineDH63->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH63->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH63, 10, 5, 1, 1);
+
+        doubleSpinBoxDH2max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH2max->setObjectName(QStringLiteral("doubleSpinBoxDH2max"));
+        doubleSpinBoxDH2max->setEnabled(false);
+        doubleSpinBoxDH2max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH2max, 6, 10, 1, 1);
+
+        lineDH21 = new QLineEdit(tab_4);
+        lineDH21->setObjectName(QStringLiteral("lineDH21"));
+        lineDH21->setEnabled(false);
+        lineDH21->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH21->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH21, 6, 1, 1, 1);
+
+        doubleSpinBoxDH4max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH4max->setObjectName(QStringLiteral("doubleSpinBoxDH4max"));
+        doubleSpinBoxDH4max->setEnabled(false);
+        doubleSpinBoxDH4max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH4max, 8, 10, 1, 1);
+
+        lineDH53 = new QLineEdit(tab_4);
+        lineDH53->setObjectName(QStringLiteral("lineDH53"));
+        lineDH53->setEnabled(false);
+        lineDH53->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH53->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH53, 9, 5, 1, 1);
+
+        lineDH23 = new QLineEdit(tab_4);
+        lineDH23->setObjectName(QStringLiteral("lineDH23"));
+        lineDH23->setEnabled(false);
+        lineDH23->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH23->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH23, 6, 5, 1, 1);
+
+        lineDH32 = new QLineEdit(tab_4);
+        lineDH32->setObjectName(QStringLiteral("lineDH32"));
+        lineDH32->setEnabled(false);
+        lineDH32->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH32->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH32, 7, 3, 1, 1);
+
+        line_61 = new QFrame(tab_4);
+        line_61->setObjectName(QStringLiteral("line_61"));
+        line_61->setFrameShape(QFrame::VLine);
+        line_61->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_61, 2, 4, 9, 1);
+
+        line_60 = new QFrame(tab_4);
+        line_60->setObjectName(QStringLiteral("line_60"));
+        line_60->setLayoutDirection(Qt::LeftToRight);
+        line_60->setFrameShape(QFrame::VLine);
+        line_60->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_60, 2, 2, 9, 1);
+
+        label_94 = new QLabel(tab_4);
+        label_94->setObjectName(QStringLiteral("label_94"));
+
+        gridLayout_22->addWidget(label_94, 4, 0, 1, 1);
+
+        lineDH43 = new QLineEdit(tab_4);
+        lineDH43->setObjectName(QStringLiteral("lineDH43"));
+        lineDH43->setEnabled(false);
+        lineDH43->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH43->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH43, 8, 5, 1, 1);
+
+        doubleSpinBoxDH5max = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH5max->setObjectName(QStringLiteral("doubleSpinBoxDH5max"));
+        doubleSpinBoxDH5max->setEnabled(false);
+        doubleSpinBoxDH5max->setMaximum(200);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH5max, 9, 10, 1, 1);
+
+        line_65 = new QFrame(tab_4);
+        line_65->setObjectName(QStringLiteral("line_65"));
+        line_65->setFrameShape(QFrame::HLine);
+        line_65->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_65, 3, 5, 1, 1);
+
+        doubleSpinBoxDH5min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH5min->setObjectName(QStringLiteral("doubleSpinBoxDH5min"));
+        doubleSpinBoxDH5min->setEnabled(false);
+        doubleSpinBoxDH5min->setMinimum(-200);
+        doubleSpinBoxDH5min->setMaximum(0);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH5min, 9, 9, 1, 1);
+
+        line_70 = new QFrame(tab_4);
+        line_70->setObjectName(QStringLiteral("line_70"));
+        line_70->setFrameShape(QFrame::HLine);
+        line_70->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_70, 11, 7, 1, 1);
+
+        label_99 = new QLabel(tab_4);
+        label_99->setObjectName(QStringLiteral("label_99"));
+
+        gridLayout_22->addWidget(label_99, 10, 0, 1, 1);
+
+        label_96 = new QLabel(tab_4);
+        label_96->setObjectName(QStringLiteral("label_96"));
+
+        gridLayout_22->addWidget(label_96, 7, 0, 1, 1);
+
+        label_95 = new QLabel(tab_4);
+        label_95->setObjectName(QStringLiteral("label_95"));
+
+        gridLayout_22->addWidget(label_95, 6, 0, 1, 1);
+
+        lineDH22 = new QLineEdit(tab_4);
+        lineDH22->setObjectName(QStringLiteral("lineDH22"));
+        lineDH22->setEnabled(false);
+        lineDH22->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(204, 230, 255); }"));
+        lineDH22->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH22, 6, 3, 1, 1);
+
+        doubleSpinBoxDH4min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH4min->setObjectName(QStringLiteral("doubleSpinBoxDH4min"));
+        doubleSpinBoxDH4min->setEnabled(false);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH4min, 8, 9, 1, 1);
+
+        doubleSpinBoxDH2min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH2min->setObjectName(QStringLiteral("doubleSpinBoxDH2min"));
+        doubleSpinBoxDH2min->setEnabled(false);
+        doubleSpinBoxDH2min->setMinimum(-200);
+        doubleSpinBoxDH2min->setMaximum(0);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH2min, 6, 9, 1, 1);
+
+        label_91 = new QLabel(tab_4);
+        label_91->setObjectName(QStringLiteral("label_91"));
+        label_91->setMaximumSize(QSize(16777215, 16));
+        label_91->setStyleSheet(QStringLiteral(""));
+        label_91->setTextFormat(Qt::AutoText);
+        label_91->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_91, 2, 3, 1, 1);
+
+        doubleSpinBoxDH3min = new QDoubleSpinBox(tab_4);
+        doubleSpinBoxDH3min->setObjectName(QStringLiteral("doubleSpinBoxDH3min"));
+        doubleSpinBoxDH3min->setEnabled(false);
+        doubleSpinBoxDH3min->setMinimum(-200);
+        doubleSpinBoxDH3min->setMaximum(0);
+
+        gridLayout_22->addWidget(doubleSpinBoxDH3min, 7, 9, 1, 1);
+
+        lineDH33 = new QLineEdit(tab_4);
+        lineDH33->setObjectName(QStringLiteral("lineDH33"));
+        lineDH33->setEnabled(false);
+        lineDH33->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(255, 255, 204); }"));
+        lineDH33->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH33, 7, 5, 1, 1);
+
+        lineDH54 = new QLineEdit(tab_4);
+        lineDH54->setObjectName(QStringLiteral("lineDH54"));
+        lineDH54->setEnabled(false);
+        lineDH54->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH54->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH54, 9, 7, 1, 1);
+
+        label_93 = new QLabel(tab_4);
+        label_93->setObjectName(QStringLiteral("label_93"));
+        label_93->setMaximumSize(QSize(16777215, 16));
+        label_93->setStyleSheet(QStringLiteral(""));
+        label_93->setTextFormat(Qt::AutoText);
+        label_93->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_93, 2, 7, 1, 1);
+
+        lineDH44 = new QLineEdit(tab_4);
+        lineDH44->setObjectName(QStringLiteral("lineDH44"));
+        lineDH44->setEnabled(false);
+        lineDH44->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH44->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH44, 8, 7, 1, 1);
+
+        lineDH51 = new QLineEdit(tab_4);
+        lineDH51->setObjectName(QStringLiteral("lineDH51"));
+        lineDH51->setEnabled(false);
+        lineDH51->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(196, 255, 179) }"));
+        lineDH51->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH51, 9, 1, 1, 1);
+
+        lineDH24 = new QLineEdit(tab_4);
+        lineDH24->setObjectName(QStringLiteral("lineDH24"));
+        lineDH24->setEnabled(false);
+        lineDH24->setStyleSheet(QStringLiteral("QLineEdit { background: rgb(169, 169, 169); }"));
+        lineDH24->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(lineDH24, 6, 7, 1, 1);
+
+        label_97 = new QLabel(tab_4);
+        label_97->setObjectName(QStringLiteral("label_97"));
+
+        gridLayout_22->addWidget(label_97, 8, 0, 1, 1);
+
+        label_98 = new QLabel(tab_4);
+        label_98->setObjectName(QStringLiteral("label_98"));
+
+        gridLayout_22->addWidget(label_98, 9, 0, 1, 1);
+
+        line_69 = new QFrame(tab_4);
+        line_69->setObjectName(QStringLiteral("line_69"));
+        line_69->setFrameShape(QFrame::HLine);
+        line_69->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_69, 11, 5, 1, 1);
+
+        line_71 = new QFrame(tab_4);
+        line_71->setObjectName(QStringLiteral("line_71"));
+        line_71->setFrameShape(QFrame::HLine);
+        line_71->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_71, 3, 9, 1, 1);
+
+        line_68 = new QFrame(tab_4);
+        line_68->setObjectName(QStringLiteral("line_68"));
+        line_68->setFrameShape(QFrame::HLine);
+        line_68->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_68, 11, 3, 1, 1);
+
+        line_73 = new QFrame(tab_4);
+        line_73->setObjectName(QStringLiteral("line_73"));
+        line_73->setFrameShape(QFrame::VLine);
+        line_73->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_73, 4, 8, 1, 1);
+
+        line_74 = new QFrame(tab_4);
+        line_74->setObjectName(QStringLiteral("line_74"));
+        line_74->setFrameShape(QFrame::VLine);
+        line_74->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_74, 6, 8, 1, 1);
+
+        line_75 = new QFrame(tab_4);
+        line_75->setObjectName(QStringLiteral("line_75"));
+        line_75->setFrameShape(QFrame::VLine);
+        line_75->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_75, 7, 8, 1, 1);
+
+        line_76 = new QFrame(tab_4);
+        line_76->setObjectName(QStringLiteral("line_76"));
+        line_76->setFrameShape(QFrame::VLine);
+        line_76->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_76, 8, 8, 1, 1);
+
+        line_77 = new QFrame(tab_4);
+        line_77->setObjectName(QStringLiteral("line_77"));
+        line_77->setFrameShape(QFrame::VLine);
+        line_77->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_77, 9, 8, 1, 1);
+
+        line_78 = new QFrame(tab_4);
+        line_78->setObjectName(QStringLiteral("line_78"));
+        line_78->setFrameShape(QFrame::VLine);
+        line_78->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_22->addWidget(line_78, 10, 8, 1, 1);
+
+        label_100 = new QLabel(tab_4);
+        label_100->setObjectName(QStringLiteral("label_100"));
+        label_100->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_100, 2, 9, 1, 1);
+
+        label_101 = new QLabel(tab_4);
+        label_101->setObjectName(QStringLiteral("label_101"));
+        label_101->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(label_101, 2, 10, 1, 1);
 
 
-        gridLayout_21->addLayout(gridLayout_22, 4, 0, 1, 1);
+        gridLayout_21->addLayout(gridLayout_22, 3, 0, 1, 1);
+
+        gridLayout_32 = new QGridLayout();
+        gridLayout_32->setSpacing(1);
+        gridLayout_32->setObjectName(QStringLiteral("gridLayout_32"));
+        label_106 = new QLabel(tab_4);
+        label_106->setObjectName(QStringLiteral("label_106"));
+        label_106->setFrameShape(QFrame::StyledPanel);
+        label_106->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_106, 4, 2, 1, 1);
+
+        label_103 = new QLabel(tab_4);
+        label_103->setObjectName(QStringLiteral("label_103"));
+        label_103->setFrameShape(QFrame::StyledPanel);
+        label_103->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_103, 3, 0, 1, 1);
+
+        label_122 = new QLabel(tab_4);
+        label_122->setObjectName(QStringLiteral("label_122"));
+        label_122->setFrameShape(QFrame::StyledPanel);
+        label_122->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_122, 1, 0, 1, 1);
+
+        label_108 = new QLabel(tab_4);
+        label_108->setObjectName(QStringLiteral("label_108"));
+        label_108->setFrameShape(QFrame::StyledPanel);
+        label_108->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_108, 3, 1, 1, 1);
+
+        label_114 = new QLabel(tab_4);
+        label_114->setObjectName(QStringLiteral("label_114"));
+        label_114->setFrameShape(QFrame::StyledPanel);
+        label_114->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_114, 6, 0, 1, 1);
+
+        label_105 = new QLabel(tab_4);
+        label_105->setObjectName(QStringLiteral("label_105"));
+        label_105->setFrameShape(QFrame::StyledPanel);
+        label_105->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_105, 4, 1, 1, 1);
+
+        label_109 = new QLabel(tab_4);
+        label_109->setObjectName(QStringLiteral("label_109"));
+        label_109->setFrameShape(QFrame::StyledPanel);
+        label_109->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_109, 3, 2, 1, 1);
+
+        label_113 = new QLabel(tab_4);
+        label_113->setObjectName(QStringLiteral("label_113"));
+        label_113->setFrameShape(QFrame::StyledPanel);
+        label_113->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_113, 5, 3, 1, 1);
+
+        label_112 = new QLabel(tab_4);
+        label_112->setObjectName(QStringLiteral("label_112"));
+        label_112->setFrameShape(QFrame::StyledPanel);
+        label_112->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_112, 5, 2, 1, 1);
+
+        label_104 = new QLabel(tab_4);
+        label_104->setObjectName(QStringLiteral("label_104"));
+        label_104->setFrameShape(QFrame::StyledPanel);
+        label_104->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_104, 4, 0, 1, 1);
+
+        label_110 = new QLabel(tab_4);
+        label_110->setObjectName(QStringLiteral("label_110"));
+        label_110->setFrameShape(QFrame::StyledPanel);
+        label_110->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_110, 3, 3, 1, 1);
+
+        label_102 = new QLabel(tab_4);
+        label_102->setObjectName(QStringLiteral("label_102"));
+        label_102->setFrameShape(QFrame::StyledPanel);
+        label_102->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_102, 5, 0, 1, 1);
+
+        label_111 = new QLabel(tab_4);
+        label_111->setObjectName(QStringLiteral("label_111"));
+        label_111->setFrameShape(QFrame::StyledPanel);
+        label_111->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_111, 5, 1, 1, 1);
+
+        label_107 = new QLabel(tab_4);
+        label_107->setObjectName(QStringLiteral("label_107"));
+        label_107->setFrameShape(QFrame::StyledPanel);
+        label_107->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_107, 4, 3, 1, 1);
+
+        label_115 = new QLabel(tab_4);
+        label_115->setObjectName(QStringLiteral("label_115"));
+        label_115->setFrameShape(QFrame::StyledPanel);
+        label_115->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_115, 6, 1, 1, 1);
+
+        label_117 = new QLabel(tab_4);
+        label_117->setObjectName(QStringLiteral("label_117"));
+        label_117->setFrameShape(QFrame::StyledPanel);
+        label_117->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_117, 6, 3, 1, 1);
+
+        label_116 = new QLabel(tab_4);
+        label_116->setObjectName(QStringLiteral("label_116"));
+        label_116->setFrameShape(QFrame::StyledPanel);
+        label_116->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_116, 6, 2, 1, 1);
+
+        label_119 = new QLabel(tab_4);
+        label_119->setObjectName(QStringLiteral("label_119"));
+        label_119->setFrameShape(QFrame::StyledPanel);
+        label_119->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_119, 2, 1, 1, 1);
+
+        label_124 = new QLabel(tab_4);
+        label_124->setObjectName(QStringLiteral("label_124"));
+        label_124->setFrameShape(QFrame::StyledPanel);
+        label_124->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_124, 1, 2, 1, 1);
+
+        label_121 = new QLabel(tab_4);
+        label_121->setObjectName(QStringLiteral("label_121"));
+        label_121->setFrameShape(QFrame::StyledPanel);
+        label_121->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_121, 2, 3, 1, 1);
+
+        label_123 = new QLabel(tab_4);
+        label_123->setObjectName(QStringLiteral("label_123"));
+        label_123->setFrameShape(QFrame::StyledPanel);
+        label_123->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_123, 1, 1, 1, 1);
+
+        label_125 = new QLabel(tab_4);
+        label_125->setObjectName(QStringLiteral("label_125"));
+        label_125->setFrameShape(QFrame::StyledPanel);
+        label_125->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_125, 1, 3, 1, 1);
+
+        label_120 = new QLabel(tab_4);
+        label_120->setObjectName(QStringLiteral("label_120"));
+        label_120->setFrameShape(QFrame::StyledPanel);
+        label_120->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_120, 2, 2, 1, 1);
+
+        label_118 = new QLabel(tab_4);
+        label_118->setObjectName(QStringLiteral("label_118"));
+        label_118->setFrameShape(QFrame::StyledPanel);
+        label_118->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_118, 2, 0, 1, 1);
+
+        label_126 = new QLabel(tab_4);
+        label_126->setObjectName(QStringLiteral("label_126"));
+        label_126->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_126, 0, 0, 1, 1);
+
+        label_127 = new QLabel(tab_4);
+        label_127->setObjectName(QStringLiteral("label_127"));
+        label_127->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_127, 0, 1, 1, 1);
+
+        label_128 = new QLabel(tab_4);
+        label_128->setObjectName(QStringLiteral("label_128"));
+        label_128->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_128, 0, 2, 1, 1);
+
+        label_129 = new QLabel(tab_4);
+        label_129->setObjectName(QStringLiteral("label_129"));
+        label_129->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(label_129, 0, 3, 1, 1);
+
+
+        gridLayout_21->addLayout(gridLayout_32, 5, 0, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_21->addItem(horizontalSpacer, 4, 0, 1, 1);
 
 
         gridLayout_7->addLayout(gridLayout_21, 0, 0, 1, 1);
@@ -2901,10 +3655,10 @@ public:
         tabWidget11 = new QTabWidget(centralWidget);
         tabWidget11->setObjectName(QStringLiteral("tabWidget11"));
         tabWidget11->setMaximumSize(QSize(450, 720));
-        QFont font10;
-        font10.setPointSize(10);
-        font10.setItalic(false);
-        tabWidget11->setFont(font10);
+        QFont font11;
+        font11.setPointSize(10);
+        font11.setItalic(false);
+        tabWidget11->setFont(font11);
         tab_10 = new QWidget();
         tab_10->setObjectName(QStringLiteral("tab_10"));
         gridLayout_30 = new QGridLayout(tab_10);
@@ -3145,10 +3899,10 @@ public:
         verticalLayout_7->setContentsMargins(4, 4, 4, 4);
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
-        QFont font11;
-        font11.setFamily(QStringLiteral("Abyssinica SIL"));
-        font11.setPointSize(16);
-        line->setFont(font11);
+        QFont font12;
+        font12.setFamily(QStringLiteral("Abyssinica SIL"));
+        font12.setPointSize(16);
+        line->setFont(font12);
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
@@ -3276,12 +4030,12 @@ public:
 
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Arial Black"));
-        font12.setPointSize(14);
-        font12.setBold(true);
-        font12.setWeight(75);
-        label->setFont(font12);
+        QFont font13;
+        font13.setFamily(QStringLiteral("Arial Black"));
+        font13.setPointSize(14);
+        font13.setBold(true);
+        font13.setWeight(75);
+        label->setFont(font13);
         label->setLayoutDirection(Qt::LeftToRight);
         label->setTextFormat(Qt::RichText);
         label->setAlignment(Qt::AlignCenter);
@@ -3453,9 +4207,9 @@ public:
         QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxPrismatic, SLOT(setDisabled(bool)));
         QObject::connect(checkBox6DOFs_3, SIGNAL(toggled(bool)), checkBoxRevolute, SLOT(setDisabled(bool)));
 
-        tabWidget->setCurrentIndex(1);
-        tabWidget1->setCurrentIndex(0);
-        tabWidget11->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
+        tabWidget1->setCurrentIndex(2);
+        tabWidget11->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(ROSGUI);
@@ -3603,24 +4357,24 @@ public:
         label_85->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_86->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2_2), QApplication::translate("ROSGUI", "2DOF", Q_NULLPTR));
-        label_3MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT1x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT1x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT3x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT3x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT1x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT3x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT3x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT2x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT2x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_3MT4x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT4x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
-        label_3MT4x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_3MT4x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">1</span></p></body></html>", Q_NULLPTR));
+        label_3MT3x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT4x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT3x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT1x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_7->setText(QApplication::translate("ROSGUI", "P3x1", Q_NULLPTR));
         label_77->setText(QApplication::translate("ROSGUI", "R3x3", Q_NULLPTR));
+        label_3MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT1x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT3x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT2x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT2x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT3x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT4x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT2x4->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_3MT1x1->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         tabWidget1->setTabText(tabWidget1->indexOf(tab_6), QApplication::translate("ROSGUI", "3DOF", Q_NULLPTR));
         label_4MT1x3->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_4MT2x2->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -3759,33 +4513,52 @@ public:
         label_8->setText(QApplication::translate("ROSGUI", "Cinematica Inversa", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ROSGUI", "CINEMATICA INVERSA", Q_NULLPTR));
         label_50->setText(QApplication::translate("ROSGUI", "Denavit - Hartemberg", Q_NULLPTR));
-        label_51->setText(QApplication::translate("ROSGUI", "El problema se plantea de la siguiente manera: dada la posici\303\263n y orientaci\303\263n del efector final del manipulador, se calcula todos los conjuntos posibles de \303\241ngulos articulares que podr\303\255an utilizarse para obtener esta posici\303\263n y orientaci\303\263n dadas. Este es un problema fundamental en el uso pr\303\241ctico de los manipuladores. ", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("ROSGUI", "ai", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("ROSGUI", "a1", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("ROSGUI", "alpha i", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("ROSGUI", "theta i", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem4->setText(QApplication::translate("ROSGUI", "joint1", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem5->setText(QApplication::translate("ROSGUI", "joint2", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem6->setText(QApplication::translate("ROSGUI", "joint3", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem7->setText(QApplication::translate("ROSGUI", "joint4", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->verticalHeaderItem(4);
-        ___qtablewidgetitem8->setText(QApplication::translate("ROSGUI", "joint6", Q_NULLPTR));
-
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        tableWidget->setSortingEnabled(__sortingEnabled);
-
-        QTableWidgetItem *___qtablewidgetitem9 = tableWidget_2->verticalHeaderItem(0);
-        ___qtablewidgetitem9->setText(QApplication::translate("ROSGUI", "Matriz de Transformacion del TCP", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVITH HATEMEBERG", Q_NULLPTR));
+        label_51->setText(QApplication::translate("ROSGUI", "El p", Q_NULLPTR));
+        label_92->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#a7a700;\">d</span></p></body></html>", Q_NULLPTR));
+        label_79->setText(QApplication::translate("ROSGUI", "# Joints ", Q_NULLPTR));
+#ifndef QT_NO_ACCESSIBILITY
+        spinBox->setAccessibleName(QString());
+#endif // QT_NO_ACCESSIBILITY
+        label_80->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#2aaa07;\">a</span></p></body></html>", Q_NULLPTR));
+        label_94->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">1</span></p></body></html>", Q_NULLPTR));
+        label_99->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">6</span></p></body></html>", Q_NULLPTR));
+        label_96->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">3</span></p></body></html>", Q_NULLPTR));
+        label_95->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">2</span></p></body></html>", Q_NULLPTR));
+        label_91->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#055cff;\">\316\261</span></p></body></html>", Q_NULLPTR));
+        label_93->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#868686;\">\316\230</span></p></body></html>", Q_NULLPTR));
+        label_97->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">4</span></p></body></html>", Q_NULLPTR));
+        label_98->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">5</span></p></body></html>", Q_NULLPTR));
+        label_100->setText(QApplication::translate("ROSGUI", "Min Values", Q_NULLPTR));
+        label_101->setText(QApplication::translate("ROSGUI", "Max Values", Q_NULLPTR));
+        label_106->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_103->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_122->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_108->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_114->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_105->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_109->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_113->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_112->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_104->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_110->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_102->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_111->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_107->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_115->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_117->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_116->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_119->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_124->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_121->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_123->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_125->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_120->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_118->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
+        label_126->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">a</span></p></body></html>", Q_NULLPTR));
+        label_127->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\316\261</span></p></body></html>", Q_NULLPTR));
+        label_128->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">d</span></p></body></html>", Q_NULLPTR));
+        label_129->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\316\230</span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVIT HARTEMEBERG", Q_NULLPTR));
         gridGroupBox_5->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
         checkBoxRevolute->setText(QApplication::translate("ROSGUI", "Revoluci\303\263n", Q_NULLPTR));
         checkBoxPrismatic->setText(QApplication::translate("ROSGUI", "Prismatico", Q_NULLPTR));

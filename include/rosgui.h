@@ -50,6 +50,11 @@
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
 
+//----
+#include <std_msgs/Float32.h>
+#include <std_msgs/Float32MultiArray.h>
+
+
 class QMainWindow;
 class MyViz;
 //class rvizMain;
@@ -75,6 +80,7 @@ public:
       std::vector< double > joint_lower;
       std::vector< double > jointV;
 
+
       void updatetoURDF();
       void FKdata(KDL::JntArray j);
       void resetvalue();
@@ -98,6 +104,7 @@ public:
 
       double positions;
       unsigned int nj;
+       int nj_2;
 
       void updateURDF(const std::string& urdf);
       void updatetreeforDH(KDL::Tree modelU);
@@ -106,8 +113,12 @@ public:
 
       ros::NodeHandle nh_;
       ros::Publisher joint_pub;
+      ros::Publisher joint_value_pub;
       ros::Subscriber joint_sub;
+      ros::Publisher robot_state_vis_pub_;
       void trajectoryCallback(const trajectory_msgs::JointTrajectory & msg); // MoveIt
+      moveit_msgs::DisplayRobotState display_state_msg_;
+      std_msgs::Float32MultiArray send_val;
 
 // void openDialoginfo();
  //      void openCI();
@@ -152,9 +163,13 @@ public Q_SLOTS:
       void updateSpinboxes();
 
       void updateDialer();
+//      void updateDH(double x);
+
+      void on_spinBox_valueChanged(int arg1);
 
       void updateSpinboxesD();
 
+      void on_1DOF();
       void on_2DOF();
       void on_3DOF();
       void on_4DOF();
@@ -214,6 +229,8 @@ void statusTool(int message );
    //QMainWindow main_window_;
 //protected:
 
+
+
 private:
 
 
@@ -222,7 +239,7 @@ private:
    boost::mutex state_pub_mutex_;
    KDL::Tree* robot_tree_ = NULL;
    robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
-   robot_state_publisher::RobotStatePublisher* robot_state_pubDH_ = NULL;
+//   robot_state_publisher::RobotStatePublisher* robot_state_pubDH_ = NULL;
 
 
    sensor_msgs::JointState* msg;
@@ -232,7 +249,7 @@ private:
 
 //   ros::Time itTime_;
    ros::Duration d_;
-   std::map<std::string, double> joint_positionsDH_;
+//   std::map<std::string, double> joint_positionsDH_;
 
 
    MyViz *mRviz;/* = new MyViz;*/

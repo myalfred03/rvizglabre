@@ -93,17 +93,17 @@ bool modelparam::initmodel()
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
-          if(!kdl_tree.getChain(xml_stringCr, "link_6", kdl_chain5))
+          if(!kdl_tree.getChain(xml_stringCr, "link_5", kdl_chain5))
               {
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
-          if(!kdl_tree.getChain(xml_stringCr, "link_5", kdl_chain4))
+          if(!kdl_tree.getChain(xml_stringCr, "link_4", kdl_chain4))
               {
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
               }
-          if(!kdl_tree.getChain(xml_stringCr, "link_4", kdl_chain3))
+          if(!kdl_tree.getChain(xml_stringCr, "link_3", kdl_chain3))
               {
                   ROS_ERROR("Error getting KDL chain");
                    nh.shutdown();
@@ -120,6 +120,13 @@ bool modelparam::initmodel()
               }
           njnt = kdl_chain6.getNrOfJoints();
           return true;
+
+//          const std::string& file = "prueba";
+//          const std::string & robot_name ="robot_1";
+//          if (!this->treeToUrdfFile(file,kdl_tree,robot_name))
+//          {
+//                   std::cerr << "Error at Model URDF from Tree" <<std::endl;
+//          }
 
 }
 
@@ -225,7 +232,7 @@ KDL::ChainIkSolverPos_NR   iksolver (kdl_chain6,*fksolver6,iksolverV,100,1e-2);
 KDL::Frame cartpos(tcpRPY,tcpXYZ);
 KDL::JntArray q_init(njnt);
 
-q_init(njnt) = 0;
+q_init(njnt) = 0.0;
 // q_init(1) = -0.62;
 // q_init(2) = 0.36;
 // q_init(3) = -0.12;
@@ -284,62 +291,288 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
            return true;
 }
-bool modelparam::treeforDH(KDL::Tree &model){
-    KDL::Tree hand_tree("RootName");
+bool modelparam::treeforDH(KDL::Tree &model,int &njnt){
 
+const std::string& file = "prueba";
+const std::string & robot_name ="robot_1";
+   //--------------Documentation of FRAME::DH----------------------------//
+
+    //  KDL::Frame::DH 	( 	double  	a,
+    //                      double  	alpha,
+    //                      double  	d,
+    //                      double  	theta
+    //                  )
+
+
+   //--------------Documentation of FRAME::DH----------------------------//
+
+    KDL::Tree hand_tree ("base_link");
     using namespace KDL;
 
-    KDL::Chain chain_palm;
+    KDL::Chain chain_dh_robot;
+//     chain_dh_robot.addSegment(KDL::Segment("base_link",Joint(Joint::None),Frame::DH(0.0, 0.0, 0.147, 0.0)),"");
+     chain_dh_robot.addSegment(KDL::Segment("link_1",   Joint("joint_0",Joint::RotZ),Frame::DH(0.0, M_PI/2,  1.0,   0.0)));
+     chain_dh_robot.addSegment(KDL::Segment("link_2",   Joint("joint_1",Joint::RotZ),Frame::DH(0.5, 0.0,  0.0,   0.0)));
+     chain_dh_robot.addSegment(KDL::Segment("link_3",   Joint("joint_2",Joint::RotZ),Frame::DH(0.5, 0.0,  0.0,   0.0)));
 
-    KDL::Chain chain_finger_right_0;
-    KDL::Chain chain_finger_left_0;
-    KDL::Chain chain_finger_right_1;
-    KDL::Chain chain_finger_left_1;
-    KDL::Chain chain_finger_right_2;
-    KDL::Chain chain_finger_left_2;
 
+//     chain_dh_robot.addSegment(KDL::Segment("link_3",   Joint(Joint::TransZ),Frame(Vector(0.0,0.0,3))));
+//     chain_dh_robot.addSegment(KDL::Segment("link_4",   Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+//     chain_dh_robot.addSegment(KDL::Segment("link_5",   Joint(Joint::RotY),Frame(Vector(0.0,0.0,3))));
+//     chain_dh_robot.addSegment(KDL::Segment("link_6",   Joint(Joint::TransX),Frame(Vector(0.0,0.0,3))));
+     chain_dh_robot.addSegment(KDL::Segment("tool0",    Joint(Joint::None),Frame(Vector(0.0,0.0,0))));
+
+
+
+// grasp_learning/src/test_file_2_fingers.cpp
 //    KDL::Chain chain_palm_finger_left_0; // return the result
 //    KDL::Chain chain_palm_finger_left_1;
 //    KDL::Chain chain_palm_finger_left_2;
 //    KDL::Chain chain_palm_finger_right_0;
 //    KDL::Chain chain_palm_finger_right_1;
 //    KDL::Chain chain_palm_finger_right_2;
-
-     chain_palm.addSegment(KDL::Segment("palm_trasl_x_link",Joint(Joint::TransX),Frame(Vector(0.0,0.0,3))));
-     chain_palm.addSegment(KDL::Segment("palm_trasl_y_link",Joint(Joint::TransY),Frame(Vector(0.0,0.0,3))));
-     chain_palm.addSegment(KDL::Segment("palm_trasl_z_link",Joint(Joint::TransZ),Frame(Vector(0.0,0.0,3))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_x_link",Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_y_link",Joint(Joint::RotY),Frame(Vector(0.0,0.0,3))));
-     chain_palm.addSegment(KDL::Segment("palm_rot_z_link",Joint(Joint::RotZ),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_right_0.addSegment(KDL::Segment("finger_right_proximal_link_0",KDL::Joint(KDL::Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_finger_right_0.addSegment(KDL::Segment("finger_right_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_left_0.addSegment(KDL::Segment("finger_left_proximal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_finger_left_0.addSegment(KDL::Segment("finger_left_distal_link_0",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_right_1.addSegment(KDL::Segment("finger_right_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_finger_right_1.addSegment(KDL::Segment("finger_right_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_left_1.addSegment(KDL::Segment("finger_left_proximal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_finger_left_1.addSegment(KDL::Segment("finger_left_distal_link_1",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_right_2.addSegment(KDL::Segment("finger_right_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-     chain_finger_right_2.addSegment(KDL::Segment("finger_right_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
-
-     chain_finger_left_2.addSegment(KDL::Segment("finger_left_proximal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,2))));
-     chain_finger_left_2.addSegment(KDL::Segment("finger_left_distal_link_2",KDL::Joint(Joint::RotX),Frame(Vector(0.0,0.0,2))));
-
-
-
-     hand_tree.addChain(chain_palm,"RootName");
-     hand_tree.addChain(chain_finger_right_0,"palm_rot_z_link");
-     hand_tree.addChain(chain_finger_left_0, "palm_rot_z_link");
-     hand_tree.addChain(chain_finger_right_1,"palm_rot_z_link");
-     hand_tree.addChain(chain_finger_left_1, "palm_rot_z_link");
-     hand_tree.addChain(chain_finger_right_2,"palm_rot_z_link");
-     hand_tree.addChain(chain_finger_left_2, "palm_rot_z_link");
+     hand_tree.addChain(chain_dh_robot,"base_link");
+//     hand_tree.addChain(chain_finger_right_0,"palm_rot_z_link");
+//     hand_tree.addChain(chain_finger_left_2, "palm_rot_z_link");
+     njnt=chain_dh_robot.getNrOfJoints();
      model = hand_tree;
+//if (!this->treeToUrdfFile(file,model,robot_name))
+//{
+//         std::cerr << "Error at Model URDF from Tree" <<std::endl;
+//}
      return true;
 
+}
+
+bool modelparam::treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name)
+{
+  bool ok = false;
+  TiXmlDocument * urdf_xml;
+  if( !treeToUrdfXml(urdf_xml, tree, robot_name) ) return ok;
+  ok = urdf_xml->SaveFile(file);
+//  delete urdf_xml;
+  return ok;
+}
+
+bool modelparam::treeToUrdfXml(TiXmlDocument* & xml_doc, const KDL::Tree& tree, const std::string & robot_name)
+{
+    urdf::ModelInterface robot_model;
+    if( !treeToUrdfModel(tree,robot_name,robot_model) ) return false;
+    xml_doc =  urdf::exportURDF(robot_model);
+    return true;
+}
+
+bool modelparam::treeToUrdfModel(const KDL::Tree& tree, const std::string & robot_name, urdf::ModelInterface& robot_model)
+{
+    robot_model.clear();
+    robot_model.name_ = robot_name;
+
+    //Add all links
+    KDL::SegmentMap::iterator seg;
+    KDL::SegmentMap segs;
+    KDL::SegmentMap::const_iterator root_seg;
+    root_seg = tree.getRootSegment();
+    segs = tree.getSegments();
+    for( seg = segs.begin(); seg != segs.end(); seg++ ) {
+        if (robot_model.getLink(seg->first))
+        {
+            std::cerr << "[ERR] link " << seg->first << " is not unique." << std::endl;
+            robot_model.clear();
+            return false;
+        }
+        else
+        {
+            urdf::LinkPtr link;
+            resetPtr(link, new urdf::Link);
+
+            //add name
+            link->name = seg->first;
+
+            //insert link
+            robot_model.links_.insert(make_pair(seg->first,link));
+            std::cerr << "[DEBUG] successfully added a new link " << link->name << std::endl;
+        }
+
+        //inserting joint
+        //The fake root segment has no joint to add
+        if( seg->first != root_seg->first ) {
+            KDL::Joint jnt;
+            jnt = GetTreeElementSegment(seg->second).getJoint();
+            if (robot_model.getJoint(jnt.getName()))
+            {
+                std::cerr << "[ERR] joint " <<  jnt.getName() << " is not unique." << std::endl;
+                robot_model.clear();
+                return false;
+            }
+            else
+            {
+                urdf::JointPtr joint;
+                urdf::LinkPtr link = robot_model.links_[seg->first];
+                //This variable will be set by toUrdf
+                KDL::Frame H_new_old_successor;
+                KDL::Frame H_new_old_predecessor = this->getH_new_old(GetTreeElementSegment(GetTreeElementParent(seg->second)->second));
+                urdf::resetPtr(joint, new urdf::Joint());
+
+                //convert joint
+                *joint = toUrdf(jnt, GetTreeElementSegment(seg->second).getFrameToTip(),H_new_old_predecessor,H_new_old_successor);
+
+                //insert parent
+                joint->parent_link_name = GetTreeElementParent(seg->second)->first;
+
+                //insert child
+                joint->child_link_name = seg->first;
+
+                //insert joint
+                robot_model.joints_.insert(make_pair(seg->first,joint));
+                std::cerr << "[DEBUG] successfully added a new joint" << jnt.getName() << std::endl;
+
+                //add inertial, taking in account an eventual change in the link frame
+                resetPtr(link->inertial, new urdf::Inertial());
+                *(link->inertial) = this->toUrdf(H_new_old_successor * GetTreeElementSegment(seg->second).getInertia());
+            }
+        }
+
+    }
+
+    // every link has children links and joints, but no parents, so we create a
+    // local convenience data structure for keeping child->parent relations
+    std::map<std::string, std::string> parent_link_tree;
+    parent_link_tree.clear();
+
+    // building tree: name mapping
+    //try
+    //{
+        robot_model.initTree(parent_link_tree);
+    //}
+    /*
+    catch(ParseError &e)
+    {
+        logError("Failed to build tree: %s", e.what());
+        robot_model.clear();
+        return false;
+    }*/
+
+    // find the root link
+    //try
+    //{
+        robot_model.initRoot(parent_link_tree);
+    //}
+    /*
+    catch(ParseError &e)
+    {
+        logError("Failed to find root link: %s", e.what());
+        robot_model.reset();
+        return false;
+    }
+    */
+    return true;
+}
+
+KDL::Frame modelparam::getH_new_old(KDL::Joint jnt, KDL::Frame frameToTip)
+{
+    KDL::Frame H_new_old;
+    if( (jnt.JointOrigin()-frameToTip.p).Norm() < 1e-12 || jnt.getType() == KDL::Joint::None ) {
+        //No need of changing link frame
+        H_new_old = KDL::Frame::Identity();
+    } else {
+        std::cerr << "[WARN] the reference frame of link connected to joint " << jnt.getName()  << "  has to be shifted to comply to URDF constraints" << std::endl;
+        //H_new_old = (KDL::Frame(jnt.JointOrigin())*KDL::Frame(frameToTip.M)).Inverse()*frameToTip;
+        H_new_old = KDL::Frame(frameToTip.M.Inverse()*(frameToTip.p-jnt.JointOrigin()));
+    }
+    return H_new_old;
+}
+
+
+KDL::Frame modelparam::getH_new_old(KDL::Segment seg)
+{
+    KDL::Joint jnt =  seg.getJoint();
+    KDL::Frame frameToTip = seg.getFrameToTip();
+    return getH_new_old(jnt,frameToTip);
+}
+
+urdf::Joint modelparam::toUrdf(const KDL::Joint & jnt,
+                   const KDL::Frame & frameToTip,
+                   const KDL::Frame & H_new_old_predecessor,
+                   KDL::Frame & H_new_old_successor)
+{
+    //URDF constaints the successor link frame origin to lay on the axis
+    //of the joint ( see : http://www.ros.org/wiki/urdf/XML/joint )
+    //Then if the JointOrigin of the KDL joint is not zero, it is necessary
+    //to move the link frame (then it is necessary to change also the spatial inertia)
+    //and the definition of the childrens of the successor frame
+    urdf::Joint ret;
+    ret.name = jnt.getName();
+
+    H_new_old_successor = getH_new_old(jnt,frameToTip);
+
+    ret.parent_to_joint_origin_transform = toUrdf(H_new_old_predecessor*frameToTip*(H_new_old_successor.Inverse()));
+
+    switch(jnt.getType())
+    {
+        case KDL::Joint::RotAxis:
+        case KDL::Joint::RotX:
+        case KDL::Joint::RotY:
+        case KDL::Joint::RotZ:
+            //using continuos if no joint limits are specified
+            ret.type = urdf::Joint::CONTINUOUS;
+            //in urdf, the joint axis is expressed in the joint/successor frame
+            //in kdl, the joint axis is expressed in the predecessor rame
+            ret.axis = toUrdf(((frameToTip).M.Inverse((jnt.JointAxis()))));
+        break;
+        case KDL::Joint::TransAxis:
+        case KDL::Joint::TransX:
+        case KDL::Joint::TransY:
+        case KDL::Joint::TransZ:
+            ret.type = urdf::Joint::PRISMATIC;
+            //in urdf, the joint axis is expressed in the joint/successor frame
+            //in kdl, the joint axis is expressed in the predecessor rame
+            ret.axis = toUrdf((frameToTip.M.Inverse(jnt.JointAxis())));
+        break;
+        default:
+            std::cerr << "[WARN] Converting unknown joint type of joint " << jnt.getTypeName() << " into a fixed joint" << std::endl;
+        case KDL::Joint::None:
+            ret.type = urdf::Joint::FIXED;
+    }
+    return ret;
+}
+
+urdf::Vector3 modelparam::toUrdf(const KDL::Vector & v)
+{
+    return urdf::Vector3(v.x(), v.y(), v.z());
+}
+
+// construct rotation
+urdf::Rotation modelparam::toUrdf(const KDL::Rotation & r)
+{
+    double x,y,z,w;
+    r.GetQuaternion(x,y,z,w);
+    return urdf::Rotation(x,y,z,w);
+}
+
+// construct pose
+urdf::Pose modelparam::toUrdf(const KDL::Frame & p)
+{
+    urdf::Pose ret;
+    ret.rotation = toUrdf(p.M);
+    ret.position = toUrdf(p.p);
+    return ret;
+}
+
+urdf::Inertial modelparam::toUrdf(KDL::RigidBodyInertia i)
+{
+  urdf::Inertial ret;
+  ret.mass = i.getMass();
+  ret.origin = toUrdf(KDL::Frame(KDL::Rotation::Identity(),i.getCOG()));
+  // kdl specifies the inertia in the reference frame of the link, the urdf specifies the inertia in the inertia reference frame
+  // however the kdl RigidBodyInertia constructor take the inertia with the COG as reference point,
+  // but the getInertia
+  KDL::RotationalInertia Ic;
+  Ic = i.RefPoint(i.getCOG()).getRotationalInertia();
+  ret.ixx = Ic.data[0];
+  ret.ixy = Ic.data[1];
+  ret.ixz = Ic.data[2];
+  ret.iyy = Ic.data[4];
+  ret.iyz = Ic.data[5];
+  ret.izz = Ic.data[8];
+  return ret;
 }

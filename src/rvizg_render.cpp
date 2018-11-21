@@ -160,21 +160,27 @@ QWidget(parent)
                   int_marker_display_->setEnabled(true);
                 }
 
-
-//  robot_display_->reset();
-
-//          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/RobotState", "Robot Lab", true );
-//          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/MotionPlanning", "MoveIt", true );
+            //          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/MotionPlanning", "MoveIt", true );
 
 
+//----------------------robot Model---------------------//
+
+//            robot_display_->reset();
+
+//            robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/RobotState", "Robot Lab", true );
 
 
-              //          ROS_ASSERT( robot_display_ != NULL );
-              ////          robot_display_->subProp( "Robot Description" )->setValue( "my_lab_uni/robot_description" );
-              //                //          robot_display_->subProp("Robot Description")->setValue("robot_description");
-              //                          robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
-              //                          robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/marker" );
-              //                          robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
+
+
+//            ROS_ASSERT( robot_display_ != NULL );
+//            robot_display_->subProp( "Robot Description" )->setValue( "my_lab_uni/robot_description" );
+//            robot_display_->subProp("Collision Enabled")->setValue (true);
+//            //                //          robot_display_->subProp("Robot Description")->setValue("robot_description");
+//            //                          robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
+//            robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/robot_state" );
+//----------------------robot Model---------------------//
+
+            //                          robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
               //                          robot_display_->subProp( "Robot Alpha" )->setValue( 0.5f );
               //                          robot_display_->subProp ("Scene Robot")->subProp("Show Robot Visual")->setValue(true);
               //                          robot_display_->subProp ("Planning Request")->subProp("Planning Group")->setValue("panda_arm_hand");
@@ -186,13 +192,13 @@ QWidget(parent)
               ////                          robot_display_->subProp ("Planned Path")->subProp("Loop Animation")->setValue(true);
 
 
-              //                          robot_display_->setEnabled(true);
 
 //          robot_display_->subProp ("Show Workspace")->setValue(true);
 
 
 
 
+//  robot_display_->setEnabled(true);
 
 
 
@@ -204,9 +210,12 @@ QWidget(parent)
 
 
 
-//  // Create a Grid display.
+//----------------------robot Model---------------------//
+
   robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
   robot_model_->subProp("Robot Description")->setValue(QString::fromStdString("my_lab_uni/robot_description"));
+
+//----------------------robot Model---------------------//
 
 
 //  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
@@ -274,11 +283,12 @@ void MyViz::refresh(const std::string& fixed_frame)
 //  ROS_ASSERT( robot_display_ != NULL );
 
 
-//  robot_display_->subProp("Robot Description")->setValue("robot_description");
+//  robot_display_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
 //  robot_display_->subProp( "Robot State Topic" )->setValue( "/my_lab_uni/marker" );
 //  robot_display_->subProp( "Robot Root Link" )->setValue( "base" );
 //  robot_display_->subProp( "Robot Alpha" )->setValue( 0.9f );
-
+//  robot_display_->subProp("TF Prefix")->setValue("my_lab_uni");
+//  robot_display_->subProp("Show Axes")->setValue("my_lab_uni");
 
 //                                        robot_display_->subProp( "Planning Scene Topic" )->setValue( "/move_group/monitored_planning_scene" );
 //                                        robot_display_->subProp ("Show Robot Visual")->setValue(true);
@@ -293,8 +303,7 @@ void MyViz::refresh(const std::string& fixed_frame)
 //  robot_display_->subProp ("Planned Path")->subProp("Show Trail")->setValue(true);
 //  robot_display_->subProp ("Planned Path")->subProp("Loop Animation")->setValue(true);
 
-//  robot_display_->subProp("TF Prefix")->setValue("my_lab_uni");
-//  robot_display_->subProp("Show Axes")->setValue("my_lab_uni");
+
 
 // int_marker_display_ = manager_->createDisplay( "rviz/InteractiveMarkers", "Interactive markers", true );
 // int_marker_display_->setFixedFrame("base_link");
@@ -347,6 +356,9 @@ void MyViz::refresh(const std::string& fixed_frame)
         }
 int_marker_display_->setEnabled(true);
 
+//----------------------robot Model---------------------//
+
+
 if(robot_model_ != NULL)
     delete robot_model_;
 
@@ -359,6 +371,9 @@ if(robot_model_ != NULL)
   robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
 
 //  robot_model_->setEnabled(true);
+
+//----------------------robot Model---------------------//
+
 
 
 }
