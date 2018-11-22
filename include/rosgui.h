@@ -120,6 +120,11 @@ public:
       moveit_msgs::DisplayRobotState display_state_msg_;
       std_msgs::Float32MultiArray send_val;
 
+
+      std_msgs::Float32MultiArray valueDH;
+
+
+
 // void openDialoginfo();
  //      void openCI();
 //      void openDH();
@@ -163,11 +168,13 @@ public Q_SLOTS:
       void updateSpinboxes();
 
       void updateDialer();
-//      void updateDH(double x);
+      void updateSpinboxesD();
+      //      void updateDH(double x);
 
       void on_spinBox_valueChanged(int arg1);
+      //DH
+      void on_checkBox_3_toggled();
 
-      void updateSpinboxesD();
 
       void on_1DOF();
       void on_2DOF();
@@ -198,6 +205,8 @@ public Q_SLOTS:
       void onCartesian_URDF();
       void onCylindrical_URDF();
       void on3DOF_URDF();
+
+
 trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& newPositions);
 
       //Herramientas de RVIZ
@@ -228,6 +237,7 @@ void statusTool(int message );
 
    //QMainWindow main_window_;
 //protected:
+
 
 
 

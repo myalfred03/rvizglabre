@@ -29,7 +29,7 @@
    <string>ROSGUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../rvizglabno/resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -4601,7 +4601,7 @@
             </widget>
             <widget class="QWidget" name="tab_4">
              <attribute name="title">
-              <string>DENAVIT HARTEMEBERG</string>
+              <string>DENAVIT HARTENBERG</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_7">
               <item row="0" column="0">
@@ -4615,14 +4615,14 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Denavit - Hartemberg</string>
+                   <string>Denavit - Hartenberg</string>
                   </property>
                  </widget>
                 </item>
                 <item row="2" column="0">
                  <widget class="QLabel" name="label_51">
                   <property name="text">
-                   <string>El p</string>
+                   <string>La convención o metodología de Denavit-Hartenberg (DH) permite establecer la ubicación de los sistemas de referencia de los eslabones en los sistemas robóticos articulados, ya sean prismáticas o de revolución, con cadenas cinemáticas abiertas.</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
@@ -4649,6 +4649,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4661,6 +4664,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4704,6 +4710,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4716,6 +4725,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4746,6 +4758,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4758,6 +4773,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4797,6 +4815,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4847,6 +4868,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4877,6 +4901,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4889,6 +4916,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4930,6 +4960,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4942,6 +4975,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4966,6 +5002,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -4988,6 +5027,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -5012,6 +5054,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5025,6 +5070,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5037,6 +5085,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -5074,6 +5125,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -5146,6 +5200,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(204, 230, 255); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5214,6 +5271,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(255, 255, 204); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5226,6 +5286,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -5262,6 +5325,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5275,6 +5341,9 @@
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(196, 255, 179) }</string>
                     </property>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -5287,6 +5356,9 @@
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QLineEdit { background: rgb(169, 169, 169); }</string>
+                    </property>
+                    <property name="text">
+                     <string>0</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -5387,6 +5459,16 @@
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="9" colspan="2">
+                   <widget class="QCheckBox" name="checkBox_3">
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Presiona Generar Robot, una vez ingresado los valores DH caracteristico de tu robot a  analizar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="text">
+                     <string>Generar Robot</string>
                     </property>
                    </widget>
                   </item>
@@ -5766,6 +5848,19 @@
                 </item>
                </layout>
               </item>
+              <item row="1" column="0">
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
              </layout>
             </widget>
            </widget>
@@ -6062,7 +6157,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -6094,7 +6189,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -6123,7 +6218,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -6149,7 +6244,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -6210,7 +6305,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -6311,7 +6406,7 @@
                   <string>Show Axes</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../rvizglabno/resources.qrc">
+                  <iconset resource="../resources.qrc">
                    <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                  </property>
                 </item>
@@ -6567,7 +6662,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../rvizglabno/resources.qrc"/>
   <include location="../resources.qrc"/>
  </resources>
  <connections>

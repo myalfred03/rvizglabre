@@ -205,8 +205,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
 
     //Denavith Select parameters to load
-    connect(main_window_ui_->spinBox, SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
-
+    connect(main_window_ui_->spinBox,       SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
+    connect(main_window_ui_->checkBox_3,     SIGNAL(toggled(bool)), SLOT(on_checkBox_3_toggled()));
 
 
     //KeySecuence
@@ -650,23 +650,7 @@ void ROSGUI::on3DOFs_URDF()
 }
 void ROSGUI::on6DOFs_URDF(){
   ToG    = 57.295779513;
-if(!jointsv->treeforDH(model,nj_2))
-{
-   std::cerr << "Error at model DH" <<std::endl;
-}
-switch (nj_2){
 
-case 1:
-  Q_EMIT(on_1DOF());
-case 2:
-  Q_EMIT(on_2DOF());
-case 3:
-  Q_EMIT(on_3DOF());
-case 4:
-  Q_EMIT(on_4DOF());
-
-}
-this->updatetreeforDH(model);
 }
 
 void ROSGUI::updatetreeforDH(KDL::Tree modelU){
@@ -1635,7 +1619,7 @@ std::cout <<  msg << std::endl;
 void ROSGUI::on_spinBox_valueChanged(int arg1)
 {
   std::cout <<  arg1 << std::endl;
-  switch (arg1){
+  switch (arg1) {
 
     case 0:
     {
@@ -1847,6 +1831,8 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
 
 
+
+
     break;
     }
     case 4:
@@ -2010,4 +1996,116 @@ break;
 }
   } //switch
 
+}
+
+void ROSGUI::on_checkBox_3_toggled()
+{
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+
+  int data;
+  data = main_window_ui_->spinBox->value();
+  valueDH.data.resize(24);
+  valueDH.data[0] =  std::stod(main_window_ui_->lineDH11->text().toStdString());
+  valueDH.data[1] =  std::stod(main_window_ui_->lineDH12->text().toStdString());
+  valueDH.data[2] =  std::stod(main_window_ui_->lineDH13->text().toStdString());
+  valueDH.data[3] =  std::stod(main_window_ui_->lineDH14->text().toStdString());
+
+  valueDH.data[4] =  std::stod(main_window_ui_->lineDH21->text().toStdString());
+  valueDH.data[5] =  std::stod(main_window_ui_->lineDH22->text().toStdString());
+  valueDH.data[6] =  std::stod(main_window_ui_->lineDH23->text().toStdString());
+  valueDH.data[7] =  std::stod(main_window_ui_->lineDH24->text().toStdString());
+
+  valueDH.data[8] =  std::stod(main_window_ui_->lineDH31->text().toStdString());
+  valueDH.data[9]  =  std::stod(main_window_ui_->lineDH32->text().toStdString());
+  valueDH.data[10] =  std::stod(main_window_ui_->lineDH33->text().toStdString());
+  valueDH.data[11] =  std::stod(main_window_ui_->lineDH34->text().toStdString());
+
+  valueDH.data[12] =  std::stod(main_window_ui_->lineDH41->text().toStdString());
+  valueDH.data[13] =  std::stod(main_window_ui_->lineDH42->text().toStdString());
+  valueDH.data[14] =  std::stod(main_window_ui_->lineDH43->text().toStdString());
+  valueDH.data[15] =  std::stod(main_window_ui_->lineDH44->text().toStdString());
+
+  valueDH.data[16] =  std::stod(main_window_ui_->lineDH51->text().toStdString());
+  valueDH.data[17] =  std::stod(main_window_ui_->lineDH52->text().toStdString());
+  valueDH.data[18] =  std::stod(main_window_ui_->lineDH53->text().toStdString());
+  valueDH.data[19] =  std::stod(main_window_ui_->lineDH54->text().toStdString());
+
+  valueDH.data[20] =  std::stod(main_window_ui_->lineDH61->text().toStdString());
+  valueDH.data[21] =  std::stod(main_window_ui_->lineDH62->text().toStdString());
+  valueDH.data[22] =  std::stod(main_window_ui_->lineDH63->text().toStdString());
+  valueDH.data[23] =  std::stod(main_window_ui_->lineDH64->text().toStdString());
+  std::cout <<  valueDH.data[23] << std::endl;
+
+  if(!jointsv->treeforDH(model,nj_2,valueDH))
+  {
+     std::cerr << "Error at model DH" <<std::endl;
+  }
+  switch (nj_2){
+
+  case 1:
+    Q_EMIT(on_1DOF());
+  case 2:
+    Q_EMIT(on_2DOF());
+  case 3:
+    Q_EMIT(on_3DOF());
+  case 4:
+    Q_EMIT(on_4DOF());
+
+  }
+
+
+  main_window_ui_->dial1DOF->setMinimum(main_window_ui_->doubleSpinBoxDH1min->value());
+  main_window_ui_->dial1DOF->setMaximum(main_window_ui_->doubleSpinBoxDH1max->value());
+  main_window_ui_->dial1DOF->setSingleStep(1);
+  main_window_ui_->spinBox1DOF->setMinimum(main_window_ui_->doubleSpinBoxDH1min->value());
+  main_window_ui_->spinBox1DOF->setMaximum(main_window_ui_->doubleSpinBoxDH1max->value());
+  main_window_ui_->spinBox1DOF->setSingleStep(1);
+
+//  main_window_ui_->dial2DOF->setMinimum(joint_lower[1]*ToG);
+//  main_window_ui_->dial2DOF->setMaximum(joint_upper[1]*ToG);
+//  main_window_ui_->dial2DOF->setSingleStep(1);
+//  main_window_ui_->spinBox2DOF->setMinimum(joint_lower[1]*ToG);
+//  main_window_ui_->spinBox2DOF->setMaximum(joint_upper[1]*ToG);
+//  main_window_ui_->spinBox2DOF->setSingleStep(1);
+
+//  main_window_ui_->dial3DOF->setMinimum(joint_lower[2]*ToG);
+//  main_window_ui_->dial3DOF->setMaximum(joint_upper[2]*ToG);
+//  main_window_ui_->dial3DOF->setSingleStep(1);
+//  main_window_ui_->spinBox3DOF->setMinimum(joint_lower[2]*ToG);
+//  main_window_ui_->spinBox3DOF->setMaximum(joint_upper[2]*ToG);
+//  main_window_ui_->spinBox3DOF->setSingleStep(1);
+
+//  main_window_ui_->dial4DOF->setMinimum(joint_lower[3]*ToG);
+//  main_window_ui_->dial4DOF->setMaximum(joint_upper[3]*ToG);
+//  main_window_ui_->dial4DOF->setSingleStep(1);
+//  main_window_ui_->spinBox4DOF->setMinimum(joint_lower[3]*ToG);
+//  main_window_ui_->spinBox4DOF->setMaximum(joint_upper[3]*ToG);
+//  main_window_ui_->spinBox4DOF->setSingleStep(1);
+
+//  main_window_ui_->dial5DOF->setMinimum(joint_lower[4]*ToG);
+//  main_window_ui_->dial5DOF->setMaximum(joint_upper[4]*ToG);
+//  main_window_ui_->dial5DOF->setSingleStep(1);
+//  main_window_ui_->spinBox5DOF->setMinimum(joint_lower[4]*ToG);
+//  main_window_ui_->spinBox5DOF->setMaximum(joint_upper[4]*ToG);
+//  main_window_ui_->spinBox5DOF->setSingleStep(1);
+
+//  main_window_ui_->dial6DOF->setMinimum(joint_lower[5]*ToG);
+//  main_window_ui_->dial6DOF->setMaximum(joint_upper[5]*ToG);
+//  main_window_ui_->dial6DOF->setSingleStep(1);
+//  main_window_ui_->spinBox6DOF->setMinimum(joint_lower[5]*ToG);
+//  main_window_ui_->spinBox6DOF->setMaximum(joint_upper[5]*ToG);
+//  main_window_ui_->spinBox6DOF->setSingleStep(1);
+
+
+
+  this->updatetreeforDH(model);
+  if(!init())
+  {
+     ROS_ERROR("Error publisher");
+  }
+
+//      joint_value_pub.publish(send_val);
 }

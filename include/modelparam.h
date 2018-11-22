@@ -36,19 +36,23 @@
 #include <urdf_model/model.h>
 #include <urdf_parser/urdf_parser.h>
 
-namespace KDL  { class Tree; class Chain; }
-/// RTT/ROS
-namespace urdf { class ModelInterface;
-                 typedef JointSharedPtr JointPtr;
-                 typedef LinkSharedPtr  LinkPtr;
-                 typedef LinkConstSharedPtr  ConstLinkPtr;
-                 typedef InertialSharedPtr InertialPtr;
-                 typedef std::vector< LinkPtr > LinkVector;
-                 typedef ModelInterfaceSharedPtr ModelInterfacePtr;
-                 typedef std::map<std::string, JointPtr > JointPtrMap;
-                 template<class PtrType> inline void resetPtr(PtrType & ptr) { ptr.reset(); }
-                 template<class PtrType, class PlainType> inline void resetPtr(PtrType & ptr, PlainType * plain_ptr) { ptr.reset(plain_ptr); }
-               }
+#include <std_msgs/Float32MultiArray.h>
+
+//namespace KDL  { class Tree; class Chain; }
+///// RTT/ROS
+//namespace urdf { class ModelInterface;
+//                 typedef JointSharedPtr JointPtr;
+//                 typedef LinkSharedPtr  LinkPtr;
+//                 typedef LinkConstSharedPtr  ConstLinkPtr;
+//                 typedef InertialSharedPtr InertialPtr;
+//                 typedef std::vector< LinkPtr > LinkVector;
+//                 typedef ModelInterfaceSharedPtr ModelInterfacePtr;
+//                 typedef std::map<std::string, JointPtr > JointPtrMap;
+//                 template<class PtrType> inline void resetPtr(PtrType & ptr) { ptr.reset(); }
+//                 template<class PtrType, class PlainType> inline void resetPtr(PtrType & ptr, PlainType * plain_ptr) { ptr.reset(plain_ptr); }
+//               }
+
+
 class modelparam
 {
 public:
@@ -66,31 +70,32 @@ public:
          // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 
-          bool treeforDH(KDL::Tree &model, int &njnt);
+          bool treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH);
 
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
           std::vector<double>& upper_limits);
           unsigned int njnt;
-          bool treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
-          bool treeToUrdfXml(TiXmlDocument * & xml_doc,  const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
-          bool treeToUrdfModel(const KDL::Tree& tree, const std::string & robot_name, urdf::ModelInterface& robot_model);
 
-          KDL::Frame getH_new_old(KDL::Joint jnt, KDL::Frame frameToTip);
-          KDL::Frame getH_new_old(KDL::Segment seg);
+//          bool treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
+//          bool treeToUrdfXml(TiXmlDocument * & xml_doc,  const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
+//          bool treeToUrdfModel(const KDL::Tree& tree, const std::string & robot_name, urdf::ModelInterface& robot_model);
 
-          urdf::Joint toUrdf(const KDL::Joint & jnt,
-                             const KDL::Frame & frameToTip,
-                             const KDL::Frame & H_new_old_predecessor,
-                             KDL::Frame & H_new_old_successor);
-          urdf::Vector3 toUrdf(const KDL::Vector & v);
+//          KDL::Frame getH_new_old(KDL::Joint jnt, KDL::Frame frameToTip);
+//          KDL::Frame getH_new_old(KDL::Segment seg);
 
-          // construct rotation
-          urdf::Rotation toUrdf(const KDL::Rotation & r);
+//          urdf::Joint toUrdf(const KDL::Joint & jnt,
+//                             const KDL::Frame & frameToTip,
+//                             const KDL::Frame & H_new_old_predecessor,
+//                             KDL::Frame & H_new_old_successor);
+//          urdf::Vector3 toUrdf(const KDL::Vector & v);
 
-          // construct pose
-          urdf::Pose toUrdf(const KDL::Frame & p);
+//          // construct rotation
+//          urdf::Rotation toUrdf(const KDL::Rotation & r);
 
-          urdf::Inertial toUrdf(KDL::RigidBodyInertia i);
+//          // construct pose
+//          urdf::Pose toUrdf(const KDL::Frame & p);
+
+//          urdf::Inertial toUrdf(KDL::RigidBodyInertia i);
 
 //  std::vector<double> lower_limits;
 //    std::vector<double> upper_limits;

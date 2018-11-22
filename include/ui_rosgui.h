@@ -432,6 +432,7 @@ public:
     QFrame *line_78;
     QLabel *label_100;
     QLabel *label_101;
+    QCheckBox *checkBox_3;
     QGridLayout *gridLayout_32;
     QLabel *label_106;
     QLabel *label_103;
@@ -462,6 +463,7 @@ public:
     QLabel *label_128;
     QLabel *label_129;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_7;
     QTabWidget *tabWidget11;
     QWidget *tab_10;
     QGridLayout *gridLayout_30;
@@ -3440,6 +3442,11 @@ public:
 
         gridLayout_22->addWidget(label_101, 2, 10, 1, 1);
 
+        checkBox_3 = new QCheckBox(tab_4);
+        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
+
+        gridLayout_22->addWidget(checkBox_3, 1, 9, 1, 2);
+
 
         gridLayout_21->addLayout(gridLayout_22, 3, 0, 1, 1);
 
@@ -3647,6 +3654,10 @@ public:
 
 
         gridLayout_7->addLayout(gridLayout_21, 0, 0, 1, 1);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_7, 1, 0, 1, 1);
 
         tabWidget->addTab(tab_4, QString());
 
@@ -4512,24 +4523,52 @@ public:
         checkBox->setText(QApplication::translate("ROSGUI", "EJECUTAR", Q_NULLPTR));
         label_8->setText(QApplication::translate("ROSGUI", "Cinematica Inversa", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ROSGUI", "CINEMATICA INVERSA", Q_NULLPTR));
-        label_50->setText(QApplication::translate("ROSGUI", "Denavit - Hartemberg", Q_NULLPTR));
-        label_51->setText(QApplication::translate("ROSGUI", "El p", Q_NULLPTR));
+        label_50->setText(QApplication::translate("ROSGUI", "Denavit - Hartenberg", Q_NULLPTR));
+        label_51->setText(QApplication::translate("ROSGUI", "La convenci\303\263n o metodolog\303\255a de Denavit-Hartenberg (DH) permite establecer la ubicaci\303\263n de los sistemas de referencia de los eslabones en los sistemas rob\303\263ticos articulados, ya sean prism\303\241ticas o de revoluci\303\263n, con cadenas cinem\303\241ticas abiertas.", Q_NULLPTR));
+        lineDH41->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH61->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_92->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#a7a700;\">d</span></p></body></html>", Q_NULLPTR));
+        lineDH52->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH12->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH11->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH14->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_79->setText(QApplication::translate("ROSGUI", "# Joints ", Q_NULLPTR));
+        lineDH13->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
 #ifndef QT_NO_ACCESSIBILITY
         spinBox->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
         label_80->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#2aaa07;\">a</span></p></body></html>", Q_NULLPTR));
+        lineDH34->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH31->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH42->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH62->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH64->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH63->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH21->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH53->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH23->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH32->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_94->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">1</span></p></body></html>", Q_NULLPTR));
+        lineDH43->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_99->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">6</span></p></body></html>", Q_NULLPTR));
         label_96->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">3</span></p></body></html>", Q_NULLPTR));
         label_95->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">2</span></p></body></html>", Q_NULLPTR));
+        lineDH22->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_91->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#055cff;\">\316\261</span></p></body></html>", Q_NULLPTR));
+        lineDH33->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH54->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_93->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#868686;\">\316\230</span></p></body></html>", Q_NULLPTR));
+        lineDH44->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH51->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
+        lineDH24->setText(QApplication::translate("ROSGUI", "0", Q_NULLPTR));
         label_97->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">4</span></p></body></html>", Q_NULLPTR));
         label_98->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">5</span></p></body></html>", Q_NULLPTR));
         label_100->setText(QApplication::translate("ROSGUI", "Min Values", Q_NULLPTR));
         label_101->setText(QApplication::translate("ROSGUI", "Max Values", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        checkBox_3->setToolTip(QApplication::translate("ROSGUI", "<html><head/><body><p>Presiona Generar Robot, una vez ingresado los valores DH caracteristico de tu robot a  analizar</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        checkBox_3->setText(QApplication::translate("ROSGUI", "Generar Robot", Q_NULLPTR));
         label_106->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_103->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
         label_122->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:14pt;\">0</span></p></body></html>", Q_NULLPTR));
@@ -4558,7 +4597,7 @@ public:
         label_127->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\316\261</span></p></body></html>", Q_NULLPTR));
         label_128->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">d</span></p></body></html>", Q_NULLPTR));
         label_129->setText(QApplication::translate("ROSGUI", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\316\230</span></p></body></html>", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVIT HARTEMEBERG", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("ROSGUI", "DENAVIT HARTENBERG", Q_NULLPTR));
         gridGroupBox_5->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
         checkBoxRevolute->setText(QApplication::translate("ROSGUI", "Revoluci\303\263n", Q_NULLPTR));
         checkBoxPrismatic->setText(QApplication::translate("ROSGUI", "Prismatico", Q_NULLPTR));
