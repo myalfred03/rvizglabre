@@ -173,7 +173,7 @@ public Q_SLOTS:
 
       void on_spinBox_valueChanged(int arg1);
       //DH
-      void on_checkBox_3_toggled();
+      void on_pushButton_3_toggled();
 
 
       void on_1DOF();
@@ -237,7 +237,6 @@ void statusTool(int message );
 
    //QMainWindow main_window_;
 //protected:
-
 
 
 

@@ -38,7 +38,7 @@
 
 #include <std_msgs/Float32MultiArray.h>
 
-//namespace KDL  { class Tree; class Chain; }
+//namespace KDL  { class Tree; class Chain; class Frame;}
 ///// RTT/ROS
 //namespace urdf { class ModelInterface;
 //                 typedef JointSharedPtr JointPtr;
@@ -70,7 +70,8 @@ public:
          // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 
-          bool treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH);
+          bool treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH, int rot);
+
 
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
           std::vector<double>& upper_limits);

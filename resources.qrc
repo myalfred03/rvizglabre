@@ -48,5 +48,6 @@
         <file>modelos/cylindrical.urdf</file>
         <file>modelos/two_link_planar_xy.urdf</file>
         <file>modelos/two_link_yz.urdf</file>
+        <file>modelos/katana_robot.urdf</file>
     </qresource>
 </RCC>

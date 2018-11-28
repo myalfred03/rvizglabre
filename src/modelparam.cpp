@@ -292,15 +292,37 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
            return true;
 }
-bool modelparam::treeforDH(KDL::Tree &model,int &njnt, std_msgs::Float32MultiArray DH){
-
+bool modelparam::treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH, int rot){
+using namespace KDL;
 
   //test with TreeToURDF
 
 //const std::string& file = "prueba";
 //const std::string & robot_name ="robot_1";
+KDL::Frame RotBase;
+KDL::Frame BaseX = KDL::Frame(Rotation::RotX(-M_PI/2));
+KDL::Frame BaseY = KDL::Frame(Rotation::RotY(-M_PI/2));
+KDL::Frame BaseZ = KDL::Frame(Rotation::RotZ(0));
 
+switch (rot){
 
+case 0:
+{
+ RotBase = BaseX;
+  break;
+}
+case 1:
+{
+ RotBase = BaseY;
+  break;
+}
+case 2:
+{
+ RotBase = BaseZ;
+  break;
+}
+
+}
 
    //--------------Documentation of FRAME::DH----------------------------//
 
@@ -313,8 +335,8 @@ bool modelparam::treeforDH(KDL::Tree &model,int &njnt, std_msgs::Float32MultiArr
 
    //--------------Documentation of FRAME::DH----------------------------//
 
-    KDL::Tree hand_tree ("base_link");
-    using namespace KDL;
+    KDL::Tree hand_tree ("world");
+
 
 
 
@@ -322,7 +344,7 @@ bool modelparam::treeforDH(KDL::Tree &model,int &njnt, std_msgs::Float32MultiArr
 
 
     KDL::Chain chain_dh_robot;
-//     chain_dh_robot.addSegment(KDL::Segment("base_link",Joint(Joint::None),Frame::DH(0.0, 0.0, 0.147, 0.0)),"");
+     chain_dh_robot.addSegment(KDL::Segment("base_link",Joint(Joint::None),RotBase));
      chain_dh_robot.addSegment(KDL::Segment("link_1",   Joint("joint_1",Joint::RotZ),Frame::DH(DH.data[0],  DH.data[1]/ToG,  DH.data[2],  DH.data[3]/ToG)));
      chain_dh_robot.addSegment(KDL::Segment("link_2",   Joint("joint_2",Joint::RotZ),Frame::DH(DH.data[4],  DH.data[5]/ToG,  DH.data[6],  DH.data[7]/ToG)));
      chain_dh_robot.addSegment(KDL::Segment("link_3",   Joint("joint_3",Joint::RotZ),Frame::DH(DH.data[8],  DH.data[9]/ToG,  DH.data[10], DH.data[10]/ToG)));
@@ -336,7 +358,7 @@ bool modelparam::treeforDH(KDL::Tree &model,int &njnt, std_msgs::Float32MultiArr
 
 
 
-     hand_tree.addChain(chain_dh_robot,"base_link");
+     hand_tree.addChain(chain_dh_robot,"world");
      njnt=chain_dh_robot.getNrOfJoints();
      model = hand_tree;
 //if (!this->treeToUrdfFile(file,model,robot_name))

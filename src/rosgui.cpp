@@ -205,8 +205,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
 
     //Denavith Select parameters to load
-    connect(main_window_ui_->spinBox,       SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
-    connect(main_window_ui_->checkBox_3,     SIGNAL(toggled(bool)), SLOT(on_checkBox_3_toggled()));
+    connect(main_window_ui_->spinBox,          SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
+    connect(main_window_ui_->pushButton_3,     SIGNAL(clicked()), SLOT(on_pushButton_3_toggled()));
 
 
     //KeySecuence
@@ -475,8 +475,8 @@ void ROSGUI::on2DOFI_URDF()
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
   QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir.path() + "/irb5400.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/irb5400.urdf").toStdString().c_str());
+  QFile::copy(":/robots/URDF/modelos/katana_robot.urdf", temporaryDir.path() + "/katana_robot.urdf");
+  std::ifstream selected_file(QString(temporaryDir.path() + "/katana_robot.urdf").toStdString().c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -1628,6 +1628,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH13->setEnabled(false);
     main_window_ui_->lineDH14->setEnabled(false);
 
+    main_window_ui_->lineDH11->setText("0");
+    main_window_ui_->lineDH12->setText("0");
+    main_window_ui_->lineDH13->setText("0");
+    main_window_ui_->lineDH14->setText("0");
+
     main_window_ui_->lineDH21->setEnabled(false);
     main_window_ui_->lineDH22->setEnabled(false);
     main_window_ui_->lineDH23->setEnabled(false);
@@ -1655,6 +1660,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH1min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH1max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH1min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH1max->setValue(0);
 
     main_window_ui_->doubleSpinBoxDH2min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH2max->setEnabled(false);
@@ -1686,6 +1694,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH23->setEnabled(false);
     main_window_ui_->lineDH24->setEnabled(false);
 
+    main_window_ui_->lineDH21->setText("0");
+    main_window_ui_->lineDH22->setText("0");
+    main_window_ui_->lineDH23->setText("0");
+    main_window_ui_->lineDH24->setText("0");
+
     main_window_ui_->lineDH31->setEnabled(false);
     main_window_ui_->lineDH32->setEnabled(false);
     main_window_ui_->lineDH33->setEnabled(false);
@@ -1712,6 +1725,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH2min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH2max->setEnabled(false);
 
+    main_window_ui_->doubleSpinBoxDH2min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH2max->setValue(0);
+
     main_window_ui_->doubleSpinBoxDH3min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH3max->setEnabled(false);
 
@@ -1723,6 +1739,8 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+
+
 
     break;
     }
@@ -1743,6 +1761,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH32->setEnabled(false);
     main_window_ui_->lineDH33->setEnabled(false);
     main_window_ui_->lineDH34->setEnabled(false);
+
+    main_window_ui_->lineDH31->setText("0");
+    main_window_ui_->lineDH32->setText("0");
+    main_window_ui_->lineDH33->setText("0");
+    main_window_ui_->lineDH34->setText("0");
 
     main_window_ui_->lineDH41->setEnabled(false);
     main_window_ui_->lineDH42->setEnabled(false);
@@ -1767,6 +1790,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH3min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH3max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH3min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH3max->setValue(0);
 
     main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
@@ -1802,6 +1828,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH43->setEnabled(false);
     main_window_ui_->lineDH44->setEnabled(false);
 
+    main_window_ui_->lineDH41->setText("0");
+    main_window_ui_->lineDH42->setText("0");
+    main_window_ui_->lineDH43->setText("0");
+    main_window_ui_->lineDH44->setText("0");
+
     main_window_ui_->lineDH51->setEnabled(false);
     main_window_ui_->lineDH52->setEnabled(false);
     main_window_ui_->lineDH53->setEnabled(false);
@@ -1823,6 +1854,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH4min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH4max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH4min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH4max->setValue(0);
 
     main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
@@ -1862,6 +1896,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH53->setEnabled(false);
     main_window_ui_->lineDH54->setEnabled(false);
 
+    main_window_ui_->lineDH51->setText("0");
+    main_window_ui_->lineDH52->setText("0");
+    main_window_ui_->lineDH53->setText("0");
+    main_window_ui_->lineDH54->setText("0");
+
     main_window_ui_->lineDH61->setEnabled(false);
     main_window_ui_->lineDH62->setEnabled(false);
     main_window_ui_->lineDH63->setEnabled(false);
@@ -1881,6 +1920,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH5min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH5max->setEnabled(false);
+
+    main_window_ui_->doubleSpinBoxDH5min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH5max->setValue(0);
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
@@ -1920,6 +1962,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->lineDH63->setEnabled(false);
     main_window_ui_->lineDH64->setEnabled(false);
 
+    main_window_ui_->lineDH61->setText("0");
+    main_window_ui_->lineDH62->setText("0");
+    main_window_ui_->lineDH63->setText("0");
+    main_window_ui_->lineDH64->setText("0");
+
     main_window_ui_->doubleSpinBoxDH1min->setEnabled(true);
     main_window_ui_->doubleSpinBoxDH1max->setEnabled(true);
 
@@ -1938,6 +1985,8 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
 
+    main_window_ui_->doubleSpinBoxDH6min->setValue(0);
+    main_window_ui_->doubleSpinBoxDH6max->setValue(0);
 
     break;
     }
@@ -1998,7 +2047,7 @@ break;
 
 }
 
-void ROSGUI::on_checkBox_3_toggled()
+void ROSGUI::on_pushButton_3_toggled()
 {
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -2038,8 +2087,9 @@ void ROSGUI::on_checkBox_3_toggled()
   valueDH.data[22] =  std::stod(main_window_ui_->lineDH63->text().toStdString());
   valueDH.data[23] =  std::stod(main_window_ui_->lineDH64->text().toStdString());
   std::cout <<  valueDH.data[23] << std::endl;
-
-  if(!jointsv->treeforDH(model,nj_2,valueDH))
+  int rot ;
+  rot = main_window_ui_->comboBox_4->currentIndex();
+  if(!jointsv->treeforDH(model,nj_2,valueDH,rot))
   {
      std::cerr << "Error at model DH" <<std::endl;
   }
@@ -2047,12 +2097,16 @@ void ROSGUI::on_checkBox_3_toggled()
 
   case 1:
     Q_EMIT(on_1DOF());
+    break;
   case 2:
     Q_EMIT(on_2DOF());
+    break;
   case 3:
     Q_EMIT(on_3DOF());
+    break;
   case 4:
     Q_EMIT(on_4DOF());
+    break;
 
   }
 
@@ -2064,33 +2118,40 @@ void ROSGUI::on_checkBox_3_toggled()
   main_window_ui_->spinBox1DOF->setMaximum(main_window_ui_->doubleSpinBoxDH1max->value());
   main_window_ui_->spinBox1DOF->setSingleStep(1);
 
-//  main_window_ui_->dial2DOF->setMinimum(joint_lower[1]*ToG);
-//  main_window_ui_->dial2DOF->setMaximum(joint_upper[1]*ToG);
-//  main_window_ui_->dial2DOF->setSingleStep(1);
-//  main_window_ui_->spinBox2DOF->setMinimum(joint_lower[1]*ToG);
-//  main_window_ui_->spinBox2DOF->setMaximum(joint_upper[1]*ToG);
-//  main_window_ui_->spinBox2DOF->setSingleStep(1);
+  main_window_ui_->dial2DOF->setMinimum(main_window_ui_->doubleSpinBoxDH2min->value());
+  main_window_ui_->dial2DOF->setMaximum(main_window_ui_->doubleSpinBoxDH2max->value());
+  main_window_ui_->dial2DOF->setSingleStep(1);
+  main_window_ui_->spinBox2DOF->setMinimum(main_window_ui_->doubleSpinBoxDH2min->value());
+  main_window_ui_->spinBox2DOF->setMaximum(main_window_ui_->doubleSpinBoxDH2max->value());
+  main_window_ui_->spinBox2DOF->setSingleStep(1);
 
-//  main_window_ui_->dial3DOF->setMinimum(joint_lower[2]*ToG);
-//  main_window_ui_->dial3DOF->setMaximum(joint_upper[2]*ToG);
-//  main_window_ui_->dial3DOF->setSingleStep(1);
-//  main_window_ui_->spinBox3DOF->setMinimum(joint_lower[2]*ToG);
-//  main_window_ui_->spinBox3DOF->setMaximum(joint_upper[2]*ToG);
-//  main_window_ui_->spinBox3DOF->setSingleStep(1);
+  main_window_ui_->dial3DOF->setMinimum(main_window_ui_->doubleSpinBoxDH3min->value());
+  main_window_ui_->dial3DOF->setMaximum(main_window_ui_->doubleSpinBoxDH3max->value());
+  main_window_ui_->dial3DOF->setSingleStep(1);
+  main_window_ui_->spinBox3DOF->setMinimum(main_window_ui_->doubleSpinBoxDH3min->value());
+  main_window_ui_->spinBox3DOF->setMaximum(main_window_ui_->doubleSpinBoxDH3max->value());
+  main_window_ui_->spinBox3DOF->setSingleStep(1);
 
-//  main_window_ui_->dial4DOF->setMinimum(joint_lower[3]*ToG);
-//  main_window_ui_->dial4DOF->setMaximum(joint_upper[3]*ToG);
-//  main_window_ui_->dial4DOF->setSingleStep(1);
-//  main_window_ui_->spinBox4DOF->setMinimum(joint_lower[3]*ToG);
-//  main_window_ui_->spinBox4DOF->setMaximum(joint_upper[3]*ToG);
-//  main_window_ui_->spinBox4DOF->setSingleStep(1);
+  main_window_ui_->dial4DOF->setMinimum(main_window_ui_->doubleSpinBoxDH4min->value());
+  main_window_ui_->dial4DOF->setMaximum(main_window_ui_->doubleSpinBoxDH4max->value());
+  main_window_ui_->dial4DOF->setSingleStep(1);
+  main_window_ui_->spinBox4DOF->setMinimum(main_window_ui_->doubleSpinBoxDH4min->value());
+  main_window_ui_->spinBox4DOF->setMaximum(main_window_ui_->doubleSpinBoxDH4max->value());
+  main_window_ui_->spinBox4DOF->setSingleStep(1);
 
-//  main_window_ui_->dial5DOF->setMinimum(joint_lower[4]*ToG);
-//  main_window_ui_->dial5DOF->setMaximum(joint_upper[4]*ToG);
-//  main_window_ui_->dial5DOF->setSingleStep(1);
-//  main_window_ui_->spinBox5DOF->setMinimum(joint_lower[4]*ToG);
-//  main_window_ui_->spinBox5DOF->setMaximum(joint_upper[4]*ToG);
-//  main_window_ui_->spinBox5DOF->setSingleStep(1);
+  main_window_ui_->dial5DOF->setMinimum(main_window_ui_->doubleSpinBoxDH5min->value());
+  main_window_ui_->dial5DOF->setMaximum(main_window_ui_->doubleSpinBoxDH5max->value());
+  main_window_ui_->dial5DOF->setSingleStep(1);
+  main_window_ui_->spinBox5DOF->setMinimum(main_window_ui_->doubleSpinBoxDH5min->value());
+  main_window_ui_->spinBox5DOF->setMaximum(main_window_ui_->doubleSpinBoxDH5max->value());
+  main_window_ui_->spinBox5DOF->setSingleStep(1);
+
+  main_window_ui_->dial6DOF->setMinimum(main_window_ui_->doubleSpinBoxDH6min->value());
+  main_window_ui_->dial6DOF->setMaximum(main_window_ui_->doubleSpinBoxDH6max->value());
+  main_window_ui_->dial6DOF->setSingleStep(1);
+  main_window_ui_->spinBox6DOF->setMinimum(main_window_ui_->doubleSpinBoxDH6min->value());
+  main_window_ui_->spinBox6DOF->setMaximum(main_window_ui_->doubleSpinBoxDH6max->value());
+  main_window_ui_->spinBox6DOF->setSingleStep(1);
 
 //  main_window_ui_->dial6DOF->setMinimum(joint_lower[5]*ToG);
 //  main_window_ui_->dial6DOF->setMaximum(joint_upper[5]*ToG);
@@ -2108,4 +2169,24 @@ void ROSGUI::on_checkBox_3_toggled()
   }
 
 //      joint_value_pub.publish(send_val);
+  send_val.data.resize(12);
+  send_val.data[0] = main_window_ui_->doubleSpinBoxDH1min->value();
+  send_val.data[1] = main_window_ui_->doubleSpinBoxDH2min->value();
+  send_val.data[2] = main_window_ui_->doubleSpinBoxDH3min->value();
+  send_val.data[3] = main_window_ui_->doubleSpinBoxDH4min->value();
+  send_val.data[4] = main_window_ui_->doubleSpinBoxDH5min->value();
+  send_val.data[5] = main_window_ui_->doubleSpinBoxDH6min->value();
+
+  send_val.data[6] = main_window_ui_->doubleSpinBoxDH1max->value();
+  send_val.data[7] = main_window_ui_->doubleSpinBoxDH2max->value();
+  send_val.data[8] = main_window_ui_->doubleSpinBoxDH3max->value();
+  send_val.data[9] = main_window_ui_->doubleSpinBoxDH4max->value();
+  send_val.data[10]= main_window_ui_->doubleSpinBoxDH5max->value();
+  send_val.data[11]= main_window_ui_->doubleSpinBoxDH6max->value();
+
+  joint_value_pub.publish(send_val);
+
 }
+
+
+
