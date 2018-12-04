@@ -101,6 +101,7 @@ public:
       QString stringX, stringY, stringZ;
       QString stringYaw, stringPitch, stringRoll;
       QString dataM;
+      std::string filePath;
 
       double positions;
       unsigned int nj;

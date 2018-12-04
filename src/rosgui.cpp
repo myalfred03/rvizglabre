@@ -409,9 +409,10 @@ void ROSGUI::onPrism_URDF(){
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/prismatic.urdf", temporaryDir2.path() + "/prismatic.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/prismatic.urdf").toStdString().c_str());
+//  QTemporaryDir temporaryDir2;
+
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/prismatic.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -432,9 +433,9 @@ void ROSGUI::onCartesian_URDF(){
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/cartesian.urdf", temporaryDir2.path() + "/cartesian.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/cartesian.urdf").toStdString().c_str());
+
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/cartesian.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -451,10 +452,9 @@ void ROSGUI::onCylindrical_URDF()
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/cylindrical.urdf", temporaryDir2.path() + "/cylindrical.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/cylindrical.urdf").toStdString().c_str());
+  nh_.setParam("tip_link","tool0");  
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/cylindrical.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -474,9 +474,8 @@ void ROSGUI::on2DOFI_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/katana_robot.urdf", temporaryDir.path() + "/katana_robot.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/katana_robot.urdf").toStdString().c_str());
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/katana_robot.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -496,9 +495,8 @@ void ROSGUI::on3DOFI_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","link_7");
-  QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/sia10f.urdf", temporaryDir.path() + "/sia10f.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/sia10f.urdf").toStdString().c_str());
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/sia10f.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -516,9 +514,8 @@ void ROSGUI::on4DOFI_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/kr210l150.urdf", temporaryDir.path() + "/kr210l150.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/kr210l150.urdf").toStdString().c_str());
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/kr210l150.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -535,9 +532,8 @@ void ROSGUI::on5DOFI_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","link_6");
-  QTemporaryDir temporaryDir;
-  QFile::copy(":/robots/URDF/modelos/mh5.urdf", temporaryDir.path() + "/mh5.urdf");
-  std::ifstream selected_file(QString(temporaryDir.path() + "/mh5.urdf").toStdString().c_str());
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/mh5.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
@@ -566,10 +562,8 @@ void ROSGUI::on6DOFI_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-   QTemporaryDir temporaryDir;
-   QFile::copy(":/robots/URDF/modelos/irb120_3_58.urdf", temporaryDir.path() + "/irb120_3_58.urdf");
-   std::ifstream selected_file(QString(temporaryDir.path() + "/irb120_3_58.urdf").toStdString().c_str());
-
+   filePath= ros::package::getPath("rvizglabre") + "/modelos/irb120_3_58.urdf";
+   std::ifstream selected_file(filePath);
 // CON COPIA DE ARCHIVO
 
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
@@ -593,10 +587,8 @@ void ROSGUI::on4DOFs_URDF()
 //  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 //  this->updateURDF(file_contents);
   main_window_ui_->label_15->setText("°");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/irb5400.urdf", temporaryDir2.path() + "/irb5400.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/irb5400.urdf").toStdString().c_str());
-
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/irb5400.urdf";
+  std::ifstream selected_file(filePath);
 // CON COPIA DE ARCHIVO
 
  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
@@ -640,9 +632,8 @@ void ROSGUI::on3DOFs_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  QTemporaryDir temporaryDir2;
-  QFile::copy(":/robots/URDF/modelos/3dof.urdf", temporaryDir2.path() + "/3dof.urdf");
-  std::ifstream selected_file(QString(temporaryDir2.path() + "/3dof.urdf").toStdString().c_str());
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/3dof.urdf";
+  std::ifstream selected_file(filePath.c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
