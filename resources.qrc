@@ -28,26 +28,8 @@
         <file>img/kinetics.png</file>
         <file>img/turn_left.png</file>
         <file>img/anticlock.png</file>
-    </qresource>
-    <qresource prefix="/robots/URDF">
-        <file>modelos/bmda3.urdf</file>
-        <file>modelos/irb120_3_58.urdf</file>
-        <file>modelos/irb5400.urdf</file>
-        <file>modelos/kr16_2.urdf</file>
-        <file>modelos/kr210l150.urdf</file>
-        <file>modelos/mh5.urdf</file>
-        <file>modelos/sia10f.urdf</file>
-        <file>modelos/sia20d.urdf</file>
-        <file>modelos/urdf.rviz</file>
-        <file>modelos/robot2dof.urdf</file>
-        <file>modelos/uni.urdf</file>
-        <file>modelos/pan_tilt.urdf</file>
-        <file>modelos/3dof.urdf</file>
-        <file>modelos/prismatic.urdf</file>
-        <file>modelos/cartesian.urdf</file>
-        <file>modelos/cylindrical.urdf</file>
-        <file>modelos/two_link_planar_xy.urdf</file>
-        <file>modelos/two_link_yz.urdf</file>
-        <file>modelos/katana_robot.urdf</file>
+        <file>img/Fanuc-logo.jpg</file>
+        <file>img/neuronics.png</file>
+        <file>img/ur-logo.png</file>
     </qresource>
 </RCC>

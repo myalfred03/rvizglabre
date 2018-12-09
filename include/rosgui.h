@@ -190,15 +190,29 @@ public Q_SLOTS:
 
       // Cargando Robots
       void offWidgets();
-      void on2DOFI_URDF();
-      void on3DOFI_URDF();
-      void on4DOFI_URDF();
-      void on5DOFI_URDF();
-      void on6DOFI_URDF();
-      void on4DOFs_URDF();
+
       void on2DOFs_URDF();
       void on3DOFs_URDF();
+      void on4DOFs_URDF();
+      void on5DOFs_URDF();
       void on6DOFs_URDF();
+
+
+      void onKUKA1_URDF();
+      void onKUKA2_URDF();
+      void onKUKA3_URDF();
+      void onKUKA4_URDF();
+      void onABB1_URDF();
+      void onABB2_URDF();
+      void onABB3_URDF();
+      void onABB4_URDF();
+      void onFANUC1_URDF();
+      void onFANUC2_URDF();
+      void onFANUC3_URDF();
+      void onMOTOM1_URDF();
+      void onMOTOM2_URDF();
+      void onKATANA_URDF();
+      void onUR5_URDF();
 
       void onPrism_URDF();
       void onRevol_URDF();

@@ -154,16 +154,32 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Control de dialer y spinbox activos
     connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
+
     connect(main_window_ui_->checkBox2DOFs,     SIGNAL(toggled(bool)), SLOT(on_2DOF()));
-    connect(main_window_ui_->checkBox2DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBox3DOFs,     SIGNAL(toggled(bool)), SLOT(on_3DOF()));
-    connect(main_window_ui_->checkBox3DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBox4DOFs,     SIGNAL(toggled(bool)), SLOT(on_4DOF()));
-    connect(main_window_ui_->checkBox4DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBox5DOFs,     SIGNAL(toggled(bool)), SLOT(on_5DOF()));
-    connect(main_window_ui_->checkBox5DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBox6DOFs,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
-    connect(main_window_ui_->checkBox6DOFI,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+
+
+    connect(main_window_ui_->checkBoxKuka1,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxKuka2,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxKuka3,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxKuka4,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxFanuc1,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxFanuc2,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxFanuc3,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxABB1,      SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxABB2,      SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxABB3,      SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxABB4,      SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxMotoman1,  SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxMotoman2,  SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxKatana,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+    connect(main_window_ui_->checkBoxUR5,       SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+
+
+
     //Cinematica Directa
     //Execute FK
     connect(main_window_ui_->checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
@@ -183,20 +199,38 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->spinBox6DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     //Cinematica Directa
 
+    //Industrial Robots (1)
+    connect(main_window_ui_->checkBoxKuka1, SIGNAL(toggled(bool)), SLOT(onKUKA1_URDF()));
+    connect(main_window_ui_->checkBoxKuka2, SIGNAL(toggled(bool)), SLOT(onKUKA2_URDF()));
+    connect(main_window_ui_->checkBoxKuka3, SIGNAL(toggled(bool)), SLOT(onKUKA3_URDF()));
+    connect(main_window_ui_->checkBoxKuka4, SIGNAL(toggled(bool)), SLOT(onKUKA4_URDF()));
+    connect(main_window_ui_->checkBoxFanuc1, SIGNAL(toggled(bool)), SLOT(onFANUC1_URDF()));
 
-    connect(main_window_ui_->checkBox6DOFI, SIGNAL(toggled(bool)), SLOT(on6DOFI_URDF()));
-    connect(main_window_ui_->checkBox5DOFI, SIGNAL(toggled(bool)), SLOT(on5DOFI_URDF()));
-    connect(main_window_ui_->checkBox4DOFI, SIGNAL(toggled(bool)), SLOT(on4DOFI_URDF()));
-    connect(main_window_ui_->checkBox3DOFI, SIGNAL(toggled(bool)), SLOT(on3DOFI_URDF()));
-    connect(main_window_ui_->checkBox2DOFI, SIGNAL(toggled(bool)), SLOT(on2DOFI_URDF()));
+    //Industrial Robots (2)
+    connect(main_window_ui_->checkBoxFanuc2, SIGNAL(toggled(bool)), SLOT(onFANUC2_URDF()));
+    connect(main_window_ui_->checkBoxFanuc3, SIGNAL(toggled(bool)), SLOT(onFANUC3_URDF()));
+    connect(main_window_ui_->checkBoxABB1, SIGNAL(toggled(bool)), SLOT(onABB1_URDF()));
+    connect(main_window_ui_->checkBoxABB2, SIGNAL(toggled(bool)), SLOT(onABB2_URDF()));
+    connect(main_window_ui_->checkBoxABB3, SIGNAL(toggled(bool)), SLOT(onABB3_URDF()));
+
+    //Industrial Robots (3)
+    connect(main_window_ui_->checkBoxABB4, SIGNAL(toggled(bool)), SLOT(onABB4_URDF()));
+    connect(main_window_ui_->checkBoxMotoman1, SIGNAL(toggled(bool)), SLOT(onMOTOM1_URDF()));
+    connect(main_window_ui_->checkBoxMotoman2, SIGNAL(toggled(bool)), SLOT(onMOTOM2_URDF()));
+    connect(main_window_ui_->checkBoxKatana, SIGNAL(toggled(bool)), SLOT(onKATANA_URDF()));
+    connect(main_window_ui_->checkBoxUR5, SIGNAL(toggled(bool)), SLOT(onUR5_URDF()));
+
+
+    //Simple Robots
     connect(main_window_ui_->checkBox2DOFs, SIGNAL(toggled(bool)), SLOT(on2DOFs_URDF()));
     connect(main_window_ui_->checkBox3DOFs, SIGNAL(toggled(bool)), SLOT(on3DOFs_URDF()));
     connect(main_window_ui_->checkBox4DOFs, SIGNAL(toggled(bool)), SLOT(on4DOFs_URDF()));
+    connect(main_window_ui_->checkBox5DOFs, SIGNAL(toggled(bool)), SLOT(on5DOFs_URDF()));
     connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on6DOFs_URDF()));
 
     //Classic Robots
-    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
-    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(onCylindrical_URDF()));
+    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
+    connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(onCylindrical_URDF()));
 
     //Basic Joints
     connect(main_window_ui_->checkBoxRevolute,  SIGNAL(toggled(bool)), SLOT(onRevol_URDF()));
@@ -398,6 +432,62 @@ void ROSGUI::onRevol_URDF(){
 
 }
 
+void ROSGUI::on2DOFs_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+//  QTemporaryDir temporaryDir2;
+
+//  QFile::copy(":/robots/URDF/modelos/two_link_yz.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
+
+
+
+  //    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/two_link_yz.urdf";
+  std::ifstream selected_file(filePath.c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+void ROSGUI::on3DOFs_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/3dof.urdf";
+  std::ifstream selected_file(filePath.c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+void ROSGUI::on4DOFs_URDF(){
+  ToG    = 57.295779513;
+
+}
+void ROSGUI::on5DOFs_URDF(){
+  ToG    = 57.295779513;
+
+}
+
+void ROSGUI::on6DOFs_URDF(){
+  ToG    = 57.295779513;
+
+}
+
+
 void ROSGUI::onPrism_URDF(){
   ToG =10; //Meter ->Centimeter
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
@@ -460,50 +550,7 @@ void ROSGUI::onCylindrical_URDF()
   updatetoURDF();
 }
 
-
-void ROSGUI::on2DOFI_URDF()
-{
-  ToG    = 57.295779513;
-  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
-  QFont f( "Sans Serif", 9, QFont::Normal);
-  main_window_ui_->label_15->setFont(f);
-  main_window_ui_->label_15->setText("°");
-
-  resetvalue();
-  nh_.deleteParam("root_link");
-  nh_.deleteParam("tip_link");
-  nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","tool0");
-  filePath= ros::package::getPath("rvizglabre") + "/modelos/katana_robot.urdf";
-  std::ifstream selected_file(filePath);
-  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-  this->updateURDF(file_contents);
-  updatetoURDF();
-
-
-}
-
-void ROSGUI::on3DOFI_URDF()
-{
-  ToG    = 57.295779513;
-  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
-  QFont f( "Sans Serif", 12, QFont::Bold);
-  main_window_ui_->label_15->setFont(f);
-  main_window_ui_->label_15->setText("°");
-  resetvalue();
-  nh_.deleteParam("root_link");
-  nh_.deleteParam("tip_link");
-  nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","link_7");
-  filePath= ros::package::getPath("rvizglabre") + "/modelos/sia10f.urdf";
-  std::ifstream selected_file(filePath);
-  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-  this->updateURDF(file_contents);
-  updatetoURDF();
-
-}
-
-void ROSGUI::on4DOFI_URDF()
+void ROSGUI::onKUKA1_URDF()
 {
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
@@ -522,24 +569,121 @@ void ROSGUI::on4DOFI_URDF()
 
 }
 
-void ROSGUI::on5DOFI_URDF()
+void ROSGUI::onKUKA2_URDF()
 {
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   main_window_ui_->label_15->setText("°");
+
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","link_6");
-  filePath= ros::package::getPath("rvizglabre") + "/modelos/mh5.urdf";
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/kr16_2.urdf";
   std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
 
 }
-void ROSGUI::on6DOFI_URDF()
+
+void ROSGUI::onKUKA3_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/kr120r2500.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onKUKA4_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/lbr_iiwa_14.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onFANUC1_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/fanuc_lrmate200ic.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onFANUC2_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/fanuc_m10ia.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onFANUC3_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/r1000ia80f.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onABB1_URDF()
 {
   ToG    = 57.295779513;
 
@@ -576,29 +720,65 @@ void ROSGUI::on6DOFI_URDF()
 
 }
 
-
-void ROSGUI::on4DOFs_URDF()
+void ROSGUI::onABB2_URDF()
 {
   ToG    = 57.295779513;
-
-//  file_name_ = "/home/udp/ros_qtc_plugin/src/urdf/urdf/robot1.urdf";
-////  std::string file_contents =
-//  std::ifstream selected_file(file_name_.toStdString().c_str());
-//  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-//  this->updateURDF(file_contents);
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/irb2600.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onABB3_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/irb6640.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
+}
+
+void ROSGUI::onABB4_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
   filePath= ros::package::getPath("rvizglabre") + "/modelos/irb5400.urdf";
   std::ifstream selected_file(filePath);
-// CON COPIA DE ARCHIVO
-
- std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-
- this->updateURDF(file_contents);
- updatetoURDF();
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
 
 }
 
-void ROSGUI::on2DOFs_URDF()
+
+void ROSGUI::onMOTOM1_URDF()
 {
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
@@ -607,22 +787,16 @@ void ROSGUI::on2DOFs_URDF()
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","tool0");
-//  QTemporaryDir temporaryDir2;
-
-//  QFile::copy(":/robots/URDF/modelos/two_link_yz.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
-
-
-
-  //    file_name_ = "/home/yesser/ros_qtc_plugin/src/rvizglabre/modelos/irb120_3_58.urdf";
-  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/two_link_yz.urdf";
-  std::ifstream selected_file(filePath.c_str());
+  nh_.setParam("tip_link","link_6");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/mh5.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
 
 }
-void ROSGUI::on3DOFs_URDF()
+
+void ROSGUI::onMOTOM2_URDF()
 {
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
@@ -631,18 +805,55 @@ void ROSGUI::on3DOFs_URDF()
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","tool0");
-  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/3dof.urdf";
-  std::ifstream selected_file(filePath.c_str());
+  nh_.setParam("tip_link","link_7");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/sia10f.urdf";
+  std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
 
 }
-void ROSGUI::on6DOFs_URDF(){
+
+void ROSGUI::onKATANA_URDF()
+{
   ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/katana_robot.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+
 
 }
+
+void ROSGUI::onUR5_URDF()
+{
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/ur5_robot.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+}
+
 
 void ROSGUI::updatetreeforDH(KDL::Tree modelU){
   if(robot_state_pub_ != NULL)
@@ -2178,6 +2389,3 @@ void ROSGUI::on_pushButton_3_toggled()
   joint_value_pub.publish(send_val);
 
 }
-
-
-

@@ -7,8 +7,8 @@
        				<box size="0.2 .3 .1"/>
      			</geometry>
                         <origin rpy="0 0 0" xyz="0 0 0.05"/>
-			<material name="white">
-				<color rgba="1 1 1 1"/>
+			<material name="red">
+				<color rgba="1 0 0 1"/>
 			</material>
    		</visual>
 		<collision>
@@ -26,8 +26,8 @@
        				<box size="0.05 .05 0.5"/>
      			</geometry>
                         <origin rpy="0 0 0" xyz="0 0 0.25"/>
-			<material name="white">
-				<color rgba="1 1 1 1"/>
+			<material name="red">
+				<color rgba="1 0 0 1"/>
 			</material>
    		</visual>
 		<collision>
