@@ -49,7 +49,7 @@ public:
     QAction *actionTF_RVIZ;
     QAction *actionHHH;
     QWidget *centralWidget;
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout_44;
     QGridLayout *gridLayout_18;
     QGridLayout *gridLayout_43;
     QGridLayout *gridLayout_6;
@@ -556,7 +556,6 @@ public:
     QFrame *line_3;
     QGridLayout *gridLayout_10;
     QMdiArea *mdiArea;
-    QSpacerItem *horizontalSpacer_8;
     QFrame *line_22;
     QLabel *label;
     QMenuBar *menuBar;
@@ -600,16 +599,15 @@ public:
         centralWidget->setFocusPolicy(Qt::NoFocus);
         centralWidget->setContextMenuPolicy(Qt::PreventContextMenu);
         centralWidget->setLayoutDirection(Qt::LeftToRight);
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(7, 7, 1311, 704));
-        gridLayout_18 = new QGridLayout(layoutWidget);
+        gridLayout_44 = new QGridLayout(centralWidget);
+        gridLayout_44->setSpacing(6);
+        gridLayout_44->setContentsMargins(11, 11, 11, 11);
+        gridLayout_44->setObjectName(QStringLiteral("gridLayout_44"));
+        gridLayout_18 = new QGridLayout();
         gridLayout_18->setSpacing(6);
-        gridLayout_18->setContentsMargins(11, 11, 11, 11);
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         gridLayout_18->setSizeConstraint(QLayout::SetMinimumSize);
         gridLayout_18->setHorizontalSpacing(0);
-        gridLayout_18->setContentsMargins(0, 0, 0, 0);
         gridLayout_43 = new QGridLayout();
         gridLayout_43->setSpacing(6);
         gridLayout_43->setObjectName(QStringLiteral("gridLayout_43"));
@@ -619,7 +617,7 @@ public:
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setSizeConstraint(QLayout::SetMinimumSize);
         gridLayout_6->setContentsMargins(0, -1, -1, 8);
-        line_2 = new QFrame(layoutWidget);
+        line_2 = new QFrame(centralWidget);
         line_2->setObjectName(QStringLiteral("line_2"));
         line_2->setMaximumSize(QSize(10, 16777215));
         line_2->setAutoFillBackground(false);
@@ -628,7 +626,7 @@ public:
 
         gridLayout_6->addWidget(line_2, 0, 2, 3, 1);
 
-        tabWidget2 = new QTabWidget(layoutWidget);
+        tabWidget2 = new QTabWidget(centralWidget);
         tabWidget2->setObjectName(QStringLiteral("tabWidget2"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
@@ -3752,7 +3750,7 @@ public:
 
         gridLayout_6->addWidget(tabWidget2, 2, 0, 1, 1);
 
-        tabWidget3 = new QTabWidget(layoutWidget);
+        tabWidget3 = new QTabWidget(centralWidget);
         tabWidget3->setObjectName(QStringLiteral("tabWidget3"));
         tabWidget3->setMaximumSize(QSize(450, 720));
         QFont font11;
@@ -4193,7 +4191,7 @@ public:
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(4, 4, 4, 4);
-        line = new QFrame(layoutWidget);
+        line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         QFont font12;
         font12.setFamily(QStringLiteral("Abyssinica SIL"));
@@ -4210,13 +4208,13 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_23 = new QLabel(layoutWidget);
+        label_23 = new QLabel(centralWidget);
         label_23->setObjectName(QStringLiteral("label_23"));
         label_23->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(label_23);
 
-        comboBox = new QComboBox(layoutWidget);
+        comboBox = new QComboBox(centralWidget);
         QIcon icon7;
         icon7.addFile(QStringLiteral(":/images/img/noun_.png"), QSize(), QIcon::Normal, QIcon::Off);
         comboBox->addItem(icon7, QString());
@@ -4236,7 +4234,7 @@ public:
 
         horizontalLayout->addWidget(comboBox);
 
-        comboBox_2 = new QComboBox(layoutWidget);
+        comboBox_2 = new QComboBox(centralWidget);
         QIcon icon12;
         icon12.addFile(QStringLiteral(":/images/img/Interact.png"), QSize(), QIcon::Normal, QIcon::Off);
         comboBox_2->addItem(icon12, QString());
@@ -4265,13 +4263,13 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_78 = new QLabel(layoutWidget);
+        label_78 = new QLabel(centralWidget);
         label_78->setObjectName(QStringLiteral("label_78"));
         label_78->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_6->addWidget(label_78);
 
-        comboBox_3 = new QComboBox(layoutWidget);
+        comboBox_3 = new QComboBox(centralWidget);
         QIcon icon18;
         icon18.addFile(QStringLiteral(":/images/img/kinetics.png"), QSize(), QIcon::Normal, QIcon::Off);
         comboBox_3->addItem(icon18, QString());
@@ -4291,7 +4289,7 @@ public:
 
         verticalLayout->addLayout(gridLayout_19);
 
-        line_3 = new QFrame(layoutWidget);
+        line_3 = new QFrame(centralWidget);
         line_3->setObjectName(QStringLiteral("line_3"));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
@@ -4301,7 +4299,7 @@ public:
         gridLayout_10 = new QGridLayout();
         gridLayout_10->setSpacing(6);
         gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        mdiArea = new QMdiArea(layoutWidget);
+        mdiArea = new QMdiArea(centralWidget);
         mdiArea->setObjectName(QStringLiteral("mdiArea"));
         sizePolicy.setHeightForWidth(mdiArea->sizePolicy().hasHeightForWidth());
         mdiArea->setSizePolicy(sizePolicy);
@@ -4311,24 +4309,20 @@ public:
 
         verticalLayout->addLayout(gridLayout_10);
 
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_8);
-
 
         gridLayout_43->addLayout(verticalLayout, 0, 1, 1, 1);
 
 
         gridLayout_18->addLayout(gridLayout_43, 2, 0, 1, 1);
 
-        line_22 = new QFrame(layoutWidget);
+        line_22 = new QFrame(centralWidget);
         line_22->setObjectName(QStringLiteral("line_22"));
         line_22->setFrameShape(QFrame::HLine);
         line_22->setFrameShadow(QFrame::Sunken);
 
         gridLayout_18->addWidget(line_22, 1, 0, 1, 1);
 
-        label = new QLabel(layoutWidget);
+        label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         QFont font13;
         font13.setFamily(QStringLiteral("Arial Black"));
@@ -4343,10 +4337,13 @@ public:
 
         gridLayout_18->addWidget(label, 0, 0, 1, 1);
 
+
+        gridLayout_44->addLayout(gridLayout_18, 0, 0, 1, 1);
+
         ROSGUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ROSGUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1325, 18));
+        menuBar->setGeometry(QRect(0, 0, 1325, 19));
         menuFILE = new QMenu(menuBar);
         menuFILE->setObjectName(QStringLiteral("menuFILE"));
         ROSGUI->setMenuBar(menuBar);

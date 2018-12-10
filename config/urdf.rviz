@@ -6,8 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /ReachabilityMap1
+        - /ReachabilityMap1/Poses Property1
       Splitter Ratio: 0.5
-    Tree Height: 449
+    Tree Height: 609
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -27,6 +29,9 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: ""
+  - Class: base_placement_plugin/Base Placement Plug-In
+    Name: Base Placement Plug-In
+    TextEntry: test_field
 Visualization Manager:
   Class: ""
   Displays:
@@ -78,6 +83,21 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        link_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -97,13 +117,11 @@ Visualization Manager:
           Value: true
         link_3:
           Value: true
-        robot_editor/base_link:
+        link_4:
           Value: true
-        robot_editor/link_1:
+        link_5:
           Value: true
-        robot_editor/link_2:
-          Value: true
-        robot_editor/link_3:
+        link_6:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -115,8 +133,32 @@ Visualization Manager:
           link_1:
             link_2:
               link_3:
-                {}
+                link_4:
+                  link_5:
+                    link_6:
+                      {}
       Update Interval: 0
+      Value: true
+    - Class: workspace_visualization/ReachabilityMap
+      Color by Reachability: true
+      Disect: Full
+      Enabled: true
+      Highest Reachability Index: 50
+      Lowest Reachability Index: 0
+      Name: ReachabilityMap
+      Poses Property:
+        Alpha: 0.200000003
+        Color: 204; 51; 204
+        Length: 0.00999999978
+      Shape: Sphere
+      Shape Property:
+        Alpha: 1
+        Color: 255; 225; 102
+        Size: 0.0500000007
+      Show Poses: false
+      Show Shape: true
+      Topic: /reachability_map
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
@@ -143,33 +185,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.79863358
+      Distance: 2.29893064
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.275510371
-        Y: -0.251162916
-        Z: -0.0119541306
+        X: -0.216713473
+        Y: -0.755944014
+        Z: 0.175220132
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.629796743
+      Pitch: 0.475203693
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.463553786
+      Yaw: 1.61355662
     Saved: ~
 Window Geometry:
+  Base Placement Plug-In:
+    collapsed: false
   Displays:
     collapsed: false
-  Height: 722
+  Height: 876
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001670000024ffc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000250000024f000000d600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f0000024ffc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007300000000250000024f000000ab00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004b00000003efc0100000002fb0000000800540069006d00650100000000000004b0000002a400fffffffb0000000800540069006d00650100000000000004500000000000000000000003440000024f00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000018d000002effc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000025000002ef000000d600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000002c004200610073006500200050006c006100630065006d0065006e007400200050006c00750067002d0049006e000000010000000214000001fb00ffffff000000010000010f0000024ffc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007300000000250000024f000000ab00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000064000000038fc0100000002fb0000000800540069006d0065010000000000000640000002a400fffffffb0000000800540069006d00650100000000000004500000000000000000000004ae000002ef00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -178,6 +222,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1200
-  X: 60
-  Y: 21
+  Width: 1600
+  X: 1366
+  Y: 24
