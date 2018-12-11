@@ -39,6 +39,8 @@ find_package(catkin REQUIRED COMPONENTS
   #book
   # FK KDL::ChainFkSolverPos_recursive
   kdl_conversions
+
+  workspace_visualization
   # FK
 )
 
@@ -84,6 +86,7 @@ catkin_package(
   moveit_ros_planning
   moveit_visual_tools
   moveit_msgs
+  workspace_visualization
   DEPENDS
   orocos_kdl
 #roscpp

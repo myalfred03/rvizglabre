@@ -58,6 +58,13 @@
 
 //rviz_cbf_plugin
 #include <moveit/macros/class_forward.h>
+//Rviz workspace
+
+#include "reachability_map_display.h"
+
+namespace workspace_visualization{
+class ReachMapDisplay;
+}
 namespace moveit_rviz_plugin
 {
 //  class RobotStateVisualization;
@@ -166,6 +173,7 @@ private:
 //  rviz::Display* grid_;
   rviz::Display* robot_model_;
   rviz::Display* robot_display_;
+  rviz::Display* robot_workspace_;
   //moveit_rviz_plugin::RobotStateDisplay* robot_display_;
 
   //moveit_rviz_plugin::MotionPlanningDisplay *robot_display_;
@@ -175,6 +183,7 @@ private:
     robot_state::RobotStatePtr robot_state_ptr_;
    moveit_msgs::DisplayRobotState display_state_msg_;
     rviz::InteractiveMarkerDisplay* int_marker_display_;
+  workspace_visualization::ReachMapDisplay workspace;
 //    moveit_rviz_plugin::RobotStateVisualizationPtr robot_;
 
 };

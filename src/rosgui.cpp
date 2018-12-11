@@ -276,10 +276,8 @@ ROSGUI::ROSGUI(QWidget *parent)
 
 
 //offWidgets();
-
-QTemporaryDir temporaryDir2;
-QFile::copy(":/robots/URDF/modelos/uni.urdf", temporaryDir2.path() + "/uni.urdf");
-std::ifstream selected_file(QString(temporaryDir2.path() + "/uni.urdf").toStdString().c_str());
+std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/uni.urdf";
+std::ifstream selected_file(filePath.c_str());
 std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 this->updateURDF(file_contents);
 

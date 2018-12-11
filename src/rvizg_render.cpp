@@ -63,7 +63,7 @@ QWidget(parent)
 
   rviz::YamlConfigReader reader;
   rviz::Config config;
-  std::string filename = ros::package::getPath("rvizglabre")+"/config/q2.rviz" ;
+  std::string filename = ros::package::getPath("rvizglabre")+"/config/virtuallab.rviz" ;
   reader.readFile( config, QString::fromStdString( filename ));
       if( !reader.error() )
       {
@@ -208,7 +208,13 @@ QWidget(parent)
 
   connect( manager_, SIGNAL( statusUpdate( const QString& )), this, SIGNAL( statusUpdate( const QString& )));
 
-
+//---------------------Workspace------------------------//
+  robot_workspace_ = manager_->createDisplay("workspace_visualization/ReachabilityMap", "Robot Workspace", true);
+  robot_workspace_->subProp("Topic")->setValue("reachability_map");
+  robot_workspace_->subProp("Show Shape")->setValue(true);
+  robot_workspace_->subProp("Color by Reachability")->setValue(true);
+  robot_workspace_->subProp("Shape")->setValue("Sphere");
+  robot_workspace_->subProp("Disect")->setValue("Full");
 
 //----------------------robot Model---------------------//
 
