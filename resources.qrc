@@ -31,5 +31,6 @@
         <file>img/Fanuc-logo.jpg</file>
         <file>img/neuronics.png</file>
         <file>img/ur-logo.png</file>
+        <file>img/ReachabilityMap.png</file>
     </qresource>
 </RCC>

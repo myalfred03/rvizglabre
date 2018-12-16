@@ -209,7 +209,7 @@ QWidget(parent)
   connect( manager_, SIGNAL( statusUpdate( const QString& )), this, SIGNAL( statusUpdate( const QString& )));
 
 //---------------------Workspace------------------------//
-  robot_workspace_ = manager_->createDisplay("workspace_visualization/ReachabilityMap", "Robot Workspace", true);
+  robot_workspace_ = manager_->createDisplay("workspace_visualization/ReachabilityMap", "Robot Workspace", false);
   robot_workspace_->subProp("Topic")->setValue("reachability_map");
   robot_workspace_->subProp("Show Shape")->setValue(true);
   robot_workspace_->subProp("Color by Reachability")->setValue(true);
@@ -235,6 +235,7 @@ QWidget(parent)
 
   ROS_ASSERT( grid_ != NULL );
   this->refresh();
+
   this->refreshDH();
 
 
@@ -362,6 +363,11 @@ void MyViz::refresh(const std::string& fixed_frame)
         }
 int_marker_display_->setEnabled(true);
 
+
+
+
+
+
 //----------------------robot Model---------------------//
 
 
@@ -461,6 +467,12 @@ void MyViz::refreshRM(bool rbrv)
 {
   robot_model_->setEnabled(rbrv);
 //  robot_display_->setEnabled(rbrv);
+
+}
+void MyViz::refreshWs(bool ws)
+{
+  robot_workspace_->setEnabled(ws);
+  robot_workspace_->subProp("Show Shape")->setValue(ws);
 
 }
 //void MyViz::datameasure(QString &data)

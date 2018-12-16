@@ -53,6 +53,7 @@
 //----
 #include <std_msgs/Float32.h>
 #include <std_msgs/Float32MultiArray.h>
+#include "std_msgs/String.h"
 
 
 class QMainWindow;
@@ -102,6 +103,8 @@ public:
       QString stringYaw, stringPitch, stringRoll;
       QString dataM;
       std::string filePath;
+      std::string filemap;
+      QString filePathmap;
 
       double positions;
       unsigned int nj;
@@ -114,6 +117,7 @@ public:
 
       ros::NodeHandle nh_;
       ros::Publisher joint_pub;
+      ros::Publisher map_reuleaux;
       ros::Publisher joint_value_pub;
       ros::Subscriber joint_sub;
       ros::Publisher robot_state_vis_pub_;
@@ -121,8 +125,9 @@ public:
       moveit_msgs::DisplayRobotState display_state_msg_;
       std_msgs::Float32MultiArray send_val;
 
-
       std_msgs::Float32MultiArray valueDH;
+
+      std_msgs::String map;
 
 
 
@@ -231,6 +236,7 @@ trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& n
     //  void on_comboBox_activated(int index);
       void on_comboBox_currentIndexChanged(int index);
       void on_comboBox_2_currentIndexChanged(int index);
+      void on_checkBox_3_toggled(bool x);
 
 Q_SIGNALS:
 void statusTool(int message );
@@ -252,6 +258,8 @@ void statusTool(int message );
 
    //QMainWindow main_window_;
 //protected:
+
+
 
 
 

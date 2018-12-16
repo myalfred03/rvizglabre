@@ -73,7 +73,7 @@ Visualization Manager:
     - Class: workspace_visualization/ReachabilityMap
       Color by Reachability: true
       Disect: Full
-      Enabled: true
+      Enabled: false
       Highest Reachability Index: 100
       Lowest Reachability Index: 0
       Name: ReachabilityMap

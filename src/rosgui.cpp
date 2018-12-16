@@ -66,6 +66,7 @@
 const double FACTOR = 1;
 double ToG    = 57.295779513;
 const double resetv  = 0;
+static bool Ws = false;
 
 
 ROSGUI::ROSGUI(QWidget *parent)
@@ -252,7 +253,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
 
 
-//   QObject::connect(main_window_ui_.checkBox_3,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_3_toggled(int)));
+   connect(main_window_ui_->checkBox_3,    SIGNAL(toggled(bool data)), this, SLOT(on_checkBox_3_toggled(data)));
 //   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
  //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
    connect(main_window_ui_->comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
@@ -281,9 +282,13 @@ std::ifstream selected_file(filePath.c_str());
 std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
 this->updateURDF(file_contents);
 
-//QProcess *proc = new QProcess();
-//proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
 
+//filemap = ros::package::getPath("rvizglabre") + "/maps/fanuc_r1000ia80f.h5";
+//filePathmap = QString::fromUtf8(filemap.c_str());
+
+// proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun map_creator load_reachability_map\" \filePathmap\ ");
+//proc->start("bash",QStringList() << "-i" << "-c" << \
+//                     "rosrun map_creator load_reachability_map" + filePathmap );
 
 //main_window_ui_.dial1DOF->setMinimum(0);
 //main_window_ui_.dial1DOF->setMaximum(10);
@@ -291,18 +296,25 @@ this->updateURDF(file_contents);
 //     mRviz->datameasure(dataM);
 //     main_window_ui_->label_60->setText(dataM);
 
+//filemap = ros::package::getPath("rvizglabre") + "/maps/fanuc_r1000ia80f.h5";
+//filePathmap = QString::fromUtf8(filemap.c_str());
 
+
+//proc->start("gnome-terminal",QStringList() << "-i" << "-c" << \
+//            "rosrun map_creator load_reachability_map" + filePathmap);
+//proc->waitForStarted();
 
         //d_=ros::Duration(0);
         ////itTime_ =d_;
         publisher_thread_ = new boost::thread(boost::bind(&ROSGUI::publishJointStates, this));
 
-            joint_pub        = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
-            joint_value_pub  = nh_.advertise<std_msgs::Float32MultiArray>("joint_limits", 10);
-            joint_sub        = nh_.subscribe("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
+            joint_pub            = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
+            joint_value_pub      = nh_.advertise<std_msgs::Float32MultiArray>("joint_limits", 10);
+            joint_sub            = nh_.subscribe("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
             //Son pasados los valores via Suscripcion a la función
             //Valores de posicion de MoveIt
             robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
+            map_reuleaux         = nh_.advertise<std_msgs::String>("/my_lab_uni/map_reuleaux", 10);
 
 
 
@@ -452,6 +464,11 @@ void ROSGUI::on2DOFs_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+
+    //   <QtGui>
+  // proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
+  //QProcess *proc = new QProcess();
+//  proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun rvizglabre talker\"");
 
 }
 void ROSGUI::on3DOFs_URDF()
@@ -678,7 +695,12 @@ void ROSGUI::onFANUC3_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/fanuc_r1000ia80f.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
 
+   //  proc->start("bash",QStringList() << "-i" << "-c" << \
+   //                       "rosrun map_creator load_reachability_map" + filePathmap );
 }
 
 void ROSGUI::onABB1_URDF()
@@ -787,10 +809,16 @@ void ROSGUI::onMOTOM1_URDF()
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","link_6");
   filePath= ros::package::getPath("rvizglabre") + "/modelos/mh5.urdf";
+
   std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/motoman_mh5.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
+//  proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun map_creator load_reachability_map fanuc_r1000ia80f.h5\"");
+
 
 }
 
@@ -1386,6 +1414,19 @@ void ROSGUI::on_comboBox_2_currentIndexChanged(int index=0)
   Q_EMIT statusTool(index) ;
 
 }
+
+void ROSGUI::on_checkBox_3_toggled(bool x)
+{
+
+  Ws=!Ws;
+  if (x){
+    std::cout << "hola checkbox3" <<std::endl;
+
+  }
+  mRviz->refreshWs(x);
+
+}
+
 
 
 bool ROSGUI::init()
