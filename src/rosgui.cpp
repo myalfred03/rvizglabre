@@ -676,6 +676,9 @@ void ROSGUI::onFANUC2_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/fanuc_m10ia.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
 
 }
 
@@ -736,6 +739,9 @@ void ROSGUI::onABB1_URDF()
 //  msg->position = {0.0, 0.05235092341899872, 0.0, 1.518426775932312, 0.0, 0.9599822759628296, 0.0};
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/irb120_3_58.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
 
 
 }
@@ -756,6 +762,9 @@ void ROSGUI::onABB2_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/irb2600.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
 
 }
 
@@ -775,6 +784,9 @@ void ROSGUI::onABB3_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/irb6640.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
 
 }
 

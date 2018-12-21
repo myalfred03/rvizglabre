@@ -381,6 +381,8 @@ if(robot_model_ != NULL)
   robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
   robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
   robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
+  robot_model_->subProp("Links")->subProp("tool0")->subProp("Show Trail")->setValue(true);
+
 
 //  robot_model_->setEnabled(true);
 
@@ -402,6 +404,7 @@ void MyViz::refreshDH(const std::string &fixed_frame){
 
     robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
     robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
+
 }
 void MyViz::refreshJoint(std::vector<double> joint){
   sensor_msgs::JointState joint_states;
@@ -466,6 +469,8 @@ void MyViz::refreshTF(bool tfrv, bool tfa , bool tfnm)
 void MyViz::refreshRM(bool rbrv)
 {
   robot_model_->setEnabled(rbrv);
+  robot_model_->subProp("Links")->subProp("tool0")->subProp("Show Trail")->setValue(rbrv);
+
 //  robot_display_->setEnabled(rbrv);
 
 }
