@@ -183,7 +183,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Cinematica Directa
     //Execute FK
-    connect(main_window_ui_->checkBox_2,     SIGNAL(toggled(bool)),SLOT(executeFK()));
+    connect(main_window_ui_->PushTrajectory,     SIGNAL(clicked()),SLOT(executeFK()));
     //Execute FK
     connect(main_window_ui_->dial1DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
     connect(main_window_ui_->dial2DOF, SIGNAL(valueChanged(int)), SLOT(updateSpinboxesD()));
@@ -1003,7 +1003,7 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
 
 
 
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(5);
 
   while(true)
   {

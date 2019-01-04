@@ -74,7 +74,7 @@ bool modelparam::initmodel()
           ROS_DEBUG("%s content\n%s", full_param_nameCt.c_str(), xml_stringCt.c_str());
 
       /// Get urdf model out of robot_description
-          if (!urdf_model.initString(xml_string))    //Si se abre desde una direccion de ruta de archivo .initFile
+          if (!urdf_model.initString(xml_string))    //Si se abre desde una direccion de ruta de archivo (//home/user//..//name.urdf) .initFile
           {
               ROS_ERROR("Failed to parse urdf file in model param");
               nh.shutdown();
