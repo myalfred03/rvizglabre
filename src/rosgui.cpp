@@ -162,12 +162,13 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox5DOFs,     SIGNAL(toggled(bool)), SLOT(on_5DOF()));
     connect(main_window_ui_->checkBox6DOFs,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
 
-
+    //Industrial Robots (1)
     connect(main_window_ui_->checkBoxKuka1,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxKuka2,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxKuka3,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxKuka4,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxFanuc1,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+
     connect(main_window_ui_->checkBoxFanuc2,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxFanuc3,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxABB1,      SIGNAL(toggled(bool)), SLOT(on_6DOF()));
@@ -178,6 +179,11 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxMotoman2,  SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxKatana,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxUR5,       SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+
+    //Classic Robots
+    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
+    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
+    connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
 
 
 
@@ -230,6 +236,7 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on6DOFs_URDF()));
 
     //Classic Robots
+    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_Scara_URDF()));
     connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
     connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(onCylindrical_URDF()));
 
@@ -527,6 +534,28 @@ void ROSGUI::onPris_Rev_URDF(){
 
 }
 
+void ROSGUI::on_Scara_URDF(){
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/scara.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/scara.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
+}
+
 void ROSGUI::onCartesian_URDF(){
   ToG =10; //Meter ->Centimeter
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
@@ -548,11 +577,12 @@ void ROSGUI::onCartesian_URDF(){
 
 void ROSGUI::onCylindrical_URDF()
 {
-  ToG =10; //Meter ->Centimeter
+  ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   QFont f( "Sans Serif", 9, QFont::Normal);
   main_window_ui_->label_15->setFont(f);
-  main_window_ui_->label_15->setText("Cm");
+  main_window_ui_->label_15->setText("°");
+
   resetvalue();
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
@@ -569,6 +599,8 @@ void ROSGUI::onKUKA1_URDF()
 {
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
   main_window_ui_->label_15->setText("°");
 
   resetvalue();
@@ -1816,10 +1848,11 @@ trajectory_msgs::JointTrajectory ROSGUI::createArmPositionCommand(std::vector<do
   point.positions.resize(5); */       // Do not resize like That ----> | point.resize | point[0].positions|
   for (int i = 0; i < 6; i++) {
     point.positions.push_back(newPositions[i]);
-    point.velocities.push_back(0);
+    point.velocities.push_back(70);
     point.accelerations.push_back(0);
   }
   point.time_from_start = ros::Duration(0.1);
+  msg.points.push_back(point);
   msg.points.push_back(point);
 
   for (int i = 0; i < 6; i++) {

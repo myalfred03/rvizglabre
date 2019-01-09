@@ -23,7 +23,7 @@
    <string notr="true">Kinematics GUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="../resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -4219,7 +4219,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="resources.qrc">
+                     <iconset resource="../resources.qrc">
                       <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                     </property>
                     <property name="iconSize">
@@ -7042,7 +7042,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab_10">
              <attribute name="title">
@@ -7454,7 +7454,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7489,7 +7489,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7524,7 +7524,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7559,7 +7559,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7591,7 +7591,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7738,7 +7738,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7806,7 +7806,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7848,7 +7848,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7877,7 +7877,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7906,7 +7906,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7991,7 +7991,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8026,7 +8026,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/neuronics.png</normaloff>:/images/img/neuronics.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8058,7 +8058,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8126,7 +8126,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/ur-logo.png</normaloff>:/images/img/ur-logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8155,7 +8155,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="resources.qrc">
+                    <iconset resource="../resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8269,7 +8269,7 @@
                 <string>Show only Robot</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
                </property>
               </item>
@@ -8278,7 +8278,7 @@
                 <string>Show Robot with Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
                </property>
               </item>
@@ -8287,7 +8287,7 @@
                 <string>Show Axes with Names</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
                </property>
               </item>
@@ -8296,7 +8296,7 @@
                 <string>Show Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -8305,7 +8305,7 @@
                 <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
@@ -8333,7 +8333,7 @@
                 <string>Interactuar</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/Interact.png</normaloff>:/images/img/Interact.png</iconset>
                </property>
               </item>
@@ -8342,7 +8342,7 @@
                 <string>Mover Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/MoveCamera.png</normaloff>:/images/img/MoveCamera.png</iconset>
                </property>
               </item>
@@ -8351,7 +8351,7 @@
                 <string>Seleccionar</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/Select.png</normaloff>:/images/img/Select.png</iconset>
                </property>
               </item>
@@ -8360,7 +8360,7 @@
                 <string>Medir En Pantalla de Simulación</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/Measure.png</normaloff>:/images/img/Measure.png</iconset>
                </property>
               </item>
@@ -8369,7 +8369,7 @@
                 <string>Enfoque de Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/FocusCamera.png</normaloff>:/images/img/FocusCamera.png</iconset>
                </property>
               </item>
@@ -8378,7 +8378,7 @@
                 <string>Punto en coordenadas XYZ</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/PublishPoint.png</normaloff>:/images/img/PublishPoint.png</iconset>
                </property>
               </item>
@@ -8402,7 +8402,7 @@
                <string>Espacio de Trabajo</string>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/img/ReachabilityMap.png</normaloff>:/images/img/ReachabilityMap.png</iconset>
               </property>
              </widget>
@@ -8429,7 +8429,7 @@
                 <string>Show Trail </string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                </property>
               </item>
@@ -8438,7 +8438,7 @@
                 <string>Show Loop Animation</string>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset resource="../resources.qrc">
                  <normaloff>:/images/img/turn_left.png</normaloff>:/images/img/turn_left.png</iconset>
                </property>
               </item>
@@ -8483,7 +8483,7 @@
      <x>0</x>
      <y>0</y>
      <width>1370</width>
-     <height>19</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -8515,7 +8515,7 @@
   </widget>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
+    <iconset resource="../../robot_editor/image.qrc">
      <normaloff>:/img/learning.png</normaloff>:/img/learning.png</iconset>
    </property>
    <property name="text">
@@ -8527,7 +8527,7 @@
   </action>
   <action name="actionDocument">
    <property name="icon">
-    <iconset>
+    <iconset resource="../../robot_editor/image.qrc">
      <normaloff>:/img/information.png</normaloff>:/img/information.png</iconset>
    </property>
    <property name="text">
@@ -8544,7 +8544,7 @@
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
+    <iconset resource="../../robot_editor/image.qrc">
      <normaloff>:/img/open.png</normaloff>:/img/open.png</iconset>
    </property>
    <property name="text">
@@ -8560,7 +8560,8 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
+  <include location="../../robot_editor/image.qrc"/>
  </resources>
  <connections>
   <connection>
