@@ -98,6 +98,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     QPixmap pix(":/images/img/Uni.jpg");
     main_window_ui_->label_3->setPixmap(pix);
+    main_window_ui_->statusBar->showMessage(tr("Listo, Esperando Modelo a Analizar"));
 
 
     // readJntLimitsFromROSParamURDF(&n);
@@ -127,7 +128,7 @@ ROSGUI::ROSGUI(QWidget *parent)
     //Acciones de la GUI
 //    QObject::connect(this, SIGNAL(statusTool(int )),showModel, SLOT(setTool(int )));
     connect(main_window_ui_->actionOpen,   SIGNAL(triggered()), this, SLOT(on_actionOpen_triggered()));
-    connect(main_window_ui_->pushButton,   SIGNAL(clicked()),   this, SLOT(on_pushButton_clicked()));
+    connect(main_window_ui_->pushButton,   SIGNAL(triggered()),   this, SLOT(on_pushButton_clicked()));
 //    connect(main_window_ui_.pushButton_2, SIGNAL(clicked()),   this, SLOT(on_pushButton_2_clicked()));
 //    connect(main_window_ui_.pushButton_4, SIGNAL(clicked()),   this, SLOT(on_pushButton_4_clicked()));
 //    connect(SecondWindowUI.pushButton,    SIGNAL(clicked()),   this, SLOT(on_pushButton_SW_clicked()));
@@ -181,6 +182,7 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxUR5,       SIGNAL(toggled(bool)), SLOT(on_6DOF()));
 
     //Classic Robots
+    connect(main_window_ui_->checkBox1Cl, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
     connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
     connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
     connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
@@ -236,6 +238,7 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox6DOFs, SIGNAL(toggled(bool)), SLOT(on6DOFs_URDF()));
 
     //Classic Robots
+    connect(main_window_ui_->checkBox1Cl, SIGNAL(toggled(bool)), SLOT(on_Puma_URDF()));
     connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_Scara_URDF()));
     connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(onCartesian_URDF()));
     connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(onCylindrical_URDF()));
@@ -386,8 +389,7 @@ void ROSGUI::on_pushButton_clicked()
   QMessageBox::information(this, tr("Teoria de Cinematica"), tr("<p>Se encuentra toda la informacion de cinematica directa, " \
                                                                                   "y Cinematica inversa en la pagina principal de este laboratorio virtual." \
                                                                                   "<p>Sigue las instrucciones de la guia del uso y ejemplos  " \
-                                                                                  "Para el adecuado uso de esta ventana de practicas.")
-                                      );
+                                                                                  "Para el adecuado uso de esta ventana de practicas."),QMessageBox::Ok);
 
 }
 
@@ -459,6 +461,7 @@ void ROSGUI::on2DOFs_URDF()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
+
 //  QTemporaryDir temporaryDir2;
 
 //  QFile::copy(":/robots/URDF/modelos/two_link_yz.urdf", temporaryDir2.path() + "/two_link_planarxy.urdf");
@@ -471,6 +474,7 @@ void ROSGUI::on2DOFs_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo 2 DOF"));
 
     //   <QtGui>
   // proc.start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"roscore\" ");
@@ -493,19 +497,24 @@ void ROSGUI::on3DOFs_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo 3 DOF"));
+
 
 }
 void ROSGUI::on4DOFs_URDF(){
   ToG    = 57.295779513;
+  main_window_ui_->statusBar->showMessage(tr("Modelo 4 DOF"));
 
 }
 void ROSGUI::on5DOFs_URDF(){
   ToG    = 57.295779513;
+  main_window_ui_->statusBar->showMessage(tr("Modelo 5 DOF"));
 
 }
 
 void ROSGUI::on6DOFs_URDF(){
   ToG    = 57.295779513;
+  main_window_ui_->statusBar->showMessage(tr("Modelo 6 DOF"));
 
 }
 
@@ -521,16 +530,39 @@ void ROSGUI::onPrism_URDF(){
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-//  QTemporaryDir temporaryDir2;
-
   filePath= ros::package::getPath("rvizglabre") + "/modelos/prismatic.urdf";
   std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Prismatico DOF"));
+
 }
 
 void ROSGUI::onPris_Rev_URDF(){
+
+}
+
+void ROSGUI::on_Puma_URDF(){
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/puma560.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+//  map.data =  ros::package::getPath("rvizglabre") + "/maps/scara.h5";
+//  ROS_INFO("%s", map.data.c_str());
+//  map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Puma 560 DOF"));
 
 }
 
@@ -554,6 +586,8 @@ void ROSGUI::on_Scara_URDF(){
   map.data =  ros::package::getPath("rvizglabre") + "/maps/scara.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Scara"));
+
 }
 
 void ROSGUI::onCartesian_URDF(){
@@ -573,6 +607,7 @@ void ROSGUI::onCartesian_URDF(){
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Cartesiano"));
 }
 
 void ROSGUI::onCylindrical_URDF()
@@ -593,6 +628,8 @@ void ROSGUI::onCylindrical_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Cilindrico"));
+
 }
 
 void ROSGUI::onKUKA1_URDF()
@@ -613,6 +650,7 @@ void ROSGUI::onKUKA1_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA KR210L150"));
 
 }
 
@@ -632,6 +670,8 @@ void ROSGUI::onKUKA2_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA KR16-2"));
+
 
 }
 
@@ -651,6 +691,7 @@ void ROSGUI::onKUKA3_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA KR120R2500"));
 
 }
 
@@ -670,6 +711,8 @@ void ROSGUI::onKUKA4_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA LBR-IIWA-14-R820"));
+
 
 }
 
@@ -689,6 +732,8 @@ void ROSGUI::onFANUC1_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial FANUC LRMATE200Ic"));
+
 
 }
 
@@ -711,6 +756,8 @@ void ROSGUI::onFANUC2_URDF()
   map.data =  ros::package::getPath("rvizglabre") + "/maps/fanuc_m10ia.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial FANUC M10IA"));
+
 
 }
 
@@ -733,6 +780,7 @@ void ROSGUI::onFANUC3_URDF()
   map.data =  ros::package::getPath("rvizglabre") + "/maps/fanuc_r1000ia80f.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial FANUC R1000IA80F"));
 
    //  proc->start("bash",QStringList() << "-i" << "-c" << \
    //                       "rosrun map_creator load_reachability_map" + filePathmap );
@@ -774,6 +822,8 @@ void ROSGUI::onABB1_URDF()
   map.data =  ros::package::getPath("rvizglabre") + "/maps/irb120_3_58.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial ABB IRB120"));
+
 
 
 }
@@ -797,6 +847,7 @@ void ROSGUI::onABB2_URDF()
   map.data =  ros::package::getPath("rvizglabre") + "/maps/irb2600.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial ABB IRB2600"));
 
 }
 
@@ -819,6 +870,7 @@ void ROSGUI::onABB3_URDF()
   map.data =  ros::package::getPath("rvizglabre") + "/maps/irb6640.h5";
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial ABB IRB6640"));
 
 }
 
@@ -838,6 +890,7 @@ void ROSGUI::onABB4_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial ABB IRB5400"));
 
 }
 
@@ -862,6 +915,7 @@ void ROSGUI::onMOTOM1_URDF()
   ROS_INFO("%s", map.data.c_str());
   map_reuleaux.publish(map);
 //  proc->start("gnome-terminal --geometry=50x10-0-10 -x bash -c \"rosrun map_creator load_reachability_map fanuc_r1000ia80f.h5\"");
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Yaskawa MOTOMAN-MH5"));
 
 
 }
@@ -881,6 +935,7 @@ void ROSGUI::onMOTOM2_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Yaskawa MOTOMAN-SIA10F"));
 
 }
 
@@ -901,7 +956,10 @@ void ROSGUI::onKATANA_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
-
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/katana.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Neuronics KATANA-450-6M90A"));
 
 }
 
@@ -922,6 +980,11 @@ void ROSGUI::onUR5_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/ur5.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Universal Robots UR5"));
+
 }
 
 
@@ -941,6 +1004,7 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
 
   // refresh the preview
   mRviz->refreshDH("my_lab_uni/" + modelU.getRootSegment()->first);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Usuario DH"));
 
 }
 

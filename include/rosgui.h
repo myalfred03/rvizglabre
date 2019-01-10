@@ -222,6 +222,7 @@ public Q_SLOTS:
       void onPrism_URDF();
       void onRevol_URDF();
       void onPris_Rev_URDF();
+      void on_Puma_URDF();
       void on_Scara_URDF();
       void onCartesian_URDF();
       void onCylindrical_URDF();

@@ -32,11 +32,6 @@
       </geometry>
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.74793301875"/>
-      <origin xyz="-0.000410 -0.001285 -0.016774"/>
-      <inertia ixx="0.001737241" ixy="0.000000421" ixz="0.000000650" iyy="0.000998782" iyz="0.000016114" izz="0.001349170"/>
-    </inertial>
   </link>
   <joint name="joint_2" type="revolute">
     <!-- Joint 2 in Katana Manual -->
@@ -58,11 +53,6 @@
         <origin rpy="0 ${-M_PI/2} 0" xyz="${link2_length/2} 0 0" /> -->
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.80174941875"/>
-      <origin xyz="0.092420 0.005283 0.000172"/>
-      <inertia ixx="0.000478252" ixy="0.000081166" ixz="0.000003961" iyy="0.004314636" iyz="0.000000332" izz="0.004625444"/>
-    </inertial>
   </link>
   <joint name="joint_3" type="revolute">
     <!-- Joint 3 in Katana Manual -->
@@ -85,11 +75,6 @@
         <origin rpy="0 ${-M_PI/2} 0" xyz="${link3_length/2} 0 0" />-->
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.79241664375"/>
-      <origin xyz="0.058036 0.008963 -0.000187"/>
-      <inertia ixx="0.001156089" ixy="0.000112877" ixz="-0.000004398" iyy="0.002305646" iyz="-0.000000036" izz="0.003128648"/>
-    </inertial>
   </link>
   <joint name="joint_4" type="revolute">
     <!-- Joint 4 in Katana Manual -->
@@ -111,11 +96,6 @@
         <origin rpy="0 ${-M_PI/2} 0" xyz="${link4_length/2} 0 0" /> -->
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.69149323125"/>
-      <origin xyz="0.050401 0.005807 0.000000"/>
-      <inertia ixx="0.000765999" ixy="0.000045260" ixz="-0.000001210" iyy="0.001504115" iyz="0.000000147" izz="0.001887277"/>
-    </inertial>
   </link>
   <joint name="joint_5" type="revolute">
     <!-- Joint 5 in Katana Manual -->
@@ -137,11 +117,6 @@
         <origin rpy="0 ${-M_PI/2} 0" xyz="${link5_length/2} 0 0" />-->
       <material name="grey"/>
     </visual>
-       <inertial>
-      <mass value="0.25622555625"/>
-      <origin xyz="-0.003140899 0.000013920 0.001680144"/>
-      <inertia ixx="0.000120481" ixy="0.000000015" ixz="-0.000001089" iyy="0.000132130" iyz="-0.000000124" izz="0.000093522"/>
-    </inertial>
   </link>
   <joint name="joint_6" type="fixed">
     <parent link="link_5"/> 
@@ -156,11 +131,6 @@
       </geometry>
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.0552136183596"/>
-      <origin xyz="-0.014379 -0.000000 0.000006"/>
-      <inertia ixx="0.000011468" ixy="0.000000000" ixz="0.000000007" iyy="0.000013830" iyz="0.000000000" izz="0.000011290"/>
-    </inertial>
   </link>
   <joint name="katana_r_finger_joint" type="revolute">
     <parent link="tool0"/>
@@ -177,11 +147,6 @@
       </geometry>
       <material name="grey"/>
     </visual>
-    <inertial>
-      <mass value="0.0251722230462"/>
-      <origin xyz="0.001784 0.025167 -.001603"/>
-      <inertia ixx="0.000005990" ixy="0.000008473" ixz="0.000001448" iyy="0.000019757" iyz="-0.000000996" izz="0.000023588"/>
-    </inertial>
   </link>
   <joint name="katana_l_finger_joint" type="revolute">
     <parent link="tool0"/>
@@ -198,11 +163,6 @@
       </geometry>
       <material name="grey"/>
     </visual>
-        <inertial>
-      <mass value="0.0251722230462"/>
-      <origin xyz="0.001784 0.025167 -.001603"/>
-      <inertia ixx="0.000005990" ixy="0.000008473" ixz="0.000001448" iyy="0.000019757" iyz="-0.000000996" izz="0.000023588"/>
-    </inertial>
   </link>
   <joint name="katana_gripper_tool_frame_joint" type="fixed">
     <parent link="link_5"/>
@@ -227,11 +187,6 @@
       </geometry>
       <material name="grey"/>
     </collision>
-    <inertial>
-      <mass value="0.0012"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="2e-8" ixy="0.0" ixz="0.0" iyy="2e-8" iyz="0.0" izz="2e-8"/>
-    </inertial>
   </link>
 </robot>
 

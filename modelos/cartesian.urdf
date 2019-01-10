@@ -7,6 +7,89 @@
         http://juxi.net/projects/AmazonRoboticsChallenge/
     -->
 
+
+  <link name="link_supportz">
+    <visual>
+        <origin xyz="0.625 0.625 0.470" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 0.07 1" />
+        </geometry>
+	<material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+	 </material>
+    </visual>
+    
+    <visual>
+        <origin xyz="-0.625 0.625 0.470" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 0.07 1" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+        
+    <visual>
+        <origin xyz="0.625 -0.625 0.470" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 0.07 1" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+        
+    <visual>
+        <origin xyz="-0.625 -0.625 0.470" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 0.07 1" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+        
+   <visual>
+        <origin xyz="0 0.625 0" rpy="0 0 0" />
+        <geometry>
+          <box size="1.25 0.07 0.07" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+    
+    <visual>
+        <origin xyz="0 -0.625 0" rpy="0 0 0" />
+        <geometry>
+          <box size="1.25 0.07 0.07" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+        
+    <visual>
+        <origin xyz="0.625 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 1.25 0.07" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+        
+   <visual>
+        <origin xyz="-0.625 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 1.25 0.07" />
+        </geometry>
+        <material name="metal">
+	    <color rgba="0.827450980392 0.827450980392 0.827450980392 1.0"/>
+        </material>
+    </visual>
+  </link> 
+
     <link name="base_link">
         <visual>
             <origin rpy="1.570796327 0 0"
@@ -14,6 +97,9 @@
             <geometry>
                 <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/xAxis.STL" />
             </geometry>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
         </visual>
 
         <!-- Collision For Floor -->
@@ -23,168 +109,18 @@
                 <box size="1.5 1.5 0.01" />
             </geometry>
             <material name="darkred">
-                <color rgba=".5 .1 .1 1"/>
+                <color rgba=".5 .3 .1 1"/>
             </material>
         </collision>
     </link>
 
-    <link name="link_support1">
-    <visual>
-        <origin xyz="0.625 0.625 0.970" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 0.07 1" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support1" type="fixed">
+    <joint name="base_support1" type="fixed">
         <parent link="base_link"/>
-        <child link="link_support1"/>
-        <origin rpy="0 0 0" xyz="0 0 -0.5"/>
+        <child link="link_supportz"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
 
     </joint> 
 
-        <link name="link_support2">
-    <visual>
-        <origin xyz="-0.625 0.625 0.970" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 0.07 1" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support2" type="fixed">
-        <parent link="base_link"/>
-        <child link="link_support2"/>
-        <origin rpy="0 0 0" xyz="0 0 -0.5"/>
-
-    </joint> 
-
-    <link name="link_support3">
-    <visual>
-        <origin xyz="0.625 -0.625 0.970" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 0.07 1" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support3" type="fixed">
-        <parent link="base_link"/>
-        <child link="link_support3"/>
-        <origin rpy="0 0 0" xyz="0 0 -0.5"/>
-
-    </joint> 
-
-        <link name="link_support4">
-    <visual>
-        <origin xyz="-0.625 -0.625 0.970" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 0.07 1" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support4" type="fixed">
-        <parent link="base_link"/>
-        <child link="link_support4"/>
-        <origin rpy="0 0 0" xyz="0 0 -0.5"/>
-
-    </joint> 
-
-    <link name="link_support1x">
-    <visual>
-        <origin xyz="0 0.625 0" rpy="0 0 0" />
-        <geometry>
-          <box size="1.25 0.07 0.07" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support1x" type="fixed">
-        <parent link="link_support1"/>
-        <child link="link_support1x"/>
-        <origin rpy="0 0 0" xyz="0 0 0.5"/>
-    </joint> 
-
-    <link name="link_support2x">
-    <visual>
-        <origin xyz="0 -0.625 0" rpy="0 0 0" />
-        <geometry>
-          <box size="1.25 0.07 0.07" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support2x" type="fixed">
-        <parent link="link_support1"/>
-        <child link="link_support2x"/>
-        <origin rpy="0 0 0" xyz="0 0 0.5"/>
-    </joint> 
-
-
-    <link name="link_support1y">
-    <visual>
-        <origin xyz="0.625 0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 1.25 0.07" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support1y" type="fixed">
-        <parent link="link_support1"/>
-        <child link="link_support1y"/>
-        <origin rpy="0 0 0" xyz="0 0 0.5"/>
-    </joint> 
-
-
-        <link name="link_support2y">
-    <visual>
-        <origin xyz="-0.625 0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.07 1.25 0.07" />
-        </geometry>
-        <material name="red">
-        <color rgba="0.8 0.0 0.0 1.0"/>
-        </material>
-    </visual>
-    </link>
-
-
-     <joint name="base_support2y" type="fixed">
-        <parent link="link_support1"/>
-        <child link="link_support2y"/>
-        <origin rpy="0 0 0" xyz="0 0 0.5"/>
-    </joint> 
 
 
     <joint name="joint_1" type="prismatic">
@@ -201,6 +137,9 @@
             <geometry>
                 <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/yAxis.STL" />
             </geometry>
+            <material name="orange">
+                <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+            </material>
         </visual>
 
         <collision>
@@ -242,22 +181,25 @@
         <limit effort="1000.0" lower="0"
                upper="0.5" velocity="1.0" />
         <origin rpy="0 0 0"
-                xyz="0 0.12 0" />
+                xyz="0 -0.6 0" />
     </joint>
 
     <link name="z_axis_link">
         <visual>
             <geometry>
-                <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/zAxis.STL" />
+                <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/zAxis.STL"/>
             </geometry>
-            <origin rpy="0 0 0" xyz="0 -0.038 0"/>
+            <origin rpy="0 0 3.14" xyz="0 0.01 0" />
+	   <material name="blue">
+	      <color rgba="0.0 0.0 0.8 1.0"/>
+	   </material>
         </visual>
 
 <!--         <visual>
             <geometry>
-                <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/yaw.STL" />
+                <mesh filename="package://rvizglabre/modelos/cartesian_description/meshes/yaw.STL"/>
             </geometry>
-            <origin rpy="0 0 -1.57" xyz="0 0 0.012"/>
+            <origin rpy="0 0 0" xyz="0 0 0.012"/>
         </visual> -->
 
     </link>
