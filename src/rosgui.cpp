@@ -650,6 +650,9 @@ void ROSGUI::onKUKA1_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/kr210l150.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
   main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA KR210L150"));
 
 }
@@ -711,6 +714,9 @@ void ROSGUI::onKUKA4_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/lbr_iiwa_14.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
   main_window_ui_->statusBar->showMessage(tr("Modelo Industrial KUKA LBR-IIWA-14-R820"));
 
 
@@ -732,6 +738,9 @@ void ROSGUI::onFANUC1_URDF()
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/fanuc_lrmate200ic.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
   main_window_ui_->statusBar->showMessage(tr("Modelo Industrial FANUC LRMATE200Ic"));
 
 
@@ -929,13 +938,16 @@ void ROSGUI::onMOTOM2_URDF()
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","link_7");
-  filePath= ros::package::getPath("rvizglabre") + "/modelos/sia10f.urdf";
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/sia20d.urdf";
   std::ifstream selected_file(filePath);
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
   updatetoURDF();
-  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Yaskawa MOTOMAN-SIA10F"));
+  map.data =  ros::package::getPath("rvizglabre") + "/maps/sia20d.h5";
+  ROS_INFO("%s", map.data.c_str());
+  map_reuleaux.publish(map);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Industrial Yaskawa MOTOMAN-SIA20D"));
 
 }
 
@@ -1758,7 +1770,7 @@ void ROSGUI::executeFK(){
 //     msg = this->createArmPositionCommand(jointvalues);
 //     joint_pub.publish(msg); // son publicados en el nodo
 
-   this->FKdata(j);
+   //this->FKdata(j);
 
 }
 void ROSGUI::timeOut()
@@ -1946,6 +1958,16 @@ void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
 
 //ROS_INFO("the [%d] positions are[%f]\n",i,joint_positions[0]/*,joint_positions[1]*//*,joint_positions[2],joint_positions[3],joint_positions[4],joint_positions[5]*/);
 std::cout <<  msg << std::endl;
+
+  j(nj)=0;
+  j(0) = msg.points[0].positions[0]/ToG;
+  j(1) = msg.points[0].positions[1]/ToG;
+  j(2) = msg.points[0].positions[2]/ToG;
+  j(3) = msg.points[0].positions[3]/ToG;
+  j(4) = msg.points[0].positions[4]/ToG;
+  j(5) = msg.points[0].positions[5]/ToG;
+
+this->FKdata(j);
 //ros::Rate loop_rate(10);
 
 //while(true)
