@@ -75,7 +75,7 @@
                 <limit effort ="0" lower="-2.5" upper="2.5" velocity="0.5"/>
 	</joint>
 
-  <joint name="joint_3" type="revolute">
+  <joint name="joint_3-tool0" type="revolute">
     <parent link="link_2"/>
     <child link="tool0"/>
     <origin rpy="0 -1.57 0" xyz="0.06 0 0.4"/>

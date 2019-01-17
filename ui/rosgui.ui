@@ -23,7 +23,7 @@
    <string notr="true">Kinematics GUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -33,7 +33,7 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout_10">
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -98,7 +98,7 @@
              <bool>true</bool>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="tab">
              <property name="maximumSize">
@@ -108,58 +108,13 @@
               </size>
              </property>
              <attribute name="title">
-              <string notr="true">INICIO</string>
+              <string notr="true">INFO</string>
              </attribute>
-             <layout class="QGridLayout" name="gridLayout_6">
+             <layout class="QGridLayout" name="gridLayout_16">
               <item row="0" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <item>
-                 <widget class="QLabel" name="label_3">
-                  <property name="maximumSize">
-                   <size>
-                    <width>400</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>image</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_48">
-                  <property name="maximumSize">
-                   <size>
-                    <width>400</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;Ventana de Simulación de Cinemática de Robots&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="4" column="0">
                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                  <item>
-                   <spacer name="horizontalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>30</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                   <item>
                    <widget class="QPushButton" name="pushButton">
                     <property name="maximumSize">
@@ -169,22 +124,88 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>Teoria de Cinematica</string>
+                     <string>Teoria de Cinemática</string>
                     </property>
                    </widget>
                   </item>
+                 </layout>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_61">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>250</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Información de Recursos dentro de esta &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Ventana de simulacion&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; font-style:italic;&quot;&gt;Seleccione &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Tab 1: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Matemática de robots&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Tab 2: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Cinemática Directa&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Tab 3: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Cinemática Inversa&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Tab 4: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Denavit - Hartemberg&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Tab 5: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Graficas de Movimiento de Eslabones.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_48">
+                  <property name="minimumSize">
+                   <size>
+                    <width>400</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>600</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::RightToLeft</enum>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Bienvenidos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
                   <item>
-                   <spacer name="horizontalSpacer_6">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                   <widget class="QLabel" name="label_3">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
                     </property>
-                    <property name="sizeHint" stdset="0">
+                    <property name="minimumSize">
                      <size>
-                      <width>30</width>
-                      <height>20</height>
+                      <width>150</width>
+                      <height>100</height>
                      </size>
                     </property>
-                   </spacer>
+                    <property name="maximumSize">
+                     <size>
+                      <width>160</width>
+                      <height>110</height>
+                     </size>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="text">
+                     <string>image</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -192,9 +213,14 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_13">
+             <attribute name="title">
+              <string>   1   </string>
+             </attribute>
+            </widget>
             <widget class="QWidget" name="tab_2">
              <attribute name="title">
-              <string>CINEMATICA DIRECTA</string>
+              <string>   2   </string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_13">
               <item row="2" column="0">
@@ -220,7 +246,7 @@
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>5</number>
+                   <number>4</number>
                   </property>
                   <widget class="QWidget" name="tabWidgetPage1_2">
                    <attribute name="title">
@@ -4197,12 +4223,15 @@
                   <item row="1" column="2" colspan="3">
                    <widget class="QLabel" name="label_78">
                     <property name="text">
-                     <string>Ejecutar Movimiento</string>
+                     <string>Ejecutar </string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="0" colspan="2">
                    <widget class="QPushButton" name="PushTrajectory">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="maximumSize">
                      <size>
                       <width>70</width>
@@ -4213,13 +4242,13 @@
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ejecutar movimiento suave ajustado en los Spinboxs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton { background: rgb(169, 169, 169); }</string>
+                     <string notr="true"/>
                     </property>
                     <property name="text">
-                     <string/>
+                     <string>FK</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../resources.qrc">
+                     <iconset resource="resources.qrc">
                       <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                     </property>
                     <property name="iconSize">
@@ -4238,20 +4267,25 @@
             </widget>
             <widget class="QWidget" name="tab_3">
              <attribute name="title">
-              <string>CINEMATICA INVERSA</string>
+              <string>   3   </string>
              </attribute>
-             <layout class="QGridLayout" name="gridLayout_16">
+             <layout class="QGridLayout" name="gridLayout">
               <item row="0" column="0">
                <layout class="QGridLayout" name="gridLayout_15">
                 <item row="5" column="0">
                  <layout class="QGridLayout" name="gridLayout_11">
                   <item row="1" column="4">
-                   <widget class="QLabel" name="label_62">
+                   <widget class="QLabel" name="joint2">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>70</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4270,17 +4304,22 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLabel" name="label_60">
+                   <widget class="QLabel" name="joint1">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>80</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4294,7 +4333,7 @@
                    <widget class="QLabel" name="label_39">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4305,7 +4344,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4349,12 +4388,17 @@
                    </widget>
                   </item>
                   <item row="1" column="10">
-                   <widget class="QLabel" name="label_63">
+                   <widget class="QLabel" name="joint4">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>70</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4373,17 +4417,22 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="7">
-                   <widget class="QLabel" name="label_61">
+                   <widget class="QLabel" name="joint3">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>70</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4397,7 +4446,7 @@
                    <widget class="QLabel" name="label_41">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4408,7 +4457,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4416,7 +4465,7 @@
                    <widget class="QLabel" name="label_40">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4427,7 +4476,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4435,7 +4484,7 @@
                    <widget class="QLabel" name="label_72">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4446,7 +4495,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4459,7 +4508,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4485,7 +4534,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4498,17 +4547,22 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="16">
-                   <widget class="QLabel" name="label_65">
+                   <widget class="QLabel" name="joint6">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>70</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4522,7 +4576,7 @@
                    <widget class="QLabel" name="label_73">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4533,7 +4587,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4541,7 +4595,7 @@
                    <widget class="QLabel" name="label_74">
                     <property name="maximumSize">
                      <size>
-                      <width>11</width>
+                      <width>9</width>
                       <height>15</height>
                      </size>
                     </property>
@@ -4552,17 +4606,22 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>°</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="13">
-                   <widget class="QLabel" name="label_64">
+                   <widget class="QLabel" name="joint5">
                     <property name="maximumSize">
                      <size>
-                      <width>60</width>
+                      <width>70</width>
                       <height>30</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                     </font>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4599,7 +4658,7 @@
                      </font>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;JOINT 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -4656,6 +4715,9 @@
                 </item>
                 <item row="3" column="0">
                  <widget class="QGroupBox" name="groupBox">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>400</width>
@@ -4688,6 +4750,9 @@
                    </item>
                    <item row="1" column="4">
                     <widget class="QDoubleSpinBox" name="xBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -4746,6 +4811,9 @@
                    </item>
                    <item row="3" column="4">
                     <widget class="QDoubleSpinBox" name="yBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -4791,6 +4859,9 @@
                    </item>
                    <item row="5" column="1">
                     <widget class="QSlider" name="zSlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -4819,6 +4890,9 @@
                    </item>
                    <item row="1" column="1">
                     <widget class="QSlider" name="xSlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -4867,6 +4941,9 @@
                    </item>
                    <item row="3" column="1">
                     <widget class="QSlider" name="ySlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -4926,6 +5003,9 @@
                    </item>
                    <item row="11" column="1">
                     <widget class="QSlider" name="rollSlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -4954,6 +5034,9 @@
                    </item>
                    <item row="9" column="4">
                     <widget class="QDoubleSpinBox" name="pitchBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -4992,6 +5075,9 @@
                    </item>
                    <item row="7" column="4">
                     <widget class="QDoubleSpinBox" name="yawBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -5113,6 +5199,9 @@
                    </item>
                    <item row="11" column="4">
                     <widget class="QDoubleSpinBox" name="rollBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -5179,6 +5268,9 @@
                    </item>
                    <item row="5" column="4">
                     <widget class="QDoubleSpinBox" name="zBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>80</width>
@@ -5227,6 +5319,9 @@
                    </item>
                    <item row="7" column="1">
                     <widget class="QSlider" name="yawSlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -5269,6 +5364,9 @@
                    </item>
                    <item row="9" column="1">
                     <widget class="QSlider" name="pitchSlider">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string>Menos Precision</string>
                      </property>
@@ -5316,10 +5414,29 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="4" colspan="2">
-                    <widget class="QCheckBox" name="checkBox">
+                   <item row="0" column="4">
+                    <widget class="QPushButton" name="pushIK">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>70</width>
+                       <height>25</height>
+                      </size>
+                     </property>
                      <property name="text">
-                      <string>EJECUTAR</string>
+                      <string>IK</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="resources.qrc">
+                       <normaloff>:/images/img/IK.png</normaloff>:/images/img/IK.png</iconset>
                      </property>
                     </widget>
                    </item>
@@ -5346,7 +5463,7 @@
             </widget>
             <widget class="QWidget" name="tab_4">
              <attribute name="title">
-              <string>DENAVIT HARTENBERG</string>
+              <string>   4   </string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_7">
               <item row="1" column="0">
@@ -6520,6 +6637,9 @@
                   </item>
                   <item row="3" column="10">
                    <widget class="QPushButton" name="pushButton_3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="maximumSize">
                      <size>
                       <width>90</width>
@@ -7025,6 +7145,11 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_14">
+             <attribute name="title">
+              <string>   5   </string>
+             </attribute>
+            </widget>
            </widget>
           </item>
           <item row="0" column="0">
@@ -7042,7 +7167,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="tab_10">
              <attribute name="title">
@@ -7454,7 +7579,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7489,7 +7614,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7524,7 +7649,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7559,7 +7684,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7591,7 +7716,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7738,7 +7863,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7806,7 +7931,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7848,7 +7973,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -7877,7 +8002,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7906,7 +8031,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -7991,7 +8116,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8026,7 +8151,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/neuronics.png</normaloff>:/images/img/neuronics.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8058,7 +8183,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8126,7 +8251,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ur-logo.png</normaloff>:/images/img/ur-logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8155,7 +8280,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -8269,7 +8394,7 @@
                 <string>Show only Robot</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
                </property>
               </item>
@@ -8278,7 +8403,7 @@
                 <string>Show Robot with Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
                </property>
               </item>
@@ -8287,7 +8412,7 @@
                 <string>Show Axes with Names</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
                </property>
               </item>
@@ -8296,7 +8421,7 @@
                 <string>Show Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -8305,7 +8430,7 @@
                 <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
@@ -8333,7 +8458,7 @@
                 <string>Interactuar</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Interact.png</normaloff>:/images/img/Interact.png</iconset>
                </property>
               </item>
@@ -8342,7 +8467,7 @@
                 <string>Mover Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/MoveCamera.png</normaloff>:/images/img/MoveCamera.png</iconset>
                </property>
               </item>
@@ -8351,7 +8476,7 @@
                 <string>Seleccionar</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Select.png</normaloff>:/images/img/Select.png</iconset>
                </property>
               </item>
@@ -8360,7 +8485,7 @@
                 <string>Medir En Pantalla de Simulación</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Measure.png</normaloff>:/images/img/Measure.png</iconset>
                </property>
               </item>
@@ -8369,7 +8494,7 @@
                 <string>Enfoque de Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/FocusCamera.png</normaloff>:/images/img/FocusCamera.png</iconset>
                </property>
               </item>
@@ -8378,7 +8503,7 @@
                 <string>Punto en coordenadas XYZ</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/PublishPoint.png</normaloff>:/images/img/PublishPoint.png</iconset>
                </property>
               </item>
@@ -8402,7 +8527,7 @@
                <string>Espacio de Trabajo</string>
               </property>
               <property name="icon">
-               <iconset resource="../resources.qrc">
+               <iconset resource="resources.qrc">
                 <normaloff>:/images/img/ReachabilityMap.png</normaloff>:/images/img/ReachabilityMap.png</iconset>
               </property>
              </widget>
@@ -8429,7 +8554,7 @@
                 <string>Show Trail </string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                </property>
               </item>
@@ -8438,7 +8563,7 @@
                 <string>Show Loop Animation</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/turn_left.png</normaloff>:/images/img/turn_left.png</iconset>
                </property>
               </item>
@@ -8483,7 +8608,7 @@
      <x>0</x>
      <y>0</y>
      <width>1370</width>
-     <height>18</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -8515,7 +8640,7 @@
   </widget>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="../../robot_editor/image.qrc">
+    <iconset>
      <normaloff>:/img/learning.png</normaloff>:/img/learning.png</iconset>
    </property>
    <property name="text">
@@ -8527,7 +8652,7 @@
   </action>
   <action name="actionDocument">
    <property name="icon">
-    <iconset resource="../../robot_editor/image.qrc">
+    <iconset>
      <normaloff>:/img/information.png</normaloff>:/img/information.png</iconset>
    </property>
    <property name="text">
@@ -8544,7 +8669,7 @@
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="../../robot_editor/image.qrc">
+    <iconset>
      <normaloff>:/img/open.png</normaloff>:/img/open.png</iconset>
    </property>
    <property name="text">
@@ -8560,8 +8685,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../resources.qrc"/>
-  <include location="../../robot_editor/image.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

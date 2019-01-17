@@ -8,7 +8,7 @@ modelparam::modelparam()
 //double readJntLimitsFromROSParamURDF();
 
 }
-bool modelparam::initmodel()
+bool modelparam::initmodel(unsigned int &nj)
 {
 
   std::string param_nameR = "my_lab_uni/robot_description";
@@ -120,6 +120,7 @@ bool modelparam::initmodel()
                    nh.shutdown();
               }
           njnt = kdl_chain6.getNrOfJoints();
+          nj = njnt;
           return true;
 
 //          const std::string& file = "prueba";
@@ -137,123 +138,180 @@ bool modelparam::ForwardK(KDL::Frame &pos_mat6,
                           KDL::Frame &pos_mat3,
                           KDL::Frame &pos_mat2,
                           KDL::Frame &pos_mat1,
-                          KDL::JntArray j,
-                          unsigned int &nj)
+                          KDL::JntArray j)
 {
-//  if (!initmodel())
-//  {ROS_ERROR("Failed to parse urdf file in model param");
-//   }
+        //  if (!initmodel())
+        //  {ROS_ERROR("Failed to parse urdf file in model param");
+        //   }
 
-  //  Obtaining FK
-  nj = 0;
-  nj = njnt;
-  unsigned int nj_1 = kdl_chain1.getNrOfJoints();
-  unsigned int nj_2 = kdl_chain2.getNrOfJoints();
-  unsigned int nj_3 = kdl_chain3.getNrOfJoints();
-  unsigned int nj_4 = kdl_chain4.getNrOfJoints();
-  unsigned int nj_5 = kdl_chain5.getNrOfJoints();
-//  ROS_INFO("[Segments,joints]:[%d]",nj);
-  j1=j; //Datos de joints
+          //  Obtaining FK
+//          nj = 0;
+//          nj = njnt;
+          unsigned int nj_1 = kdl_chain1.getNrOfJoints();
+          unsigned int nj_2 = kdl_chain2.getNrOfJoints();
+          unsigned int nj_3 = kdl_chain3.getNrOfJoints();
+          unsigned int nj_4 = kdl_chain4.getNrOfJoints();
+          unsigned int nj_5 = kdl_chain5.getNrOfJoints();
+        //  ROS_INFO("[Segments,joints]:[%d]",nj);
+          j1=j; //Datos de joints
 
-  // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
-fksolver1= new KDL::ChainFkSolverPos_recursive(kdl_chain1);  //please check the inner of Code DH, Newton-Euler
-fksolver2= new KDL::ChainFkSolverPos_recursive(kdl_chain2);
-fksolver3= new KDL::ChainFkSolverPos_recursive(kdl_chain3);
-fksolver4= new KDL::ChainFkSolverPos_recursive(kdl_chain4);
-fksolver5= new KDL::ChainFkSolverPos_recursive(kdl_chain5);
-fksolver6= new KDL::ChainFkSolverPos_recursive(kdl_chain6);
+          // fksolver = new KDL::ChainFkSolverPos_recursive(kdl_chain);
+        fksolver1= new KDL::ChainFkSolverPos_recursive(kdl_chain1);  //please check the inner of Code DH, Newton-Euler
+        fksolver2= new KDL::ChainFkSolverPos_recursive(kdl_chain2);
+        fksolver3= new KDL::ChainFkSolverPos_recursive(kdl_chain3);
+        fksolver4= new KDL::ChainFkSolverPos_recursive(kdl_chain4);
+        fksolver5= new KDL::ChainFkSolverPos_recursive(kdl_chain5);
+        fksolver6= new KDL::ChainFkSolverPos_recursive(kdl_chain6);
 
-fksolvertree = new KDL::TreeFkSolverPos_recursive(kdl_tree); //probando el treeFk solver
+        fksolvertree = new KDL::TreeFkSolverPos_recursive(kdl_tree); //probando el treeFk solver
 
-    KDL::JntArray q6(nj),q5(nj_5),q4(nj_4),q3(nj_3),q2(nj_2),q1(nj_1);
+            KDL::JntArray q6(njnt),q5(nj_5),q4(nj_4),q3(nj_3),q2(nj_2),q1(nj_1);
 
-for(unsigned int i = 0; i< nj; i++)
-{
-  q6(i)=j1(i);
-}
+        for(unsigned int i = 0; i< njnt; i++)
+        {
+          q6(i)=j1(i);
+        }
 
-for(unsigned int i = 0; i< nj_5; i++)
-{
-  q5(i)=j1(i);
-}
-for(unsigned int i = 0; i< nj_4; i++)
-{
-  q4(i)=j1(i);
-}
-for(unsigned int i = 0; i< nj_3; i++)
-{
-  q3(i)=j1(i);
-}
-for(unsigned int i = 0; i< nj_2; i++)
-{
-  q2(i)=j1(i);
-}
+        for(unsigned int i = 0; i< nj_5; i++)
+        {
+          q5(i)=j1(i);
+        }
+        for(unsigned int i = 0; i< nj_4; i++)
+        {
+          q4(i)=j1(i);
+        }
+        for(unsigned int i = 0; i< nj_3; i++)
+        {
+          q3(i)=j1(i);
+        }
+        for(unsigned int i = 0; i< nj_2; i++)
+        {
+          q2(i)=j1(i);
+        }
 
-for(unsigned int i = 0; i< nj_1; i++)
-{
-  q1(i)=j1(i);
-}
+        for(unsigned int i = 0; i< nj_1; i++)
+        {
+          q1(i)=j1(i);
+        }
 
- double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
- fksolver6->JntToCart(q6, result6,nj);
- fksolver5->JntToCart(q5, result5,nj_5);
- fksolver4->JntToCart(q4, result4,nj_4);
- fksolver3->JntToCart(q3, result3,nj_3);
- fksolver2->JntToCart(q2, result2,nj_2);
- fksolver1->JntToCart(q1, result1,nj_1);
+         double roll = 0.0 , pitch = 0.0 , yaw = 0.0;
+         fksolver6->JntToCart(q6, result6,njnt);
+         fksolver5->JntToCart(q5, result5,nj_5);
+         fksolver4->JntToCart(q4, result4,nj_4);
+         fksolver3->JntToCart(q3, result3,nj_3);
+         fksolver2->JntToCart(q2, result2,nj_2);
+         fksolver1->JntToCart(q1, result1,nj_1);
 
- fksolvertree->JntToCart(q6,resultTree,"link_1");  //probando el FK solver hasta el Link _ 1
+         fksolvertree->JntToCart(q6,resultTree,"link_1");  //probando el FK solver hasta el Link _ 1
 
- KDL::Rotation R;
-   R = result6.M;
-   //R= result.
-   R.GetRPY(roll,pitch,yaw);
-   pos_mat6 = result6;
-   pos_mat5 = result5;
-   pos_mat4 = result4;
-   pos_mat3 = result3;
-   pos_mat2 = result2;
-   pos_mat1 = result1;
+         KDL::Rotation R;
+           R = result6.M;
+           //R= result.
+           R.GetRPY(roll,pitch,yaw);
+           pos_mat6 = result6;
+           pos_mat5 = result5;
+           pos_mat4 = result4;
+           pos_mat3 = result3;
+           pos_mat2 = result2;
+           pos_mat1 = result1;
 
-   std::cout << result6<< "\n" <<std::endl;
-   std::cout << nj<< "\n"  << nj_5<< "\n" << nj_4<< "\n"  << nj_3<< "\n"  << nj_2<< "\n"  << nj_1<< "\n"<<std::endl;
+           std::cout << result6<< "\n" <<std::endl;
+           std::cout << njnt<< "\n"  << nj_5<< "\n" << nj_4<< "\n"  << nj_3<< "\n"  << nj_2<< "\n"  << nj_1<< "\n"<<std::endl;
 
-//   std::cout << ""<< <<std::endl;
+        //   std::cout << ""<< <<std::endl;
 
 
 
-   return true;
+           return true;
 }
 
 bool modelparam::InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY , KDL::JntArray &pos_joint)
 {
 
-KDL::ChainIkSolverVel_pinv iksolverV(kdl_chain6);
-KDL::ChainIkSolverPos_NR   iksolver (kdl_chain6,*fksolver6,iksolverV,100,1e-2);
-KDL::Frame cartpos(tcpRPY,tcpXYZ);
-KDL::JntArray q_init(njnt);
+//        KDL::ChainIkSolverVel_pinv iksolverV(kdl_chain6);
+//        KDL::ChainIkSolverPos_NR   iksolver (kdl_chain6,*fksolver6,iksolverV,100,1e-2);
+        KDL::Frame cartpos(tcpRPY,tcpXYZ);
 
-q_init(njnt) = 0.0;
-// q_init(1) = -0.62;
-// q_init(2) = 0.36;
-// q_init(3) = -0.12;
-// q_init(4) = 1.1;
-// q_init(5) = -0.35;
-// q_init(6) = 0.75;
-bool kinematics_status;
-kinematics_status = iksolver.CartToJnt(q_init,cartpos,pos_joint);
-if(kinematics_status>=0){
-for(int i=0;i<njnt;i++)
-      std::cout << pos_joint(i) <<std::endl;
-    printf("%s \n","Succes, thanks KDL!");
-    return true;
-}else{
-    printf("%s \n","Error: could not calculate forward kinematics :(");
-    return false;
-}
+//        KDL::Frame(KDL::Rotation::EulerZYX(0, 0, 0), KDL::Vector(0.5, -0.2, 0.8));
+
+//        KDL::JntArray q_init(njnt);
 
 
-return true;
+
+
+
+
+        std::vector<std::string> joint_names_;
+        q_min_.resize(njnt);
+        q_max_.resize(njnt);
+        q_seed_.resize(njnt);
+
+        joint_names_.resize(njnt);
+
+        unsigned int j = 0;
+        for(unsigned int i = 0; i < njnt; ++i)
+        {
+            const KDL::Joint& kdl_joint = kdl_chain6.getSegment(i).getJoint();
+            if (kdl_joint.getType() != KDL::Joint::None)
+            {
+    //            std::cout << chain_.getSegment(i).getName() << " -> " << kdl_joint.getName() << " -> " << chain_.getSegment(i + 1).getName() << std::endl;
+
+                boost::shared_ptr<const urdf::Joint> joint = urdf_model.getJoint(kdl_joint.getName());
+                if (joint && joint->limits)
+                {
+                    q_min_(j) = joint->limits->lower;
+                    q_max_(j) = joint->limits->upper;
+                    q_seed_(j) = (q_min_(j) + q_max_(j)) / 2;
+                }
+                else
+                {
+                    q_min_(j) = -1e9;
+                    q_max_(j) = 1e9;
+                    q_seed_(j) = 0;
+
+                }
+
+                joint_names_[j] = kdl_joint.getName();
+    //            std::cout << j << ": " << q_min_(j) << " - " << q_max_(j) << std::endl;
+
+                ++j;
+            }
+        }
+
+        fksolver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain6));
+        ik_vel_solver_.reset(new KDL::ChainIkSolverVel_pinv(kdl_chain6));
+               ik_solver_.reset(new KDL::ChainIkSolverPos_NR_JL(kdl_chain6, q_min_, q_max_, *fksolver_, *ik_vel_solver_, 500));
+               std::cout << "Using normal solver" << std::endl;
+
+
+
+//        q_init(njnt) = 0.0;
+        // q_init(1) = -0.62;
+        // q_init(2) = 0.36;
+        // q_init(3) = -0.12;
+        // q_init(4) = 1.1;
+        // q_init(5) = -0.35;
+        // q_init(6) = 0.75;
+
+
+        bool kinematics_status;
+        kinematics_status = ik_solver_->CartToJnt(q_seed_,cartpos,pos_joint);
+        if(kinematics_status>=0){
+        for(int i=0;i<njnt;i++)
+              std::cout << pos_joint(i) <<std::endl;
+            printf("%s \n","Succes, thanks KDL!");
+            return true;
+        }else{
+            printf("%s \n","Error: could not calculate forward kinematics :(");
+            return false;
+        }
+
+//        int status = ik_solver_->CartToJnt(q_seed_, cartpos, pos_joint);
+//                for(int i=0;i<njnt;i++){
+//                      std::cout << pos_joint(i) <<std::endl;
+//                }
+//                    printf("%s \n","Succes, thanks KDL!");
+
 
 }
 
@@ -286,6 +344,8 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
                          // limited_jnt_names.push_back(joint->second->name);
                           lower_limits.push_back(joint->second->limits->lower);
                           upper_limits.push_back(joint->second->limits->upper);
+
+
                 }
                }
               }

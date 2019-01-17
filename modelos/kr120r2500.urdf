@@ -9,8 +9,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/base_link.dae"/>
+        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/base_link.stl"/>
       </geometry>
+ <material name="">
+        <color rgba="0.1882353 0.1960784 0.2039216 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -23,8 +26,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_1.dae"/>
+        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_1.stl"/>
       </geometry>
+      <material name="">
+        <color rgba="0.7372549 0.3490196 0.1607843 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -37,8 +43,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_2.dae"/>
+        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_2.stl"/>
       </geometry>
+      <material name="">
+        <color rgba="0.7372549 0.3490196 0.1607843 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -51,8 +60,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_3.dae"/>
+        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_3.stl"/>
       </geometry>
+      <material name="">
+        <color rgba="0.7372549 0.3490196 0.1607843 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -79,8 +91,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_5.dae"/>
+        <mesh filename="package://rvizglabre/modelos/kr120r2500/visual/link_5.stl"/>
       </geometry>
+      <material name="">
+        <color rgba="0.7372549 0.3490196 0.1607843 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>

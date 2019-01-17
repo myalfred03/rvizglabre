@@ -25,12 +25,13 @@
         <file>img/Measure.png</file>
         <file>img/FocusCamera.png</file>
         <file>img/PublishPoint.png</file>
-        <file>img/kinetics.png</file>
         <file>img/turn_left.png</file>
         <file>img/anticlock.png</file>
         <file>img/Fanuc-logo.jpg</file>
         <file>img/neuronics.png</file>
         <file>img/ur-logo.png</file>
         <file>img/ReachabilityMap.png</file>
+        <file>img/kinetics.png</file>
+        <file>img/IK.png</file>
     </qresource>
 </RCC>

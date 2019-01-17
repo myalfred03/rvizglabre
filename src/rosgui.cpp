@@ -97,9 +97,11 @@ ROSGUI::ROSGUI(QWidget *parent)
 //    showModel->showMaximized();
 
     QPixmap pix(":/images/img/Uni.jpg");
-    main_window_ui_->label_3->setPixmap(pix);
-    main_window_ui_->statusBar->showMessage(tr("Listo, Esperando Modelo a Analizar"));
+    
 
+    main_window_ui_->label_3->setPixmap(pix.scaled(main_window_ui_->label_3->size(),Qt::KeepAspectRatio));
+    main_window_ui_->statusBar->showMessage(tr("Listo, Esperando Modelo a Analizar"));
+//    main_window_ui_->groupBox->setEnabled(false);
 
     // readJntLimitsFromROSParamURDF(&n);
 
@@ -137,7 +139,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Cinematica Inversa
     //Execute IK
-    connect(main_window_ui_->checkBox,     SIGNAL(toggled(bool)),SLOT(executeIK()));
+    connect(main_window_ui_->pushIK,     SIGNAL(clicked()),SLOT(executeIK()));
     //Execute IK
     connect(main_window_ui_->xSlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
     connect(main_window_ui_->ySlider,      SIGNAL(valueChanged(int)), SLOT(updateSpinboxes()));
@@ -209,8 +211,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     //Cinematica Directa
 
     //Industrial Robots (1)
-    connect(main_window_ui_->checkBoxKuka1, SIGNAL(toggled(bool)), SLOT(onKUKA1_URDF()));
-    connect(main_window_ui_->checkBoxKuka2, SIGNAL(toggled(bool)), SLOT(onKUKA2_URDF()));
+    connect(main_window_ui_->checkBoxKuka1, SIGNAL(clicked()), SLOT(onKUKA1_URDF()));
+    connect(main_window_ui_->checkBoxKuka2, SIGNAL(clicked()), SLOT(onKUKA2_URDF()));
     connect(main_window_ui_->checkBoxKuka3, SIGNAL(toggled(bool)), SLOT(onKUKA3_URDF()));
     connect(main_window_ui_->checkBoxKuka4, SIGNAL(toggled(bool)), SLOT(onKUKA4_URDF()));
     connect(main_window_ui_->checkBoxFanuc1, SIGNAL(toggled(bool)), SLOT(onFANUC1_URDF()));
@@ -263,7 +265,7 @@ ROSGUI::ROSGUI(QWidget *parent)
 
 
 
-   connect(main_window_ui_->checkBox_3,    SIGNAL(toggled(bool data)), this, SLOT(on_checkBox_3_toggled(data)));
+   connect(main_window_ui_->checkBox_3,    SIGNAL(toggled(bool)), this, SLOT(on_checkBox_3_toggled(bool)));
 //   QObject::connect(main_window_ui_.checkBox_2,    SIGNAL(stateChanged(int)), this, SLOT(on_checkBox_2_toggled(int)));
  //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
    connect(main_window_ui_->comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
@@ -343,9 +345,9 @@ ROSGUI::~ROSGUI()
     }
 
   if(robot_tree_ != NULL)
-    delete robot_tree_;
+   robot_tree_.reset();
   if(robot_state_pub_ != NULL)
-    delete robot_state_pub_;
+   robot_state_pub_.reset();
   delete main_window_ui_;
 //  delete showModel;
 }
@@ -453,6 +455,7 @@ void ROSGUI::onRevol_URDF(){
 
 void ROSGUI::on2DOFs_URDF()
 {
+//  delete robot_state_pub_;
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   main_window_ui_->label_15->setText("°");
@@ -484,6 +487,7 @@ void ROSGUI::on2DOFs_URDF()
 }
 void ROSGUI::on3DOFs_URDF()
 {
+//  delete robot_state_pub_;
   ToG    = 57.295779513;
   main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
   main_window_ui_->label_15->setText("°");
@@ -1001,10 +1005,10 @@ void ROSGUI::onUR5_URDF()
 
 
 void ROSGUI::updatetreeforDH(KDL::Tree modelU){
-  if(robot_state_pub_ != NULL)
-    delete robot_state_pub_;
+//  if(robot_state_pub_ != NULL)
+//    delete robot_state_pub_;
 
-  robot_state_pub_ = new robot_state_publisher::RobotStatePublisher(modelU);
+  robot_state_pub_.reset( new robot_state_publisher::RobotStatePublisher(modelU));
   joint_positions_.clear();
   const std::map<std::string, KDL::TreeElement>& segments = modelU.getSegments();
   for(std::map<std::string, KDL::TreeElement>::const_iterator it=segments.begin();
@@ -1046,12 +1050,12 @@ void ROSGUI::updateURDF(const std::string& urdf)
     nh_.setParam("my_lab_uni/robot_description", robot_description);   // nh_. Node handle publicador de los parametros urdf del robot
   //  boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
 
-    if(robot_tree_ != NULL)
-      delete robot_tree_;
-    if(robot_state_pub_ != NULL)
-      delete robot_state_pub_;
+//    if(robot_tree_ != NULL)
+//      delete robot_tree_;
+//    if(robot_state_pub_ != NULL)
+//      delete robot_state_pub_;
 
-    robot_tree_ = new KDL::Tree();
+    robot_tree_.reset(new KDL::Tree());
     if(!kdl_parser::treeFromString(urdf, *robot_tree_))
     {
       ROS_ERROR("Failed to construct KDL tree");
@@ -1074,7 +1078,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
 //  }
 
   // create a robot state publisher from the tree
-  robot_state_pub_ = new robot_state_publisher::RobotStatePublisher(*robot_tree_);
+  robot_state_pub_.reset( new robot_state_publisher::RobotStatePublisher(*robot_tree_));
 
   // now create a map with joint name and positions
   joint_positions_.clear();
@@ -1547,15 +1551,35 @@ void ROSGUI::on_checkBox_3_toggled(bool x)
 
 }
 
+void ROSGUI::on_enableW() {
 
+    main_window_ui_->pushIK->setEnabled(true);
+    main_window_ui_->PushTrajectory->setEnabled(true);
+    main_window_ui_->groupBox->setEnabled(true);
+
+    main_window_ui_->xBox->    setEnabled(true);
+    main_window_ui_->yBox->    setEnabled(true);
+    main_window_ui_->zBox->    setEnabled(true);
+    main_window_ui_->rollBox-> setEnabled(true);
+    main_window_ui_->pitchBox->setEnabled(true);
+    main_window_ui_->yawBox->  setEnabled(true);
+
+    main_window_ui_->xSlider->     setEnabled(true);
+    main_window_ui_->ySlider->     setEnabled(true);
+    main_window_ui_->zSlider->     setEnabled(true);
+    main_window_ui_->rollSlider->  setEnabled(true);
+    main_window_ui_->pitchSlider-> setEnabled(true);
+    main_window_ui_->yawSlider->   setEnabled(true);
+}
 
 bool ROSGUI::init()
 {
 
+this->on_enableW();
 
   jointsv = new modelparam;
 
- if(!jointsv->initmodel())
+ if(!jointsv->initmodel(nj))
  {
           std::cerr << "Error at init model" <<std::endl;
          return false;
@@ -1706,10 +1730,8 @@ void ROSGUI::resetvalue(){
   main_window_ui_->spinBox6DOF->    setValue(resetv);
 }
 void ROSGUI::executeIK(){
-
+  std::vector<double> jointvalues(6);
   trajectory_msgs::JointTrajectory msg;
-  msg.points.resize(1);
-  msg.points[0].positions.resize(6);
 
   KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_->xBox->value(),main_window_ui_->yBox->value(),main_window_ui_->zBox->value());
 //KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_.xSlider->value(),main_window_ui_.ySlider->value(),main_window_ui_.zSlider->value());
@@ -1718,18 +1740,27 @@ void ROSGUI::executeIK(){
   //KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
   KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.0,0.0,0.0);
+  std::cout << "KDL ROT  " << nj <<std::endl;
 
-    if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint));
+    if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint))
     {
-      for(int i=0;i<6;i++){
-      msg.points[0].positions[i] = pos_joint(i); //array [i]
-      std::cout << pos_joint(i) <<std::endl;
-      std::cerr << "Publish Joint for IKinematics" <<std::endl;
-         }
+      std::cout << "Error IK" <<std::endl;
     }
-     msg.points[0].time_from_start = ros::Duration(0.1);
-     msg.header.frame_id = "my_lab_uni_IK";
-     msg.header.stamp = ros::Time::now();
+
+    for(int i=0;i<nj;i++){
+    jointvalues[i] = pos_joint(i)*ToG; //array [i]
+    std::cout << pos_joint(i)*ToG <<std::endl;
+    std::cout << "Publish Joint for IKinematics" <<std::endl;
+       }
+
+    main_window_ui_->joint1->setText(QString::number(jointvalues[0]));
+    main_window_ui_->joint2->setText(QString::number(jointvalues[1]));
+    main_window_ui_->joint3->setText(QString::number(jointvalues[2]));
+    main_window_ui_->joint4->setText(QString::number(jointvalues[3]));
+    main_window_ui_->joint5->setText(QString::number(jointvalues[4]));
+    main_window_ui_->joint6->setText(QString::number(jointvalues[5]));
+
+    msg = this->createArmPositionCommand(jointvalues);
      joint_pub.publish(msg) ;
 
 }
@@ -1739,13 +1770,13 @@ void ROSGUI::executeFK(){
   trajectory_msgs::JointTrajectory msg;
   std::vector<double> jointvalues(6); //joint Values format Double
 
-  j(nj)=0;
-  j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
-  j(1) = main_window_ui_->spinBox2DOF->value()/ToG;
-  j(2) = main_window_ui_->spinBox3DOF->value()/ToG;
-  j(3) = main_window_ui_->spinBox4DOF->value()/ToG;
-  j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
-  j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
+//  j(nj)=0;
+//  j(0) = main_window_ui_->spinBox1DOF->value()/ToG;
+//  j(1) = main_window_ui_->spinBox2DOF->value()/ToG;
+//  j(2) = main_window_ui_->spinBox3DOF->value()/ToG;
+//  j(3) = main_window_ui_->spinBox4DOF->value()/ToG;
+//  j(4) = main_window_ui_->spinBox5DOF->value()/ToG;
+//  j(5) = main_window_ui_->spinBox6DOF->value()/ToG;
 
 
 //     // move arm straight up
@@ -1787,8 +1818,7 @@ void ROSGUI::FKdata(KDL::JntArray j){
                         pos_mat3,
                         pos_mat2,
                         pos_mat1,
-                        j,
-                        nj))
+                        j))
   {
            std::cerr << "Error at Publish Joint for FKinematics" <<std::endl;
   }
@@ -1966,7 +1996,14 @@ std::cout <<  msg << std::endl;
   j(3) = msg.points[0].positions[3]/ToG;
   j(4) = msg.points[0].positions[4]/ToG;
   j(5) = msg.points[0].positions[5]/ToG;
+  main_window_ui_->spinBox1DOF->    setValue( j(0)*ToG);
+  main_window_ui_->spinBox2DOF->    setValue( j(1)*ToG);
+  main_window_ui_->spinBox3DOF->    setValue( j(2)*ToG);
+  main_window_ui_->spinBox4DOF->    setValue( j(3)*ToG);
+  main_window_ui_->spinBox5DOF->    setValue( j(4)*ToG);
+  main_window_ui_->spinBox6DOF->    setValue( j(5)*ToG);
 
+this->updateDialer();
 this->FKdata(j);
 //ros::Rate loop_rate(10);
 
@@ -2111,7 +2148,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-
+    main_window_ui_->pushButton_3->setEnabled(true);
 
 
     break;
@@ -2174,6 +2211,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
+    main_window_ui_->pushButton_3->setEnabled(true);
 
 
     break;
@@ -2235,12 +2273,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-
-
-
-
+    main_window_ui_->pushButton_3->setEnabled(true);
     break;
     }
+
+
     case 4:
     {
     main_window_ui_->lineDH11->setEnabled(true);
@@ -2298,9 +2335,10 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-
+    main_window_ui_->pushButton_3->setEnabled(true);
     break;
     }
+
 
     case 5:
     {
@@ -2359,9 +2397,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setValue(0);
     main_window_ui_->doubleSpinBoxDH6max->setValue(0);
-
+    main_window_ui_->pushButton_3->setEnabled(true);
     break;
     }
+
+
     case 6:
 {
   main_window_ui_->lineDH11->setEnabled(true);
@@ -2411,10 +2451,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
   main_window_ui_->doubleSpinBoxDH6min->setEnabled(true);
   main_window_ui_->doubleSpinBoxDH6max->setEnabled(true);
-
-
+  main_window_ui_->pushButton_3->setEnabled(true);
 break;
 }
+
+
   } //switch
 
 }

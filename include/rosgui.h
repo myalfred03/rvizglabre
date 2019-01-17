@@ -202,6 +202,8 @@ public Q_SLOTS:
       void on5DOFs_URDF();
       void on6DOFs_URDF();
 
+      void on_enableW();
+
 
       void onKUKA1_URDF();
       void onKUKA2_URDF();
@@ -271,8 +273,10 @@ private:
    //RobotPreview *robot_preview_;
    QString file_name_;          //llamar el STRING DEL URDF
    boost::mutex state_pub_mutex_;
-   KDL::Tree* robot_tree_ = NULL;
-   robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
+   boost::shared_ptr<KDL::Tree>  robot_tree_ = NULL;
+   boost::shared_ptr<robot_state_publisher::RobotStatePublisher> robot_state_pub_ = NULL;
+//   KDL::Tree* robot_tree_ = NULL;
+//   robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
 //   robot_state_publisher::RobotStatePublisher* robot_state_pubDH_ = NULL;
 
 

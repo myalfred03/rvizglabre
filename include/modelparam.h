@@ -17,6 +17,7 @@
 
 #include <kdl/chainiksolver.hpp>
 #include <kdl/chainiksolverpos_nr.hpp>
+#include <kdl/chainiksolverpos_nr_jl.hpp>
 #include <kdl/chainiksolvervel_pinv.hpp>
 
 #include <kdl/treefksolverpos_recursive.hpp>
@@ -57,15 +58,15 @@ class modelparam
 {
 public:
   modelparam();
-          bool initmodel();
+          bool initmodel(unsigned int &nj);
           bool ForwardK(KDL::Frame &pos_mat6,
                         KDL::Frame &pos_mat5,
                         KDL::Frame &pos_mat4,
                         KDL::Frame &pos_mat3,
                         KDL::Frame &pos_mat2,
                         KDL::Frame &pos_mat1,
-                        KDL::JntArray j,
-                        unsigned int &nj
+                        KDL::JntArray j
+
                         );
          // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
@@ -76,6 +77,7 @@ public:
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
           std::vector<double>& upper_limits);
           unsigned int njnt;
+          KDL::JntArray q_min_, q_max_, q_seed_;
 
 //          bool treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
 //          bool treeToUrdfXml(TiXmlDocument * & xml_doc,  const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
@@ -137,6 +139,12 @@ KDL::Chain kdl_chain6;
   KDL::Rotation rot_mat ;
   urdf::Model urdf_model;
   KDL::JntArray j1 =KDL::JntArray(6);
+
+
+  boost::shared_ptr<KDL::ChainFkSolverPos> fksolver_;
+  boost::shared_ptr<KDL::ChainIkSolverVel> ik_vel_solver_;
+  boost::shared_ptr<KDL::ChainIkSolverPos> ik_solver_;
+
 
 
 };
