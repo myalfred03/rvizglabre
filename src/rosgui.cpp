@@ -189,6 +189,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
     connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
 
+    //Basic Joints
+    connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
 
 
     //Cinematica Directa
@@ -209,6 +211,16 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->spinBox5DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     connect(main_window_ui_->spinBox6DOF, SIGNAL(valueChanged(double)), SLOT(updateDialer()));
     //Cinematica Directa
+
+    //Matemática del robot
+    connect(main_window_ui_->spinBox_2, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
+    connect(main_window_ui_->spinBox_3, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
+    connect(main_window_ui_->spinBox_4, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
+
+
+
+    //Matemática del robot
+
 
     //Industrial Robots (1)
     connect(main_window_ui_->checkBoxKuka1, SIGNAL(clicked()), SLOT(onKUKA1_URDF()));
@@ -250,6 +262,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(onPrism_URDF()));
     connect(main_window_ui_->checkBoxRev_Pris,  SIGNAL(toggled(bool)), SLOT(onPris_Rev_URDF()));
     connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
+    connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(onMat1()));
+
 
     //Denavith Select parameters to load
     connect(main_window_ui_->spinBox,          SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
@@ -328,6 +342,7 @@ this->updateURDF(file_contents);
             robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
             map_reuleaux         = nh_.advertise<std_msgs::String>("/my_lab_uni/map_reuleaux", 10);
 
+          odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(angleRot[0],angleRot[1],angleRot[2] );
 
 
 
@@ -444,6 +459,25 @@ void ROSGUI::on_actionSave_as_triggered()
 //{
 // main_window_.close();
 //}
+
+void ROSGUI::onMat1()
+{
+//  delete robot_state_pub_;
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/Math/Cubo.urdf";
+  std::ifstream selected_file(filePath.c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Cubo, para analisis de matemática del Robot"));
+}
 
 void ROSGUI::on3DOF_URDF()
 {
@@ -1019,8 +1053,22 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
   }
 
   // refresh the preview
-  mRviz->refreshDH("my_lab_uni/" + modelU.getRootSegment()->first);
+  mRviz->refreshDH("my_lab_world/" + modelU.getRootSegment()->first);
   main_window_ui_->statusBar->showMessage(tr("Modelo Usuario DH"));
+
+}
+
+void ROSGUI::updateURDFMat(){
+
+    
+    angleRot[0] = main_window_ui_->spinBox_2->value()/ToG;
+    angleRot[1] = main_window_ui_->spinBox_3->value()/ToG;
+    angleRot[2] = main_window_ui_->spinBox_4->value()/ToG;
+
+    odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(angleRot[0],angleRot[1],angleRot[2] );
+
+    std::cout << angleRot[0] <<std::endl;
+
 
 }
 
@@ -1091,7 +1139,7 @@ void ROSGUI::updateURDF(const std::string& urdf)
   }
 
   // refresh the preview
-  mRviz->refresh("my_lab_uni/" + robot_tree_->getRootSegment()->first);
+  mRviz->refresh("my_lab_world");
 
  // mRviz->subscribeTopics("joint_states");
 
@@ -1121,11 +1169,21 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
   {
     { // lock the state publisher objects and run
       boost::mutex::scoped_lock state_pub_lock(state_pub_mutex_);
+          odom_trans.header.frame_id = "my_lab_world";
+          odom_trans.child_frame_id = "my_lab_world/base_link";
+          odom_trans.header.stamp = ros::Time::now();
+          odom_trans.transform.translation.x = 0;
+          odom_trans.transform.translation.y = 0;
+          odom_trans.transform.translation.z = 0;
+          //odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(89);
+          broadcaster.sendTransform(odom_trans);
+
+
 
       if(robot_state_pub_ != NULL)
       {
-         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now()/*+d_*/, "my_lab_uni");
-         robot_state_pub_->publishFixedTransforms("my_lab_uni");
+         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now()/*+d_*/, "my_lab_world");
+         robot_state_pub_->publishFixedTransforms("my_lab_world");
 
       }
 //      if(robot_state_pubDH_ != NULL)
@@ -1734,12 +1792,12 @@ void ROSGUI::executeIK(){
   trajectory_msgs::JointTrajectory msg;
 
   KDL::Vector tcpXYZ= KDL::Vector(main_window_ui_->xBox->value(),main_window_ui_->yBox->value(),main_window_ui_->zBox->value());
-//KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_.xSlider->value(),main_window_ui_.ySlider->value(),main_window_ui_.zSlider->value());
+  KDL::Rotation tcpRPY= KDL::Rotation::RPY(main_window_ui_->xSlider->value(),main_window_ui_->ySlider->value(),main_window_ui_->zSlider->value());
 
 //  KDL::Vector tcpXYZ  = KDL::Vector(0.2,0.0,0.0);
   //KDL::Rotation tcpRPY= KDL::Rotation(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
-  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.0,0.0,0.0);
+//  KDL::Rotation tcpRPY= KDL::Rotation::RPY(0.0,0.0,0.0);
   std::cout << "KDL ROT  " << nj <<std::endl;
 
     if (!jointsv->InverseK(tcpXYZ, tcpRPY, pos_joint))

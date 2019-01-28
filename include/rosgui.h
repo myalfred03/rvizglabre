@@ -55,7 +55,7 @@
 #include <std_msgs/Float32MultiArray.h>
 #include "std_msgs/String.h"
 
-
+#include <tf/transform_broadcaster.h>
 class QMainWindow;
 class MyViz;
 //class rvizMain;
@@ -80,6 +80,7 @@ public:
       std::vector< double > joint_upper;
       std::vector< double > joint_lower;
       std::vector< double > jointV;
+      std::vector<double> angleRot  = {0.0, 0.0, 0.0};;
 
 
       void updatetoURDF();
@@ -128,6 +129,8 @@ public:
       std_msgs::Float32MultiArray valueDH;
 
       std_msgs::String map;
+      geometry_msgs::TransformStamped odom_trans;
+      tf::TransformBroadcaster broadcaster;
 
 
 
@@ -175,6 +178,7 @@ public Q_SLOTS:
 
       void updateDialer();
       void updateSpinboxesD();
+      void updateURDFMat();
       //      void updateDH(double x);
 
       void on_spinBox_valueChanged(int arg1);
@@ -229,6 +233,8 @@ public Q_SLOTS:
       void onCartesian_URDF();
       void onCylindrical_URDF();
       void on3DOF_URDF();
+
+      void onMat1();
 
 
 trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& newPositions);

@@ -70,7 +70,7 @@ QWidget(parent)
           manager_->load( config.mapGetChild( "Visualization Manager" ));
       }
 
-  manager_->setFixedFrame (QString::fromStdString("base_link"));
+  manager_->setFixedFrame (QString::fromStdString("my_lab_world/base_link"));
 
 
   // Create an interaction tool..
@@ -378,8 +378,8 @@ if(robot_model_ != NULL)
 
   ROS_ASSERT(robot_model_ != NULL);
 
-  robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
-  robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
+  robot_model_->subProp("TF Prefix")->setValue("my_lab_world");
+  robot_model_->subProp("Show Axes")->setValue("my_lab_world");
   robot_model_->subProp("Robot Description")->setValue("my_lab_uni/robot_description");
   robot_model_->subProp("Links")->subProp("tool0")->subProp("Show Trail")->setValue(true);
 
@@ -402,8 +402,8 @@ void MyViz::refreshDH(const std::string &fixed_frame){
 
     ROS_ASSERT(robot_model_ != NULL);
 
-    robot_model_->subProp("TF Prefix")->setValue("my_lab_uni");
-    robot_model_->subProp("Show Axes")->setValue("my_lab_uni");
+    robot_model_->subProp("TF Prefix")->setValue("my_lab_world");
+    robot_model_->subProp("Show Axes")->setValue("my_lab_world");
 
 }
 void MyViz::refreshJoint(std::vector<double> joint){
