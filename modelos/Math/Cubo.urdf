@@ -5,10 +5,10 @@
 
 <link name="link_1">
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <geometry>
-      <box size="0.5 0.5 0.5"/>
-    </geometry>
+    <origin xyz="0 0 0" rpy="1.57 0 0"/>
+      <geometry>
+        <mesh filename="package://rvizglabre/modelos/Math/stl/jet1.stl"/>
+      </geometry>
   </visual>
 </link>
 

@@ -55,7 +55,14 @@
 #include <std_msgs/Float32MultiArray.h>
 #include "std_msgs/String.h"
 
+#include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
+#include <tf_conversions/tf_kdl.h>
+#include <tf/tfMessage.h>
+#include <tf2/convert.h>
+#include <tf2_msgs/TFMessage.h>
+#include <tf2/LinearMath/Quaternion.h>
+
 class QMainWindow;
 class MyViz;
 //class rvizMain;
@@ -80,7 +87,9 @@ public:
       std::vector< double > joint_upper;
       std::vector< double > joint_lower;
       std::vector< double > jointV;
-      std::vector<double> angleRot  = {0.0, 0.0, 0.0};;
+//      std::vector<double> angleRot  = {0.0, 0.0, 0.0 , 0.0};
+//      std::vector<double> anglePos  = {0.0, 0.0, 0.0 };
+
 
 
       void updatetoURDF();
@@ -178,7 +187,9 @@ public Q_SLOTS:
 
       void updateDialer();
       void updateSpinboxesD();
-      void updateURDFMat();
+      void updateMatEuler();
+      void updateMatQuat();
+
       //      void updateDH(double x);
 
       void on_spinBox_valueChanged(int arg1);

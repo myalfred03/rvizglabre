@@ -23,7 +23,7 @@
    <string notr="true">Kinematics GUI</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../rvizglabno/resources.qrc">
+   <iconset resource="resources.qrc">
     <normaloff>:/images/img/ROS_INDUSTRIAL.png</normaloff>:/images/img/ROS_INDUSTRIAL.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -89,7 +89,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="tab_10">
              <attribute name="title">
@@ -501,7 +501,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -536,7 +536,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -571,7 +571,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -603,7 +603,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -635,7 +635,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/1448635827949.png</normaloff>:/images/img/1448635827949.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -785,7 +785,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -853,7 +853,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -895,7 +895,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Fanuc-logo.jpg</normaloff>:/images/img/Fanuc-logo.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -924,7 +924,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -953,7 +953,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1038,7 +1038,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1073,7 +1073,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/neuronics.png</normaloff>:/images/img/neuronics.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1105,7 +1105,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ABB.png</normaloff>:/images/img/ABB.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1173,7 +1173,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/ur-logo.png</normaloff>:/images/img/ur-logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1202,7 +1202,7 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../rvizglabno/resources.qrc">
+                    <iconset resource="resources.qrc">
                      <normaloff>:/images/img/Yaskawa_Motoman_Logo.png</normaloff>:/images/img/Yaskawa_Motoman_Logo.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1257,7 +1257,7 @@
              <bool>true</bool>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab">
              <property name="maximumSize">
@@ -1376,8 +1376,8 @@
              <attribute name="title">
               <string>   1   </string>
              </attribute>
-             <layout class="QGridLayout" name="gridLayout_18">
-              <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_45">
+              <item row="0" column="0" colspan="2">
                <widget class="QLabel" name="label_60">
                 <property name="maximumSize">
                  <size>
@@ -1390,12 +1390,59 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_10">
-                  <item>
-                   <widget class="QLabel" name="label_62">
+              <item row="1" column="0" colspan="2">
+               <layout class="QGridLayout" name="gridLayout_19">
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_155">
+                  <property name="text">
+                   <string>Angulos de Euler XYZ</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <layout class="QGridLayout" name="gridLayout_49">
+                  <item row="5" column="1">
+                   <widget class="QLabel" name="label_163">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;m&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="2">
+                   <widget class="QLabel" name="label_158">
+                    <property name="text">
+                     <string>Y</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0" colspan="2">
+                   <widget class="QLabel" name="label_159">
+                    <property name="text">
+                     <string>Z</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="2">
+                   <widget class="QLabel" name="label_157">
+                    <property name="text">
+                     <string>X</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="2" colspan="4">
+                   <widget class="QLabel" name="label_65">
                     <property name="maximumSize">
                      <size>
                       <width>16777215</width>
@@ -1405,9 +1452,55 @@
                     <property name="text">
                      <string>Roll</string>
                     </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="3" column="1">
+                   <widget class="QLabel" name="label_162">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;m&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2" colspan="4">
+                   <widget class="QLabel" name="label_62">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Yaw</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QDoubleSpinBox" name="doubleSpinBox_MX">
+                    <property name="minimum">
+                     <double>-10.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.100000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="6">
+                   <widget class="Line" name="line_84">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="2" colspan="4">
                    <widget class="QLabel" name="label_64">
                     <property name="maximumSize">
                      <size>
@@ -1418,90 +1511,161 @@
                     <property name="text">
                      <string>Pitch</string>
                     </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QLabel" name="label_65">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>20</height>
-                     </size>
-                    </property>
+                  <item row="1" column="2" colspan="4">
+                   <widget class="QLabel" name="label_154">
                     <property name="text">
-                     <string>Yaw</string>
+                     <string>Rotación del Eje</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
                   </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_9">
-                  <item>
-                   <widget class="QSpinBox" name="spinBox_2">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>20</height>
-                     </size>
+                  <item row="1" column="0" colspan="2">
+                   <widget class="QLabel" name="label_156">
+                    <property name="text">
+                     <string>Posición del Eje</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="5" column="0">
+                   <widget class="QDoubleSpinBox" name="doubleSpinBox_MY">
+                    <property name="minimum">
+                     <double>-10.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.100000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="QLabel" name="label_164">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;m&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QDoubleSpinBox" name="doubleSpinBox_MZ">
+                    <property name="minimum">
+                     <double>-10.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>10.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.100000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="0" colspan="6">
+                   <widget class="Line" name="line_97">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="5">
                    <widget class="QLabel" name="label_148">
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QSpinBox" name="spinBox_3">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
+                  <item row="5" column="5">
                    <widget class="QLabel" name="label_149">
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QSpinBox" name="spinBox_4">
+                  <item row="7" column="5">
+                   <widget class="QLabel" name="label_150">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2" colspan="3">
+                   <widget class="QSpinBox" name="spinBox_MYaw">
                     <property name="maximumSize">
                      <size>
                       <width>16777215</width>
                       <height>20</height>
                      </size>
                     </property>
+                    <property name="minimum">
+                     <number>-180</number>
+                    </property>
+                    <property name="maximum">
+                     <number>180</number>
+                    </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QLabel" name="label_150">
-                    <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <item row="5" column="2" colspan="3">
+                   <widget class="QSpinBox" name="spinBox_MPitch">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="minimum">
+                     <number>-180</number>
+                    </property>
+                    <property name="value">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="2" colspan="3">
+                   <widget class="QSpinBox" name="spinBox_MRoll">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="minimum">
+                     <number>-180</number>
+                    </property>
+                    <property name="maximum">
+                     <number>180</number>
                     </property>
                    </widget>
                   </item>
                  </layout>
                 </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_2">
-                  <property name="text">
-                   <string>Posicionar</string>
+                <item row="0" column="0">
+                 <widget class="Line" name="line_99">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" rowspan="3">
+                 <widget class="Line" name="line_94">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
                   </property>
                  </widget>
                 </item>
                </layout>
               </item>
-              <item row="1" column="1">
+              <item row="1" column="2" colspan="2">
                <layout class="QGridLayout" name="gridLayout_44">
-                <item row="1" column="2">
+                <item row="4" column="3">
                  <widget class="QLabel" name="label_mat1x3">
                   <property name="maximumSize">
                    <size>
@@ -1523,7 +1687,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
+                <item row="5" column="2">
                  <widget class="QLabel" name="label_mat2x2">
                   <property name="maximumSize">
                    <size>
@@ -1545,7 +1709,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="5" column="1">
                  <widget class="QLabel" name="label_mat2x1">
                   <property name="maximumSize">
                    <size>
@@ -1567,7 +1731,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="3">
+                <item row="4" column="4">
                  <widget class="QLabel" name="label_mat1x4">
                   <property name="maximumSize">
                    <size>
@@ -1595,7 +1759,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="4" column="2">
                  <widget class="QLabel" name="label_mat1x2">
                   <property name="maximumSize">
                    <size>
@@ -1617,7 +1781,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="3">
+                <item row="6" column="4">
                  <widget class="QLabel" name="label_mat3x4">
                   <property name="maximumSize">
                    <size>
@@ -1645,7 +1809,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
+                <item row="6" column="2">
                  <widget class="QLabel" name="label_mat3x2">
                   <property name="maximumSize">
                    <size>
@@ -1667,7 +1831,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item row="4" column="1">
                  <widget class="QLabel" name="label_mat1x1">
                   <property name="maximumSize">
                    <size>
@@ -1689,7 +1853,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="6" column="1">
                  <widget class="QLabel" name="label_mat3x1">
                   <property name="maximumSize">
                    <size>
@@ -1711,7 +1875,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="2">
+                <item row="6" column="3">
                  <widget class="QLabel" name="label_mat3x3">
                   <property name="maximumSize">
                    <size>
@@ -1733,7 +1897,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="2">
+                <item row="5" column="3">
                  <widget class="QLabel" name="label_mat2x3">
                   <property name="maximumSize">
                    <size>
@@ -1755,7 +1919,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="3">
+                <item row="5" column="4">
                  <widget class="QLabel" name="label_mat2x4_2">
                   <property name="maximumSize">
                    <size>
@@ -1783,7 +1947,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
+                <item row="7" column="1">
                  <widget class="QLabel" name="label_mat4x1">
                   <property name="maximumSize">
                    <size>
@@ -1808,7 +1972,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
+                <item row="7" column="2">
                  <widget class="QLabel" name="label_mat4x2">
                   <property name="maximumSize">
                    <size>
@@ -1833,7 +1997,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="2">
+                <item row="7" column="3">
                  <widget class="QLabel" name="label_mat4x3">
                   <property name="maximumSize">
                    <size>
@@ -1858,7 +2022,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="3">
+                <item row="7" column="4">
                  <widget class="QLabel" name="label_mat4x4">
                   <property name="maximumSize">
                    <size>
@@ -1880,7 +2044,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="3">
+                <item row="3" column="4">
                  <widget class="QLabel" name="label_146">
                   <property name="maximumSize">
                    <size>
@@ -1896,7 +2060,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
+                <item row="3" column="1">
                  <widget class="QLabel" name="label_147">
                   <property name="maximumSize">
                    <size>
@@ -1909,73 +2073,488 @@
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </item>
-              <item row="2" column="0" colspan="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_3">
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_6">
-                    <item>
-                     <widget class="QLabel" name="label_63">
-                      <property name="text">
-                       <string>q0</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_6"/>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_8">
-                    <item>
-                     <widget class="QLabel" name="label_151">
-                      <property name="text">
-                       <string>q1</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_2"/>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_11">
-                    <item>
-                     <widget class="QLabel" name="label_152">
-                      <property name="text">
-                       <string>12</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_7"/>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_12">
-                    <item>
-                     <widget class="QLabel" name="label_153">
-                      <property name="text">
-                       <string>q3</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_5"/>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
+                <item row="1" column="1" colspan="4">
+                 <widget class="QLabel" name="label_160">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Matriz de Rotación&lt;/p&gt;&lt;p align=&quot;center&quot;&gt; Y Traslación&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1" colspan="4">
+                 <widget class="Line" name="line_85">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="1" colspan="4">
+                 <widget class="Line" name="line_98">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" colspan="4">
+                 <widget class="Line" name="line_100">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" rowspan="9">
+                 <widget class="Line" name="line_81">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
+              <item row="2" column="0">
+               <layout class="QGridLayout" name="gridLayout_52">
+                <item row="6" column="0">
+                 <widget class="QLabel" name="label_153">
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>qz</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_151">
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>qx</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="QLabel" name="label_161">
+                  <property name="text">
+                   <string>Quaterniones</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_63">
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>qW</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <widget class="Line" name="line_86">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_152">
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>qy</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0" colspan="3">
+                 <widget class="Line" name="line_90">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="Line" name="line_82">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" rowspan="7">
+                 <widget class="Line" name="line_3">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLabel" name="qW">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Sunken</enum>
+                  </property>
+                  <property name="text">
+                   <string>1</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="qX">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Sunken</enum>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLabel" name="qY">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Sunken</enum>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="QLabel" name="qZ">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Sunken</enum>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="1" colspan="2">
+               <layout class="QGridLayout" name="gridLayout_18">
+                <item row="4" column="1">
+                 <widget class="QLabel" name="label_168">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;φ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLabel" name="label_170">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" colspan="3">
+                 <widget class="QLabel" name="label_165">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Coordenadas &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Esféricas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" colspan="3">
+                 <widget class="Line" name="line_83">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLabel" name="label_166">
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QSpinBox" name="spinBox_thSph">
+                  <property name="minimum">
+                   <number>-180</number>
+                  </property>
+                  <property name="maximum">
+                   <number>180</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLabel" name="label_169">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;θ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QDoubleSpinBox" name="doubleSpinBox_rSph">
+                  <property name="minimum">
+                   <double>-10.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>10.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.100000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1" colspan="3">
+                 <widget class="Line" name="line_87">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLabel" name="label_167">
+                  <property name="text">
+                   <string>r</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QSpinBox" name="spinBox_phiSph">
+                  <property name="minimum">
+                   <number>-180</number>
+                  </property>
+                  <property name="maximum">
+                   <number>180</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QLabel" name="label_171">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1" colspan="3">
+                 <widget class="Line" name="line_91">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" rowspan="6">
+                 <widget class="Line" name="line_93">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4" rowspan="7">
+                 <widget class="Line" name="line_95">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="3">
+               <layout class="QGridLayout" name="gridLayout_50">
+                <item row="5" column="1">
+                 <widget class="QLabel" name="label_172">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;φ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="label_176">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ρ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QSpinBox" name="spinBox_phiCy">
+                  <property name="minimum">
+                   <number>-180</number>
+                  </property>
+                  <property name="maximum">
+                   <number>180</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLabel" name="label_175">
+                  <property name="text">
+                   <string>z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QLabel" name="label_178">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;°&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLabel" name="label_174">
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QDoubleSpinBox" name="doubleSpinBox_ZCy">
+                  <property name="minimum">
+                   <double>-10.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>10.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.100000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLabel" name="label_177">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;m&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1" colspan="3">
+                 <widget class="Line" name="line_88">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" colspan="3">
+                 <widget class="Line" name="line_89">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QDoubleSpinBox" name="doubleSpinBox_roCy">
+                  <property name="minimum">
+                   <double>-10.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>10.000000000000000</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.100000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" rowspan="7">
+                 <widget class="Line" name="line_96">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" colspan="3">
+                 <widget class="QLabel" name="label_173">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Coordenadas &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Cilíndricas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1" colspan="3">
+                 <widget class="Line" name="line_92">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="3" column="0" colspan="4">
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>389</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="0" colspan="4">
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>389</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
              </layout>
+             <zorder>label_60</zorder>
+             <zorder></zorder>
+             <zorder>horizontalSpacer_4</zorder>
+             <zorder>horizontalSpacer_5</zorder>
             </widget>
             <widget class="QWidget" name="tab_2">
              <attribute name="title">
@@ -6007,7 +6586,7 @@
                      <string>FK</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../resources.qrc">
+                     <iconset resource="resources.qrc">
                       <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                     </property>
                     <property name="iconSize">
@@ -7194,7 +7773,7 @@
                       <string>IK</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../resources.qrc">
+                      <iconset resource="resources.qrc">
                        <normaloff>:/images/img/IK.png</normaloff>:/images/img/IK.png</iconset>
                      </property>
                     </widget>
@@ -8994,7 +9573,7 @@
                 <string>Show only Robot</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_.png</normaloff>:/images/img/noun_.png</iconset>
                </property>
               </item>
@@ -9003,7 +9582,7 @@
                 <string>Show Robot with Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1035985_cc (1).png</normaloff>:/images/img/noun_1035985_cc (1).png</iconset>
                </property>
               </item>
@@ -9012,7 +9591,7 @@
                 <string>Show Axes with Names</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_319786_cc.png</normaloff>:/images/img/noun_319786_cc.png</iconset>
                </property>
               </item>
@@ -9021,7 +9600,7 @@
                 <string>Show Axes</string>
                </property>
                <property name="icon">
-                <iconset resource="../../rvizglabno/resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1450480_cc.png</normaloff>:/images/img/noun_1450480_cc.png</iconset>
                </property>
               </item>
@@ -9030,7 +9609,7 @@
                 <string>Show All</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/noun_1036029_cc.png</normaloff>:/images/img/noun_1036029_cc.png</iconset>
                </property>
               </item>
@@ -9058,7 +9637,7 @@
                 <string>Interactuar</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Interact.png</normaloff>:/images/img/Interact.png</iconset>
                </property>
               </item>
@@ -9067,7 +9646,7 @@
                 <string>Mover Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/MoveCamera.png</normaloff>:/images/img/MoveCamera.png</iconset>
                </property>
               </item>
@@ -9076,7 +9655,7 @@
                 <string>Seleccionar</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Select.png</normaloff>:/images/img/Select.png</iconset>
                </property>
               </item>
@@ -9085,7 +9664,7 @@
                 <string>Medir En Pantalla de Simulación</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/Measure.png</normaloff>:/images/img/Measure.png</iconset>
                </property>
               </item>
@@ -9094,7 +9673,7 @@
                 <string>Enfoque de Camara</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/FocusCamera.png</normaloff>:/images/img/FocusCamera.png</iconset>
                </property>
               </item>
@@ -9103,7 +9682,7 @@
                 <string>Punto en coordenadas XYZ</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/PublishPoint.png</normaloff>:/images/img/PublishPoint.png</iconset>
                </property>
               </item>
@@ -9127,7 +9706,7 @@
                <string>Espacio de Trabajo</string>
               </property>
               <property name="icon">
-               <iconset resource="../resources.qrc">
+               <iconset resource="resources.qrc">
                 <normaloff>:/images/img/ReachabilityMap.png</normaloff>:/images/img/ReachabilityMap.png</iconset>
               </property>
              </widget>
@@ -9154,7 +9733,7 @@
                 <string>Show Trail </string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/kinetics.png</normaloff>:/images/img/kinetics.png</iconset>
                </property>
               </item>
@@ -9163,7 +9742,7 @@
                 <string>Show Loop Animation</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources.qrc">
+                <iconset resource="resources.qrc">
                  <normaloff>:/images/img/turn_left.png</normaloff>:/images/img/turn_left.png</iconset>
                </property>
               </item>
@@ -9208,7 +9787,7 @@
      <x>0</x>
      <y>0</y>
      <width>1370</width>
-     <height>18</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -9240,7 +9819,7 @@
   </widget>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="../../robot_editor/image.qrc">
+    <iconset>
      <normaloff>:/img/learning.png</normaloff>:/img/learning.png</iconset>
    </property>
    <property name="text">
@@ -9252,7 +9831,7 @@
   </action>
   <action name="actionDocument">
    <property name="icon">
-    <iconset resource="../../robot_editor/image.qrc">
+    <iconset>
      <normaloff>:/img/information.png</normaloff>:/img/information.png</iconset>
    </property>
    <property name="text">
@@ -9269,7 +9848,7 @@
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="../../interpreter_gui/image.qrc">
+    <iconset>
      <normaloff>:/img/open.png</normaloff>:/img/open.png</iconset>
    </property>
    <property name="text">
@@ -9285,10 +9864,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../rvizglabno/resources.qrc"/>
-  <include location="../../robot_editor/image.qrc"/>
-  <include location="../resources.qrc"/>
-  <include location="../../interpreter_gui/image.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -213,9 +213,22 @@ ROSGUI::ROSGUI(QWidget *parent)
     //Cinematica Directa
 
     //Matemática del robot
-    connect(main_window_ui_->spinBox_2, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
-    connect(main_window_ui_->spinBox_3, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
-    connect(main_window_ui_->spinBox_4, SIGNAL(valueChanged(int)), SLOT(updateURDFMat()));
+    //Euler
+    connect(main_window_ui_->spinBox_MYaw, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->spinBox_MRoll, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->spinBox_MPitch, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MX, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MY, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MZ, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    //Rot
+    //Quaternions
+ //   connect(main_window_ui_->doubleSpinBox_qW, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
+//    connect(main_window_ui_->doubleSpinBox_qX, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
+//    connect(main_window_ui_->doubleSpinBox_qY, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
+//    connect(main_window_ui_->doubleSpinBox_qZ, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
+
+
+
 
 
 
@@ -342,7 +355,7 @@ this->updateURDF(file_contents);
             robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
             map_reuleaux         = nh_.advertise<std_msgs::String>("/my_lab_uni/map_reuleaux", 10);
 
-          odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(angleRot[0],angleRot[1],angleRot[2] );
+          odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(0,0,0);
 
 
 
@@ -1058,12 +1071,35 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
 
 }
 
-void ROSGUI::updateURDFMat(){
+void ROSGUI::updateMatEuler(){
 
-    
-    angleRot[0] = main_window_ui_->spinBox_2->value()/ToG;
-    angleRot[1] = main_window_ui_->spinBox_3->value()/ToG;
-    angleRot[2] = main_window_ui_->spinBox_4->value()/ToG;
+    std::vector<double> angleRot(6);
+
+
+
+    angleRot[0] = main_window_ui_->spinBox_MRoll->value()/ToG;
+    angleRot[1] = main_window_ui_->spinBox_MPitch->value()/ToG;
+    angleRot[2] = main_window_ui_->spinBox_MYaw->value()/ToG;
+    angleRot[3] = main_window_ui_->doubleSpinBox_MX->value();
+    angleRot[4] = main_window_ui_->doubleSpinBox_MY->value();
+    angleRot[5] = main_window_ui_->doubleSpinBox_MZ->value();
+
+    tf::Quaternion quat = tf::createQuaternionFromRPY( angleRot[0],  angleRot[1],  angleRot[2]);
+
+
+    main_window_ui_->qW->setText(QString::number(quat.getW()));
+    main_window_ui_->qX->setText(QString::number(quat.getX()));
+    main_window_ui_->qY->setText(QString::number(quat.getY()));
+    main_window_ui_->qZ->setText(QString::number(quat.getZ()));
+
+    // main_window_ui_->doubleSpinBox_qW->setValue(quat.getW());
+    // main_window_ui_->doubleSpinBox_qX->setValue(quat.getX());
+    // main_window_ui_->doubleSpinBox_qY->setValue(quat.getY());
+    // main_window_ui_->doubleSpinBox_qZ->setValue(quat.getZ());
+
+    odom_trans.transform.translation.x =  angleRot[3];
+    odom_trans.transform.translation.y =  angleRot[4];
+    odom_trans.transform.translation.z =  angleRot[5];
 
     odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(angleRot[0],angleRot[1],angleRot[2] );
 
@@ -1071,6 +1107,56 @@ void ROSGUI::updateURDFMat(){
 
 
 }
+
+
+void ROSGUI::updateMatQuat(){
+//      std::vector<double> angleRot(1);
+//      double roll, pitch, yaw;
+//      angleRot[0] = main_window_ui_->doubleSpinBox_qW->value();
+
+
+// //     angleRot[1] = main_window_ui_->doubleSpinBox_qX->value();
+// //     angleRot[2] = main_window_ui_->doubleSpinBox_qY->value();
+// //     angleRot[3] = main_window_ui_->doubleSpinBox_qZ->value();
+
+//      tf::Quaternion q;
+//      //(
+// //     angleRot[0],
+// //     angleRot[1],
+// //     angleRot[2],
+// //     angleRot[3] );
+//      q.setW(angleRot[0]);
+//      q.normalize();
+//      q.normalized();
+     
+//      main_window_ui_->doubleSpinBox_qX->setValue(q.getX());
+//      main_window_ui_->doubleSpinBox_qY->setValue(q.getY());
+//      main_window_ui_->doubleSpinBox_qZ->setValue(q.getZ());
+
+//       //odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(89);
+
+//      tf::Matrix3x3 m(q);
+//      m.getRPY(roll, pitch, yaw);
+//      main_window_ui_->spinBox_MRoll->setValue(roll*ToG);
+//      main_window_ui_->spinBox_MPitch->setValue(pitch*ToG);
+//      main_window_ui_->spinBox_MYaw->setValue(yaw*ToG);
+
+
+//      odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(roll,pitch,yaw);
+
+//      std::cout << angleRot[0] <<std::endl;
+
+
+}
+
+
+//cc280120190210
+
+
+
+
+
+
 
 
 
@@ -1172,9 +1258,7 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
           odom_trans.header.frame_id = "my_lab_world";
           odom_trans.child_frame_id = "my_lab_world/base_link";
           odom_trans.header.stamp = ros::Time::now();
-          odom_trans.transform.translation.x = 0;
-          odom_trans.transform.translation.y = 0;
-          odom_trans.transform.translation.z = 0;
+
           //odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(89);
           broadcaster.sendTransform(odom_trans);
 
