@@ -7,7 +7,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
-        <box size="0.1 0.1 0.1"/>
+        <mesh filename="package://rvizglabre/modelos/Math/stl/jet1.stl"/>
       </geometry>
   </visual>
 </link>

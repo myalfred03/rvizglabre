@@ -62,6 +62,7 @@
 #include <tf2/convert.h>
 #include <tf2_msgs/TFMessage.h>
 #include <tf2/LinearMath/Quaternion.h>
+#include <math.h>
 
 class QMainWindow;
 class MyViz;
@@ -189,6 +190,10 @@ public Q_SLOTS:
       void updateSpinboxesD();
       void updateMatEuler();
       void updateMatQuat();
+      void updateMatSph();
+      void updateMatCyl();
+
+
 
       //      void updateDH(double x);
 

@@ -61,8 +61,11 @@ public:
     QCheckBox *checkBoxRevolute;
     QCheckBox *checkBoxPrismatic;
     QCheckBox *checkBoxRev_Pris;
-    QCheckBox *checkBoxRev3D;
     QCheckBox *checkBox6DOFs_3;
+    QCheckBox *checkBoxRev3D;
+    QLabel *label_179;
+    QFrame *line_101;
+    QLabel *label_180;
     QWidget *tabWidgetPage2;
     QGridLayout *gridLayout_8;
     QGroupBox *gridGroupBox_2;
@@ -158,9 +161,9 @@ public:
     QLabel *label_148;
     QLabel *label_149;
     QLabel *label_150;
-    QSpinBox *spinBox_MYaw;
-    QSpinBox *spinBox_MPitch;
-    QSpinBox *spinBox_MRoll;
+    QDoubleSpinBox *doubleSpinBox_MYaw;
+    QDoubleSpinBox *doubleSpinBox_MPitch;
+    QDoubleSpinBox *doubleSpinBox_MRoll;
     QFrame *line_99;
     QFrame *line_94;
     QGridLayout *gridLayout_44;
@@ -207,20 +210,19 @@ public:
     QLabel *label_165;
     QFrame *line_83;
     QLabel *label_166;
-    QSpinBox *spinBox_thSph;
     QLabel *label_169;
     QDoubleSpinBox *doubleSpinBox_rSph;
     QFrame *line_87;
     QLabel *label_167;
-    QSpinBox *spinBox_phiSph;
     QLabel *label_171;
     QFrame *line_91;
     QFrame *line_93;
     QFrame *line_95;
+    QDoubleSpinBox *doubleSpinBox_phiSph;
+    QDoubleSpinBox *doubleSpinBox_thSph;
     QGridLayout *gridLayout_50;
     QLabel *label_172;
     QLabel *label_176;
-    QSpinBox *spinBox_phiCy;
     QLabel *label_175;
     QLabel *label_178;
     QLabel *label_174;
@@ -232,6 +234,7 @@ public:
     QFrame *line_96;
     QLabel *label_173;
     QFrame *line_92;
+    QDoubleSpinBox *doubleSpinBox_phiCy;
     QSpacerItem *horizontalSpacer_4;
     QSpacerItem *horizontalSpacer_5;
     QWidget *tab_2;
@@ -760,31 +763,50 @@ public:
         checkBoxRevolute->setObjectName(QStringLiteral("checkBoxRevolute"));
         checkBoxRevolute->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_29->addWidget(checkBoxRevolute, 0, 0, 1, 1);
+        gridLayout_29->addWidget(checkBoxRevolute, 1, 3, 1, 1);
 
         checkBoxPrismatic = new QCheckBox(gridGroupBox_5);
         checkBoxPrismatic->setObjectName(QStringLiteral("checkBoxPrismatic"));
         checkBoxPrismatic->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_29->addWidget(checkBoxPrismatic, 0, 1, 1, 1);
+        gridLayout_29->addWidget(checkBoxPrismatic, 1, 4, 1, 1);
 
         checkBoxRev_Pris = new QCheckBox(gridGroupBox_5);
         checkBoxRev_Pris->setObjectName(QStringLiteral("checkBoxRev_Pris"));
         checkBoxRev_Pris->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_29->addWidget(checkBoxRev_Pris, 0, 2, 1, 1);
-
-        checkBoxRev3D = new QCheckBox(gridGroupBox_5);
-        checkBoxRev3D->setObjectName(QStringLiteral("checkBoxRev3D"));
-        checkBoxRev3D->setMaximumSize(QSize(80, 16777215));
-
-        gridLayout_29->addWidget(checkBoxRev3D, 0, 3, 1, 1);
+        gridLayout_29->addWidget(checkBoxRev_Pris, 1, 5, 1, 1);
 
         checkBox6DOFs_3 = new QCheckBox(gridGroupBox_5);
         checkBox6DOFs_3->setObjectName(QStringLiteral("checkBox6DOFs_3"));
         checkBox6DOFs_3->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_29->addWidget(checkBox6DOFs_3, 0, 4, 1, 1);
+        gridLayout_29->addWidget(checkBox6DOFs_3, 1, 1, 1, 1);
+
+        checkBoxRev3D = new QCheckBox(gridGroupBox_5);
+        checkBoxRev3D->setObjectName(QStringLiteral("checkBoxRev3D"));
+        checkBoxRev3D->setMaximumSize(QSize(80, 16777215));
+
+        gridLayout_29->addWidget(checkBoxRev3D, 1, 0, 1, 1);
+
+        label_179 = new QLabel(gridGroupBox_5);
+        label_179->setObjectName(QStringLiteral("label_179"));
+        label_179->setAlignment(Qt::AlignCenter);
+
+        gridLayout_29->addWidget(label_179, 0, 0, 1, 2);
+
+        line_101 = new QFrame(gridGroupBox_5);
+        line_101->setObjectName(QStringLiteral("line_101"));
+        line_101->setFrameShape(QFrame::VLine);
+        line_101->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_29->addWidget(line_101, 0, 2, 2, 1);
+
+        label_180 = new QLabel(gridGroupBox_5);
+        label_180->setObjectName(QStringLiteral("label_180"));
+        label_180->setAlignment(Qt::AlignCenter);
+
+        gridLayout_29->addWidget(label_180, 0, 3, 1, 3);
 
 
         gridLayout_27->addWidget(gridGroupBox_5, 0, 0, 1, 1);
@@ -1352,8 +1374,8 @@ public:
 
         doubleSpinBox_MX = new QDoubleSpinBox(tab_13);
         doubleSpinBox_MX->setObjectName(QStringLiteral("doubleSpinBox_MX"));
-        doubleSpinBox_MX->setMinimum(-10);
-        doubleSpinBox_MX->setMaximum(10);
+        doubleSpinBox_MX->setMinimum(-20);
+        doubleSpinBox_MX->setMaximum(20);
         doubleSpinBox_MX->setSingleStep(0.1);
 
         gridLayout_49->addWidget(doubleSpinBox_MX, 3, 0, 1, 1);
@@ -1386,8 +1408,8 @@ public:
 
         doubleSpinBox_MY = new QDoubleSpinBox(tab_13);
         doubleSpinBox_MY->setObjectName(QStringLiteral("doubleSpinBox_MY"));
-        doubleSpinBox_MY->setMinimum(-10);
-        doubleSpinBox_MY->setMaximum(10);
+        doubleSpinBox_MY->setMinimum(-20);
+        doubleSpinBox_MY->setMaximum(20);
         doubleSpinBox_MY->setSingleStep(0.1);
 
         gridLayout_49->addWidget(doubleSpinBox_MY, 5, 0, 1, 1);
@@ -1399,8 +1421,8 @@ public:
 
         doubleSpinBox_MZ = new QDoubleSpinBox(tab_13);
         doubleSpinBox_MZ->setObjectName(QStringLiteral("doubleSpinBox_MZ"));
-        doubleSpinBox_MZ->setMinimum(-10);
-        doubleSpinBox_MZ->setMaximum(10);
+        doubleSpinBox_MZ->setMinimum(-20);
+        doubleSpinBox_MZ->setMaximum(20);
         doubleSpinBox_MZ->setSingleStep(0.1);
 
         gridLayout_49->addWidget(doubleSpinBox_MZ, 7, 0, 1, 1);
@@ -1427,29 +1449,29 @@ public:
 
         gridLayout_49->addWidget(label_150, 7, 5, 1, 1);
 
-        spinBox_MYaw = new QSpinBox(tab_13);
-        spinBox_MYaw->setObjectName(QStringLiteral("spinBox_MYaw"));
-        spinBox_MYaw->setMaximumSize(QSize(16777215, 20));
-        spinBox_MYaw->setMinimum(-180);
-        spinBox_MYaw->setMaximum(180);
+        doubleSpinBox_MYaw = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_MYaw->setObjectName(QStringLiteral("doubleSpinBox_MYaw"));
+        doubleSpinBox_MYaw->setMaximumSize(QSize(16777215, 20));
+        doubleSpinBox_MYaw->setMinimum(-180);
+        doubleSpinBox_MYaw->setMaximum(180);
 
-        gridLayout_49->addWidget(spinBox_MYaw, 3, 2, 1, 3);
+        gridLayout_49->addWidget(doubleSpinBox_MYaw, 3, 2, 1, 3);
 
-        spinBox_MPitch = new QSpinBox(tab_13);
-        spinBox_MPitch->setObjectName(QStringLiteral("spinBox_MPitch"));
-        spinBox_MPitch->setMaximumSize(QSize(16777215, 20));
-        spinBox_MPitch->setMinimum(-180);
-        spinBox_MPitch->setValue(0);
+        doubleSpinBox_MPitch = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_MPitch->setObjectName(QStringLiteral("doubleSpinBox_MPitch"));
+        doubleSpinBox_MPitch->setMaximumSize(QSize(16777215, 20));
+        doubleSpinBox_MPitch->setMinimum(-180);
+        doubleSpinBox_MPitch->setMaximum(180);
 
-        gridLayout_49->addWidget(spinBox_MPitch, 5, 2, 1, 3);
+        gridLayout_49->addWidget(doubleSpinBox_MPitch, 5, 2, 1, 3);
 
-        spinBox_MRoll = new QSpinBox(tab_13);
-        spinBox_MRoll->setObjectName(QStringLiteral("spinBox_MRoll"));
-        spinBox_MRoll->setMaximumSize(QSize(16777215, 20));
-        spinBox_MRoll->setMinimum(-180);
-        spinBox_MRoll->setMaximum(180);
+        doubleSpinBox_MRoll = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_MRoll->setObjectName(QStringLiteral("doubleSpinBox_MRoll"));
+        doubleSpinBox_MRoll->setMaximumSize(QSize(16777215, 20));
+        doubleSpinBox_MRoll->setMinimum(-180);
+        doubleSpinBox_MRoll->setMaximum(180);
 
-        gridLayout_49->addWidget(spinBox_MRoll, 7, 2, 1, 3);
+        gridLayout_49->addWidget(doubleSpinBox_MRoll, 7, 2, 1, 3);
 
 
         gridLayout_19->addLayout(gridLayout_49, 2, 0, 1, 1);
@@ -1806,13 +1828,6 @@ public:
 
         gridLayout_18->addWidget(label_166, 3, 3, 1, 1);
 
-        spinBox_thSph = new QSpinBox(tab_13);
-        spinBox_thSph->setObjectName(QStringLiteral("spinBox_thSph"));
-        spinBox_thSph->setMinimum(-180);
-        spinBox_thSph->setMaximum(180);
-
-        gridLayout_18->addWidget(spinBox_thSph, 5, 2, 1, 1);
-
         label_169 = new QLabel(tab_13);
         label_169->setObjectName(QStringLiteral("label_169"));
 
@@ -1820,8 +1835,8 @@ public:
 
         doubleSpinBox_rSph = new QDoubleSpinBox(tab_13);
         doubleSpinBox_rSph->setObjectName(QStringLiteral("doubleSpinBox_rSph"));
-        doubleSpinBox_rSph->setMinimum(-10);
-        doubleSpinBox_rSph->setMaximum(10);
+        doubleSpinBox_rSph->setMinimum(-20);
+        doubleSpinBox_rSph->setMaximum(20);
         doubleSpinBox_rSph->setSingleStep(0.1);
 
         gridLayout_18->addWidget(doubleSpinBox_rSph, 3, 2, 1, 1);
@@ -1837,13 +1852,6 @@ public:
         label_167->setObjectName(QStringLiteral("label_167"));
 
         gridLayout_18->addWidget(label_167, 3, 1, 1, 1);
-
-        spinBox_phiSph = new QSpinBox(tab_13);
-        spinBox_phiSph->setObjectName(QStringLiteral("spinBox_phiSph"));
-        spinBox_phiSph->setMinimum(-180);
-        spinBox_phiSph->setMaximum(180);
-
-        gridLayout_18->addWidget(spinBox_phiSph, 4, 2, 1, 1);
 
         label_171 = new QLabel(tab_13);
         label_171->setObjectName(QStringLiteral("label_171"));
@@ -1872,6 +1880,20 @@ public:
 
         gridLayout_18->addWidget(line_95, 0, 4, 7, 1);
 
+        doubleSpinBox_phiSph = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_phiSph->setObjectName(QStringLiteral("doubleSpinBox_phiSph"));
+        doubleSpinBox_phiSph->setMinimum(-180);
+        doubleSpinBox_phiSph->setMaximum(180);
+
+        gridLayout_18->addWidget(doubleSpinBox_phiSph, 4, 2, 1, 1);
+
+        doubleSpinBox_thSph = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_thSph->setObjectName(QStringLiteral("doubleSpinBox_thSph"));
+        doubleSpinBox_thSph->setMinimum(-180);
+        doubleSpinBox_thSph->setMaximum(180);
+
+        gridLayout_18->addWidget(doubleSpinBox_thSph, 5, 2, 1, 1);
+
 
         gridLayout_45->addLayout(gridLayout_18, 2, 1, 1, 2);
 
@@ -1887,13 +1909,6 @@ public:
         label_176->setObjectName(QStringLiteral("label_176"));
 
         gridLayout_50->addWidget(label_176, 4, 1, 1, 1);
-
-        spinBox_phiCy = new QSpinBox(tab_13);
-        spinBox_phiCy->setObjectName(QStringLiteral("spinBox_phiCy"));
-        spinBox_phiCy->setMinimum(-180);
-        spinBox_phiCy->setMaximum(180);
-
-        gridLayout_50->addWidget(spinBox_phiCy, 5, 2, 1, 1);
 
         label_175 = new QLabel(tab_13);
         label_175->setObjectName(QStringLiteral("label_175"));
@@ -1912,8 +1927,8 @@ public:
 
         doubleSpinBox_ZCy = new QDoubleSpinBox(tab_13);
         doubleSpinBox_ZCy->setObjectName(QStringLiteral("doubleSpinBox_ZCy"));
-        doubleSpinBox_ZCy->setMinimum(-10);
-        doubleSpinBox_ZCy->setMaximum(10);
+        doubleSpinBox_ZCy->setMinimum(-20);
+        doubleSpinBox_ZCy->setMaximum(20);
         doubleSpinBox_ZCy->setSingleStep(0.1);
 
         gridLayout_50->addWidget(doubleSpinBox_ZCy, 3, 2, 1, 1);
@@ -1939,8 +1954,8 @@ public:
 
         doubleSpinBox_roCy = new QDoubleSpinBox(tab_13);
         doubleSpinBox_roCy->setObjectName(QStringLiteral("doubleSpinBox_roCy"));
-        doubleSpinBox_roCy->setMinimum(-10);
-        doubleSpinBox_roCy->setMaximum(10);
+        doubleSpinBox_roCy->setMinimum(-20);
+        doubleSpinBox_roCy->setMaximum(20);
         doubleSpinBox_roCy->setSingleStep(0.1);
 
         gridLayout_50->addWidget(doubleSpinBox_roCy, 4, 2, 1, 1);
@@ -1963,6 +1978,13 @@ public:
         line_92->setFrameShadow(QFrame::Sunken);
 
         gridLayout_50->addWidget(line_92, 6, 1, 1, 3);
+
+        doubleSpinBox_phiCy = new QDoubleSpinBox(tab_13);
+        doubleSpinBox_phiCy->setObjectName(QStringLiteral("doubleSpinBox_phiCy"));
+        doubleSpinBox_phiCy->setMinimum(-180);
+        doubleSpinBox_phiCy->setMaximum(180);
+
+        gridLayout_50->addWidget(doubleSpinBox_phiCy, 5, 2, 1, 1);
 
 
         gridLayout_45->addLayout(gridLayout_50, 2, 3, 1, 1);
@@ -5687,7 +5709,7 @@ public:
         QObject::connect(checkBoxUR5, SIGNAL(toggled(bool)), checkBoxABB4, SLOT(setDisabled(bool)));
         QObject::connect(checkBoxMotoman1, SIGNAL(toggled(bool)), checkBoxKatana, SLOT(setDisabled(bool)));
 
-        tabWidget3->setCurrentIndex(3);
+        tabWidget3->setCurrentIndex(0);
         tabWidget2->setCurrentIndex(0);
         tabWidget->setCurrentIndex(5);
 
@@ -5716,21 +5738,23 @@ public:
 #ifndef QT_NO_TOOLTIP
         checkBoxRevolute->setToolTip(QApplication::translate("ROSGUI", "<html><head/><body><p>Joint basico de Revolucion.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        checkBoxRevolute->setText(QApplication::translate("ROSGUI", "Revoluci\303\263n", Q_NULLPTR));
+        checkBoxRevolute->setText(QApplication::translate("ROSGUI", "Rev.", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         checkBoxPrismatic->setToolTip(QApplication::translate("ROSGUI", "<html><head/><body><p>Joint Basico prismatico</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        checkBoxPrismatic->setText(QApplication::translate("ROSGUI", "Prismatico", Q_NULLPTR));
+        checkBoxPrismatic->setText(QApplication::translate("ROSGUI", "Prism.", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         checkBoxRev_Pris->setToolTip(QApplication::translate("ROSGUI", "<html><head/><body><p>Joint Combinado</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        checkBoxRev_Pris->setText(QApplication::translate("ROSGUI", "Rev - Prism", Q_NULLPTR));
+        checkBoxRev_Pris->setText(QApplication::translate("ROSGUI", "Rev-Prism", Q_NULLPTR));
+        checkBox6DOFs_3->setText(QApplication::translate("ROSGUI", "Airplane", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         checkBoxRev3D->setToolTip(QApplication::translate("ROSGUI", "Joint x", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        checkBoxRev3D->setText(QApplication::translate("ROSGUI", "3DOF EJE", Q_NULLPTR));
-        checkBox6DOFs_3->setText(QApplication::translate("ROSGUI", "6DOF", Q_NULLPTR));
-        tabWidget3->setTabText(tabWidget3->indexOf(tab_10), QApplication::translate("ROSGUI", "Basic Joints", Q_NULLPTR));
+        checkBoxRev3D->setText(QApplication::translate("ROSGUI", "Cubo", Q_NULLPTR));
+        label_179->setText(QApplication::translate("ROSGUI", "Matem\303\241tica", Q_NULLPTR));
+        label_180->setText(QApplication::translate("ROSGUI", "Joints B\303\241sicos", Q_NULLPTR));
+        tabWidget3->setTabText(tabWidget3->indexOf(tab_10), QApplication::translate("ROSGUI", "Basics", Q_NULLPTR));
         gridGroupBox_2->setTitle(QApplication::translate("ROSGUI", "Elige tu Robot", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         checkBox2DOFs->setToolTip(QApplication::translate("ROSGUI", "<html><head/><body><p>Robot basico de 2 grados de libertad</p></body></html>", Q_NULLPTR));

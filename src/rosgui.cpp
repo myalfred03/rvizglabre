@@ -157,13 +157,25 @@ ROSGUI::ROSGUI(QWidget *parent)
     //Cinematica Inversa
 
     //Control de dialer y spinbox activos
-    connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
 
+        //Basic Joints
+ //   connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(on_1DOF()));   //airplane
+    connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
+ //   connect(main_window_ui_->checkBoxRev3D, SIGNAL(toggled(bool)), SLOT(on_1DOF()));   //cube
+
+
+    // Basic robots
     connect(main_window_ui_->checkBox2DOFs,     SIGNAL(toggled(bool)), SLOT(on_2DOF()));
     connect(main_window_ui_->checkBox3DOFs,     SIGNAL(toggled(bool)), SLOT(on_3DOF()));
     connect(main_window_ui_->checkBox4DOFs,     SIGNAL(toggled(bool)), SLOT(on_4DOF()));
     connect(main_window_ui_->checkBox5DOFs,     SIGNAL(toggled(bool)), SLOT(on_5DOF()));
     connect(main_window_ui_->checkBox6DOFs,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
+
+    //Classic Robots
+    connect(main_window_ui_->checkBox1Cl, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
+    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
+    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
+    connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
 
     //Industrial Robots (1)
     connect(main_window_ui_->checkBoxKuka1,     SIGNAL(toggled(bool)), SLOT(on_6DOF()));
@@ -183,14 +195,9 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxKatana,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxUR5,       SIGNAL(toggled(bool)), SLOT(on_6DOF()));
 
-    //Classic Robots
-    connect(main_window_ui_->checkBox1Cl, SIGNAL(toggled(bool)), SLOT(on_5DOF()));
-    connect(main_window_ui_->checkBox2Cl, SIGNAL(toggled(bool)), SLOT(on_4DOF()));
-    connect(main_window_ui_->checkBox3Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
-    connect(main_window_ui_->checkBox4Cl, SIGNAL(toggled(bool)), SLOT(on_3DOF()));
 
-    //Basic Joints
-    connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(on_1DOF()));
+
+
 
 
     //Cinematica Directa
@@ -214,12 +221,12 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Matemática del robot
     //Euler
-    connect(main_window_ui_->spinBox_MYaw, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
-    connect(main_window_ui_->spinBox_MRoll, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
-    connect(main_window_ui_->spinBox_MPitch, SIGNAL(valueChanged(int)), SLOT(updateMatEuler()));
-    connect(main_window_ui_->doubleSpinBox_MX, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
-    connect(main_window_ui_->doubleSpinBox_MY, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
-    connect(main_window_ui_->doubleSpinBox_MZ, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MYaw,   SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MRoll,  SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MPitch, SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MX,     SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MY,     SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
+    connect(main_window_ui_->doubleSpinBox_MZ,     SIGNAL(valueChanged(double)), SLOT(updateMatEuler()));
     //Rot
     //Quaternions
  //   connect(main_window_ui_->doubleSpinBox_qW, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
@@ -227,8 +234,15 @@ ROSGUI::ROSGUI(QWidget *parent)
 //    connect(main_window_ui_->doubleSpinBox_qY, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
 //    connect(main_window_ui_->doubleSpinBox_qZ, SIGNAL(valueChanged(double)), SLOT(updateMatQuat()));
 
+    // Spherical
+    connect(main_window_ui_->doubleSpinBox_rSph,    SIGNAL(valueChanged(double)), SLOT(updateMatSph()));
+    connect(main_window_ui_->doubleSpinBox_phiSph,  SIGNAL(valueChanged(double)), SLOT(updateMatSph()));
+    connect(main_window_ui_->doubleSpinBox_thSph,   SIGNAL(valueChanged(double)), SLOT(updateMatSph()));
 
-
+    // Cylindrical
+    connect(main_window_ui_->doubleSpinBox_ZCy,     SIGNAL(valueChanged(double)), SLOT(updateMatCyl()));
+    connect(main_window_ui_->doubleSpinBox_roCy,    SIGNAL(valueChanged(double)), SLOT(updateMatCyl()));
+    connect(main_window_ui_->doubleSpinBox_phiCy,   SIGNAL(valueChanged(double)), SLOT(updateMatCyl()));
 
 
 
@@ -274,8 +288,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxRevolute,  SIGNAL(toggled(bool)), SLOT(onRevol_URDF()));
     connect(main_window_ui_->checkBoxPrismatic, SIGNAL(toggled(bool)), SLOT(onPrism_URDF()));
     connect(main_window_ui_->checkBoxRev_Pris,  SIGNAL(toggled(bool)), SLOT(onPris_Rev_URDF()));
-    connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));
-    connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(onMat1()));
+    connect(main_window_ui_->checkBoxRev3D,     SIGNAL(toggled(bool)), SLOT(on3DOF_URDF()));     //cube
+    connect(main_window_ui_->checkBox6DOFs_3, SIGNAL(toggled(bool)), SLOT(onMat1()));            //airplane
 
 
     //Denavith Select parameters to load
@@ -484,7 +498,7 @@ void ROSGUI::onMat1()
   nh_.deleteParam("tip_link");
   nh_.setParam("root_link","base_link");
   nh_.setParam("tip_link","tool0");
-  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/Math/Cubo.urdf";
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/Math/airplane.urdf";
   std::ifstream selected_file(filePath.c_str());
   std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
   this->updateURDF(file_contents);
@@ -495,8 +509,48 @@ void ROSGUI::onMat1()
 void ROSGUI::on3DOF_URDF()
 {
 
+  ToG    = 57.295779513;
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/Math/Cubo.urdf";
+  std::ifstream selected_file(filePath.c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Cubo, para analisis de matemática del Robot"));
+
 }
 void ROSGUI::onRevol_URDF(){
+
+}
+
+
+void ROSGUI::onPris_Rev_URDF(){
+
+}
+
+void ROSGUI::onPrism_URDF(){
+  ToG =10; //Meter ->Centimeter
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  QFont f( "Sans Serif", 9, QFont::Normal);
+  main_window_ui_->label_15->setFont(f);
+  main_window_ui_->label_15->setText("Cm");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  filePath= ros::package::getPath("rvizglabre") + "/modelos/prismatic.urdf";
+  std::ifstream selected_file(filePath);
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
+  main_window_ui_->statusBar->showMessage(tr("Modelo Prismatico DOF"));
 
 }
 
@@ -570,29 +624,6 @@ void ROSGUI::on6DOFs_URDF(){
 }
 
 
-void ROSGUI::onPrism_URDF(){
-  ToG =10; //Meter ->Centimeter
-  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
-  QFont f( "Sans Serif", 9, QFont::Normal);
-  main_window_ui_->label_15->setFont(f);
-  main_window_ui_->label_15->setText("Cm");
-  resetvalue();
-  nh_.deleteParam("root_link");
-  nh_.deleteParam("tip_link");
-  nh_.setParam("root_link","base_link");
-  nh_.setParam("tip_link","tool0");
-  filePath= ros::package::getPath("rvizglabre") + "/modelos/prismatic.urdf";
-  std::ifstream selected_file(filePath);
-  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
-  this->updateURDF(file_contents);
-  updatetoURDF();
-  main_window_ui_->statusBar->showMessage(tr("Modelo Prismatico DOF"));
-
-}
-
-void ROSGUI::onPris_Rev_URDF(){
-
-}
 
 void ROSGUI::on_Puma_URDF(){
   ToG    = 57.295779513;
@@ -1074,25 +1105,96 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
 void ROSGUI::updateMatEuler(){
 
     std::vector<double> angleRot(6);
+    double phiSph,rSph,thSph;
+    double phiC,roC;
+    double X,Y,Z;
 
+    main_window_ui_->doubleSpinBox_rSph->      blockSignals(true);
+    main_window_ui_->doubleSpinBox_phiSph->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_thSph->     blockSignals(true);
 
+    main_window_ui_->doubleSpinBox_ZCy->       blockSignals(true);
+    main_window_ui_->doubleSpinBox_roCy->      blockSignals(true);
+    main_window_ui_->doubleSpinBox_phiCy->     blockSignals(true);
 
-    angleRot[0] = main_window_ui_->spinBox_MRoll->value()/ToG;
-    angleRot[1] = main_window_ui_->spinBox_MPitch->value()/ToG;
-    angleRot[2] = main_window_ui_->spinBox_MYaw->value()/ToG;
+    angleRot[0] = main_window_ui_->doubleSpinBox_MRoll-> value()/ToG;
+    angleRot[1] = main_window_ui_->doubleSpinBox_MPitch->value()/ToG;
+    angleRot[2] = main_window_ui_->doubleSpinBox_MYaw->  value()/ToG;
+
     angleRot[3] = main_window_ui_->doubleSpinBox_MX->value();
     angleRot[4] = main_window_ui_->doubleSpinBox_MY->value();
     angleRot[5] = main_window_ui_->doubleSpinBox_MZ->value();
 
     tf::Quaternion quat = tf::createQuaternionFromRPY( angleRot[0],  angleRot[1],  angleRot[2]);
-
+    tf::Matrix3x3 m(quat);
 
     main_window_ui_->qW->setText(QString::number(quat.getW()));
     main_window_ui_->qX->setText(QString::number(quat.getX()));
     main_window_ui_->qY->setText(QString::number(quat.getY()));
     main_window_ui_->qZ->setText(QString::number(quat.getZ()));
 
-    // main_window_ui_->doubleSpinBox_qW->setValue(quat.getW());
+    //Calculos Coordenadas Esfericas
+
+    phiSph = atan (angleRot[4]/angleRot[3]);
+
+    thSph = atan ( 
+                  (sqrt 
+                        ( pow (angleRot[3], 2.0) + pow (angleRot[4], 2.0)   ) 
+                   ) / angleRot[5] 
+               );
+
+    rSph= sqrt 
+             ( pow (angleRot[3], 2.0) + pow (angleRot[4], 2.0) + pow (angleRot[5], 2.0) ) ;
+
+
+    //Calculos Coordenadas Cilindricas
+
+    roC = sqrt 
+             ( pow (angleRot[3], 2.0) + pow (angleRot[4], 2.0) ); 
+
+    phiC= phiSph;
+
+
+
+    main_window_ui_->doubleSpinBox_rSph   ->setValue(rSph);
+    main_window_ui_->doubleSpinBox_phiSph ->setValue(phiSph*ToG);
+    main_window_ui_->doubleSpinBox_thSph  ->setValue(thSph*ToG);
+
+    main_window_ui_->doubleSpinBox_ZCy    ->setValue(angleRot[5]);
+    main_window_ui_->doubleSpinBox_roCy   ->setValue(roC);
+    main_window_ui_->doubleSpinBox_phiCy  ->setValue(phiC*ToG);
+
+
+    // main_window_ui_->label_1MT1x1->setText(QString::number(pos_mat1.M.UnitX().x()));
+    // main_window_ui_->label_1MT1x2->setText(QString::number(pos_mat1.M.UnitX().y()));
+    // main_window_ui_->label_1MT1x3->setText(QString::number(pos_mat1.M.UnitX().z()));
+    // main_window_ui_->label_1MT1x4->setText(QString::number(pos_mat1.p.x()));
+    // main_window_ui_->label_1MT2x1->setText(QString::number(pos_mat1.M.UnitY().x()));
+    // main_window_ui_->label_1MT2x2->setText(QString::number(pos_mat1.M.UnitY().y()));
+    // main_window_ui_->label_1MT2x3->setText(QString::number(pos_mat1.M.UnitY().z()));
+    // main_window_ui_->label_1MT2x4->setText(QString::number(pos_mat1.p.y()));
+    // main_window_ui_->label_1MT3x1->setText(QString::number(pos_mat1.M.UnitZ().x()));
+    // main_window_ui_->label_1MT3x2->setText(QString::number(pos_mat1.M.UnitZ().y()));
+    // main_window_ui_->label_1MT3x3->setText(QString::number(pos_mat1.M.UnitZ().z()));
+    // main_window_ui_->label_1MT3x4->setText(QString::number(pos_mat1.p.z()));
+    // main_window_ui_->label_1MT4x1->setText(QString("0"));
+    // main_window_ui_->label_1MT4x2->setText(QString("0"));
+    // main_window_ui_->label_1MT4x3->setText(QString("0"));
+    // main_window_ui_->label_1MT4x4->setText(QString("1"));
+
+
+
+    // Z = rSph * cos(thSph);
+    // Y = rSph * sin(thSph) * sin(phiSph);
+    // X = rSph * sin(thSph) * cos(phiSph);
+
+    // main_window_ui_->doubleSpinBox_MX->setValue(X);
+    // main_window_ui_->doubleSpinBox_MY->setValue(Y);
+    // main_window_ui_->doubleSpinBox_MZ->setValue(Z);
+
+
+
+ 
     // main_window_ui_->doubleSpinBox_qX->setValue(quat.getX());
     // main_window_ui_->doubleSpinBox_qY->setValue(quat.getY());
     // main_window_ui_->doubleSpinBox_qZ->setValue(quat.getZ());
@@ -1103,8 +1205,17 @@ void ROSGUI::updateMatEuler(){
 
     odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(angleRot[0],angleRot[1],angleRot[2] );
 
-    std::cout << angleRot[0] <<std::endl;
+//    std::cout << m <<std::endl;
 
+
+
+    main_window_ui_->doubleSpinBox_rSph->      blockSignals(false);
+    main_window_ui_->doubleSpinBox_phiSph->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_thSph->     blockSignals(false);
+
+    main_window_ui_->doubleSpinBox_ZCy->       blockSignals(false);
+    main_window_ui_->doubleSpinBox_roCy->      blockSignals(false);
+    main_window_ui_->doubleSpinBox_phiCy->     blockSignals(false);
 
 }
 
@@ -1150,8 +1261,113 @@ void ROSGUI::updateMatQuat(){
 }
 
 
+void ROSGUI::updateMatSph()  {
+
+    main_window_ui_->doubleSpinBox_MX->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_MY->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_MZ->    blockSignals(true);
+
+    main_window_ui_->doubleSpinBox_ZCy->       blockSignals(true);
+    main_window_ui_->doubleSpinBox_roCy->      blockSignals(true);
+    main_window_ui_->doubleSpinBox_phiCy->     blockSignals(true);
+
+
+    double phiSph,rSph,thSph;
+    double phiC,roC;
+    double X,Y,Z;
+
+    rSph   = main_window_ui_->doubleSpinBox_rSph    -> value();
+    phiSph = main_window_ui_->doubleSpinBox_phiSph  -> value()/ToG;
+    thSph  = main_window_ui_->doubleSpinBox_thSph   -> value()/ToG;
+
+    //Cartesian
+    Z = rSph * cos(thSph);
+    Y = rSph * sin(thSph) * sin(phiSph);
+    X = rSph * sin(thSph) * cos(phiSph);
+
+    phiC = phiSph;
+    roC  = rSph * sin(thSph);
+
+    main_window_ui_->doubleSpinBox_MX->setValue(X);
+    main_window_ui_->doubleSpinBox_MY->setValue(Y);
+    main_window_ui_->doubleSpinBox_MZ->setValue(Z);
+
+    main_window_ui_->doubleSpinBox_phiCy->setValue(phiC*ToG);
+    main_window_ui_->doubleSpinBox_roCy ->setValue(roC);
+    main_window_ui_->doubleSpinBox_ZCy  ->setValue(Z);
+
+    odom_trans.transform.translation.x =  X;
+    odom_trans.transform.translation.y =  Y;
+    odom_trans.transform.translation.z =  Z;
+
+    main_window_ui_->doubleSpinBox_MX->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_MY->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_MZ->    blockSignals(false);
+
+    main_window_ui_->doubleSpinBox_ZCy->       blockSignals(false);
+    main_window_ui_->doubleSpinBox_roCy->      blockSignals(false);
+    main_window_ui_->doubleSpinBox_phiCy->     blockSignals(false);
+ 
+}
+
 //cc280120190210
 
+void ROSGUI::updateMatCyl(){
+
+    main_window_ui_->doubleSpinBox_MX->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_MY->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_MZ->    blockSignals(true);
+
+    main_window_ui_->doubleSpinBox_rSph->      blockSignals(true);
+    main_window_ui_->doubleSpinBox_phiSph->    blockSignals(true);
+    main_window_ui_->doubleSpinBox_thSph->     blockSignals(true);
+
+    double phiSph,rSph,thSph;
+    double phiC,roC;
+    double X,Y,Z;
+
+
+    Z     =  main_window_ui_->doubleSpinBox_ZCy   -> value();
+    roC   =  main_window_ui_->doubleSpinBox_roCy  -> value();
+    phiC  =  main_window_ui_->doubleSpinBox_phiCy -> value()/ToG;
+
+    Y = roC  * sin(phiC);
+    X = roC  * cos(phiC);
+
+    rSph   = sqrt 
+                ( pow (roC, 2.0) + pow (Z, 2.0) ); 
+
+    thSph  = atan (roC/Z);
+
+    phiSph = phiC;
+    
+    main_window_ui_->doubleSpinBox_MX->setValue(X);
+    main_window_ui_->doubleSpinBox_MY->setValue(Y);
+    main_window_ui_->doubleSpinBox_MZ->setValue(Z);
+
+    main_window_ui_->doubleSpinBox_rSph   ->setValue(rSph);
+    main_window_ui_->doubleSpinBox_phiSph ->setValue(phiSph*ToG);
+    main_window_ui_->doubleSpinBox_thSph  ->setValue(thSph*ToG);
+
+    odom_trans.transform.translation.x =  X;
+    odom_trans.transform.translation.y =  Y;
+    odom_trans.transform.translation.z =  Z;
+
+    // main_window_ui_->doubleSpinBox_ZCy,    
+    // main_window_ui_->doubleSpinBox_roCy,    
+    // main_window_ui_->doubleSpinBox_phiCy, 
+
+
+
+
+    main_window_ui_->doubleSpinBox_MX->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_MY->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_MZ->    blockSignals(false);
+
+    main_window_ui_->doubleSpinBox_rSph->      blockSignals(false);
+    main_window_ui_->doubleSpinBox_phiSph->    blockSignals(false);
+    main_window_ui_->doubleSpinBox_thSph->     blockSignals(false);
+}
 
 
 
