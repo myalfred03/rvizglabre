@@ -1104,6 +1104,7 @@ void ROSGUI::updatetreeforDH(KDL::Tree modelU){
 
 void ROSGUI::updateMatEuler(){
 
+    KDL::Rotation rot;
     std::vector<double> angleRot(6);
     double phiSph,rSph,thSph;
     double phiC,roC;
@@ -1126,7 +1127,6 @@ void ROSGUI::updateMatEuler(){
     angleRot[5] = main_window_ui_->doubleSpinBox_MZ->value();
 
     tf::Quaternion quat = tf::createQuaternionFromRPY( angleRot[0],  angleRot[1],  angleRot[2]);
-    tf::Matrix3x3 m(quat);
 
     main_window_ui_->qW->setText(QString::number(quat.getW()));
     main_window_ui_->qX->setText(QString::number(quat.getX()));
@@ -1164,24 +1164,28 @@ void ROSGUI::updateMatEuler(){
     main_window_ui_->doubleSpinBox_roCy   ->setValue(roC);
     main_window_ui_->doubleSpinBox_phiCy  ->setValue(phiC*ToG);
 
+    tf::quaternionTFToKDL(quat,rot);
 
-    // main_window_ui_->label_1MT1x1->setText(QString::number(pos_mat1.M.UnitX().x()));
-    // main_window_ui_->label_1MT1x2->setText(QString::number(pos_mat1.M.UnitX().y()));
-    // main_window_ui_->label_1MT1x3->setText(QString::number(pos_mat1.M.UnitX().z()));
-    // main_window_ui_->label_1MT1x4->setText(QString::number(pos_mat1.p.x()));
-    // main_window_ui_->label_1MT2x1->setText(QString::number(pos_mat1.M.UnitY().x()));
-    // main_window_ui_->label_1MT2x2->setText(QString::number(pos_mat1.M.UnitY().y()));
-    // main_window_ui_->label_1MT2x3->setText(QString::number(pos_mat1.M.UnitY().z()));
-    // main_window_ui_->label_1MT2x4->setText(QString::number(pos_mat1.p.y()));
-    // main_window_ui_->label_1MT3x1->setText(QString::number(pos_mat1.M.UnitZ().x()));
-    // main_window_ui_->label_1MT3x2->setText(QString::number(pos_mat1.M.UnitZ().y()));
-    // main_window_ui_->label_1MT3x3->setText(QString::number(pos_mat1.M.UnitZ().z()));
-    // main_window_ui_->label_1MT3x4->setText(QString::number(pos_mat1.p.z()));
-    // main_window_ui_->label_1MT4x1->setText(QString("0"));
-    // main_window_ui_->label_1MT4x2->setText(QString("0"));
-    // main_window_ui_->label_1MT4x3->setText(QString("0"));
-    // main_window_ui_->label_1MT4x4->setText(QString("1"));
 
+    main_window_ui_->label_mat1x1->setText(QString::number(rot.UnitX().x()));
+    main_window_ui_->label_mat1x2->setText(QString::number(rot.UnitX().y()));
+    main_window_ui_->label_mat1x3->setText(QString::number(rot.UnitX().z()));
+    main_window_ui_->label_mat1x4->setText(QString::number(angleRot[3]));
+
+    main_window_ui_->label_mat2x1->setText(QString::number(rot.UnitY().x()));
+    main_window_ui_->label_mat2x2->setText(QString::number(rot.UnitY().y()));
+    main_window_ui_->label_mat2x3->setText(QString::number(rot.UnitY().z()));
+    main_window_ui_->label_mat2x4->setText(QString::number(angleRot[4]));
+
+    main_window_ui_->label_mat3x1->setText(QString::number(rot.UnitZ().x()));
+    main_window_ui_->label_mat3x2->setText(QString::number(rot.UnitZ().y()));
+    main_window_ui_->label_mat3x3->setText(QString::number(rot.UnitZ().z()));
+    main_window_ui_->label_mat3x4->setText(QString::number(angleRot[5]));
+
+    main_window_ui_->label_mat4x1->setText(QString("0"));
+    main_window_ui_->label_mat4x2->setText(QString("0"));
+    main_window_ui_->label_mat4x3->setText(QString("0"));
+    main_window_ui_->label_mat4x4->setText(QString("1"));
 
 
     // Z = rSph * cos(thSph);
@@ -1296,6 +1300,11 @@ void ROSGUI::updateMatSph()  {
     main_window_ui_->doubleSpinBox_roCy ->setValue(roC);
     main_window_ui_->doubleSpinBox_ZCy  ->setValue(Z);
 
+
+    main_window_ui_->label_mat1x4->setText(QString::number(X));
+    main_window_ui_->label_mat2x4->setText(QString::number(Y));
+    main_window_ui_->label_mat3x4->setText(QString::number(Z));
+
     odom_trans.transform.translation.x =  X;
     odom_trans.transform.translation.y =  Y;
     odom_trans.transform.translation.z =  Z;
@@ -1344,6 +1353,10 @@ void ROSGUI::updateMatCyl(){
     main_window_ui_->doubleSpinBox_MX->setValue(X);
     main_window_ui_->doubleSpinBox_MY->setValue(Y);
     main_window_ui_->doubleSpinBox_MZ->setValue(Z);
+
+    main_window_ui_->label_mat1x4->setText(QString::number(X));
+    main_window_ui_->label_mat2x4->setText(QString::number(Y));
+    main_window_ui_->label_mat3x4->setText(QString::number(Z));
 
     main_window_ui_->doubleSpinBox_rSph   ->setValue(rSph);
     main_window_ui_->doubleSpinBox_phiSph ->setValue(phiSph*ToG);

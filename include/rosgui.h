@@ -63,6 +63,9 @@
 #include <tf2_msgs/TFMessage.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <math.h>
+#include <kdl/chain.hpp>
+#include <kdl/tree.hpp>
+#include <kdl/segment.hpp>
 
 class QMainWindow;
 class MyViz;

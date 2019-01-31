@@ -51,8 +51,7 @@ find_package(orocos_kdl REQUIRED)
 #roboteditor
 find_package(Boost REQUIRED COMPONENTS thread)
 #roboteditor
-add_definitions(-DQT_NO_KEYWORDS)
-
+#add_definitions(-DQT_NO_KEYWORDS)
 
 #find_package(gazebo REQUIRED)
 
@@ -61,9 +60,13 @@ add_definitions(-DQT_NO_KEYWORDS)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
+find_package(Qt5PrintSupport REQUIRED)
+
 set(QT_LIBRARIES Qt5::Widgets)
 set(QT_LIBRARIES Qt5::Core)
 set(QT_LIBRARIES Qt5::Gui)
+set(QT_LIBRARIES Qt5::PrintSupport)
+
 
 
 
@@ -111,6 +114,8 @@ include_directories(
      ${Qt5Core_INCLUDE_DIRS}
      ${Qt5Widgets_INCLUDE_DIRS}
      ${Qt5Widgets_INCLUDE_DIRS}
+     ${Qt5PrintSupport_INCLUDE_DIRS}
+     ${QT_INCLUDES}
    #  ${Qt5X11Extras_INCLUDE_DIRS}
      ${orocos_kdl_INCLUDE_DIRS}
      ${Boost_INCLUDE_DIRS}
@@ -120,8 +125,7 @@ include_directories(
 
 )
 
-include_directories (${PROJECT_SOURCE_DIR})
-include_directories (${PROJECT_BINARY_DIR})
+
 # accediendo al RVIZ con QT VERSION
 
 
@@ -134,20 +138,6 @@ include_directories (${PROJECT_BINARY_DIR})
 
 #        )
 
-set (MyProject_src
-	  src/main.cpp
-	  src/rosgui.cpp
-          src/rviz_main.cpp
-	  src/rvizg_render.cpp
-          src/rvizg_robot_motion.cpp
-
-#	  src/secondwindow.cpp
-#	  src/thirdwindow.cpp
-#          src/fourth.cpp
-
-	 # ${MOC_FILES}
-    )
-
 set (MyProject_Lib
           ##CPP
           src/modelparam.cpp
@@ -155,50 +145,78 @@ set (MyProject_Lib
           include/modelparam.h
     )
 
-set (MyProjectLib_ui
-            ui/rosgui.ui
+#set
+ QT5_WRAP_UI (MyProjectLib_ui
+               ui/rosgui.ui
 #            ui/thirdwindow.ui
 #            ui/fourth.ui
             #src/options.ui
             )
 
-set (MyProjectLib_hdr
+#set
+ QT5_WRAP_CPP (MyProjectLib_hdr
 
                 include/rosgui.h
 		include/rviz_main.h
 		include/rvizg_render.h
 		include/rvizg_robot_motion.h
+		include/qcustomplot.h
+#		include/plotwidget.h
+#	        include/plot.h
+#                include/plotmodel.h
+#                include/plotfiltermodel.h
 #             include/secondwindow.h
 #             include/thirdwindow.h
 #             include/fourth.h
-                include/ui_rosgui.h
+#                include/ui_rosgui.h
 #             include/ui_secondwindow.h
 #             include/ui_thirdwindow.h
 #             include/ui_fourth.h
             )
 
-set (MyProjectLib_qrc
+#set 
+QT5_ADD_RESOURCES(MyProjectLib_qrc
            resources.qrc
             )
 
 
+set (MyProject_src
+	  src/main.cpp
+	  src/rosgui.cpp
+          src/rviz_main.cpp
+	  src/rvizg_render.cpp
+          src/rvizg_robot_motion.cpp
+	  src/qcustomplot.cpp
+#	  src/plotwidget.cpp
+#	  src/plot.cpp
+#          src/plotmodel.cpp
+#          src/plotfiltermodel.cpp
+#	  src/secondwindow.cpp
+#	  src/thirdwindow.cpp
+#          src/fourth.cpp
+	  ${MyProjectLib_ui}
+          ${MyProjectLib_hdr}
+	  ${MyProjectLib_qrc}
+    )
 
 #  add_executable(rvizg ${MyProject_src})
-  QT5_WRAP_CPP(MyProjectLib_hdr_MOC ${MyProjectLib_hdr})
-  QT5_WRAP_UI(MyProjectLib_ui_MOC ${MyProjectLib_ui})
-  QT5_ADD_RESOURCES(MyProjectLib_qrc_MOC ${MyProjectLib_qrc})
+  #QT5_WRAP_CPP(MyProjectLib_hdr_MOC ${MyProjectLib_hdr})
+ # QT5_WRAP_UI(MyProjectLib_ui_MOC ${MyProjectLib_ui})
+  #QT5_ADD_RESOURCES(MyProjectLib_qrc_MOC ${MyProjectLib_qrc})
 
 #endif()
 add_library(lib ${MyProject_Lib})
 
 target_link_libraries(lib /opt/ros/kinetic/lib/liborocos-kdl.so.1.3 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
 
-add_executable(rvizglabre  ${MyProject_src}  ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC} ${MyProjectLib_qrc_MOC})
+add_executable(rvizglabre  ${MyProject_src}  )# ${MyProjectLib_qrc_MOC} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC}
 
 #add_executable(talker  src/robot_state.cpp)
 
 #target_link_libraries(talker lib ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
 #  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
+add_library(rvizglabrelib 	  src/rosgui.cpp ${UI_HEADERS})
+target_link_libraries(rvizglabrelib Qt5::Widgets)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(rvizglabre
@@ -210,7 +228,9 @@ target_link_libraries(rvizglabre
                          Qt5::Widgets
                          Qt5::Core
                          Qt5::Gui
+                         rvizglabrelib
  )
+
 
 add_definitions(-std=c++11
                 )
