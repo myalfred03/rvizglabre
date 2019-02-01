@@ -9,6 +9,8 @@
 #include <QList>
 #include <QProcess>
 #include <QVector>
+#include <QMouseEvent>
+
 
 //#include "include/secondwindow.h"
 //#include "include/thirdwindow.h"
@@ -83,6 +85,7 @@ public:
       ~ROSGUI();
 //      void show();
       //Show value of urdf
+      Ui::ROSGUI *main_window_ui_;
       bool init();
       std::vector<double> getJointLowerLimits();
       std::vector<double> getJointUpperLimits();
@@ -128,6 +131,16 @@ public:
       void updatetreeforDH(KDL::Tree modelU);
       void timeOut();
       void publishJointStates(/*const trajectory_msgs::JointTrajectory &trajectory*/);
+
+      //graph
+      void initializeGraph();
+      double x_org;
+      ros::Time startTime;
+      double joint_1_plot, joint_2_plot, joint_3_plot, joint_4_plot, joint_5_plot, joint_6_plot;
+      QTimer *timer;
+
+
+
 
       ros::NodeHandle nh_;
       ros::Publisher joint_pub;
@@ -267,6 +280,12 @@ trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& n
       void on_comboBox_2_currentIndexChanged(int index);
       void on_checkBox_3_toggled(bool x);
 
+public slots:
+      void mouseMoved(QMouseEvent * event);
+      void updateGraph();
+
+
+
 Q_SIGNALS:
 void statusTool(int message );
 
@@ -316,10 +335,9 @@ private:
 
 
    MyViz *mRviz;/* = new MyViz;*/
-
     //robot editor
 //   QMainWindow main_window_;
-   Ui::ROSGUI *main_window_ui_;
+
 //   QMainWindow *secwindow;
 //   QMainWindow *thwindow;
 //   QMainWindow *fourwindow;

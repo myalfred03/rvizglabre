@@ -161,7 +161,7 @@ set (MyProject_Lib
 		include/rvizg_render.h
 		include/rvizg_robot_motion.h
 		include/qcustomplot.h
-#		include/plotwidget.h
+		include/tuning_ui_add.h
 #	        include/plot.h
 #                include/plotmodel.h
 #                include/plotfiltermodel.h

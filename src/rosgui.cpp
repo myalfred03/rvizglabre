@@ -23,6 +23,7 @@
 
 
 #include "rosgui.h"
+//#include "tuning_ui_add.h"
 #include <ui_rosgui.h>
 
 //#include "include/ui_rosgui.h"
@@ -327,7 +328,19 @@ ROSGUI::ROSGUI(QWidget *parent)
 
 
 //   main_window_ui_->tableWidget->item(0, 0)->
+    startTime = ros::Time::now();
+    joint_1_plot = 0.0;
+    joint_2_plot = 0.0;
+    joint_3_plot = 0.0;
+    joint_4_plot = 0.0;
+    joint_5_plot = 0.0;
+    joint_6_plot = 0.0;
 
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateGraph()));
+    timer->start(5);
+    this->initializeGraph();
+    connect(main_window_ui_->graph_canvas, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoved(QMouseEvent*)));
 
 //offWidgets();
 std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/uni.urdf";
@@ -481,6 +494,54 @@ void ROSGUI::on_actionSave_as_triggered()
 
 }
 
+void ROSGUI::initializeGraph() {
+    //Make legend visible
+    //ui.graph_canvas->legend->setVisible(true);
+    //ui.graph_canvas->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignRight|Qt::AlignBottom);
+
+    //Add the graphs
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(0)->setName("Setpt");
+    main_window_ui_->graph_canvas->graph(0)->setPen(QPen(Qt::red));
+
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(1)->setName("Output");
+    main_window_ui_->graph_canvas->graph(1)->setPen(QPen(Qt::blue));
+
+    // give the axes some labels:
+    main_window_ui_->graph_canvas->xAxis->setLabel("Time (s)");
+    main_window_ui_->graph_canvas->yAxis->setLabel("Joint move (°)");
+    main_window_ui_->graph_canvas->legend->setVisible(true);
+
+
+    //For user interaction
+    main_window_ui_->graph_canvas->setInteraction(QCP::iRangeDrag, true);
+    main_window_ui_->graph_canvas->setInteraction(QCP::iRangeZoom, true);
+
+
+    connect(main_window_ui_->graph_canvas, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoved(QMouseEvent*)));
+
+    x_org = 0;
+
+    //Plot the graph
+    main_window_ui_->graph_canvas->replot();
+}
+
+void ROSGUI::updateGraph() {
+    double x_val = (ros::Time::now() - startTime).toSec();
+
+    // double x_org = controlUI->x_org;
+    // if (x_val - x_org > 20) {
+    //     controlUI->ui.graph_canvas->graph(0)->removeDataBefore(x_org + 1);
+    //     controlUI->ui.graph_canvas->graph(1)->removeDataBefore(x_org + 1);
+    //     controlUI->x_org++;
+    // }
+
+    main_window_ui_->graph_canvas->graph(0)->addData(x_val, joint_1_plot);//Set Point
+    main_window_ui_->graph_canvas->graph(1)->addData(x_val, joint_2_plot);//Output
+    main_window_ui_->graph_canvas->rescaleAxes();
+    main_window_ui_->graph_canvas->replot();
+}
 
 //void ROSGUI::on_actionExit_triggered()
 //{
@@ -2376,6 +2437,13 @@ std::cout <<  msg << std::endl;
 
 this->updateDialer();
 this->FKdata(j);
+    joint_1_plot = j(0)*ToG;
+    joint_2_plot = j(1)*ToG;
+    joint_3_plot = j(2)*ToG;
+    joint_4_plot = j(3)*ToG;
+    joint_5_plot = j(4)*ToG;
+    joint_6_plot = j(5)*ToG;
+
 //ros::Rate loop_rate(10);
 
 //while(true)
@@ -2970,4 +3038,15 @@ void ROSGUI::on_pushButton_3_toggled()
 
   joint_value_pub.publish(send_val);
 
+}
+
+void ROSGUI::mouseMoved(QMouseEvent *event) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(3);
+
+    double x = main_window_ui_->graph_canvas->xAxis->pixelToCoord(event->x());
+    double y = main_window_ui_->graph_canvas->yAxis->pixelToCoord(event->y());
+
+    oss << "Graph values: x: " << x << "\ty: " << y ;
+    main_window_ui_->label_182->setText(QString::fromStdString(oss.str()));
 }
