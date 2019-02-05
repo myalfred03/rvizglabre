@@ -283,6 +283,9 @@ trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& n
 public slots:
       void mouseMoved(QMouseEvent * event);
       void updateGraph();
+      void mouseWheel();
+      void removeAllGraphs();
+
 
 
 

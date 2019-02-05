@@ -341,6 +341,9 @@ ROSGUI::ROSGUI(QWidget *parent)
     timer->start(5);
     this->initializeGraph();
     connect(main_window_ui_->graph_canvas, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoved(QMouseEvent*)));
+    connect(main_window_ui_->graph_canvas, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
+    connect(main_window_ui_->pushButton_4, SIGNAL(clicked()), this, SLOT(removeAllGraphs()));
+
 
 //offWidgets();
 std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/uni.urdf";
@@ -501,12 +504,52 @@ void ROSGUI::initializeGraph() {
 
     //Add the graphs
     main_window_ui_->graph_canvas->addGraph();
-    main_window_ui_->graph_canvas->graph(0)->setName("Setpt");
-    main_window_ui_->graph_canvas->graph(0)->setPen(QPen(Qt::red));
+    main_window_ui_->graph_canvas->graph(0)->setName("Joint_1");
+    QPen blueDotPen;
+    blueDotPen.setColor(QColor(30, 40, 255, 150));
+    blueDotPen.setStyle(Qt::DotLine);
+    blueDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(0)->setPen(blueDotPen);
 
     main_window_ui_->graph_canvas->addGraph();
-    main_window_ui_->graph_canvas->graph(1)->setName("Output");
-    main_window_ui_->graph_canvas->graph(1)->setPen(QPen(Qt::blue));
+    main_window_ui_->graph_canvas->graph(1)->setName("Joint_2");
+    QPen redDotPen;
+    redDotPen.setColor(Qt::red);
+    redDotPen.setStyle(Qt::DotLine);
+    redDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(1)->setPen(redDotPen);
+
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(2)->setName("Joint_3");
+    QPen yellowDotPen;
+    yellowDotPen.setColor(Qt::yellow);
+    yellowDotPen.setStyle(Qt::DotLine);
+    yellowDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(2)->setPen(yellowDotPen);
+
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(3)->setName("Joint_4");
+    QPen blackDotPen;
+    blackDotPen.setColor(Qt::black);
+    blackDotPen.setStyle(Qt::DotLine);
+    blackDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(3)->setPen(blackDotPen);
+
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(4)->setName("Joint_5");
+    QPen greenDotPen;
+    greenDotPen.setColor(Qt::green);
+    greenDotPen.setStyle(Qt::DotLine);
+    greenDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(4)->setPen(greenDotPen);
+
+    main_window_ui_->graph_canvas->addGraph();
+    main_window_ui_->graph_canvas->graph(5)->setName("Joint_6");
+    QPen otherDotPen;
+    otherDotPen.setColor(QColor(115,182,209));
+    otherDotPen.setStyle(Qt::DotLine);
+    otherDotPen.setWidthF(4);
+    main_window_ui_->graph_canvas->graph(5)->setPen(otherDotPen);
 
     // give the axes some labels:
     main_window_ui_->graph_canvas->xAxis->setLabel("Time (s)");
@@ -515,9 +558,10 @@ void ROSGUI::initializeGraph() {
 
 
     //For user interaction
-    main_window_ui_->graph_canvas->setInteraction(QCP::iRangeDrag, true);
-    main_window_ui_->graph_canvas->setInteraction(QCP::iRangeZoom, true);
-
+    // main_window_ui_->graph_canvas->setInteraction(QCP::iRangeDrag, true);
+    // main_window_ui_->graph_canvas->setInteraction(QCP::iRangeZoom, true);
+    main_window_ui_->graph_canvas->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
+                                  QCP::iSelectLegend | QCP::iSelectPlottables);
 
     connect(main_window_ui_->graph_canvas, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoved(QMouseEvent*)));
 
@@ -530,17 +574,47 @@ void ROSGUI::initializeGraph() {
 void ROSGUI::updateGraph() {
     double x_val = (ros::Time::now() - startTime).toSec();
 
-    // double x_org = controlUI->x_org;
-    // if (x_val - x_org > 20) {
-    //     controlUI->ui.graph_canvas->graph(0)->removeDataBefore(x_org + 1);
-    //     controlUI->ui.graph_canvas->graph(1)->removeDataBefore(x_org + 1);
-    //     controlUI->x_org++;
+    // double x_org1 = x_org;
+    // if (x_val - x_org1 > 20) {
+    //     main_window_ui_->graph_canvas->graph(0)->removeDataBefore(x_org1 + 1);
+    //     main_window_ui_->graph_canvas->graph(1)->removeDataBefore(x_org1 + 1);
+    //     x_org++;
     // }
 
     main_window_ui_->graph_canvas->graph(0)->addData(x_val, joint_1_plot);//Set Point
     main_window_ui_->graph_canvas->graph(1)->addData(x_val, joint_2_plot);//Output
+    main_window_ui_->graph_canvas->graph(2)->addData(x_val, joint_3_plot);
+    main_window_ui_->graph_canvas->graph(3)->addData(x_val, joint_4_plot);
+    main_window_ui_->graph_canvas->graph(4)->addData(x_val, joint_5_plot);
+    main_window_ui_->graph_canvas->graph(5)->addData(x_val, joint_6_plot);
     main_window_ui_->graph_canvas->rescaleAxes();
     main_window_ui_->graph_canvas->replot();
+}
+
+void ROSGUI::mouseWheel()
+{
+  // if an axis is selected, only allow the direction of that axis to be zoomed
+  // if no axis is selected, both directions may be zoomed
+  
+  if (main_window_ui_->graph_canvas->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    main_window_ui_->graph_canvas->axisRect()->setRangeZoom(main_window_ui_->graph_canvas->xAxis->orientation());
+  else if (main_window_ui_->graph_canvas->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    main_window_ui_->graph_canvas->axisRect()->setRangeZoom(main_window_ui_->graph_canvas->yAxis->orientation());
+  else
+    main_window_ui_->graph_canvas->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
+}
+
+void ROSGUI::removeAllGraphs()
+{
+   // main_window_ui_->graph_canvas->clearGraphs();
+   main_window_ui_->graph_canvas->graph(0)->data()->clear();
+   main_window_ui_->graph_canvas->graph(1)->data()->clear();
+   main_window_ui_->graph_canvas->graph(2)->data()->clear();
+   main_window_ui_->graph_canvas->graph(3)->data()->clear();
+   main_window_ui_->graph_canvas->graph(4)->data()->clear();
+   main_window_ui_->graph_canvas->graph(5)->data()->clear();
+
+   main_window_ui_->graph_canvas->replot();
 }
 
 //void ROSGUI::on_actionExit_triggered()
