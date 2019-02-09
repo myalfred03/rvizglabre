@@ -278,6 +278,7 @@ trajectory_msgs::JointTrajectory createArmPositionCommand(std::vector<double>& n
     //  void on_comboBox_activated(int index);
       void on_comboBox_currentIndexChanged(int index);
       void on_comboBox_2_currentIndexChanged(int index);
+      void on_comboBox_5_currentIndexChanged(int index);
       void on_checkBox_3_toggled(bool x);
 
 public slots:

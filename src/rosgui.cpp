@@ -312,7 +312,7 @@ ROSGUI::ROSGUI(QWidget *parent)
  //  QObject::connect(main_window_ui_.comboBox,      SIGNAL(activated(int)), this, SLOT(on_comboBox_activated(int)));
    connect(main_window_ui_->comboBox,      SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_currentIndexChanged(int)));
    connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
-//   connect(main_window_ui_->comboBox_2,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_2_currentIndexChanged(int)));
+   connect(main_window_ui_->comboBox_5,    SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_5_currentIndexChanged(int)));
 //    main_window_ui_->tableWidget_3->setRowCount(4);
 //    main_window_ui_->tableWidget_3->setColumnCount(4);
 ////    main_window_ui_->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -615,6 +615,88 @@ void ROSGUI::removeAllGraphs()
    main_window_ui_->graph_canvas->graph(5)->data()->clear();
 
    main_window_ui_->graph_canvas->replot();
+}
+
+void ROSGUI::on_comboBox_5_currentIndexChanged(int index=0)
+{
+  switch (index){
+
+    case 0:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(true);
+   break;
+ }
+
+   case 1:
+  {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(false);
+
+   break;
+  }
+   case 2:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(false);
+   break;
+ }
+
+    case 3:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(false);
+   break;
+ }
+
+    case 4:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(false);
+   break;
+ }
+    case 5:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(true);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(false);
+   break;
+ }
+    case 6:
+ {
+    main_window_ui_->graph_canvas->graph(0)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(1)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(2)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(3)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(4)->setVisible(false);
+    main_window_ui_->graph_canvas->graph(5)->setVisible(true);
+   break;
+ }
+
+  }
 }
 
 //void ROSGUI::on_actionExit_triggered()
