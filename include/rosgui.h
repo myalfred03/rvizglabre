@@ -68,6 +68,7 @@
 #include <kdl/chain.hpp>
 #include <kdl/tree.hpp>
 #include <kdl/segment.hpp>
+#include "std_msgs/Int32MultiArray.h"
 
 class QMainWindow;
 class MyViz;
@@ -148,11 +149,13 @@ public:
       ros::Publisher joint_value_pub;
       ros::Subscriber joint_sub;
       ros::Publisher robot_state_vis_pub_;
+      ros::Publisher arduinopub;
       void trajectoryCallback(const trajectory_msgs::JointTrajectory & msg); // MoveIt
       moveit_msgs::DisplayRobotState display_state_msg_;
       std_msgs::Float32MultiArray send_val;
 
       std_msgs::Float32MultiArray valueDH;
+      std_msgs::Int32MultiArray arduino;
 
       std_msgs::String map;
       geometry_msgs::TransformStamped odom_trans;

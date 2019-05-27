@@ -33,9 +33,9 @@ find_package(catkin REQUIRED COMPONENTS
   robot_state_publisher
   #roboteditor
   #Book
-  fake_localization
+  #fake_localization
   laser_filters
-  map_server
+  #map_server
   #book
   # FK KDL::ChainFkSolverPos_recursive
   kdl_conversions

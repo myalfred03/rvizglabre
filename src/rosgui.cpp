@@ -61,6 +61,7 @@
 
 
 #include "std_msgs/MultiArrayLayout.h"
+//#include "std_msgs/Int16MultiArray"
 #include "std_msgs/MultiArrayDimension.h"
 
 #include "std_msgs/Int32MultiArray.h"
@@ -380,6 +381,8 @@ this->updateURDF(file_contents);
             joint_pub            = nh_.advertise<trajectory_msgs::JointTrajectory>("set_joint_trajectory", 10);
             joint_value_pub      = nh_.advertise<std_msgs::Float32MultiArray>("joint_limits", 10);
             joint_sub            = nh_.subscribe("/set_joint_trajectory_delay",10,&ROSGUI::trajectoryCallback,this);
+            arduinopub           = nh_.advertise<std_msgs::Int32MultiArray>("arduino_joints", 10);
+
             //Son pasados los valores via Suscripcion a la función
             //Valores de posicion de MoveIt
             robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
@@ -825,13 +828,25 @@ void ROSGUI::on3DOFs_URDF()
 }
 void ROSGUI::on4DOFs_URDF(){
   ToG    = 57.295779513;
-  main_window_ui_->statusBar->showMessage(tr("Modelo 4 DOF"));
+  main_window_ui_->statusBar->showMessage(tr("Modelo 4 UNI"));
+ 
 
 }
 void ROSGUI::on5DOFs_URDF(){
   ToG    = 57.295779513;
-  main_window_ui_->statusBar->showMessage(tr("Modelo 5 DOF"));
-
+  main_window_ui_->statusBar->showMessage(tr("Modelo 5 DOF UNI"));
+  main_window_ui_->comboBox->setCurrentIndex(0); // Shwo All Options Robot Arrows TF
+  main_window_ui_->label_15->setText("°");
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+  std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/armUNI.urdf";
+  std::ifstream selected_file(filePath.c_str());
+  std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+  this->updateURDF(file_contents);
+  updatetoURDF();
 }
 
 void ROSGUI::on6DOFs_URDF(){
@@ -1881,6 +1896,7 @@ void ROSGUI::updateDialer()
 void ROSGUI::updateSpinboxesD()
 {
 
+  arduino.data.resize(6);
 
     main_window_ui_->spinBox1DOF->    blockSignals(true);
     main_window_ui_->spinBox2DOF->    blockSignals(true);
@@ -1929,10 +1945,17 @@ void ROSGUI::updateSpinboxesD()
      jointV[3] = main_window_ui_->spinBox4DOF->value()/ToG;
      jointV[4] = main_window_ui_->spinBox5DOF->value()/ToG;
      jointV[5] = main_window_ui_->spinBox6DOF->value()/ToG;
+  arduino.data[0]=  jointV[0] ;
+  arduino.data[1]=  jointV[1] ;
+  arduino.data[2] = jointV[2] ;
+  arduino.data[3] = jointV[3] ;
+  arduino.data[4] = jointV[4] ;
+  arduino.data[5] = jointV[5] ;
 
      //Datos de Joints a MoveIT
 //     mRviz->refreshJoint(jointV);
      this->FKdata(j);
+     arduinopub.publish(arduino);
 
 }
 
@@ -2566,7 +2589,7 @@ void ROSGUI::trajectoryCallback(const trajectory_msgs::JointTrajectory &msg)
 // double joint_positions[6] {0.0};
 // int i =0;
 //  joint_positions[i]=msg.points[i].positions[i];
-
+  arduino.data.resize(6);
      joint_positions_["joint_1"]= msg.points[0].positions[0]/ToG;
      joint_positions_["joint_2"]= msg.points[0].positions[1]/ToG;
      joint_positions_["joint_3"]= msg.points[0].positions[2]/ToG;
@@ -2599,6 +2622,15 @@ this->FKdata(j);
     joint_4_plot = j(3)*ToG;
     joint_5_plot = j(4)*ToG;
     joint_6_plot = j(5)*ToG;
+
+  arduino.data[0]= joint_1_plot;
+  arduino.data[1]= joint_2_plot;
+  arduino.data[2] =joint_3_plot;
+  arduino.data[3] =joint_4_plot;
+  arduino.data[4] =joint_5_plot;
+  arduino.data[5] =joint_6_plot;
+     arduinopub.publish(arduino);
+
 
 //ros::Rate loop_rate(10);
 
