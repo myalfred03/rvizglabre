@@ -395,7 +395,7 @@ case 2:
 
    //--------------Documentation of FRAME::DH----------------------------//
 
-    KDL::Tree hand_tree ("world");
+    KDL::Tree hand_tree ("my_lab_world");
 
 
 
@@ -404,23 +404,32 @@ case 2:
 
 
     KDL::Chain chain_dh_robot;
-     chain_dh_robot.addSegment(KDL::Segment("base_link",Joint(Joint::None),RotBase));
-     chain_dh_robot.addSegment(KDL::Segment("link_1",   Joint("joint_1",Joint::RotZ),Frame::DH(DH.data[0],  DH.data[1]/ToG,  DH.data[2],  DH.data[3]/ToG)));
-     chain_dh_robot.addSegment(KDL::Segment("link_2",   Joint("joint_2",Joint::RotZ),Frame::DH(DH.data[4],  DH.data[5]/ToG,  DH.data[6],  DH.data[7]/ToG)));
-     chain_dh_robot.addSegment(KDL::Segment("link_3",   Joint("joint_3",Joint::RotZ),Frame::DH(DH.data[8],  DH.data[9]/ToG,  DH.data[10], DH.data[10]/ToG)));
-//     chain_dh_robot.addSegment(KDL::Segment("link_3",   Joint(Joint::TransZ),Frame(Vector(0.0,0.0,3))));
-//     chain_dh_robot.addSegment(KDL::Segment("link_4",   Joint(Joint::RotX),Frame(Vector(0.0,0.0,3))));
+     chain_dh_robot.addSegment(KDL::Segment("world",Joint(Joint::RotZ),RotBase));
+     chain_dh_robot.addSegment(KDL::Segment("mbase_link",Joint("joint_1",Joint::RotZ),Frame::DH(DH.data[0],  DH.data[1]/ToG,  DH.data[2],  DH.data[3]/ToG)));
+     chain_dh_robot.addSegment(KDL::Segment("link_1",    Joint("joint_2",Joint::RotZ),Frame::DH(DH.data[4],  DH.data[5]/ToG,  DH.data[6],  DH.data[7]/ToG)));
+     chain_dh_robot.addSegment(KDL::Segment("link_2",    Joint("joint_3",Joint::RotZ),Frame::DH(DH.data[8],  DH.data[9]/ToG,  DH.data[10], DH.data[11]/ToG)));
+     chain_dh_robot.addSegment(KDL::Segment("link_3",    Joint("joint_4",Joint::RotZ),Frame::DH(DH.data[12], DH.data[13]/ToG, DH.data[14], DH.data[15]/ToG)));
+     chain_dh_robot.addSegment(KDL::Segment("link_4",    Joint("joint_5",Joint::RotZ),Frame::DH(DH.data[16],  DH.data[17]/ToG,  DH.data[18], DH.data[19]/ToG)));
+     chain_dh_robot.addSegment(KDL::Segment("link_5",    Joint("joint_6",Joint::RotZ),Frame::DH(DH.data[20],  DH.data[21]/ToG,  DH.data[22], DH.data[23]/ToG)));
 //     chain_dh_robot.addSegment(KDL::Segment("link_5",   Joint(Joint::RotY),Frame(Vector(0.0,0.0,3))));
 //     chain_dh_robot.addSegment(KDL::Segment("link_6",   Joint(Joint::TransX),Frame(Vector(0.0,0.0,3))));
-     chain_dh_robot.addSegment(KDL::Segment("tool0",    Joint(Joint::None),Frame(Vector(0.0,0.0,0))));
+     chain_dh_robot.addSegment(KDL::Segment("tool0",     Joint("joint_tool",Joint::RotZ),Frame(Vector(0.0,0.0,0))));
 
 
 
 
 
-     hand_tree.addChain(chain_dh_robot,"world");
+     hand_tree.addChain(chain_dh_robot,"my_lab_world");
      njnt=chain_dh_robot.getNrOfJoints();
      model = hand_tree;
+
+//KDL::ChainFkSolverPos_recursive FKSolver = KDL::ChainFkSolverPos_recursive(chain_dh_robot);
+//Frame eeFrame;
+//FKSolver.JntToCart(jointAngles, eeFrame);
+
+//kdl_chain6 = chain_dh_robot;
+
+
 //if (!this->treeToUrdfFile(file,model,robot_name))
 //{
 //         std::cerr << "Error at Model URDF from Tree" <<std::endl;

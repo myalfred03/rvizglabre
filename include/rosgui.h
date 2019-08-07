@@ -327,7 +327,7 @@ private:
    boost::shared_ptr<KDL::Tree>  robot_tree_ = NULL;
    boost::shared_ptr<robot_state_publisher::RobotStatePublisher> robot_state_pub_ = NULL;
 //   KDL::Tree* robot_tree_ = NULL;
-//   robot_state_publisher::RobotStatePublisher* robot_state_pub_ = NULL;
+   robot_state_publisher::RobotStatePublisher* robot_state_pub2_ = NULL;
 //   robot_state_publisher::RobotStatePublisher* robot_state_pubDH_ = NULL;
 
 

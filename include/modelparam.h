@@ -78,6 +78,7 @@ public:
           std::vector<double>& upper_limits);
           unsigned int njnt;
           KDL::JntArray q_min_, q_max_, q_seed_;
+          KDL::Chain kdl_chain6;
 
 //          bool treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
 //          bool treeToUrdfXml(TiXmlDocument * & xml_doc,  const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
@@ -115,7 +116,9 @@ KDL::Chain kdl_chain2;
 KDL::Chain kdl_chain3;
 KDL::Chain kdl_chain4;
 KDL::Chain kdl_chain5;
-KDL::Chain kdl_chain6;
+//KDL::Chain kdl_chain6;
+KDL::Chain kdl_chainDH;
+
  // KDL::ChainFkSolverPos_recursive fksolver;
   KDL::ChainFkSolverPos_recursive* fksolver1;
   KDL::ChainFkSolverPos_recursive* fksolver2;

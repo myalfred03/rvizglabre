@@ -1314,25 +1314,7 @@ void ROSGUI::onUR5_URDF()
 }
 
 
-void ROSGUI::updatetreeforDH(KDL::Tree modelU){
-//  if(robot_state_pub_ != NULL)
-//    delete robot_state_pub_;
 
-  robot_state_pub_.reset( new robot_state_publisher::RobotStatePublisher(modelU));
-  joint_positions_.clear();
-  const std::map<std::string, KDL::TreeElement>& segments = modelU.getSegments();
-  for(std::map<std::string, KDL::TreeElement>::const_iterator it=segments.begin();
-    it != segments.end(); it++)
-  {
-    joint_positions_[it->second.segment.getJoint().getName()] = 0.0;
-    std::cout << it->second.segment.getJoint().getName() <<std::endl;
-  }
-
-  // refresh the preview
-  mRviz->refreshDH("my_lab_world/" + modelU.getRootSegment()->first);
-  main_window_ui_->statusBar->showMessage(tr("Modelo Usuario DH"));
-
-}
 
 void ROSGUI::updateMatEuler(){
 
@@ -1686,9 +1668,38 @@ void ROSGUI::updateURDF(const std::string& urdf)
   }
 
   // refresh the preview
-  mRviz->refresh("my_lab_world");
+  mRviz->refresh("my_lab_world");///"+ robot_tree_->getRootSegment()->first);
 
  // mRviz->subscribeTopics("joint_states");
+
+}
+
+
+void ROSGUI::updatetreeforDH(KDL::Tree modelU){
+//  if(robot_state_pub_ != NULL)
+//    delete robot_state_pub_;
+
+//robot_tree_.reset(new KDL::Tree());
+///robot_tree_=modelU;
+  robot_state_pub_.reset( new robot_state_publisher::RobotStatePublisher(modelU));
+
+
+ // robot_state_pub_.reset();
+
+  //robot_state_pub2_ = new robot_state_publisher::RobotStatePublisher(modelU);
+  // new robot_state_publisher::RobotStatePublisher(modelU));
+  joint_positions_.clear();
+  const std::map<std::string, KDL::TreeElement>& segments = modelU.getSegments();
+  for(std::map<std::string, KDL::TreeElement>::const_iterator it=segments.begin();
+    it != segments.end(); it++)
+  {
+    joint_positions_[it->second.segment.getJoint().getName()] = 0.0;
+    std::cout << "Joints"<< it->second.segment.getJoint().getName() <<std::endl;
+  }
+
+  // refresh the preview
+  mRviz->refreshDH("my_lab_world/" + modelU.getRootSegment()->first);
+  main_window_ui_->statusBar->showMessage(tr("Modelo Usuario DH"));
 
 }
 
@@ -1731,6 +1742,8 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
          robot_state_pub_->publishFixedTransforms("my_lab_world");
 
       }
+
+
 //      if(robot_state_pubDH_ != NULL)
 //      {
 //         robot_state_pubDH_->publishTransforms(joint_positionsDH_, ros::Time::now(), "my_lab_uni");
@@ -3126,14 +3139,16 @@ void ROSGUI::on_pushButton_3_toggled()
   valueDH.data[21] =  std::stod(main_window_ui_->lineDH62->text().toStdString());
   valueDH.data[22] =  std::stod(main_window_ui_->lineDH63->text().toStdString());
   valueDH.data[23] =  std::stod(main_window_ui_->lineDH64->text().toStdString());
-  std::cout <<  valueDH.data[23] << std::endl;
+  std::cout <<  valueDH.data[10] << std::endl;
   int rot ;
   rot = main_window_ui_->comboBox_4->currentIndex();
   if(!jointsv->treeforDH(model,nj_2,valueDH,rot))
   {
      std::cerr << "Error at model DH" <<std::endl;
   }
-  switch (nj_2){
+
+  std::cerr << "No de Joints" << nj_2 <<std::endl;
+  switch (nj_2-1){
 
   case 1:
     Q_EMIT(on_1DOF());
@@ -3146,6 +3161,12 @@ void ROSGUI::on_pushButton_3_toggled()
     break;
   case 4:
     Q_EMIT(on_4DOF());
+    break;
+  case 5:
+    Q_EMIT(on_5DOF());
+    break;
+  case 6:
+    Q_EMIT(on_5DOF());
     break;
 
   }
