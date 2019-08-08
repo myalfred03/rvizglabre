@@ -71,7 +71,7 @@ public:
          // bool InverseK(KDL::Vector tcp, KDL::JntArray &pos_joint);
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 
-          bool treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH, int rot);
+          bool treeforDH(KDL::Tree &model, std_msgs::Float32MultiArray DH, int rot);
 
 
           bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,

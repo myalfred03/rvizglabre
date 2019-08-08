@@ -2670,6 +2670,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
   std::cout <<  arg1 << std::endl;
   switch (arg1) {
 
+
+
+
+
+
     case 0:
     {
     main_window_ui_->lineDH11->setEnabled(false);
@@ -2790,6 +2795,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
     main_window_ui_->pushButton_3->setEnabled(true);
 
+    Q_EMIT(on_1DOF());
 
     break;
     }
@@ -2854,6 +2860,9 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->pushButton_3->setEnabled(true);
 
 
+    Q_EMIT(on_2DOF());
+
+
     break;
     }
     case 3:
@@ -2914,6 +2923,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
     main_window_ui_->pushButton_3->setEnabled(true);
+
+
+    Q_EMIT(on_3DOF());
+
+
     break;
     }
 
@@ -2976,6 +2990,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
     main_window_ui_->pushButton_3->setEnabled(true);
+
+
+    Q_EMIT(on_4DOF());
+
+
     break;
     }
 
@@ -3038,6 +3057,11 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
     main_window_ui_->doubleSpinBoxDH6min->setValue(0);
     main_window_ui_->doubleSpinBoxDH6max->setValue(0);
     main_window_ui_->pushButton_3->setEnabled(true);
+
+
+    Q_EMIT(on_5DOF());
+
+
     break;
     }
 
@@ -3092,6 +3116,10 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
   main_window_ui_->doubleSpinBoxDH6min->setEnabled(true);
   main_window_ui_->doubleSpinBoxDH6max->setEnabled(true);
   main_window_ui_->pushButton_3->setEnabled(true);
+
+
+    Q_EMIT(on_6DOF());
+
 break;
 }
 
@@ -3142,34 +3170,13 @@ void ROSGUI::on_pushButton_3_toggled()
   std::cout <<  valueDH.data[10] << std::endl;
   int rot ;
   rot = main_window_ui_->comboBox_4->currentIndex();
-  if(!jointsv->treeforDH(model,nj_2,valueDH,rot))
+  if(!jointsv->treeforDH(model,valueDH,rot))
   {
      std::cerr << "Error at model DH" <<std::endl;
   }
 
   std::cerr << "No de Joints" << nj_2 <<std::endl;
-  switch (nj_2-1){
-
-  case 1:
-    Q_EMIT(on_1DOF());
-    break;
-  case 2:
-    Q_EMIT(on_2DOF());
-    break;
-  case 3:
-    Q_EMIT(on_3DOF());
-    break;
-  case 4:
-    Q_EMIT(on_4DOF());
-    break;
-  case 5:
-    Q_EMIT(on_5DOF());
-    break;
-  case 6:
-    Q_EMIT(on_5DOF());
-    break;
-
-  }
+ 
 
 
   main_window_ui_->dial1DOF->setMinimum(main_window_ui_->doubleSpinBoxDH1min->value());

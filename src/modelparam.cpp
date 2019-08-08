@@ -352,7 +352,7 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
            return true;
 }
-bool modelparam::treeforDH(KDL::Tree &model, int &njnt, std_msgs::Float32MultiArray DH, int rot){
+bool modelparam::treeforDH(KDL::Tree &model, std_msgs::Float32MultiArray DH, int rot){
 using namespace KDL;
 
   //test with TreeToURDF
@@ -420,7 +420,7 @@ case 2:
 
 
      hand_tree.addChain(chain_dh_robot,"my_lab_world");
-     njnt=chain_dh_robot.getNrOfJoints();
+     //njnt=chain_dh_robot.getNrOfJoints();
      model = hand_tree;
 
 //KDL::ChainFkSolverPos_recursive FKSolver = KDL::ChainFkSolverPos_recursive(chain_dh_robot);
