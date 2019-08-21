@@ -139,7 +139,7 @@
     <axis xyz="1 0 0"/>
     <limit effort="0" lower="-1.570795" upper="1.570795" velocity="6.98"/>
   </joint>
-  <joint name="gripper" type="fixed">
+  <joint name="joint_5" type="revolute">
     <origin rpy="0 0 0" xyz="0.048 0 0"/>
     <parent link="link_4"/>
     <child link="gripper"/>
