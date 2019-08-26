@@ -197,6 +197,8 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->checkBoxKatana,    SIGNAL(toggled(bool)), SLOT(on_6DOF()));
     connect(main_window_ui_->checkBoxUR5,       SIGNAL(toggled(bool)), SLOT(on_6DOF()));
 
+    connect(main_window_ui_->actionOpen,         SIGNAL(triggered()),   SLOT(on_6DOF()));
+
 
 
 
@@ -344,7 +346,7 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->graph_canvas, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoved(QMouseEvent*)));
     connect(main_window_ui_->graph_canvas, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
     connect(main_window_ui_->pushButton_4, SIGNAL(clicked()), this, SLOT(removeAllGraphs()));
-
+    connect(main_window_ui_->actionOpen, SIGNAL(triggered()), this, SLOT(openTrigger()));
 
 //offWidgets();
 std::string filePath = ros::package::getPath("rvizglabre") + "/modelos/uni.urdf";
@@ -706,6 +708,36 @@ void ROSGUI::on_comboBox_5_currentIndexChanged(int index=0)
 //{
 // main_window_.close();
 //}
+
+void ROSGUI::openTrigger() {
+    file_name_ = QFileDialog::getOpenFileName(0, tr("Open URDF File"), ".", tr("XML Files (*.urdf)"));
+
+    // this will be true if the user cancels
+    if(file_name_.isEmpty())
+        return;
+
+    // debugging print for now
+    printf("file selected: %s\n", qPrintable(file_name_));
+
+  resetvalue();
+  nh_.deleteParam("root_link");
+  nh_.deleteParam("tip_link");
+  nh_.setParam("root_link","base_link");
+  nh_.setParam("tip_link","tool0");
+
+
+    // convert the file to a string
+    std::ifstream selected_file(file_name_.toStdString().c_str());
+    std::string file_contents((std::istreambuf_iterator<char>(selected_file)), std::istreambuf_iterator<char>());
+
+    // fill the text editor with this string
+    this->updateURDF(file_contents);
+    updatetoURDF();
+    main_window_ui_->statusBar->showMessage(tr("Modelo proveido por el usuario"));
+
+}
+
+
 
 void ROSGUI::onMat1()
 {
