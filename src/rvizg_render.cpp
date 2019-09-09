@@ -63,7 +63,7 @@ QWidget(parent)
 
   rviz::YamlConfigReader reader;
   rviz::Config config;
-  std::string filename = ros::package::getPath("rvizglabre")+"/config/virtuallab.rviz" ;
+  std::string filename = ros::package::getPath("rvizglabre")+"/config/lvr.rviz" ;
   reader.readFile( config, QString::fromStdString( filename ));
       if( !reader.error() )
       {
@@ -226,11 +226,15 @@ QWidget(parent)
 
 //  robot_model_ = manager_->createDisplay("rviz/RobotModel", "Robot Model", true);
 //  robot_display_->subProp("Robot Description")->setValue(QString::fromStdString("my_lab_uni/robot_description"));
-  grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
-  grid_->subProp( "Plane Cell Count" )->setValue( 30 );
-  grid_->subProp( "Cell Size" )->setValue( .5 );
-  grid_->subProp( "Line Style" )->setValue( "Billboards" );
-  grid_->subProp( "Color" )->setValue( QColor( Qt::black ) );
+
+
+   grid_ = manager_->createDisplay( "rviz/Grid", "Robot Preview", true );
+   grid_->subProp( "Plane Cell Count" )->setValue( 30 );
+   grid_->subProp( "Cell Size" )->setValue( 1 );
+  // grid_->subProp( "Line Style" )->setValue( "Billboards" );
+   //grid_->subProp( "Color" )->setValue( QColor( Qt::black ) );
+   grid_->subProp( "Color" )->setValue( QColor(0, 0, 0));
+
   tF_   = manager_->createDisplay( "rviz/TF","TF", false); // active mode or disable at load model robot
 
   ROS_ASSERT( grid_ != NULL );
@@ -474,11 +478,17 @@ void MyViz::refreshRM(bool rbrv)
 //  robot_display_->setEnabled(rbrv);
 
 }
+
 void MyViz::refreshWs(bool ws)
 {
   robot_workspace_->setEnabled(ws);
   robot_workspace_->subProp("Show Shape")->setValue(ws);
+  robot_workspace_->subProp("Highest Reachability Index")->setValue(50);
+}
 
+void MyViz::updateWs(int ws)
+{
+  robot_workspace_->subProp("Highest Reachability Index")->setValue(ws);
 }
 //void MyViz::datameasure(QString &data)
 //{

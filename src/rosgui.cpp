@@ -69,6 +69,7 @@ const double FACTOR = 1;
 double ToG    = 57.295779513;
 const double resetv  = 0;
 static bool Ws = false;
+bool DHb = false;
 
 
 ROSGUI::ROSGUI(QWidget *parent)
@@ -248,6 +249,9 @@ ROSGUI::ROSGUI(QWidget *parent)
     connect(main_window_ui_->doubleSpinBox_roCy,    SIGNAL(valueChanged(double)), SLOT(updateMatCyl()));
     connect(main_window_ui_->doubleSpinBox_phiCy,   SIGNAL(valueChanged(double)), SLOT(updateMatCyl()));
 
+    connect(main_window_ui_->spinBox_2,   SIGNAL(valueChanged(int)), SLOT(updateWS(int)));
+
+
 
 
     //Matemática del robot
@@ -298,9 +302,8 @@ ROSGUI::ROSGUI(QWidget *parent)
 
     //Denavith Select parameters to load
     connect(main_window_ui_->spinBox,          SIGNAL(valueChanged(int)), this, SLOT(on_spinBox_valueChanged(int)));
-    connect(main_window_ui_->pushButton_3,     SIGNAL(clicked()), SLOT(on_pushButton_3_toggled()));
-
-
+    connect(main_window_ui_->checkBox_DH,     SIGNAL(toggled(bool)), SLOT(on_pushButton_3_toggled()));
+    connect(main_window_ui_->checkBox_DH,     SIGNAL(toggled(bool)), SLOT(on_checkBox_DH_toggled()));
     //KeySecuence
 //    main_window_ui_->checkBox4DOFI->setShortcut( QKeySequence( QString( "Ctrl+1" )));
 
@@ -1629,7 +1632,12 @@ void ROSGUI::updateMatCyl(){
 }
 
 
+void ROSGUI::updateWS(int dataWS){
+ //int dataWS =0;
+ //dataWS = main_window_ui_->spinBox_2->value();
+ mRviz->updateWs(dataWS);
 
+}
 
 
 
@@ -2228,6 +2236,16 @@ void ROSGUI::on_enableW() {
     main_window_ui_->yawSlider->   setEnabled(true);
 }
 
+
+
+void ROSGUI::on_checkBox_DH_toggled(bool y)
+{
+
+
+  DHb = y;
+
+}
+
 bool ROSGUI::init()
 {
 
@@ -2235,7 +2253,7 @@ this->on_enableW();
 
   jointsv = new modelparam;
 
- if(!jointsv->initmodel(nj))
+ if(!jointsv->initmodel(nj, DHb))
  {
           std::cerr << "Error at init model" <<std::endl;
          return false;
@@ -2825,7 +2843,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-    main_window_ui_->pushButton_3->setEnabled(true);
+    main_window_ui_->checkBox_DH->setEnabled(true);
 
     Q_EMIT(on_1DOF());
 
@@ -2889,7 +2907,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-    main_window_ui_->pushButton_3->setEnabled(true);
+    main_window_ui_->checkBox_DH->setEnabled(true);
 
 
     Q_EMIT(on_2DOF());
@@ -2954,7 +2972,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-    main_window_ui_->pushButton_3->setEnabled(true);
+    main_window_ui_->checkBox_DH->setEnabled(true);
 
 
     Q_EMIT(on_3DOF());
@@ -3021,7 +3039,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setEnabled(false);
     main_window_ui_->doubleSpinBoxDH6max->setEnabled(false);
-    main_window_ui_->pushButton_3->setEnabled(true);
+    main_window_ui_->checkBox_DH->setEnabled(true);
 
 
     Q_EMIT(on_4DOF());
@@ -3088,7 +3106,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
     main_window_ui_->doubleSpinBoxDH6min->setValue(0);
     main_window_ui_->doubleSpinBoxDH6max->setValue(0);
-    main_window_ui_->pushButton_3->setEnabled(true);
+    main_window_ui_->checkBox_DH->setEnabled(true);
 
 
     Q_EMIT(on_5DOF());
@@ -3147,7 +3165,7 @@ void ROSGUI::on_spinBox_valueChanged(int arg1)
 
   main_window_ui_->doubleSpinBoxDH6min->setEnabled(true);
   main_window_ui_->doubleSpinBoxDH6max->setEnabled(true);
-  main_window_ui_->pushButton_3->setEnabled(true);
+  main_window_ui_->checkBox_DH->setEnabled(true);
 
 
     Q_EMIT(on_6DOF());
@@ -3164,7 +3182,7 @@ void ROSGUI::on_pushButton_3_toggled()
 {
   nh_.deleteParam("root_link");
   nh_.deleteParam("tip_link");
-  nh_.setParam("root_link","base_link");
+  nh_.setParam("root_link","mbase_link");
   nh_.setParam("tip_link","tool0");
 
   int data;
@@ -3263,10 +3281,19 @@ void ROSGUI::on_pushButton_3_toggled()
 
 
   this->updatetreeforDH(model);
-  if(!init())
-  {
-     ROS_ERROR("Error publisher");
-  }
+  // if(!init())
+  // {
+  //    ROS_ERROR("Error publisher");
+  // }
+
+
+ if(!jointsv->initmodel(nj, DHb))
+ {
+          std::cerr << "Error at init model" <<std::endl;
+         
+ }
+j(nj) =  0;
+  this->FKdata(j);
 
 //      joint_value_pub.publish(send_val);
   send_val.data.resize(12);

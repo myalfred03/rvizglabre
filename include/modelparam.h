@@ -58,7 +58,7 @@ class modelparam
 {
 public:
   modelparam();
-          bool initmodel(unsigned int &nj);
+          bool initmodel(unsigned int &nj, bool K);
           bool ForwardK(KDL::Frame &pos_mat6,
                         KDL::Frame &pos_mat5,
                         KDL::Frame &pos_mat4,
@@ -72,28 +72,18 @@ public:
           bool InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY, KDL::JntArray &pos_joint);
 
           bool treeforDH(KDL::Tree &model, std_msgs::Float32MultiArray DH, int rot);
-          
-          bool treeforURDF(  urdf::Model urdf);
 
-          bool treeforFK (KDL::Tree model);
 
-          bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits,
-          std::vector<double>& upper_limits);
+          bool readJntLimitsFromROSParamURDF(std::vector<double>& lower_limits, std::vector<double>& upper_limits);
           unsigned int njnt;
           KDL::JntArray q_min_, q_max_, q_seed_;
           KDL::Chain kdl_chain6;
+          KDL::Tree modelU;
+          KDL::Tree  kdl_tree;
+          KDL::Chain kdl_chainU;
 
-            std::string param_nameR = "my_lab_uni/robot_description";
-  std::string full_param_name;
-  std::string xml_string;
-  //std::string xml_string2;
 
-  std::string param_nameCr = "root_link";
-  std::string full_param_nameCr;
-  std::string xml_stringCr;
-  std::string param_nameCt = "tip_link";
-  std::string full_param_nameCt;
-  std::string xml_stringCt;
+          // KDL::Tree treeF();
 
 //          bool treeToUrdfFile(const std::string& file, const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
 //          bool treeToUrdfXml(TiXmlDocument * & xml_doc,  const KDL::Tree& tree, const std::string & robot_name="URDF_generated_by_kdl_format_io");
@@ -125,7 +115,6 @@ private:
   std::vector<std::string> limited_jnt_names;
 //   std::vector<double> lower_limits;
 //   std::vector<double> upper_limits;
-  KDL::Tree  kdl_tree;
 KDL::Chain kdl_chain1;
 KDL::Chain kdl_chain2;
 KDL::Chain kdl_chain3;

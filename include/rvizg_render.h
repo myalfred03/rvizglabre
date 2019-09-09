@@ -121,6 +121,7 @@ public:
   void refreshJoint(std::vector< double > joint);
   QLabel* status_label_;
   void refreshWs(bool ws = true);
+  void updateWs(int ws);
 
 //  void datameasure(QString &data);
 //  QString datam;

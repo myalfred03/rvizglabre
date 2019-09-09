@@ -8,9 +8,10 @@ modelparam::modelparam()
 //double readJntLimitsFromROSParamURDF();
 
 }
-bool modelparam::initmodel(unsigned int &nj)
+bool modelparam::initmodel(unsigned int &nj, bool K)
 {
 
+if (!K) {
   std::string param_nameR = "my_lab_uni/robot_description";
   std::string full_param_name;
   std::string xml_string;
@@ -121,6 +122,54 @@ bool modelparam::initmodel(unsigned int &nj)
               }
           njnt = kdl_chain6.getNrOfJoints();
           nj = njnt;
+
+        }
+
+        else
+{
+
+ std::cout << "I have de Tree of DH" << std::endl;
+
+//KDL::Tree modelx;
+ kdl_tree = modelU; //this->treeF();
+          if(!kdl_tree.getChain("mbase_link", "tool0", kdl_chain6))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          if(!kdl_tree.getChain("mbase_link", "link_5", kdl_chain5))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          if(!kdl_tree.getChain("mbase_link", "link_4", kdl_chain4))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          if(!kdl_tree.getChain("mbase_link", "link_3", kdl_chain3))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          if(!kdl_tree.getChain("mbase_link", "link_2", kdl_chain2))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          if(!kdl_tree.getChain("mbase_link", "link_1", kdl_chain1))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+          njnt = kdl_chain6.getNrOfJoints();
+          nj = njnt;
+
+//kdl_chain6 = kdl_chainU;
+
+
+}
+
           return true;
 
 //          const std::string& file = "prueba";
@@ -352,6 +401,14 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
 
            return true;
 }
+
+
+// KDL::Tree modelparam::treeF(){
+// return modelU;
+
+// }
+
+
 bool modelparam::treeforDH(KDL::Tree &model, std_msgs::Float32MultiArray DH, int rot){
 using namespace KDL;
 
@@ -422,6 +479,16 @@ case 2:
      hand_tree.addChain(chain_dh_robot,"my_lab_world");
      //njnt=chain_dh_robot.getNrOfJoints();
      model = hand_tree;
+modelU = hand_tree;
+
+if(!modelU.getChain("mbase_link", "tool0", kdl_chain6))
+              {
+                  ROS_ERROR("Error getting KDL chain");
+                   nh.shutdown();
+              }
+
+    njnt = kdl_chain6.getNrOfJoints();
+     std::cout << "I have of Tree of DH NJNT" << njnt << std::endl;
 
 //KDL::ChainFkSolverPos_recursive FKSolver = KDL::ChainFkSolverPos_recursive(chain_dh_robot);
 //Frame eeFrame;

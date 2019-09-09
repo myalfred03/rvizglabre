@@ -1284,7 +1284,7 @@
              <bool>true</bool>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab">
              <property name="maximumSize">
@@ -8092,6 +8092,22 @@
                   <property name="spacing">
                    <number>1</number>
                   </property>
+                  <item row="13" column="10">
+                   <widget class="QDoubleSpinBox" name="doubleSpinBoxDH6max">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>60</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximum">
+                     <double>200.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="9" column="8">
                    <widget class="Line" name="line_74">
                     <property name="orientation">
@@ -8338,6 +8354,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="6" column="10">
+                   <widget class="Line" name="line_72">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="5" column="7">
                    <widget class="QLabel" name="label_93">
                     <property name="maximumSize">
@@ -8379,13 +8402,6 @@
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="10">
-                   <widget class="Line" name="line_72">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -8478,6 +8494,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="6" column="1">
+                   <widget class="Line" name="line_63">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="11" column="7">
                    <widget class="QLineEdit" name="lineDH44">
                     <property name="enabled">
@@ -8500,8 +8523,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="6" column="1">
-                   <widget class="Line" name="line_63">
+                  <item row="6" column="5">
+                   <widget class="Line" name="line_65">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -8523,10 +8546,10 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="6" column="5">
-                   <widget class="Line" name="line_65">
+                  <item row="11" column="8">
+                   <widget class="Line" name="line_76">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Vertical</enum>
                     </property>
                    </widget>
                   </item>
@@ -8552,8 +8575,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="11" column="8">
-                   <widget class="Line" name="line_76">
+                  <item row="12" column="8">
+                   <widget class="Line" name="line_77">
                     <property name="orientation">
                      <enum>Qt::Vertical</enum>
                     </property>
@@ -8581,6 +8604,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="4" column="0" colspan="11">
+                   <widget class="Line" name="line_79">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="7" column="0">
                    <widget class="QLabel" name="label_94">
                     <property name="maximumSize">
@@ -8591,20 +8621,6 @@
                     </property>
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="12" column="8">
-                   <widget class="Line" name="line_77">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0" colspan="11">
-                   <widget class="Line" name="line_79">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -8624,6 +8640,13 @@
                     </property>
                     <property name="maximum">
                      <double>0.000000000000000</double>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="4" rowspan="9">
+                   <widget class="Line" name="line_61">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
                     </property>
                    </widget>
                   </item>
@@ -8649,6 +8672,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="14" column="1">
+                   <widget class="Line" name="line_67">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="5" column="10">
                    <widget class="QLabel" name="label_101">
                     <property name="maximumSize">
@@ -8662,20 +8692,6 @@
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="4" rowspan="9">
-                   <widget class="Line" name="line_61">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="14" column="1">
-                   <widget class="Line" name="line_67">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -8882,6 +8898,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="6" column="3">
+                   <widget class="Line" name="line_64">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="13" column="7">
                    <widget class="QLineEdit" name="lineDH64">
                     <property name="enabled">
@@ -8926,8 +8949,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="6" column="3">
-                   <widget class="Line" name="line_64">
+                  <item row="14" column="5">
+                   <widget class="Line" name="line_69">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -8949,10 +8972,10 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="14" column="5">
-                   <widget class="Line" name="line_69">
+                  <item row="5" column="6" rowspan="9">
+                   <widget class="Line" name="line_62">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Vertical</enum>
                     </property>
                    </widget>
                   </item>
@@ -8978,6 +9001,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="6" column="9">
+                   <widget class="Line" name="line_71">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="9" column="0">
                    <widget class="QLabel" name="label_95">
                     <property name="maximumSize">
@@ -8988,20 +9018,6 @@
                     </property>
                     <property name="text">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="6" rowspan="9">
-                   <widget class="Line" name="line_62">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="9">
-                   <widget class="Line" name="line_71">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -9043,19 +9059,10 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="13" column="10">
-                   <widget class="QDoubleSpinBox" name="doubleSpinBoxDH6max">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>60</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="maximum">
-                     <double>200.000000000000000</double>
+                  <item row="13" column="8">
+                   <widget class="Line" name="line_78">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
                     </property>
                    </widget>
                   </item>
@@ -9081,10 +9088,17 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="13" column="8">
-                   <widget class="Line" name="line_78">
+                  <item row="14" column="7">
+                   <widget class="Line" name="line_70">
                     <property name="orientation">
-                     <enum>Qt::Vertical</enum>
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="7">
+                   <widget class="Line" name="line_66">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -9104,20 +9118,6 @@
                     </property>
                     <property name="maximum">
                      <double>0.000000000000000</double>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="14" column="7">
-                   <widget class="Line" name="line_70">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="7">
-                   <widget class="Line" name="line_66">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
                     </property>
                    </widget>
                   </item>
@@ -9184,6 +9184,13 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="0" column="0" colspan="11">
+                   <widget class="Line" name="line_80">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="3" column="7">
                    <widget class="QComboBox" name="comboBox_4">
                     <property name="maximumSize">
@@ -9234,17 +9241,10 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="0" colspan="11">
-                   <widget class="Line" name="line_80">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="3" column="10">
-                   <widget class="QPushButton" name="pushButton_3">
+                   <widget class="QCheckBox" name="checkBox_DH">
                     <property name="enabled">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </property>
                     <property name="maximumSize">
                      <size>
@@ -10058,6 +10058,13 @@
              </widget>
             </item>
             <item>
+             <widget class="QSpinBox" name="spinBox_2">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QCheckBox" name="checkBox_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -10156,7 +10163,7 @@
      <x>0</x>
      <y>0</y>
      <width>1370</width>
-     <height>18</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -10251,12 +10258,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>140</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>130</x>
-     <y>140</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10267,12 +10274,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
-     <y>134</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>242</x>
-     <y>138</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10283,12 +10290,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>133</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>312</x>
-     <y>141</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10299,12 +10306,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>137</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>387</x>
-     <y>142</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10315,12 +10322,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>141</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>78</x>
-     <y>142</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10331,12 +10338,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>152</x>
-     <y>142</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>142</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10347,12 +10354,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>139</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>316</x>
-     <y>142</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10363,12 +10370,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>166</x>
-     <y>135</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>378</x>
-     <y>142</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10379,12 +10386,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>238</x>
-     <y>137</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>104</x>
-     <y>133</y>
+     <x>256</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10395,12 +10402,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>244</x>
-     <y>142</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>167</x>
-     <y>138</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10411,12 +10418,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>241</x>
-     <y>140</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>304</x>
-     <y>138</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10427,12 +10434,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>137</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>401</x>
-     <y>141</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10443,12 +10450,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>312</x>
-     <y>142</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>134</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10459,12 +10466,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>133</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>150</x>
-     <y>139</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10475,12 +10482,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>137</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>71</x>
-     <y>137</y>
+     <x>252</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10491,12 +10498,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>315</x>
-     <y>137</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>380</x>
-     <y>139</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10507,12 +10514,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>380</x>
-     <y>134</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>317</x>
-     <y>136</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10523,12 +10530,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
-     <y>143</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>244</x>
-     <y>137</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10539,12 +10546,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>393</x>
-     <y>141</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>141</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10555,12 +10562,12 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>389</x>
-     <y>135</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>68</x>
-     <y>138</y>
+     <x>249</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -10571,8 +10578,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>71</x>
-     <y>135</y>
+     <x>252</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>100</x>
@@ -10587,8 +10594,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>134</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>156</x>
@@ -10603,8 +10610,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>240</x>
-     <y>138</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>227</x>
@@ -10619,8 +10626,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>135</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -10635,8 +10642,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>382</x>
-     <y>135</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>370</x>
@@ -10763,8 +10770,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>70</x>
-     <y>137</y>
+     <x>251</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>69</x>
@@ -10779,8 +10786,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>152</x>
-     <y>135</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -10795,8 +10802,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>216</x>
-     <y>137</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>217</x>
@@ -10811,8 +10818,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>131</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>317</x>
@@ -10827,8 +10834,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>376</x>
-     <y>138</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>374</x>
@@ -10923,8 +10930,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>70</x>
-     <y>138</y>
+     <x>251</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>74</x>
@@ -10939,8 +10946,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>136</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -10955,8 +10962,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>135</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>211</x>
@@ -10971,8 +10978,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>294</x>
-     <y>133</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>288</x>
@@ -10987,8 +10994,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>362</x>
-     <y>136</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -11083,8 +11090,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>132</y>
+     <x>247</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>74</x>
@@ -11099,8 +11106,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>137</x>
-     <y>141</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>133</x>
@@ -11115,8 +11122,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>220</x>
-     <y>141</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>217</x>
@@ -11131,8 +11138,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>317</x>
-     <y>136</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>317</x>
@@ -11147,8 +11154,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
-     <y>137</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>371</x>
@@ -11243,8 +11250,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>138</y>
+     <x>255</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -11259,8 +11266,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>155</x>
-     <y>141</y>
+     <x>330</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -11275,8 +11282,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>239</x>
-     <y>133</y>
+     <x>412</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>228</x>
@@ -11291,8 +11298,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>139</y>
+     <x>99</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>313</x>
@@ -11307,8 +11314,8 @@
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>134</y>
+     <x>174</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>372</x>
@@ -11601,22 +11608,6 @@
     <hint type="destinationlabel">
      <x>73</x>
      <y>134</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox6DOFs</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>checkBox6DOFs</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>346</x>
-     <y>141</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>394</x>
-     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -14529,6 +14520,502 @@
     <hint type="destinationlabel">
      <x>295</x>
      <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_DH</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>tabWidget3</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>340</x>
+     <y>313</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxRev3D</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox6DOFs_3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>382</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxRevolute</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>315</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxPrismatic</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxRev_Pris</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox2DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>147</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox4DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>222</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox5DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox6DOFs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox1Cl</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox2Cl</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox3Cl</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>189</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox4Cl</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>270</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>315</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox5Cl</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>324</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxKuka1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>322</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxKuka2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxKuka3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxKuka4</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>332</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxFanuc1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>362</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxFanuc2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxFanuc3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>337</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxABB1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxABB2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxABB3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxABB4</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>343</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxMotoman1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxMotoman2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxKatana</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxUR5</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_DH</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>
