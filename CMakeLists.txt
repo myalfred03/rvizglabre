@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   #moveit_ros_visualization
   #JogController
   moveit_core
-  moveit_ros_planning
+  #moveit_ros_planning
   moveit_visual_tools
   moveit_msgs
   pluginlib
