@@ -17,7 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   rqt_gui
   rqt_gui_cpp
   actionlib
-  moveit_ros_visualization
+  #moveit_ros_visualization
   #JogController
   moveit_core
   moveit_ros_planning
