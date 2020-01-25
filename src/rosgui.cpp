@@ -390,7 +390,7 @@ this->updateURDF(file_contents);
 
             //Son pasados los valores via Suscripcion a la función
             //Valores de posicion de MoveIt
-            robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
+            //robot_state_vis_pub_ = nh_.advertise<moveit_msgs::DisplayRobotState>("/my_lab_uni/robot_state",1, true);
             map_reuleaux         = nh_.advertise<std_msgs::String>("/my_lab_uni/map_reuleaux", 10);
 
           odom_trans.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(0,0,0);
@@ -1375,12 +1375,12 @@ void ROSGUI::updateMatEuler(){
     angleRot[4] = main_window_ui_->doubleSpinBox_MY->value();
     angleRot[5] = main_window_ui_->doubleSpinBox_MZ->value();
 
-    tf::Quaternion quat = tf::createQuaternionFromRPY( angleRot[0],  angleRot[1],  angleRot[2]);
+    // tf::Quaternion quat = tf::createQuaternionFromRPY( angleRot[0],  angleRot[1],  angleRot[2]);
 
-    main_window_ui_->qW->setText(QString::number(quat.getW()));
-    main_window_ui_->qX->setText(QString::number(quat.getX()));
-    main_window_ui_->qY->setText(QString::number(quat.getY()));
-    main_window_ui_->qZ->setText(QString::number(quat.getZ()));
+    // main_window_ui_->qW->setText(QString::number(quat.getW()));
+    // main_window_ui_->qX->setText(QString::number(quat.getX()));
+    // main_window_ui_->qY->setText(QString::number(quat.getY()));
+    // main_window_ui_->qZ->setText(QString::number(quat.getZ()));
 
     //Calculos Coordenadas Esfericas
 
@@ -1413,28 +1413,28 @@ void ROSGUI::updateMatEuler(){
     main_window_ui_->doubleSpinBox_roCy   ->setValue(roC);
     main_window_ui_->doubleSpinBox_phiCy  ->setValue(phiC*ToG);
 
-    tf::quaternionTFToKDL(quat,rot);
+    // tf::quaternionTFToKDL(quat,rot);
 
 
-    main_window_ui_->label_mat1x1->setText(QString::number(rot.UnitX().x()));
-    main_window_ui_->label_mat1x2->setText(QString::number(rot.UnitX().y()));
-    main_window_ui_->label_mat1x3->setText(QString::number(rot.UnitX().z()));
-    main_window_ui_->label_mat1x4->setText(QString::number(angleRot[3]));
+    // main_window_ui_->label_mat1x1->setText(QString::number(rot.UnitX().x()));
+    // main_window_ui_->label_mat1x2->setText(QString::number(rot.UnitX().y()));
+    // main_window_ui_->label_mat1x3->setText(QString::number(rot.UnitX().z()));
+    // main_window_ui_->label_mat1x4->setText(QString::number(angleRot[3]));
 
-    main_window_ui_->label_mat2x1->setText(QString::number(rot.UnitY().x()));
-    main_window_ui_->label_mat2x2->setText(QString::number(rot.UnitY().y()));
-    main_window_ui_->label_mat2x3->setText(QString::number(rot.UnitY().z()));
-    main_window_ui_->label_mat2x4->setText(QString::number(angleRot[4]));
+    // main_window_ui_->label_mat2x1->setText(QString::number(rot.UnitY().x()));
+    // main_window_ui_->label_mat2x2->setText(QString::number(rot.UnitY().y()));
+    // main_window_ui_->label_mat2x3->setText(QString::number(rot.UnitY().z()));
+    // main_window_ui_->label_mat2x4->setText(QString::number(angleRot[4]));
 
-    main_window_ui_->label_mat3x1->setText(QString::number(rot.UnitZ().x()));
-    main_window_ui_->label_mat3x2->setText(QString::number(rot.UnitZ().y()));
-    main_window_ui_->label_mat3x3->setText(QString::number(rot.UnitZ().z()));
-    main_window_ui_->label_mat3x4->setText(QString::number(angleRot[5]));
+    // main_window_ui_->label_mat3x1->setText(QString::number(rot.UnitZ().x()));
+    // main_window_ui_->label_mat3x2->setText(QString::number(rot.UnitZ().y()));
+    // main_window_ui_->label_mat3x3->setText(QString::number(rot.UnitZ().z()));
+    // main_window_ui_->label_mat3x4->setText(QString::number(angleRot[5]));
 
-    main_window_ui_->label_mat4x1->setText(QString("0"));
-    main_window_ui_->label_mat4x2->setText(QString("0"));
-    main_window_ui_->label_mat4x3->setText(QString("0"));
-    main_window_ui_->label_mat4x4->setText(QString("1"));
+    // main_window_ui_->label_mat4x1->setText(QString("0"));
+    // main_window_ui_->label_mat4x2->setText(QString("0"));
+    // main_window_ui_->label_mat4x3->setText(QString("0"));
+    // main_window_ui_->label_mat4x4->setText(QString("1"));
 
 
     // Z = rSph * cos(thSph);

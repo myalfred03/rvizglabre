@@ -21,8 +21,8 @@ find_package(catkin REQUIRED COMPONENTS
   #JogController
   moveit_core
   #moveit_ros_planning
-  moveit_visual_tools
-  moveit_msgs
+  #moveit_visual_tools
+  #moveit_msgs
   pluginlib
   visualization_marker_tutorials
   interactive_markers
@@ -40,7 +40,7 @@ find_package(catkin REQUIRED COMPONENTS
   # FK KDL::ChainFkSolverPos_recursive
   kdl_conversions
 
-  workspace_visualization
+ # workspace_visualization
   # FK
 )
 
@@ -92,6 +92,7 @@ catkin_package(
   workspace_visualization
   DEPENDS
   orocos_kdl
+urdf
 #roscpp
 #gazebo_ros
 #gazebp_plugins
@@ -207,7 +208,7 @@ set (MyProject_src
 #endif()
 add_library(lib ${MyProject_Lib})
 
-target_link_libraries(lib /opt/ros/kinetic/lib/liborocos-kdl.so.1.3 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
+target_link_libraries(lib /opt/ros/melodic/lib/liborocos-kdl.so.1.4 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
 
 add_executable(rvizglabre  ${MyProject_src}  )# ${MyProjectLib_qrc_MOC} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC}
 

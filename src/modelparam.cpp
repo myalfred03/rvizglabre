@@ -305,7 +305,13 @@ bool modelparam::InverseK(KDL::Vector tcpXYZ, KDL::Rotation tcpRPY , KDL::JntArr
             {
     //            std::cout << chain_.getSegment(i).getName() << " -> " << kdl_joint.getName() << " -> " << chain_.getSegment(i + 1).getName() << std::endl;
 
-                boost::shared_ptr<const urdf::Joint> joint = urdf_model.getJoint(kdl_joint.getName());
+                //boost::shared_ptr<const urdf::Joint> joint
+//boost::shared_ptr<const  urdf::JointConstSharedPtr> joint  = urdf_model.getJoint(kdl_joint.getName());
+           //    const urdf::JointConstSharedPtr joint = urdf_model.getJoint(kdl_joint.getName());
+
+        const std::shared_ptr<const urdf::Joint> joint = urdf_model.getJoint(kdl_joint.getName());
+
+
                 if (joint && joint->limits)
                 {
                     q_min_(j) = joint->limits->lower;
@@ -387,7 +393,7 @@ bool modelparam::readJntLimitsFromROSParamURDF(std::vector<double> &lower_limits
               for(int i=0; i<nbr_segs; i++)
                   seg_names.push_back(kdl_chain6.getSegment(i).getJoint().getName());
 
-              for (std::map<std::string,boost::shared_ptr<urdf::Joint> >::iterator joint = urdf_model.joints_.begin(); joint != urdf_model.joints_.end(); ++joint) {
+              for (std::map<std::string, std::shared_ptr<urdf::Joint> >::iterator joint = urdf_model.joints_.begin(); joint != urdf_model.joints_.end(); ++joint) {
                   if ( joint->second->limits && std::find(seg_names.begin(), seg_names.end(),joint->second->name)!=seg_names.end() ) {
                       if (joint->second->limits->lower != joint->second->limits->upper) {
                          // limited_jnt_names.push_back(joint->second->name);

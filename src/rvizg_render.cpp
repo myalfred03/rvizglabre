@@ -138,27 +138,27 @@ QWidget(parent)
 
 
 //          int_marker_display_ = manager_->createDisplay( "rviz/InteractiveMarkers", "Interactive markers", true );
-      int_marker_display_ = new rviz::InteractiveMarkerDisplay();
-//      int_marker_display_->context_->getDisplayFactory();
-      int_marker_display_->setName( "Interactive Markers" );
-      manager_->addDisplay(int_marker_display_, true);
-      int_marker_display_->setFixedFrame("base_link");
-//          int_marker_display_->initialize(manager_);
-          //        int_marker_display_->update(wall_dt, ros_dt);
+//       int_marker_display_ = new rviz::InteractiveMarkerDisplay();
+// //      int_marker_display_->context_->getDisplayFactory();
+//       int_marker_display_->setName( "Interactive Markers" );
+//       manager_->addDisplay(int_marker_display_, true);
+//       int_marker_display_->setFixedFrame("base_link");
+// //          int_marker_display_->initialize(manager_);
+//           //        int_marker_display_->update(wall_dt, ros_dt);
 
-                    ROS_ASSERT( int_marker_display_ != NULL );
-                    int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString("/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update"));
-                    int_marker_display_->subProp( "Show Axes" )->setValue( true );
-                    int_marker_display_->subProp( "Show Visual Aids" )->setValue( true );
+//                     ROS_ASSERT( int_marker_display_ != NULL );
+//                     int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString("/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update"));
+//                     int_marker_display_->subProp( "Show Axes" )->setValue( true );
+//                     int_marker_display_->subProp( "Show Visual Aids" )->setValue( true );
           //        int_marker_display_->initialize(context_);
 
 
 
 
-          rviz::Tool* current_tool = manager_->getToolManager()->getCurrentTool();
-            if (current_tool->getClassId().toStdString() == "rviz/Interact") {
-                  int_marker_display_->setEnabled(true);
-                }
+          // rviz::Tool* current_tool = manager_->getToolManager()->getCurrentTool();
+          //   if (current_tool->getClassId().toStdString() == "rviz/Interact") {
+          //         int_marker_display_->setEnabled(true);
+          //       }
 
             //          robot_display_ = manager_->createDisplay( "moveit_rviz_plugin/MotionPlanning", "MoveIt", true );
 
@@ -321,12 +321,12 @@ void MyViz::refresh(const std::string& fixed_frame)
 // int_marker_display_->initialize(manager_);
 // int_marker_display_->update(wall_dt, ros_dt);
 
- ROS_ASSERT( int_marker_display_ != NULL );
-// int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString(robot_interaction_->getServerTopic() + "/update"));
- int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString("/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update"));
+//  ROS_ASSERT( int_marker_display_ != NULL );
+// // int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString(robot_interaction_->getServerTopic() + "/update"));
+//  int_marker_display_->subProp("Update Topic")->setValue(QString::fromStdString("/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/update"));
 
-         int_marker_display_->subProp( "Show Axes" )->setValue( true );
-         int_marker_display_->subProp( "Show Visual Aids" )->setValue( true );
+//          int_marker_display_->subProp( "Show Axes" )->setValue( true );
+//          int_marker_display_->subProp( "Show Visual Aids" )->setValue( true );
 
 
 //  try
@@ -361,11 +361,11 @@ void MyViz::refresh(const std::string& fixed_frame)
 
 
 
-  rviz::Tool* current_tool = manager_->getToolManager()->getCurrentTool();
-    if (current_tool->getClassId().toStdString() == "rviz/Interact") {
-          int_marker_display_->setEnabled(true);
-        }
-int_marker_display_->setEnabled(true);
+//   rviz::Tool* current_tool = manager_->getToolManager()->getCurrentTool();
+//     if (current_tool->getClassId().toStdString() == "rviz/Interact") {
+//           int_marker_display_->setEnabled(true);
+//         }
+// int_marker_display_->setEnabled(true);
 
 
 

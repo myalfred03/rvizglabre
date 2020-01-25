@@ -34,7 +34,7 @@
 
 #include <kdl/joint.hpp>
 #include <urdf/model.h>
-#include <urdf_model/model.h>
+//#include <urdf_model/model.h>
 #include <urdf_parser/urdf_parser.h>
 
 #include <std_msgs/Float32MultiArray.h>

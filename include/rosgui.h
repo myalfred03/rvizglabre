@@ -148,10 +148,10 @@ public:
       ros::Publisher map_reuleaux;
       ros::Publisher joint_value_pub;
       ros::Subscriber joint_sub;
-      ros::Publisher robot_state_vis_pub_;
+      //ros::Publisher robot_state_vis_pub_;
       ros::Publisher arduinopub;
       void trajectoryCallback(const trajectory_msgs::JointTrajectory & msg); // MoveIt
-      moveit_msgs::DisplayRobotState display_state_msg_;
+      //moveit_msgs::DisplayRobotState display_state_msg_;
       std_msgs::Float32MultiArray send_val;
 
       std_msgs::Float32MultiArray valueDH;
