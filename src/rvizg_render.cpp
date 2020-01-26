@@ -63,7 +63,7 @@ QWidget(parent)
 
   rviz::YamlConfigReader reader;
   rviz::Config config;
-  std::string filename = ros::package::getPath("rvizglabre")+"/config/lvr.rviz" ;
+  std::string filename = ros::package::getPath("rvizglabre")+"/config/virtuallab.rviz" ;
   reader.readFile( config, QString::fromStdString( filename ));
       if( !reader.error() )
       {

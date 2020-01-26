@@ -5,7 +5,7 @@ RVIZGLABRE
 RViz Graphical Lab Robotics Education
 LVR for Industrial Robotics
 
-![image](https://github.com/myalfred03/interpreter_gui/blob/master/img/info/Screenshot from 2018-12-10 15-58-47.png)
+![image](https://github.com/myalfred03/rvizglabre/blob/melodic/img/info/1.png)
 Modelo de robot Kuka LBR-IIWA
 
 ![image](https://github.com/myalfred03/interpreter_gui/blob/master/img/info/Screenshot2.png)

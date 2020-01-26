@@ -40,7 +40,7 @@ find_package(catkin REQUIRED COMPONENTS
   # FK KDL::ChainFkSolverPos_recursive
   kdl_conversions
 
- # workspace_visualization
+  workspace_visualization
   # FK
 )
 
@@ -209,7 +209,7 @@ set (MyProject_src
 add_library(lib ${MyProject_Lib})
 
 target_link_libraries(lib /opt/ros/melodic/lib/liborocos-kdl.so.1.4 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
-
+#target_link_libraries(libreach /opt/ros/melodic/lib/liborocos-kdl.so.1.4 ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}    )
 add_executable(rvizglabre  ${MyProject_src}  )# ${MyProjectLib_qrc_MOC} ${MyProjectLib_hdr_MOC} ${MyProjectLib_ui_MOC}
 
 #add_executable(talker  src/robot_state.cpp)

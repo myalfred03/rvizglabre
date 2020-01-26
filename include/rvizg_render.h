@@ -60,11 +60,11 @@
 //#include <moveit/macros/class_forward.h>
 //Rviz workspace
 
-//#include "reachability_map_display.h"
+// #include "reachability_map_display.h"
 
-//namespace workspace_visualization {
-//class ReachMapDisplay;
-//}
+// namespace workspace_visualization {
+// class ReachMapDisplay;
+// }
 // namespace moveit_rviz_plugin
 // {
 // //  class RobotStateVisualization;
