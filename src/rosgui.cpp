@@ -1778,10 +1778,20 @@ void ROSGUI::publishJointStates(/*const trajectory_msgs::JointTrajectory &trajec
 
       if(robot_state_pub_ != NULL)
       {
-         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now()/*+d_*/, "my_lab_world");
+         robot_state_pub_->publishTransforms(joint_positions_, ros::Time::now()); //, "my_lab_world");
          robot_state_pub_->publishFixedTransforms("my_lab_world");
 
       }
+
+/*       
+
+Melodic library define ->
+  void RobotStatePublisher::publishTransforms(const map<string, double>& joint_positions, const Time& time, const std::string& tf_prefix)
+
+Noetic Library define ->
+  void RobotStatePublisher::publishTransforms(const std::map<std::string, double>& joint_positions, const ros::Time& time)
+
+ */
 
 
 //      if(robot_state_pubDH_ != NULL)

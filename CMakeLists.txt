@@ -34,13 +34,13 @@ find_package(catkin REQUIRED COMPONENTS
   #roboteditor
   #Book
   #fake_localization
-  laser_filters
+  #laser_filters
   #map_server
   #book
   # FK KDL::ChainFkSolverPos_recursive
   kdl_conversions
 
-  workspace_visualization
+  #workspace_visualization
   # FK
 )
 
@@ -89,7 +89,7 @@ catkin_package(
   moveit_ros_planning
   moveit_visual_tools
   moveit_msgs
-  workspace_visualization
+  #workspace_visualization
   DEPENDS
   orocos_kdl
 urdf
